@@ -31,6 +31,7 @@ const faqs = [
 
 const textPrimary = "#242424";
 const textSecondary = "#323744";
+const cardShadow = "0 2px 5px rgba(0, 0, 0, 0.06)";
 
 export function FAQ() {
   return (
@@ -60,7 +61,10 @@ export function FAQ() {
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, i) => (
               <AccordionItem key={i} value={`item-${i}`}>
-                <div className="bg-white px-6 py-3 rounded-3xl">
+                <div
+                  className="bg-white px-6 py-3 rounded-3xl"
+                  style={{ boxShadow: cardShadow }}
+                >
                   <AccordionTrigger className="text-lg text-left">
                     {faq.q}
                   </AccordionTrigger>
