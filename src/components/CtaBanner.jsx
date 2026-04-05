@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 export function CtaBanner() {
   return (
     <section className="py-12 md:py-16 border-b border-border bg-muted/40">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -22,7 +22,9 @@ export function CtaBanner() {
             href="#contact"
             onClick={(e) => {
               e.preventDefault();
-              document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+              document
+                .querySelector("#contact")
+                ?.scrollIntoView({ behavior: "smooth" });
             }}
             className="inline-flex items-center font-medium text-primary hover:underline underline-offset-4"
           >

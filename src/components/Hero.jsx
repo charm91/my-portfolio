@@ -2,13 +2,15 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
+const cardShadow = "0 2px 5px rgba(0, 0, 0, 0.06)";
+
 export function Hero() {
   return (
     <section
       id="home"
       className="relative flex flex-col justify-center pt-24 pb-10 md:pt-36"
     >
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -43,7 +45,7 @@ export function Hero() {
         >
           <Button
             size="lg"
-            className="rounded-full gap-2 group px-4 py-4 "
+            className="rounded-full gap-2 group px-6 py-6 my-2 "
             onClick={() =>
               document
                 .querySelector("#portfolio")

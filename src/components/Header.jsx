@@ -105,16 +105,18 @@ export function Header() {
               onClick={() => setMenuOpen((o) => !o)}
               className={cn(
                 "rounded-full px-5 py-2 text-sm font-medium transition-colors",
-                "bg-background hover:bg-muted text-[#1f2937] cursor-pointer",
+                "bg-gray-100 hover:bg-gray-200 text-[#1f2937] cursor-pointer",
               )}
             >
               Menu
             </button>
           ) : (
             <Button
-              size="sm"
               asChild
-              className="rounded-full px-5 py-2 text-sm font-medium h-9"
+              className={cn(
+                "rounded-full px-5 py-2 h-9 text-sm font-medium transition-colors",
+                "bg-gray-100! hover:bg-gray-200! text-[#1f2937]! cursor-pointer",
+              )}
             >
               <Link to="/">Back to Home</Link>
             </Button>
@@ -154,11 +156,15 @@ export function Header() {
                   })}
                 </nav>
                 <Button
-                  className="mt-2 w-full rounded-full h-11"
+                  className="w-full justify-start rounded-full py-5 px-4 text-sm font-medium bg-white text-[#1f2937]! hover:bg-[#f3f4f6]!"
                   size="sm"
                   asChild
                 >
-                  <Link to="/contact-me" onClick={() => setMenuOpen(false)}>
+                  <Link
+                    to="/contact-me"
+                    className="block w-full text-left"
+                    onClick={() => setMenuOpen(false)}
+                  >
                     Contact Me
                   </Link>
                 </Button>

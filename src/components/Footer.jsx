@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 
 const textPrimary = "#1f2937";
 const textSecondary = "#323744";
+const cardShadow = "0 2px 5px rgba(0, 0, 0, 0.06)";
 
 export function Footer() {
   return (
@@ -16,10 +17,7 @@ export function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="rounded-3xl bg-white p-8 md:p-10 text-center mb-8 md:mb-10"
-          style={{
-            boxShadow:
-              "0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -1px rgba(0, 0, 0, 0.04)",
-          }}
+          style={{ boxShadow: cardShadow }}
         >
           <span
             className="inline-block px-4 py-1.5 rounded-full text-sm font-medium mb-5"
@@ -38,7 +36,7 @@ export function Footer() {
             </span>
           </h2>
           <p
-            className="text-base md:text-lg max-w-xl mx-auto mb-8"
+            className="text-sm md:text-base max-w-xl mx-auto mb-8"
             style={{ color: textSecondary }}
           >
             I bring experience across product strategy, UX, <br /> and delivery
@@ -65,6 +63,7 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-4 rounded-full bg-white p-5 md:p-6 hover:shadow-md transition-shadow"
+            style={{ boxShadow: cardShadow }}
           >
             <div
               className="flex size-12 shrink-0 items-center justify-center rounded-full text-white"
@@ -88,8 +87,11 @@ export function Footer() {
             />
           </a>
           <a
-            href="mailto:nguwah106@gmail.com"
-            className="flex items-center gap-4 rounded-full bg-white p-5 md:p-6 hover:shadow-md transition-shadow"
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=nguwah106@gmail.com&su=Hello%20Charm"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-4 rounded-full bg-white p-5 md:p-6 transition-shadow hover:shadow-md"
+            style={{ boxShadow: cardShadow }}
           >
             <div
               className="flex size-12 shrink-0 items-center justify-center rounded-full text-white"
@@ -97,15 +99,18 @@ export function Footer() {
             >
               <Mail className="size-6" />
             </div>
+
             <div className="min-w-0 flex-1">
               <p className="font-bold text-base" style={{ color: textPrimary }}>
                 Email
               </p>
-              <p className="text-sm mt-0.5" style={{ color: textSecondary }}>
+              <p className="mt-0.5 text-sm" style={{ color: textSecondary }}>
                 Reach me directly
               </p>
             </div>
-            <span className="w-px h-10 bg-border/50 hidden md:inline-block"></span>
+
+            <span className="hidden h-10 w-px bg-border/50 md:inline-block"></span>
+
             <ExternalLink
               className="size-5 shrink-0"
               style={{ color: textPrimary }}

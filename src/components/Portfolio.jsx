@@ -5,28 +5,36 @@ import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const kbzBankImage = "/kbz.png";
-const uniLinksImage = "/unilinks.jpg";
-const betterhrImage = "/betterhr.jpg";
+const uniLinksImage = "/unilinks.png";
+const betterhrImage = "/better.png";
+const wctImage = "/wct.png";
+const cardShadow = "0 2px 5px rgba(0, 0, 0, 0.06)";
 
 const projects = [
   {
-    title:
-      "Building a Secure Authentication System for KBZ Bank's Self-Service Portal",
-    category: "Web and Mobile Application",
-    image: kbzBankImage,
-    href: "/kbz-bank",
+    title: "BetterHR Cloud-based HR Management Platform",
+    category: "Web & Mobile",
+    image: betterhrImage,
+    href: "/betterhr",
   },
   {
     title: "UniLinks All-in-One Study Abroad Platform",
-    category: "Web and Mobile Application",
+    category: "Web App (Responsive)",
     image: uniLinksImage,
     href: "/unilinks",
   },
   {
-    title: "BetterHR Cloud-based HR Management Platform",
-    category: "Web and Mobile Application",
-    image: betterhrImage,
-    href: "/betterhr",
+    title:
+      "Building a Secure Authentication System for KBZ Bank’s Self-Service Portal",
+    category: "Web & Mobile",
+    image: kbzBankImage,
+    href: "/kbz-bank",
+  },
+  {
+    title: "WCT Pay Crypto–Fiat Payment Dashboard",
+    category: "Web & Mobile",
+    image: wctImage,
+    href: "/wct",
   },
 ];
 
@@ -35,7 +43,7 @@ export function Portfolio() {
   const isPortfolioPage = location.pathname === "/portfolio";
   return (
     <section id="portfolio" className="py-20 md:py-28">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -63,7 +71,8 @@ export function Portfolio() {
                 mass: 0.8,
                 delay: 0.05 * i,
               }}
-              className="group rounded-3xl overflow-hidden bg-card hover:shadow-lg transition-all duration-300 p-2"
+              className="group rounded-3xl overflow-hidden bg-card hover:shadow-md transition-all duration-300 p-2"
+              style={{ boxShadow: cardShadow }}
             >
               <Link to={project.href} className="block">
                 <div className="aspect-4/3 overflow-hidden rounded-3xl relative">
@@ -80,17 +89,17 @@ export function Portfolio() {
                   <Button
                     size="lg"
                     variant="outline"
-                    className="inline-flex items-center gap-2 text-sm font-medium text-primary bg-[#f6f7f9] rounded-full absolute bottom-2 right-5 border-0"
+                    className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary bg-[#f6f7f9] rounded-full absolute bottom-2 right-5 border-0"
                   >
                     See Details
                     <ArrowRight className="size-5 transition-transform duration-200 group-hover:rotate-330" />
                   </Button>
                 </div>
-                <div className="p-6 flex justify-between items-center gap-8">
-                  <h3 className="font-medium text-foreground group-hover:text-primary transition-colors line-clamp-2 text-left text-lg">
+                <div className="p-6 flex justify-between items-center gap-6">
+                  <h3 className="font-medium text-foreground group-hover:text-primary transition-colors line-clamp-2 text-left text-base">
                     {project.title}
                   </h3>
-                  <p className="text-sm text-foreground mt-2 text-right">
+                  <p className="text-sm text-foreground text-right">
                     {project.category}
                   </p>
                 </div>
@@ -106,7 +115,7 @@ export function Portfolio() {
             viewport={{ once: true }}
             className="mt-12 text-center"
           >
-            <Button size="lg" className="rounded-full w-28" asChild>
+            <Button size="lg" className="rounded-full px-8 h-10" asChild>
               <Link to="/portfolio">See All</Link>
             </Button>
           </motion.div>

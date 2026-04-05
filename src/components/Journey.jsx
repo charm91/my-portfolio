@@ -51,11 +51,12 @@ const item = {
   hidden: { opacity: 0, y: 28 },
   show: { opacity: 1, y: 0 },
 };
+const cardShadow = "0 2px 5px rgba(0, 0, 0, 0.06)";
 
 export function Journey() {
   return (
     <section className="py-20 md:py-28 bg-muted/20">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -64,7 +65,7 @@ export function Journey() {
         >
           <p className="section-category">The Product Journey</p>
           <h2 className="section-title mb-4">
-            From Strategy to <br />
+            From Strategy to{" "}
             <span className="font-serif italic font-normal">Delivery</span>
           </h2>
           <p className="text-element-content max-w-96 text-lg tracking-wide">
@@ -81,8 +82,13 @@ export function Journey() {
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
           {steps.map((step, i) => (
-            <motion.div key={i} variants={item} className="relative ">
-              <div className="p-6 rounded-2xl bg-white h-full flex flex-col">
+            <motion.div
+              key={i}
+              variants={item}
+              className="relative bg-white rounded-2xl"
+              style={{ boxShadow: cardShadow }}
+            >
+              <div className="p-6  h-full flex flex-col">
                 <div className="text-primary w-fit mb-2 md:mb-4">
                   <step.icon className="size-6" />
                 </div>

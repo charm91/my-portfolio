@@ -46,7 +46,7 @@ const item = {
   show: { opacity: 1, y: 0 },
 };
 
-const cardShadow = "0 2px 12px rgba(0, 0, 0, 0.06)";
+const cardShadow = "0 2px 5px rgba(0, 0, 0, 0.06)";
 const textPrimary = "#242424";
 const textSecondary = "#323744";
 
@@ -60,7 +60,7 @@ export function Services() {
 
   return (
     <section id="services" className="py-16 md:py-24">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Pill label */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
