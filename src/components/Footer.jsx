@@ -133,13 +133,13 @@ export function Footer() {
             <a
               href="/resume.pdf"
               download="charm-resume.pdf"
-              className="text-base transition-colors hover:bg-black text-secondary hover:text-white px-4 py-1.5 rounded-full"
+              className="text-sm transition-colors hover:bg-black text-secondary hover:text-white px-4 py-1.5 rounded-full"
             >
               Resume
             </a>
             <a
               href="#portfolio"
-              className="text-base transition-colors hover:bg-black text-secondary hover:text-white px-4 py-1.5 rounded-full"
+              className="text-sm transition-colors hover:bg-black text-secondary hover:text-white px-4 py-1.5 rounded-full"
             >
               Case Studies
             </a>

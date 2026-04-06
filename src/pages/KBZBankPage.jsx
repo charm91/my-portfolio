@@ -52,7 +52,7 @@ export function KBZBankPage() {
           className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 md:pb-14 w-full bg-white rounded-t-2xl pt-10"
         >
           <h1
-            className="text-3xl sm:text-4xl md:text-5xl font-medium text-center leading-tight mb-6 pt-5"
+            className="text-4xl sm:text-4xl md:text-5xl font-medium text-center leading-tight mb-6 pt-5 tracking-tight"
             style={{ color: textPrimary }}
           >
             Building a Secure Authentication System for KBZ Bank’s Self-Service

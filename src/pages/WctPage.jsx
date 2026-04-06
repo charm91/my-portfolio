@@ -52,7 +52,7 @@ export function WctPage() {
           className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 md:pb-14 w-full bg-white rounded-t-2xl pt-10"
         >
           <h1
-            className="text-3xl sm:text-4xl md:text-5xl font-medium text-center leading-tight mb-6 pt-5"
+            className="text-4xl sm:text-4xl md:text-5xl font-medium text-center leading-tight mb-6 pt-5 tracking-tight"
             style={{ color: textPrimary }}
           >
             WCT Pay Crypto–Fiat Payment Dashboard
@@ -82,7 +82,7 @@ export function WctPage() {
           </div>
           <div className="flex justify-center mt-8 mb-4">
             <a
-              href="https://selfservice.kbzbank.com/"
+              href="https://www.wctpay.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 rounded-3xl bg-[#1f2937] px-5 py-2.5 font-medium text-white transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:bg-[#111827] hover:shadow-lg active:translate-y-0 active:scale-100"

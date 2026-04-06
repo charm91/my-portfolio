@@ -35,7 +35,7 @@ export function OverviewGrid() {
           viewport={{ once: true, margin: "-60px" }}
           className="grid lg:grid-cols-5 gap-6 md:gap-5"
         >
-          <div className="flex flex-col gap-4 md:gap-5 col-span-3">
+          <div className="flex flex-col gap-4 md:gap-5 lg:col-span-3 w-full">
             <motion.article
               variants={item}
               className="rounded-2xl bg-white overflow-hidden flex-1 flex flex-col"
@@ -97,24 +97,25 @@ export function OverviewGrid() {
                   <h2 className="font-semibold" style={{ color: textPrimary }}>
                     Let's Connect
                   </h2>
-                  <div>
-                    <span
+                  <div className="flex items-center justify-between md:gap-4">
+                    <div
                       className="text-sm font-normal"
                       style={{ color: textSecondary }}
                     >
                       Open to Product Owner roles SEA / Remote
-                    </span>
+                    </div>
+
+                    <ExternalLink
+                      className="size-5 shrink-0 text-[#242424] group-hover:opacity-70 transition-opacity"
+                      strokeWidth={2}
+                    />
                   </div>
                 </div>
-                <ExternalLink
-                  className="size-5 shrink-0 mt-1 text-[#242424] group-hover:opacity-70 transition-opacity"
-                  strokeWidth={2}
-                />
               </a>
             </motion.article>
           </div>
 
-          <div className="flex flex-col gap-4 md:gap-5 col-span-2">
+          <div className="flex flex-col gap-4 md:gap-5 lg:col-span-2 w-full">
             <motion.article
               variants={item}
               className="rounded-2xl bg-white p-5 md:p-6"
@@ -128,7 +129,7 @@ export function OverviewGrid() {
                 </span>
                 <span className="w-px h-10 bg-border/50 hidden md:inline-block"></span>
                 <ul
-                  className="text-sm font-normal list-disc"
+                  className="list-disc pl-2 text-sm font-normal"
                   style={{ color: textSecondary }}
                 >
                   <li>Product Owner </li>
@@ -144,15 +145,14 @@ export function OverviewGrid() {
             >
               <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6">
                 <span
-                  className="text-sm md:text-base font-medium shrink-0"
+                  className="text-sm md:text-base font-medium shrink-0 md:w-[100px]"
                   style={{ color: textSecondary }}
                 >
-                  Domain
-                  <br /> Experience
+                  Domain Experience
                 </span>
                 <span className="w-px h-10 bg-border/50 hidden md:inline-block"></span>
                 <ul
-                  className="text-sm font-normal list-disc"
+                  className="text-sm font-normal pl-2 list-disc"
                   style={{ color: textSecondary }}
                 >
                   <li>Fintech </li>
