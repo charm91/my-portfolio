@@ -23,7 +23,7 @@ export function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-4xl sm:text-5xl md:text-6xl font-medium text-foreground leading-tight tracking-tight  text-center mx-auto"
+          className="text-4xl sm:text-5xl md:text-6xl mt-2 font-medium text-foreground leading-tight tracking-tight  text-center mx-auto"
         >
           Product Design with
           <span className="font-serif italic font-normal"> Impact</span>
