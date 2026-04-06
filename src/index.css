@@ -124,7 +124,7 @@
     @apply font-sans scroll-smooth;
   }
   body {
-    @apply bg-background text-foreground antialiased;
+    @apply text-foreground antialiased;
   }
   .section-category {
     @apply inline-block px-4 py-1.5 bg-white rounded-full text-sm font-medium;
@@ -132,4 +132,29 @@
   .section-title {
     @apply text-3xl md:text-4xl font-semibold text-center mb-12 md:mb-14 text-[#0e1115];
   }
+}
+.home-wrapper {
+  position: relative;
+  min-height: 100vh;
+  isolation: isolate;
+}
+
+.home-bg-layer {
+  position: fixed;
+  inset: 0;
+  z-index: -55;
+  pointer-events: none;
+  background-color: #f3f4f6;
+  background-image: url("/background-2.png");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+
+  /* temp debug */
+  /* border: 2px solid red; */
+}
+
+.home-content {
+  position: relative;
+  z-index: 1;
 }

@@ -59,8 +59,8 @@ export function Services() {
   };
 
   return (
-    <section id="services" className="py-16 md:py-24">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="py-16 md:py-28">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Pill label */}
         <motion.div
           initial={{ opacity: 0, y: 12 }}
@@ -68,7 +68,7 @@ export function Services() {
           viewport={{ once: true }}
           className="flex justify-center mb-5"
         >
-          <span className="section-category">What I Do</span>
+          <span className="section-category text-xs">What I Do</span>
         </motion.div>
 
         {/* Main heading - centered */}
@@ -95,7 +95,6 @@ export function Services() {
               key={i}
               variants={item}
               className="rounded-2xl bg-white p-4 md:p-6"
-              style={{ boxShadow: cardShadow }}
             >
               <div className="flex flex-col">
                 <s.icon
@@ -119,7 +118,7 @@ export function Services() {
                   {s.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="text-sm font-normal px-3 py-1.5 rounded-full bg-[#f6f7f9]"
+                      className="font-normal px-3 py-1 text-xs rounded-full bg-[#f6f7f9]"
                       style={{ color: textPrimary }}
                     >
                       {tag}
@@ -140,7 +139,7 @@ export function Services() {
         >
           <Button
             size="lg"
-            className="rounded-full gap-2 group px-4 py-4"
+            className="rounded-full gap-2 group px-4 py-5"
             onClick={scrollToPortfolio}
           >
             Explore Projects

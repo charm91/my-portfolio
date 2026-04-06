@@ -43,9 +43,9 @@ export function FAQ() {
           viewport={{ once: true }}
           className="flex flex-col justify-center items-center gap-4 mb-10"
         >
-          <p className="section-category">FAQ</p>
+          <p className="section-category text-xs">FAQ</p>
           <h2 className="section-title mb-1">Working With Me</h2>
-          <p className="text-element-content max-w-2xl text-lg tracking-wide text-center">
+          <p className="text-element-content max-w-2xl text-base font-light tracking-wide text-center">
             Common questions about my role, approach, and <br /> collaboration
             style.
           </p>
@@ -61,10 +61,7 @@ export function FAQ() {
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq, i) => (
               <AccordionItem key={i} value={`item-${i}`}>
-                <div
-                  className="bg-white px-6 py-3 rounded-3xl"
-                  style={{ boxShadow: cardShadow }}
-                >
+                <div className="bg-white px-6 py-3 rounded-3xl">
                   <AccordionTrigger className="text-lg text-left">
                     {faq.q}
                   </AccordionTrigger>

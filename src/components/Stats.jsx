@@ -20,7 +20,7 @@ const item = {
 
 export function Stats() {
   return (
-    <section className="py-16 md:py-24 border-y border-border bg-muted/30">
+    <section className="84 border-y border-border bg-muted/30">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={container}
@@ -30,9 +30,17 @@ export function Stats() {
           className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16"
         >
           {stats.map((stat, i) => (
-            <motion.div key={i} variants={item} className="text-center md:text-left">
-              <p className="text-2xl md:text-3xl font-bold text-foreground">{stat.value}</p>
-              <p className="mt-2 text-base text-muted-foreground">{stat.label}</p>
+            <motion.div
+              key={i}
+              variants={item}
+              className="text-center md:text-left"
+            >
+              <p className="text-2xl md:text-3xl font-bold text-foreground">
+                {stat.value}
+              </p>
+              <p className="mt-2 text-base text-muted-foreground">
+                {stat.label}
+              </p>
             </motion.div>
           ))}
         </motion.div>

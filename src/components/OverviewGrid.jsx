@@ -26,23 +26,19 @@ export function OverviewGrid() {
   };
 
   return (
-    <section className="py-12 md:py-16 lg:py-20">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Desktop layout: two columns as before */}
+    <section className="py-12">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={container}
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-60px" }}
-          className="grid lg:grid-cols-2 gap-6 md:gap-5"
+          className="grid lg:grid-cols-5 gap-6 md:gap-5"
         >
-          {/* Left column: 3 cards */}
-          <div className="flex flex-col gap-4 md:gap-5">
-            {/* Card 5: Profile / About */}
+          <div className="flex flex-col gap-4 md:gap-5 col-span-3">
             <motion.article
               variants={item}
               className="rounded-2xl bg-white overflow-hidden flex-1 flex flex-col"
-              style={{ boxShadow: cardShadow }}
             >
               <div className="relative aspect-6/3 min-h-[150px]">
                 <img
@@ -81,11 +77,9 @@ export function OverviewGrid() {
                 </p>
               </div>
             </motion.article>
-            {/* Card 4: Let's Connect */}
             <motion.article
               variants={item}
-              className="rounded-2xl bg-white p-5 md:p-7"
-              style={{ boxShadow: cardShadow }}
+              className="rounded-2xl bg-white p-5 md:p-6"
             >
               <a
                 href="#contact"
@@ -120,15 +114,12 @@ export function OverviewGrid() {
             </motion.article>
           </div>
 
-          {/* Right column: 2 cards */}
-          <div className="flex flex-col gap-4 md:gap-5">
-            {/* Card 1: 10+ Years */}
+          <div className="flex flex-col gap-4 md:gap-5 col-span-2">
             <motion.article
               variants={item}
-              className="rounded-2xl bg-white p-5 md:p-7"
-              style={{ boxShadow: cardShadow }}
+              className="rounded-2xl bg-white p-5 md:p-6"
             >
-              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6">
                 <span
                   className="font-medium shrink-0"
                   style={{ color: textPrimary }}
@@ -136,43 +127,47 @@ export function OverviewGrid() {
                   12+ Years
                 </span>
                 <span className="w-px h-10 bg-border/50 hidden md:inline-block"></span>
-                <span
-                  className="text-sm font-normal"
+                <ul
+                  className="text-sm font-normal list-disc"
                   style={{ color: textSecondary }}
                 >
-                  • Product Owner • Product Designer <br />• Design-to-Dev
-                  Builder
-                </span>
+                  <li>Product Owner </li>
+                  <li>Product Designer</li>
+                  <li>Design to Dev Builder</li>
+                </ul>
               </div>
             </motion.article>
 
-            {/* Card 2: Domain Experience */}
             <motion.article
               variants={item}
-              className="rounded-2xl bg-white p-5 md:p-7"
-              style={{ boxShadow: cardShadow }}
+              className="rounded-2xl bg-white p-5 md:p-6"
             >
-              <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6">
+              <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6">
                 <span
                   className="text-sm md:text-base font-medium shrink-0"
                   style={{ color: textSecondary }}
                 >
-                  Domain Experience
+                  Domain
+                  <br /> Experience
                 </span>
                 <span className="w-px h-10 bg-border/50 hidden md:inline-block"></span>
-                <span className="text-sm" style={{ color: textPrimary }}>
-                  Fintech, HR SaaS, and Multi-role Platforms across complex,
-                  data-driven systems
-                </span>
+                <ul
+                  className="text-sm font-normal list-disc"
+                  style={{ color: textSecondary }}
+                >
+                  <li>Fintech </li>
+                  <li>HR SaaS</li>
+                  <li>Data-driven systems </li>
+                  <li>Multi-role Platforms across complex</li>
+                </ul>
               </div>
             </motion.article>
-            {/* Card 3: Testimonial */}
+
             <motion.article
               variants={item}
-              className="rounded-2xl bg-white p-5 md:p-7"
-              style={{ boxShadow: cardShadow }}
+              className="rounded-2xl bg-white p-5 md:p-6"
             >
-              <div className="flex gap-2 mb-2 bg-background rounded-full px-4 py-2 w-fit">
+              <div className="flex gap-2 mb-2 bg-background rounded-full px-3 py-2 w-fit">
                 <Star className="size-4 fill-[#f97316] text-[#f97316] shrink-0" />
                 <span
                   className="text-sm font-medium text-center"

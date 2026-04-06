@@ -43,14 +43,14 @@ export function Portfolio() {
   const isPortfolioPage = location.pathname === "/portfolio";
   return (
     <section id="portfolio" className="py-20 md:py-28">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="flex flex-col justify-center items-center gap-5 mb-10"
         >
-          <p className="section-category">Portfolio Highlights</p>
+          <p className="section-category text-xs">Portfolio Highlights</p>
           <h2 className="section-title">
             Showcasing Projects that <br /> Define
             <span className="font-serif italic font-normal"> My Works</span>
@@ -71,8 +71,7 @@ export function Portfolio() {
                 mass: 0.8,
                 delay: 0.05 * i,
               }}
-              className="group rounded-3xl overflow-hidden bg-card hover:shadow-md transition-all duration-300 p-2"
-              style={{ boxShadow: cardShadow }}
+              className="group rounded-3xl overflow-hidden bg-card hover:shadow-xs transition-all duration-300 p-2"
             >
               <Link to={project.href} className="block">
                 <div className="aspect-4/3 overflow-hidden rounded-3xl relative">
