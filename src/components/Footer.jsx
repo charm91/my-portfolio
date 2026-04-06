@@ -9,7 +9,7 @@ const cardShadow = "0 2px 5px rgba(0, 0, 0, 0.06)";
 
 export function Footer() {
   return (
-    <footer id="contact" className="py-16 md:py-24 z-10 relative">
+    <footer id="contact" className="py-16 md:py-28 z-10 relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main CTA card - white, rounded, centered */}
         <motion.div
@@ -17,10 +17,9 @@ export function Footer() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="rounded-3xl bg-white p-8 md:p-10 text-center mb-8 md:mb-10"
-          style={{ boxShadow: cardShadow }}
         >
           <span
-            className="inline-block px-4 py-1.5 rounded-full text-sm font-medium mb-5"
+            className="inline-block px-4 py-1.5 rounded-full text-xs font-medium mb-5"
             style={{ backgroundColor: "#f6f7f9", color: textPrimary }}
           >
             Let's Connect
@@ -36,7 +35,7 @@ export function Footer() {
             </span>
           </h2>
           <p
-            className="text-sm md:text-base max-w-xl mx-auto mb-8"
+            className="text-sm md:text-base max-w-xl font-light mx-auto mb-8"
             style={{ color: textSecondary }}
           >
             I bring experience across product strategy, UX, <br /> and delivery
@@ -63,7 +62,6 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-4 rounded-full bg-white p-5 md:p-6 hover:shadow-md transition-shadow"
-            style={{ boxShadow: cardShadow }}
           >
             <div
               className="flex size-12 shrink-0 items-center justify-center rounded-full text-white"
@@ -91,7 +89,6 @@ export function Footer() {
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-4 rounded-full bg-white p-5 md:p-6 transition-shadow hover:shadow-md"
-            style={{ boxShadow: cardShadow }}
           >
             <div
               className="flex size-12 shrink-0 items-center justify-center rounded-full text-white"

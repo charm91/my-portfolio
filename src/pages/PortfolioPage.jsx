@@ -11,7 +11,7 @@ export function PortfolioPage() {
   return (
     <>
       <Header />
-      <main
+      {/* <main
         style={{
           scrollBehavior: "smooth",
           backgroundImage: `url(${backgroundImageLink})`,
@@ -26,7 +26,27 @@ export function PortfolioPage() {
         <Testimonials />
         <FAQ />
         <Footer />
-      </main>
+      </main> */}
+
+      <div className="home-wrapper">
+        <div className="home-bg-layer" />
+        <main
+          style={{
+            scrollBehavior: "smooth",
+            backgroundImage: `url(${backgroundImageLink})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            backgroundAttachment: "fixed",
+          }}
+        >
+          <Portfolio />
+          <Journey />
+          <Testimonials />
+          <FAQ />
+          <Footer />
+        </main>
+      </div>
     </>
   );
 }

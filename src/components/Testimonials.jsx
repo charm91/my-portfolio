@@ -84,7 +84,7 @@ export function Testimonials() {
           className="text-center mb-12"
         >
           <span
-            className="px-4 py-1.5 rounded-full text-sm font-medium bg-white text-center mx-auto inline-block"
+            className="px-4 py-1.5 rounded-full text-xs font-medium bg-white text-center mx-auto inline-block"
             style={{
               color: textPrimary,
               boxShadow: "0 1px 4px rgba(0, 0, 0, 0.04)",

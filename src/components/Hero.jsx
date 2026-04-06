@@ -8,14 +8,14 @@ export function Hero() {
   return (
     <section
       id="home"
-      className="relative flex flex-col justify-center pt-24 pb-10 md:pt-36"
+      className="relative flex flex-col justify-center pt-24 pb-10 md:pt-32"
     >
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="section-category"
+          className="section-category text-xs"
         >
           Strategy → UX → Delivery
         </motion.p>
@@ -23,19 +23,19 @@ export function Hero() {
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-4xl sm:text-5xl md:text-6xl font-medium text-foreground leading-tight tracking-tight max-w-xl text-center mx-auto"
+          className="text-4xl sm:text-5xl md:text-6xl font-medium text-foreground leading-tight tracking-tight  text-center mx-auto"
         >
-          Designing Products with
+          Product Design with
           <span className="font-serif italic font-normal"> Impact</span>
         </motion.h1>
         <motion.p
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="mt-4 text-md md:text-lg text-element-content font-light tracking-wide max-w-xl mx-auto"
+          className="mt-2 text-md md:text-lg text-element-content font-light tracking-wide max-w-lg mx-auto"
         >
-          I connect product strategy, UX systems, and <br /> development to
-          deliver measurable outcomes.
+          I connect product strategy, UX systems, and development to deliver
+          measurable outcomes.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -45,7 +45,7 @@ export function Hero() {
         >
           <Button
             size="lg"
-            className="rounded-full gap-2 group px-6 py-6 my-2 "
+            className="rounded-full gap-2 group p-4 py-5 my-2 "
             onClick={() =>
               document
                 .querySelector("#portfolio")

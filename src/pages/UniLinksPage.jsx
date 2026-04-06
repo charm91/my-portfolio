@@ -37,7 +37,7 @@ export function UniLinksPage() {
       <Header />
 
       {/* Hero: fixed background image at top (does not scroll) */}
-      <div className="fixed top-0 left-0 right-0 h-[50vh] z-0" aria-hidden>
+      <div className="fixed top-0 left-0 right-0 h-[30vh] z-0" aria-hidden>
         <img
           src="/u-cover.png"
           alt=""
@@ -63,14 +63,14 @@ export function UniLinksPage() {
               style={{ color: textPrimary }}
             >
               <TabletSmartphone className="size-4" />
-              Admission Platform
+              WebApp (Responsive)
             </span>
             <span
               className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-full text-xs font-medium"
               style={{ color: textPrimary }}
             >
               <Globe className="size-4" />
-              WebApp (Responsive)
+              Admission Platform
             </span>
             <span
               className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-full text-xs font-medium"
@@ -104,7 +104,7 @@ export function UniLinksPage() {
           </motion.div>
         </motion.div>
         <main
-          className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 py-12 rounded-b-2xl bg-white"
+          className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 py-12 tracking-tight rounded-b-2xl bg-white"
           style={{ color: textSecondary }}
         >
           <Section title="Project Overview">

@@ -2,7 +2,15 @@ import { Link } from "react-router-dom";
 // eslint-disable-next-line no-unused-vars -- motion used as namespace (motion.div)
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { Briefcase, Clock, ExternalLink, Globe } from "lucide-react";
+import {
+  Briefcase,
+  Clock,
+  ExternalLink,
+  Globe,
+  Play,
+  CirclePlay,
+  TabletSmartphone,
+} from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
@@ -30,461 +38,364 @@ export function KBZBankPage() {
     >
       <Header />
 
-      {/* Hero: fixed background image at top (does not scroll) */}
-      <div className="fixed top-0 left-0 right-0 h-[50vh] z-0" aria-hidden>
+      <div className="fixed top-0 left-0 right-0 h-[30vh] z-0" aria-hidden>
         <img
-          src="/kbz/background.png"
+          src="/k-cover.png"
           alt=""
           className="w-full h-full object-cover object-center"
         />
       </div>
 
-      {/* Hero content and page content scroll over the fixed image */}
-      <section className="relative flex flex-col justify-end z-10 mt-28">
+      <section className="relative flex flex-col z-10 mt-28 min-h-[50vh]">
         <motion.div
           {...scrollReveal}
-          className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 md:pb-16 w-full bg-background"
+          className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 md:pb-14 w-full bg-white rounded-t-2xl pt-10"
         >
           <h1
-            className="text-3xl sm:text-4xl md:text-5xl font-medium leading-tight mb-6 pt-5"
+            className="text-3xl sm:text-4xl md:text-5xl font-medium text-center leading-tight mb-6 pt-5"
             style={{ color: textPrimary }}
           >
-            Building a Secure Authentication System for KBZ Bank's Self-Service
+            Building a Secure Authentication System for KBZ Bank’s Self-Service
             Portal
           </h1>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap justify-center gap-2">
             <span
-              className="flex items-center gap-2 px-3 py-1.5 rounded-full text-sm font-medium"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-gray-100 text-xs font-medium"
               style={{ color: textPrimary }}
             >
-              <Briefcase className="size-4" />
-              FinTech & Banking platform
+              <TabletSmartphone className="size-4" />
+              WebApp (Responsive)
             </span>
             <span
-              className="flex items-center gap-2
-               px-3 py-1.5 rounded-full text-sm font-medium"
+              className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-full text-xs font-medium"
               style={{ color: textPrimary }}
             >
               <Globe className="size-4" />
-              WebApp and Mobile
+              Fintech / Digital Banking
             </span>
             <span
-              className="flex items-center gap-2
-               px-3 py-1.5 rounded-full text-sm font-medium"
+              className="flex items-center gap-2 px-3 py-1.5 bg-gray-100 rounded-full text-xs font-medium"
               style={{ color: textPrimary }}
             >
-              <Clock className="size-4" />8 mons
+              <Clock className="size-4" />
+              Founding → Growth phase
             </span>
           </div>
+          <div className="flex justify-center mt-8 mb-4">
+            <a
+              href="https://selfservice.kbzbank.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group inline-flex items-center gap-2 rounded-3xl bg-[#1f2937] px-5 py-2.5 font-medium text-white transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:bg-[#111827] hover:shadow-lg active:translate-y-0 active:scale-100"
+            >
+              <CirclePlay className="size-5 transition-all duration-200 group-hover:scale-110 group-hover:translate-x-0.5" />
+              <span className="transition-all duration-200 group-hover:translate-x-0.5">
+                Live Project
+              </span>
+            </a>
+          </div>
+          <motion.div {...scrollReveal} className="mt-10">
+            <div className="rounded-2xl overflow-hidden">
+              <img
+                src="/kbz/thumbnail.png"
+                alt=""
+                className="w-full h-full object-cover object-center"
+              />
+            </div>
+          </motion.div>
         </motion.div>
-        <motion.div
-          {...scrollReveal}
-          className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 bg-background"
+        <main
+          className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 py-12 tracking-tight rounded-b-2xl bg-white"
+          style={{ color: textSecondary }}
         >
-          <div className="col-span-1 rounded-2xl overflow-hidden">
-            <img
-              src="/kbz/project-1.png"
-              alt=""
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
-          <div className="col-span-1 rounded-2xl overflow-hidden">
-            <img
-              src="/kbz/project-2.png"
-              alt=""
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
-          <div className="col-span-1 rounded-2xl overflow-hidden">
-            <img
-              src="/kbz/project-3.png"
-              alt=""
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
-          <div className="col-span-1 rounded-2xl overflow-hidden">
-            <img
-              src="/kbz/project-4.png"
-              alt=""
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
-        </motion.div>
-      </section>
-
-      <main className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 bg-background">
-        <Section title="Project Overview">
-          <p className="mb-4" style={{ color: textSecondary }}>
-            KBZ Bank initiated the development of a new Self-Service Banking
-            Portal to enable customers to access banking services digitally
-            without visiting branches.
-          </p>
-          <p className="mb-4" style={{ color: textSecondary }}>
-            A core challenge of the project was designing a secure
-            authentication system that:
-          </p>
-          <ul
-            className="list-disc pl-6 mb-4 space-y-1"
-            style={{ color: textSecondary }}
-          >
-            <li>Supports existing bank customers</li>
-            <li>Minimizes repeated KYC friction</li>
-            <li>Meets banking-grade security standards</li>
-            <li>Builds user trust during digital onboarding</li>
-          </ul>
-          <p style={{ color: textSecondary }}>
-            This case study focuses on designing the authentication architecture
-            and registration flow for existing KBZ customers transitioning to
-            digital banking.
-          </p>
-        </Section>
-
-        {/* The Core Problem */}
-        <Section title="The Core Problem">
-          <p className="mb-4" style={{ color: textSecondary }}>
-            Existing KBZ customers already have verified bank accounts and KYC
-            records. However, activating digital banking required users to:
-          </p>
-          <p className="font-semibold mb-2" style={{ color: textPrimary }}>
-            Key issues included:
-          </p>
-          <ul
-            className="list-disc pl-6 mb-6 space-y-1"
-            style={{ color: textSecondary }}
-          >
-            <li>Re-enter personal details</li>
-            <li>Repeat identity verification steps</li>
-            <li>
-              Navigate unclear system differences between KBZPay and digital
-              banking
-            </li>
-            <li>Visit branches for failed attempts</li>
-          </ul>
-          <p className="font-semibold mb-2" style={{ color: textPrimary }}>
-            This created:
-          </p>
-          <ul
-            className="list-disc pl-6 mb-6 space-y-1"
-            style={{ color: textSecondary }}
-          >
-            <li>Redundant KYC submission</li>
-            <li>Drop-offs during OTP verification</li>
-            <li>Increased branch dependency</li>
-            <li>User confusion between login systems</li>
-            <li>Trust concerns around phishing and fake portals</li>
-          </ul>
-          <p className="font-medium mb-2" style={{ color: textPrimary }}>
-            The core design challenge:
-          </p>
-          <blockquote
-            className="text-base md:text-lg pl-4 border-l-4 border-[#1f2937] py-2 my-4 italic font-semibold"
-            style={{ color: textPrimary }}
-          >
-            How might we build a secure authentication system that reduces
-            friction without compromising banking-level security?
-          </blockquote>
-          <div className="rounded-2xl overflow-hidden">
-            <img
-              src="/kbz/design-1.png"
-              alt=""
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
-          <div className="rounded-2xl overflow-hidden">
-            <img
-              src="/kbz/design-2.png"
-              alt=""
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
-        </Section>
-
-        {/* Design Principles */}
-        <Section title="Design Principles">
-          <p className="mb-6" style={{ color: textSecondary }}>
-            To guide decisions, I established four core principles:
-          </p>
-          <div className="space-y-6">
-            {[
-              {
-                n: "1",
-                title: "Reuse Verified Data",
-                desc: "Avoid unnecessary re-entry of KYC information already stored in the banking system.",
-              },
-              {
-                n: "2",
-                title: "Visible but Calm Security",
-                desc: "Make security steps clear and reassuring without overwhelming users.",
-              },
-              {
-                n: "3",
-                title: "Progressive Verification",
-                desc: "Only request additional verification when risk level increases.",
-              },
-              {
-                n: "4",
-                title: "Transparent Failure Handling",
-                desc: "Explain rejection reasons clearly and provide recovery paths.",
-              },
-            ].map(({ n, title, desc }) => (
-              <div key={n}>
-                <h3
-                  className="font-semibold text-lg mb-1"
-                  style={{ color: textPrimary }}
-                >
-                  {n}. {title}
-                </h3>
-                <p style={{ color: textSecondary }}>{desc}</p>
+          <Section title="Project Overview">
+            <p className="mb-4">
+              KBZ Bank set out to enable customers to open bank accounts
+              digitally, reducing dependency on physical branches. However,
+              onboarding in banking is inherently complex—requiring identity
+              verification, regulatory compliance, and multiple layers of data
+              validation.
+            </p>
+            <p className="mb-4">
+              My role was to design an onboarding experience that could handle
+              this complexity while still feeling clear, guided, and trustworthy
+              for users.
+            </p>
+          </Section>
+          <Section title="The Challenge">
+            <p className="mb-4">
+              The onboarding flow was not a simple sign-up—it was a multi-step
+              process with strict requirements and frequent failure points.
+            </p>
+            <p className="mb-4">Users had to:</p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>
+                Upload identity documents and complete biometric verification
+              </li>
+              <li>
+                Fill in detailed personal, financial, and address information
+              </li>
+              <li>
+                Provide introducer details (a unique banking requirement){" "}
+              </li>
+              <li>Select branch and additional services </li>
+              <li>Complete OTP verification and activation</li>
+            </ul>
+            <div className="bg-white my-8">
+              <div className="overflow-hidden">
+                <img
+                  src="/kbz/diagram.png"
+                  alt="Work Flow Diagram"
+                  className="h-full w-full object-cover"
+                />
               </div>
-            ))}
-          </div>
-        </Section>
-
-        {/* Authentication Architecture */}
-        <Section title="Authentication Architecture">
-          <p className="mb-6" style={{ color: textSecondary }}>
-            The system was designed around three core components:
-          </p>
-          <div className="space-y-6">
-            <div>
-              <h3
-                className="font-semibold text-lg mb-2"
-                style={{ color: textPrimary }}
-              >
-                1. Identity Recognition Layer
-              </h3>
-              <ul
-                className="list-disc pl-6 space-y-1"
-                style={{ color: textSecondary }}
-              >
-                <li>Account number / NRC / Phone matching</li>
-                <li>Existing customer database validation</li>
-                <li>Auto-prefill of stored information</li>
-              </ul>
             </div>
-            <div>
-              <h3
-                className="font-semibold text-lg mb-2"
-                style={{ color: textPrimary }}
-              >
-                2. Multi-Factor Verification
-              </h3>
-              <ul
-                className="list-disc pl-6 space-y-1"
-                style={{ color: textSecondary }}
-              >
-                <li>OTP confirmation</li>
-                <li>Secure password setup</li>
-                <li>Device binding</li>
-              </ul>
+            <p className="mb-4">
+              The biggest issue was not just the number of steps—but the lack of
+              clarity in how the system works.
+            </p>
+            <p className="mb-4">Users didn’t understand:</p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>Why they needed to input so much data</li>
+              <li>What would happen after identity verification</li>
+              <li>
+                How different systems (KBZPay, mobile/internet banking, bank
+                account) were connected
+              </li>
+            </ul>
+          </Section>
+
+          <Section title="Approach">
+            <p className="mb-4">
+              Instead of simplifying only the UI, I focused on restructuring the
+              onboarding logic—making the system behavior clearer and reducing
+              unnecessary effort.
+            </p>
+          </Section>
+          <Section title="Designing a Structured Journey">
+            <p className="mb-4">
+              The onboarding process included multiple dependent steps—from
+              identity capture to account activation. I redesigned the flow into
+              a guided, progressive journey, where each step builds on the
+              previous one and reduces user effort whenever possible.
+            </p>
+            <div className="bg-white my-8">
+              <div className="overflow-hidden">
+                <img
+                  src="/kbz/flowchart.png"
+                  alt="User Interface"
+                  className="h-full w-full object-cover"
+                />
+              </div>
             </div>
-            <div>
-              <h3
-                className="font-semibold text-lg mb-2"
-                style={{ color: textPrimary }}
-              >
-                3. Access Control & Session Security
-              </h3>
-              <ul
-                className="list-disc pl-6 space-y-1"
-                style={{ color: textSecondary }}
-              >
-                <li>Role-based access</li>
-                <li>Session timeout management</li>
-                <li>Secure login retry limits</li>
-              </ul>
+          </Section>
+
+          <Section title="Reducing Friction with Smart Data Reuse">
+            <p className="mb-4">
+              Rethinking how user data is handled was a key improvement. After
+              successful biometric verification, the system retrieves and
+              pre-fills existing customer data, allowing users to simply review
+              and adjust before continuing.
+            </p>
+            <div className="border-l-3 border-green-500 text-lg font-medium italic px-6 py-4 my-4 block text-black">
+              Users shift from form filling to validating pre-verified data and
+              progressing seamlessly.
+            </div>
+            <div className="bg-white my-8">
+              <div className="overflow-hidden">
+                <img
+                  src="/kbz/ui1.png"
+                  alt="User Interface"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            </div>
+          </Section>
+
+          <Section title="Creating a Multi-System Validation Flow">
+            <p className="mb-4">
+              Authentication doesn’t happen in a single step—it spans across
+              multiple systems. <br />
+              After onboarding, validation continues through different channels:
+            </p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>KBZPay (KPay): OTP or biometric face verification </li>
+              <li>Mobile / Internet Banking: OTP or biometric verification </li>
+              <li>
+                Bank Account Security: Verification through security question
+                (hint answer)
+              </li>
+            </ul>
+            <p className="mb-4">
+              I designed this as a connected validation journey, making it
+              clearer how each step contributes to overall account security.
+            </p>
+            <div className="bg-white my-8">
+              <div className="overflow-hidden">
+                <img
+                  src="/kbz/ui2.png"
+                  alt="Flow Chart"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            </div>
+          </Section>
+
+          <Section title="Designing for Real System States, Not Just Errors">
+            <p className="mb-4">
+              The onboarding journey doesn’t end at submission—it continues
+              through multiple system responses delivered via inbox
+              notifications. <br /> Users may encounter different outcomes such
+              as:
+            </p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>Account successfully created</li>
+              <li>Activation required (pending funding) </li>
+              <li>Funding received confirmation</li>
+              <li>Verification failed</li>
+              <li>
+                Invitation to complete additional steps (e.g., joint account,
+                mobile banking)
+              </li>
+            </ul>
+            <div className="bg-white my-8">
+              <div className="overflow-hidden">
+                <img
+                  src="/kbz/ui3.png"
+                  alt="User Interface"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            </div>
+          </Section>
+
+          <Section title="Final Activation & Offline Touchpoint">
+            <p className="mb-4">
+              Even after completing digital onboarding, the journey doesn’t
+              fully end online.
+            </p>
+            <p className="mb-4">
+              Users are required to visit a selected branch to collect their
+              bank passbook, which remains an important part of banking
+              operations. <br />
+              To support this, I ensured:
+            </p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>Branch selection is clearly integrated during onboarding </li>
+              <li>Users understand the next step after activation </li>
+              <li>
+                The transition from digital to physical experience feels
+                seamless
+              </li>
+            </ul>
+            <div className="bg-white my-8">
+              <div className="overflow-hidden">
+                <img
+                  src="/kbz/ui4.png"
+                  alt="User Interface"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            </div>
+          </Section>
+
+          <Section title="Outcome">
+            <p className="mb-4">The redesigned onboarding experience:</p>
+            <ul className="list-disc pl-5 space-y-1">
+              <li>Reduced manual data entry through smart data reuse </li>
+              <li>
+                Improved clarity across a complex, multi-system validation flow
+              </li>
+              <li>
+                Increased user confidence with better guidance and feedback
+              </li>
+              <li>Made a long onboarding process feel more manageable </li>
+              <li>
+                Bridged digital onboarding with necessary offline banking steps
+              </li>
+            </ul>
+            <div className="bg-white my-8">
+              <div className="overflow-hidden">
+                <img
+                  src="/kbz/ui5.png"
+                  alt="User Interface"
+                  className="h-full w-full object-cover"
+                />
+              </div>
+            </div>
+          </Section>
+
+          <Section>
+            <div className="bg-gray-50 px-6 py-8 rounded-lg">
+              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-black">
+                Reflection
+              </h2>
+              <p className="mb-4">
+                This project shifted my perspective from designing screens to
+                designing systems. I learned that in financial products,
+                complexity cannot be removed—but it can be structured in a way
+                users can navigate with confidence.
+              </p>
+              <p className="mb-4">
+                It also reinforced the importance of understanding how multiple
+                systems interact, which is critical when designing real-world
+                banking products.
+              </p>
+            </div>
+          </Section>
+
+          <div class="border-t border-gray-200 py-4 mx-4">
+            <div class="flex items-center justify-between gap-6 mt-2">
+              <div class="flex items-center gap-5">
+                <img
+                  src="/profile-photo.png"
+                  alt="Charm"
+                  class="h-14 w-14 rounded-full object-cover"
+                />
+
+                <div>
+                  <h3 class="text-base text-gray-900">Charm</h3>
+                  <p class="text-sm text-gray-500">
+                    Product Owner • Design-to-Dev Builder
+                  </p>
+                </div>
+              </div>
+
+              <div class="flex items-center gap-3">
+                <a
+                  href="https://www.facebook.com/itscharmm9/"
+                  class="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-slate-400 shadow-xs transition hover:text-slate-600"
+                  aria-label="Facebook"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="h-6 w-6"
+                  >
+                    <path d="M13 22v-8h3l1-4h-4V8c0-1.03 0-2 2-2h2V2h-3c-3.6 0-5 1.79-5 5v3H6v4h3v8h4z" />
+                  </svg>
+                </a>
+
+                <a
+                  href="https://www.linkedin.com/in/nguwah106/"
+                  class="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-slate-400 shadow-xs transition hover:text-slate-600"
+                  aria-label="LinkedIn"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                    class="h-6 w-6"
+                  >
+                    <path d="M6.94 8.5H3.56V20h3.38V8.5zM5.25 3A2.03 2.03 0 1 0 5.3 7.06 2.03 2.03 0 0 0 5.25 3zM20.44 12.64c0-3.03-1.62-4.44-3.79-4.44-1.75 0-2.53.96-2.97 1.64V8.5h-3.38c.04.89 0 11.5 0 11.5h3.38v-6.42c0-.34.02-.68.12-.92.27-.68.89-1.38 1.93-1.38 1.36 0 1.91 1.04 1.91 2.57V20H21v-6.96z" />
+                  </svg>
+                </a>
+              </div>
             </div>
           </div>
-          <p className="mt-6" style={{ color: textSecondary }}>
-            This ensured compliance with security standards while optimizing
-            user flow.
-          </p>
-        </Section>
-
-        {/* Key Flows */}
-        <Section title="Key Flow 1: Existing Customer Registration">
-          <p className="mb-2" style={{ color: textSecondary }}>
-            <strong style={{ color: textPrimary }}>Objective:</strong> Allow
-            verified bank customers to activate digital access without repeating
-            full KYC.
-          </p>
-          <p className="font-semibold mb-1" style={{ color: textPrimary }}>
-            Improvements:
-          </p>
-          <ul
-            className="list-disc pl-6 mb-4 space-y-1"
-            style={{ color: textSecondary }}
-          >
-            <li>Auto-filled customer data</li>
-            <li>Clear progress indicator</li>
-            <li>Reduced activation screens</li>
-            <li>Inline error validation</li>
-          </ul>
-          <p className="font-semibold mb-1" style={{ color: textPrimary }}>
-            Impact:
-          </p>
-          <ul className="list-disc pl-6" style={{ color: textSecondary }}>
-            <li>Reduced redundant data entry</li>
-            <li>Shortened activation journey</li>
-            <li>Lowered cognitive load</li>
-          </ul>
-        </Section>
-
-        <Section title="Key Flow 2: Handling Fragmented Customer Records">
-          <p className="mb-4" style={{ color: textSecondary }}>
-            Some users had inconsistent phone or KYC records across systems.
-          </p>
-          <p className="font-semibold mb-1" style={{ color: textPrimary }}>
-            Solution:
-          </p>
-          <ul
-            className="list-disc pl-6 mb-4 space-y-1"
-            style={{ color: textSecondary }}
-          >
-            <li>Real-time validation feedback</li>
-            <li>Clear system mismatch explanations</li>
-            <li>Guided next-step resolution</li>
-            <li>Escalation to branch only when necessary</li>
-          </ul>
-          <p style={{ color: textSecondary }}>
-            This prevented silent failures and increased transparency.
-          </p>
-          <div className="rounded-2xl overflow-hidden">
-            <img
-              src="/kbz/keyflow-1.jpg"
-              alt=""
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
-          <div className="rounded-2xl overflow-hidden">
-            <img
-              src="/kbz/keyflow-2.jpg"
-              alt=""
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
-        </Section>
-
-        <Section title="Key Flow 3: Mobile Banking Linking">
-          <p className="mb-4" style={{ color: textSecondary }}>
-            To avoid confusion between KBZPay and digital banking:
-          </p>
-          <ul
-            className="list-disc pl-6 mb-4 space-y-1"
-            style={{ color: textSecondary }}
-          >
-            <li>Clarified system differences</li>
-            <li>Unified account visibility</li>
-            <li>Clear login hierarchy</li>
-            <li>Cross-platform consistency</li>
-          </ul>
-          <p style={{ color: textSecondary }}>
-            This reduced misdirected login attempts.
-          </p>
-        </Section>
-
-        <Section title="Key Flow 4: Secure Login & Recovery">
-          <p className="font-semibold mb-2" style={{ color: textPrimary }}>
-            Designed:
-          </p>
-          <ul
-            className="list-disc pl-6 mb-4 space-y-1"
-            style={{ color: textSecondary }}
-          >
-            <li>Clear password rules</li>
-            <li>Visible OTP status feedback</li>
-            <li>Secure reset flow</li>
-            <li>Account lock prevention guidance</li>
-          </ul>
-          <p style={{ color: textSecondary }}>
-            Security was enforced without creating intimidation.
-          </p>
-        </Section>
-
-        {/* Risk & Edge Case */}
-        <Section title="Risk & Edge Case Considerations">
-          <ul
-            className="list-disc pl-6 mb-4 space-y-1"
-            style={{ color: textSecondary }}
-          >
-            <li>Multiple failed OTP attempts</li>
-            <li>Expired session handling</li>
-            <li>Phishing awareness messaging</li>
-            <li>Partial onboarding abandonment</li>
-            <li>Device switching scenarios</li>
-          </ul>
-          <p style={{ color: textSecondary }}>
-            By mapping these cases early, system resilience improved
-            significantly.
-          </p>
-          <div className="rounded-2xl overflow-hidden">
-            <img
-              src="/kbz/keyflow-3.jpg"
-              alt=""
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
-          <div className="rounded-2xl overflow-hidden">
-            <img
-              src="/kbz/keyflow-4.jpg"
-              alt=""
-              className="w-full h-full object-cover object-center"
-            />
-          </div>
-        </Section>
-
-        {/* My Role */}
-        <Section title="My Role">
-          <p className="mb-4" style={{ color: textSecondary }}>
-            I designed the end-to-end identity verification and flow routing
-            experience across both mobile and web platforms.
-          </p>
-          <p className="font-semibold mb-2" style={{ color: textPrimary }}>
-            My responsibilities included:
-          </p>
-          <ul
-            className="list-disc pl-6 mb-4 space-y-1"
-            style={{ color: textSecondary }}
-          >
-            <li>End-to-end authentication flow design</li>
-            <li>User journey mapping</li>
-            <li>Error state and edge case definition</li>
-            <li>Security-usability tradeoff analysis</li>
-            <li>Cross-team collaboration with engineering</li>
-          </ul>
-          <p style={{ color: textSecondary }}>
-            I worked closely with technical stakeholders to ensure alignment
-            between UX intent and system constraints.
-          </p>
-        </Section>
-
-        {/* Outcome */}
-        <Section title="Outcome">
-          <p className="mb-4" style={{ color: textSecondary }}>
-            The Self-Service Banking Portal successfully handled customer
-            identity across multiple fintech products and legacy systems. By
-            introducing NRC-based verification at the start of the journey and
-            routing existing customers through mobile banking authentication,
-            the platform prevented duplicate customer records and protected KYC
-            integrity.
-          </p>
-          <p className="mb-6" style={{ color: textSecondary }}>
-            The solution reduced operational risk, aligned with compliance
-            requirements, and created a scalable foundation for future digital
-            onboarding and self-service features. The platform is{" "}
-            <strong>live and actively used</strong> across both mobile and web.
-          </p>
-          <a
-            href="https://selfservice.kbzbank.com/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 font-medium text-[#1f2937] hover:underline"
-          >
-            Live project: Self-service Banking Portal
-            <ExternalLink className="size-4" />
-          </a>
-        </Section>
-      </main>
+        </main>
+      </section>
       <motion.div {...scrollReveal}>
         <Footer />
       </motion.div>
@@ -499,7 +410,7 @@ function Section({ title, children }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-50px", amount: 0.15 }}
       transition={scrollRevealTransition}
-      className="mb-12 md:mb-16"
+      className="mb-12 md:mb-16 px-4"
     >
       <h2
         className="text-2xl md:text-3xl font-bold mb-6"
