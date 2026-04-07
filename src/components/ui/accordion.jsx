@@ -1,3 +1,5 @@
+"use client";
+
 import * as React from "react";
 import { Accordion as AccordionPrimitive } from "radix-ui";
 import { ChevronDown, Plus } from "lucide-react";

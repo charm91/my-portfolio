@@ -1,9 +1,11 @@
+"use client";
+
 import { useState, useEffect } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion"; // eslint-disable-line no-unused-vars -- motion used for header, button, div
+import { usePathname, useRouter } from "next/navigation";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
-import { Link } from "react-router-dom";
+import Link from "next/link";
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -14,11 +16,11 @@ const navItems = [
 ];
 
 export function Header() {
-  const location = useLocation();
-  const navigate = useNavigate();
+  const pathname = usePathname();
+  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeHref, setActiveHref] = useState("#home");
-  const isHome = location.pathname === "/";
+  const isHome = pathname === "/";
 
   useEffect(() => {
     if (!isHome) return;
@@ -52,7 +54,9 @@ export function Header() {
     if (isHome) {
       scrollToSection(item.href);
     } else {
-      navigate("/", { state: { scrollTo: item.href } });
+      // Navigate to home with a query param; home page reads it and scrolls
+      const id = item.href.replace(/^#/, "");
+      router.push(`/?scrollTo=${id}`);
       setMenuOpen(false);
     }
   };
@@ -90,7 +94,7 @@ export function Header() {
         }}
       >
         <Link
-          to="/"
+          href="/"
           className="text-lg font-semibold text-[#1f2937] hover:opacity-80 transition-opacity shrink-0"
           onClick={() => setMenuOpen(false)}
         >
@@ -118,7 +122,7 @@ export function Header() {
                 "bg-gray-100! hover:bg-gray-200! text-[#1f2937]! cursor-pointer",
               )}
             >
-              <Link to="/">Back to Home</Link>
+              <Link href="/">Back to Home</Link>
             </Button>
           )}
 
@@ -161,7 +165,7 @@ export function Header() {
                   asChild
                 >
                   <Link
-                    to="/contact-me"
+                    href="/contact-me"
                     className="block w-full text-left"
                     onClick={() => setMenuOpen(false)}
                   >

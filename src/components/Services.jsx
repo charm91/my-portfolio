@@ -1,4 +1,6 @@
-import { motion } from "framer-motion"; // eslint-disable-line no-unused-vars -- used as motion.div, motion.article, etc.
+"use client";
+
+import { motion } from "framer-motion";
 import { Settings, Globe, Layers, Code2 } from "lucide-react";
 import { Button } from "./ui/button";
 

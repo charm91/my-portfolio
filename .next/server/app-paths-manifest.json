@@ -1,0 +1,9 @@
+{
+  "/betterhr/page": "app/betterhr/page.js",
+  "/unilinks/page": "app/unilinks/page.js",
+  "/page": "app/page.js",
+  "/contact-me/page": "app/contact-me/page.js",
+  "/kbz-bank/page": "app/kbz-bank/page.js",
+  "/wct/page": "app/wct/page.js",
+  "/portfolio/page": "app/portfolio/page.js"
+}

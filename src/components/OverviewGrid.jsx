@@ -1,4 +1,6 @@
-import { motion } from "framer-motion"; // eslint-disable-line no-unused-vars -- used as motion.div and motion.article
+"use client";
+
+import { motion } from "framer-motion";
 import { Star, ExternalLink, ArrowDown } from "lucide-react";
 import { Button } from "./ui/button";
 
