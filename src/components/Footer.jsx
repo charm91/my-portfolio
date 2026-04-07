@@ -1,5 +1,7 @@
-import { Link } from "react-router-dom";
-import { motion } from "framer-motion"; // eslint-disable-line no-unused-vars -- used as motion.div
+"use client";
+
+import Link from "next/link";
+import { motion } from "framer-motion";
 import { Linkedin, Mail, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -46,7 +48,7 @@ export function Footer() {
             className="rounded-full text-white font-medium px-8"
             asChild
           >
-            <Link to="/contact-me">Contact Me</Link>
+            <Link href="/contact-me">Contact Me</Link>
           </Button>
         </motion.div>
 

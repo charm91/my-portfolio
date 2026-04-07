@@ -1,5 +1,7 @@
-import { Link, useLocation } from "react-router-dom";
-// eslint-disable-next-line no-unused-vars -- motion used as namespace (motion.div, motion.article)
+"use client";
+
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -8,7 +10,6 @@ const kbzBankImage = "/kbz.png";
 const uniLinksImage = "/unilinks.png";
 const betterhrImage = "/better.png";
 const wctImage = "/wct.png";
-const cardShadow = "0 2px 5px rgba(0, 0, 0, 0.06)";
 
 const projects = [
   {
@@ -25,7 +26,7 @@ const projects = [
   },
   {
     title:
-      "Building a Secure Authentication System for KBZ Bank’s Self-Service Portal",
+      "Building a Secure Authentication System for KBZ Bank's Self-Service Portal",
     category: "Web & Mobile",
     image: kbzBankImage,
     href: "/kbz-bank",
@@ -39,8 +40,9 @@ const projects = [
 ];
 
 export function Portfolio() {
-  const location = useLocation();
-  const isPortfolioPage = location.pathname === "/portfolio";
+  const pathname = usePathname();
+  const isPortfolioPage = pathname === "/portfolio";
+
   return (
     <section id="portfolio" className="py-20 md:py-28">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -73,7 +75,7 @@ export function Portfolio() {
               }}
               className="group rounded-3xl overflow-hidden bg-card hover:shadow-xs transition-all duration-300 p-2"
             >
-              <Link to={project.href} className="block">
+              <Link href={project.href} className="block">
                 <div className="aspect-4/3 overflow-hidden rounded-3xl relative">
                   <img
                     src={project.image}
@@ -115,7 +117,7 @@ export function Portfolio() {
             className="mt-12 text-center"
           >
             <Button size="lg" className="rounded-full px-8 h-10" asChild>
-              <Link to="/portfolio">See All</Link>
+              <Link href="/portfolio">See All</Link>
             </Button>
           </motion.div>
         )}

@@ -1,5 +1,7 @@
+"use client";
+
 import { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion"; // eslint-disable-line no-unused-vars -- motion used as motion.div
+import { motion, useScroll, useTransform } from "framer-motion";
 import { Star, X } from "lucide-react";
 
 const ZayarImage = "/zayar.jpeg";
@@ -99,7 +101,7 @@ export function Testimonials() {
 
         {/* Fixed 800px viewport, no scrollbar; content translates with body scroll */}
         <div
-          className="max-w-[600px] mx-auto rounded-2xl overflow-hidden"
+          className="relative max-w-[600px] mx-auto rounded-2xl overflow-hidden"
           style={{
             height: VIEWPORT_HEIGHT,
             backgroundImage: "linear-gradient(180deg, #fff, #f6f7f9 46%, #fff)",
@@ -154,9 +156,9 @@ export function Testimonials() {
                       <path
                         fill="none"
                         stroke="#000"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="m13.081 10.712l-4.786-6.71a.6.6 0 0 0-.489-.252H5.28a.6.6 0 0 0-.488.948l6.127 8.59m2.162-2.576l6.127 8.59a.6.6 0 0 1-.488.948h-2.526a.6.6 0 0 1-.489-.252l-4.786-6.71m2.162-2.576l5.842-6.962m-8.004 9.538L5.077 20.25"
                       ></path>
                     </svg>
