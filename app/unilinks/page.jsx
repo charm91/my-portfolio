@@ -1,8 +1,8 @@
 import { UniLinksPage } from "@/views/UniLinksPage";
+import { SITE } from "@/config/site";
 
-const title = "UniLinks Case Study — Charm Aung";
-const description =
-  "UniLinks All-in-One Study Abroad Platform — a product design case study by Charm Aung.";
+const title = `UniLinks Case Study — ${SITE.displayName}`;
+const description = `UniLinks All-in-One Study Abroad Platform — a product design case study by ${SITE.displayName}.`;
 
 export const metadata = {
   title,

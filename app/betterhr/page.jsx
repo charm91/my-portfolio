@@ -1,8 +1,8 @@
 import { BetterHRPage } from "@/views/BetterHRPage";
+import { SITE } from "@/config/site";
 
-const title = "BetterHR Case Study — Charm Aung";
-const description =
-  "BetterHR Cloud-based HR Management Platform — a product design case study by Charm Aung.";
+const title = `BetterHR Case Study — ${SITE.displayName}`;
+const description = `BetterHR Cloud-based HR Management Platform — a product design case study by ${SITE.displayName}.`;
 
 export const metadata = {
   title,

@@ -2,7 +2,7 @@ export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.nguwahaung.com/";
 
 export const SITE = {
-  name: "Charm Aung",
+  name: "Ngu Wah Aung",
   displayName: "Charm",
   tagline: "Product Owner • Design-to-Dev Builder",
   profileImage: "/profile-photo.png",

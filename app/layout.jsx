@@ -8,17 +8,17 @@ const inter = Inter({
   display: "swap",
 });
 
-const title = "Charm Aung — Product Designer";
+const title = `${SITE.displayName} — Product Designer`;
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   title,
   description:
-    "Product design portfolio of Charm Aung. Strategy, UX, and delivery — turning complex problems into clear, usable products.",
+    `Product design portfolio of ${SITE.displayName}. Strategy, UX, and delivery — turning complex problems into clear, usable products.`,
   openGraph: {
     title,
     description:
-      "Product design portfolio of Charm Aung. Strategy, UX, and delivery.",
+      `Product design portfolio of ${SITE.displayName}. Strategy, UX, and delivery.`,
     type: "website",
     url: "/",
     images: [
@@ -26,7 +26,7 @@ export const metadata = {
         url: SITE.profileImage,
         width: 1152,
         height: 832,
-        alt: "Charm Aung — Product Designer",
+        alt: `${SITE.displayName} — Product Designer`,
       },
     ],
   },
