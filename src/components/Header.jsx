@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -15,33 +15,50 @@ const navItems = [
   { label: "Faq", href: "#faq" },
 ];
 
+const sectionIds = navItems.map(({ href }) => href.slice(1));
+
 export function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeHref, setActiveHref] = useState("#home");
+  const visibleSections = useRef(new Set());
   const isHome = pathname === "/";
 
   useEffect(() => {
     if (!isHome) return;
-    const checkActive = () => {
-      const viewportMid = window.scrollY + window.innerHeight / 2;
-      let current = "#home";
-      navItems.forEach(({ href }) => {
-        const el = document.querySelector(href);
-        if (el) {
-          const { top, height } = el.getBoundingClientRect();
-          const sectionTop = top + window.scrollY;
-          if (viewportMid >= sectionTop && viewportMid <= sectionTop + height) {
-            current = href;
+
+    visibleSections.current.clear();
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        // Update the live set of visible sections from all batched entries
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            visibleSections.current.add(entry.target.id);
+          } else {
+            visibleSections.current.delete(entry.target.id);
           }
-        }
-      });
-      setActiveHref(current);
-    };
-    checkActive();
-    window.addEventListener("scroll", checkActive);
-    return () => window.removeEventListener("scroll", checkActive);
+        });
+
+        // The active section is the last one in document order that is visible —
+        // i.e. the furthest section the user has scrolled into the trigger zone.
+        const active = [...sectionIds]
+          .reverse()
+          .find((id) => visibleSections.current.has(id));
+        if (active) setActiveHref(`#${active}`);
+      },
+      // Trigger zone: top 60% of viewport.
+      // Generous enough for short sections (FAQ); excludes sections merely peeking from bottom.
+      { rootMargin: "0px 0px -40% 0px", threshold: 0 },
+    );
+
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
   }, [isHome]);
 
   const scrollToSection = (href) => {
