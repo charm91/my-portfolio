@@ -1,5 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
+import { SITE_URL } from "@/config/site";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -10,9 +11,7 @@ const inter = Inter({
 const title = "Charm Aung — Product Designer";
 
 export const metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://ngu-wah-portfolio.vercel.app",
-  ),
+  metadataBase: new URL(SITE_URL),
   title,
   description:
     "Product design portfolio of Charm Aung. Strategy, UX, and delivery — turning complex problems into clear, usable products.",
