@@ -47,7 +47,7 @@ export function OverviewGrid() {
               <div className="relative aspect-6/3 min-h-[150px]">
                 <Image
                   src="/profile-photo.png"
-                  alt={SITE.name}
+                  alt={SITE.displayName}
                   fill
                   priority
                   className="object-cover"

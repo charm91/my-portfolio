@@ -1,8 +1,8 @@
 import { KBZBankPage } from "@/views/KBZBankPage";
+import { SITE } from "@/config/site";
 
-const title = "KBZ Bank Case Study — Charm Aung";
-const description =
-  "Building a Secure Authentication System for KBZ Bank's Self-Service Portal — a product design case study by Charm Aung.";
+const title = `KBZ Bank Case Study — ${SITE.displayName}`;
+const description = `Building a Secure Authentication System for KBZ Bank's Self-Service Portal — a product design case study by ${SITE.displayName}.`;
 
 export const metadata = {
   title,

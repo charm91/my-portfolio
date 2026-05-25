@@ -6,8 +6,8 @@ import { Testimonials } from "@/components/Testimonials";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 
-const title = "Portfolio — Charm Aung";
-const description = "Case studies and projects by Charm Aung — product design, UX, and delivery.";
+const title = `Portfolio — ${SITE.displayName}`;
+const description = `Case studies and projects by ${SITE.displayName} — product design, UX, and delivery.`;
 
 export const metadata = {
   title,
@@ -21,7 +21,7 @@ export const metadata = {
         url: SITE.profileImage,
         width: 1152,
         height: 832,
-        alt: "Charm Aung — Portfolio",
+        alt: `${SITE.displayName} — Portfolio`,
       },
     ],
   },

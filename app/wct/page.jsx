@@ -1,8 +1,8 @@
 import { WctPage } from "@/views/WctPage";
+import { SITE } from "@/config/site";
 
-const title = "WCT Pay Case Study — Charm Aung";
-const description =
-  "WCT Pay Crypto–Fiat Payment Dashboard — a product design case study by Charm Aung.";
+const title = `WCT Pay Case Study — ${SITE.displayName}`;
+const description = `WCT Pay Crypto–Fiat Payment Dashboard — a product design case study by ${SITE.displayName}.`;
 
 export const metadata = {
   title,
