@@ -57,7 +57,7 @@ export function OverviewGrid() {
                 </div>
                 <img
                   src="/corner-white.png"
-                  alt="corner-white"
+                  alt=""
                   className="absolute -bottom-0.5 right-0 w-1/2 h-20 overflow-visible"
                 />
               </div>
@@ -225,6 +225,7 @@ export function OverviewGrid() {
           <Button
             variant="outline"
             size="icon-lg"
+            aria-label="Scroll down"
             className="rounded-full bg-white border-0 shadow-sm size-10"
             onClick={() => {
               document
@@ -232,7 +233,7 @@ export function OverviewGrid() {
                 ?.scrollIntoView({ behavior: "smooth" });
             }}
           >
-            <ArrowDown className="size-5" />
+            <ArrowDown className="size-5" aria-hidden="true" />
           </Button>
         </div>
       </div>

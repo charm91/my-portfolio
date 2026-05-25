@@ -103,6 +103,7 @@ export function WctPage() {
           </motion.div>
         </motion.div>
         <main
+          id="main-content"
           className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 py-12 rounded-b-2xl tracking-tight bg-white"
           style={{ color: textSecondary }}
         >

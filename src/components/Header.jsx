@@ -12,7 +12,7 @@ const navItems = [
   { label: "What I Do", href: "#services" },
   { label: "Portfolio", href: "#portfolio" },
   { label: "Testimonials", href: "#testimonials" },
-  { label: "Faq", href: "#faq" },
+  { label: "FAQ", href: "#faq" },
 ];
 
 const sectionIds = navItems.map(({ href }) => href.slice(1));

@@ -87,7 +87,7 @@ export function Portfolio() {
                   />
                   <img
                     src="/corner-white.png"
-                    alt="corner-white"
+                    alt=""
                     className="absolute -bottom-0.5 -right-0.5 w-[190px] h-[90px] overflow-hidden"
                   />
                   <Button
