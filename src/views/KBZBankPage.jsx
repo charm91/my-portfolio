@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -40,11 +41,16 @@ export function KBZBankPage() {
       <Header />
 
       <div className="fixed top-0 left-0 right-0 h-[30vh] z-0" aria-hidden>
-        <img
-          src="/k-cover.png"
-          alt=""
-          className="w-full h-full object-cover object-center"
-        />
+        <div className="relative h-full w-full">
+          <Image
+            src="/k-cover.png"
+            alt=""
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+        </div>
       </div>
 
       <section className="relative flex flex-col z-10 mt-28 min-h-[50vh]">
@@ -56,7 +62,7 @@ export function KBZBankPage() {
             className="text-4xl sm:text-4xl md:text-5xl font-medium text-center leading-tight mb-6 pt-5 tracking-tight"
             style={{ color: textPrimary }}
           >
-            Building a Secure Authentication System for KBZ Bank’s Self-Service
+            Building a Secure Authentication System for KBZ Bank's Self-Service
             Portal
           </h1>
           <div className="flex flex-wrap justify-center gap-2">
@@ -97,10 +103,12 @@ export function KBZBankPage() {
           </div>
           <motion.div {...scrollReveal} className="mt-10">
             <div className="rounded-2xl overflow-hidden">
-              <img
+              <Image
                 src="/kbz/thumbnail.png"
                 alt=""
-                className="w-full h-full object-cover object-center"
+                width={1492}
+                height={1028}
+                className="w-full h-auto"
               />
             </div>
           </motion.div>
@@ -144,10 +152,12 @@ export function KBZBankPage() {
             </ul>
             <div className="bg-white my-8">
               <div className="overflow-hidden">
-                <img
+                <Image
                   src="/kbz/diagram.png"
                   alt="Work Flow Diagram"
-                  className="h-full w-full object-cover"
+                  width={1440}
+                  height={835}
+                  className="w-full h-auto"
                 />
               </div>
             </div>
@@ -155,7 +165,7 @@ export function KBZBankPage() {
               The biggest issue was not just the number of steps—but the lack of
               clarity in how the system works.
             </p>
-            <p className="mb-4">Users didn’t understand:</p>
+            <p className="mb-4">Users didn't understand:</p>
             <ul className="list-disc pl-5 space-y-1">
               <li>Why they needed to input so much data</li>
               <li>What would happen after identity verification</li>
@@ -182,10 +192,12 @@ export function KBZBankPage() {
             </p>
             <div className="bg-white my-8">
               <div className="overflow-hidden">
-                <img
+                <Image
                   src="/kbz/flowchart.png"
                   alt="User Interface"
-                  className="h-full w-full object-cover"
+                  width={1440}
+                  height={1637}
+                  className="w-full h-auto"
                 />
               </div>
             </div>
@@ -204,10 +216,12 @@ export function KBZBankPage() {
             </div>
             <div className="bg-white my-8">
               <div className="overflow-hidden">
-                <img
+                <Image
                   src="/kbz/ui1.png"
                   alt="User Interface"
-                  className="h-full w-full object-cover"
+                  width={1440}
+                  height={1180}
+                  className="w-full h-auto"
                 />
               </div>
             </div>
@@ -215,7 +229,7 @@ export function KBZBankPage() {
 
           <Section title="Creating a Multi-System Validation Flow">
             <p className="mb-4">
-              Authentication doesn’t happen in a single step—it spans across
+              Authentication doesn't happen in a single step—it spans across
               multiple systems. <br />
               After onboarding, validation continues through different channels:
             </p>
@@ -233,10 +247,12 @@ export function KBZBankPage() {
             </p>
             <div className="bg-white my-8">
               <div className="overflow-hidden">
-                <img
+                <Image
                   src="/kbz/ui2.png"
                   alt="Flow Chart"
-                  className="h-full w-full object-cover"
+                  width={1440}
+                  height={487}
+                  className="w-full h-auto"
                 />
               </div>
             </div>
@@ -244,7 +260,7 @@ export function KBZBankPage() {
 
           <Section title="Designing for Real System States, Not Just Errors">
             <p className="mb-4">
-              The onboarding journey doesn’t end at submission—it continues
+              The onboarding journey doesn't end at submission—it continues
               through multiple system responses delivered via inbox
               notifications. <br /> Users may encounter different outcomes such
               as:
@@ -261,10 +277,12 @@ export function KBZBankPage() {
             </ul>
             <div className="bg-white my-8">
               <div className="overflow-hidden">
-                <img
+                <Image
                   src="/kbz/ui3.png"
                   alt="User Interface"
-                  className="h-full w-full object-cover"
+                  width={1440}
+                  height={1357}
+                  className="w-full h-auto"
                 />
               </div>
             </div>
@@ -272,7 +290,7 @@ export function KBZBankPage() {
 
           <Section title="Final Activation & Offline Touchpoint">
             <p className="mb-4">
-              Even after completing digital onboarding, the journey doesn’t
+              Even after completing digital onboarding, the journey doesn't
               fully end online.
             </p>
             <p className="mb-4">
@@ -291,10 +309,12 @@ export function KBZBankPage() {
             </ul>
             <div className="bg-white my-8">
               <div className="overflow-hidden">
-                <img
+                <Image
                   src="/kbz/ui4.png"
                   alt="User Interface"
-                  className="h-full w-full object-cover"
+                  width={1440}
+                  height={741}
+                  className="w-full h-auto"
                 />
               </div>
             </div>
@@ -317,10 +337,12 @@ export function KBZBankPage() {
             </ul>
             <div className="bg-white my-8">
               <div className="overflow-hidden">
-                <img
+                <Image
                   src="/kbz/ui5.png"
                   alt="User Interface"
-                  className="h-full w-full object-cover"
+                  width={1440}
+                  height={487}
+                  className="w-full h-auto"
                 />
               </div>
             </div>
@@ -348,9 +370,11 @@ export function KBZBankPage() {
           <div className="border-t border-gray-200 py-4 mx-4">
             <div className="flex items-center justify-between gap-6 mt-2">
               <div className="flex items-center gap-5">
-                <img
+                <Image
                   src="/profile-photo.png"
                   alt="Charm"
+                  width={56}
+                  height={56}
                   className="h-14 w-14 rounded-full object-cover"
                 />
 

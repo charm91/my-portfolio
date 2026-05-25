@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import {
   Briefcase,
@@ -37,11 +38,16 @@ export function BetterHRPage() {
 
       {/* Hero: fixed background image at top (does not scroll) */}
       <div className="fixed top-0 left-0 right-0 h-[30vh] z-0" aria-hidden>
-        <img
-          src="/b-cover.png"
-          alt=""
-          className="w-full h-full object-cover object-center"
-        />
+        <div className="relative h-full w-full">
+          <Image
+            src="/b-cover.png"
+            alt=""
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+        </div>
       </div>
 
       {/* Hero content and page content scroll over the fixed image */}
@@ -94,10 +100,12 @@ export function BetterHRPage() {
           </div>
           <motion.div {...scrollReveal} className="mt-10">
             <div className="rounded-2xl overflow-hidden">
-              <img
+              <Image
                 src="/betterhr/thumbnail.png"
                 alt=""
-                className="w-full h-full object-cover object-center"
+                width={1488}
+                height={1050}
+                className="w-full h-auto"
               />
             </div>
           </motion.div>
@@ -132,10 +140,12 @@ export function BetterHRPage() {
               to solve:
             </p>
             <div className="rounded-2xl overflow-hidden">
-              <img
+              <Image
                 src="/betterhr/problem.png"
                 alt="problem-statement"
-                className="w-full h-full object-cover object-center"
+                width={1080}
+                height={594}
+                className="w-full h-auto"
               />
             </div>
           </Section>
@@ -171,18 +181,22 @@ export function BetterHRPage() {
             <div className="rounded-lg border border-gray-200 bg-white p-2 shadow-xs my-8">
               <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
                 <div className="hidden md:block overflow-hidden rounded-sm bg-gray-100">
-                  <img
+                  <Image
                     src="/betterhr/group1.png"
                     alt="Meeting room discussion"
-                    className="h-full w-full object-cover"
+                    width={678}
+                    height={542}
+                    className="w-full h-auto"
                   />
                 </div>
 
                 <div className="overflow-hidden rounded-sm bg-gray-100">
-                  <img
+                  <Image
                     src="/betterhr/group2.png"
                     alt="Presentation session"
-                    className="h-full w-full object-cover"
+                    width={678}
+                    height={542}
+                    className="w-full h-auto"
                   />
                 </div>
               </div>
@@ -209,17 +223,21 @@ export function BetterHRPage() {
             </ul>
 
             <div className="overflow-hidden md:px-3 sm:px-2 mt-8">
-              <img
+              <Image
                 src="/betterhr/ux1.png"
                 alt="Presentation session"
-                className="h-full w-full object-cover max-h-80"
+                width={479}
+                height={335}
+                className="w-full h-auto max-h-80 object-cover"
               />
             </div>
             <div className="overflow-hidden">
-              <img
+              <Image
                 src="/betterhr/ux2.png"
                 alt="Presentation session"
-                className="h-full w-full object-cover bg-gray-100"
+                width={778}
+                height={444}
+                className="w-full h-auto bg-gray-100"
               />
             </div>
           </Section>
@@ -242,18 +260,22 @@ export function BetterHRPage() {
             <div className="rounded-lg bf-gray-100 p-2 my-8">
               <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
                 <div className="overflow-hidden rounded-sm bg-gray-100">
-                  <img
+                  <Image
                     src="/betterhr/ui1.png"
                     alt="betterhrUI"
-                    className="h-full w-full object-cover"
+                    width={504}
+                    height={512}
+                    className="w-full h-auto"
                   />
                 </div>
 
                 <div className="overflow-hidden rounded-sm bg-gray-100">
-                  <img
+                  <Image
                     src="/betterhr/ui2.png"
                     alt="betterhrUI"
-                    className="h-full w-full object-cover"
+                    width={504}
+                    height={516}
+                    className="w-full h-auto"
                   />
                 </div>
               </div>
@@ -278,10 +300,12 @@ export function BetterHRPage() {
             <div className="rounded-lg bf-gray-100 p-2 my-8">
               <div className="grid grid-cols-1 gap-2 md:grid-cols-1">
                 <div className="overflow-hidden rounded-sm bg-gray-100">
-                  <img
+                  <Image
                     src="/betterhr/ui3.png"
                     alt="betterhrUI"
-                    className="h-full w-full object-cover"
+                    width={1440}
+                    height={878}
+                    className="w-full h-auto"
                   />
                 </div>
               </div>
@@ -302,10 +326,12 @@ export function BetterHRPage() {
             <div className="rounded-lg bf-gray-100 p-2 my-8">
               <div className="grid grid-cols-1 gap-2 md:grid-cols-1">
                 <div className="overflow-hidden rounded-sm bg-gray-100">
-                  <img
+                  <Image
                     src="/betterhr/ui4.png"
                     alt="betterhrUI"
-                    className="h-full w-full object-cover"
+                    width={720}
+                    height={520}
+                    className="w-full h-auto"
                   />
                 </div>
               </div>
@@ -339,9 +365,11 @@ export function BetterHRPage() {
           <div className="border-t border-gray-200 py-4 mx-4">
             <div className="flex items-center justify-between gap-6 mt-2">
               <div className="flex items-center gap-5">
-                <img
+                <Image
                   src="/profile-photo.png"
                   alt="Charm"
+                  width={56}
+                  height={56}
                   className="h-14 w-14 rounded-full object-cover"
                 />
 

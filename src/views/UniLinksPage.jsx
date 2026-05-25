@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import {
@@ -39,11 +40,16 @@ export function UniLinksPage() {
 
       {/* Hero: fixed background image at top (does not scroll) */}
       <div className="fixed top-0 left-0 right-0 h-[30vh] z-0" aria-hidden>
-        <img
-          src="/u-cover.png"
-          alt=""
-          className="w-full h-full object-cover object-center"
-        />
+        <div className="relative h-full w-full">
+          <Image
+            src="/u-cover.png"
+            alt=""
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+        </div>
       </div>
 
       {/* Hero content and page content scroll over the fixed image */}
@@ -96,10 +102,12 @@ export function UniLinksPage() {
           </div>
           <motion.div {...scrollReveal} className="mt-10">
             <div className="rounded-2xl overflow-hidden">
-              <img
+              <Image
                 src="/unilinks/thumbnail.png"
                 alt=""
-                className="w-full h-full object-cover object-center"
+                width={1488}
+                height={1050}
+                className="w-full h-auto"
               />
             </div>
           </motion.div>
@@ -149,10 +157,12 @@ export function UniLinksPage() {
             </p>
             <div className="rounded-lg border border-gray-200 bg-white p-2 shadow-xs my-8">
               <div className="overflow-hidden rounded-sm bg-gray-100">
-                <img
+                <Image
                   src="/unilinks/group-photo.png"
                   alt="Fianl Presentation"
-                  className="h-full w-full object-cover"
+                  width={1344}
+                  height={680}
+                  className="w-full h-auto"
                 />
               </div>
             </div>
@@ -180,18 +190,22 @@ export function UniLinksPage() {
             <div className="rounded-lg border border-gray-200 bg-white p-2 shadow-xs my-8">
               <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
                 <div className="overflow-hidden rounded-sm bg-gray-100">
-                  <img
+                  <Image
                     src="/unilinks/flow1.png"
                     alt="personas"
-                    className="h-full w-full object-cover"
+                    width={710}
+                    height={474}
+                    className="w-full h-auto"
                   />
                 </div>
 
                 <div className="overflow-hidden rounded-sm bg-gray-100">
-                  <img
+                  <Image
                     src="/unilinks/flow2.png"
                     alt="workflow"
-                    className="h-full w-full object-cover"
+                    width={710}
+                    height={474}
+                    className="w-full h-auto"
                   />
                 </div>
               </div>
@@ -223,17 +237,21 @@ export function UniLinksPage() {
             <div className="rounded-lg border border-gray-200 bg-white p-2 shadow-xs my-8">
               <div className="grid grid-cols-1 gap-1 md:grid-cols-2">
                 <div className="hidden md:block overflow-hidden rounded-sm">
-                  <img
+                  <Image
                     src="/unilinks/flow3.png"
                     alt="personas"
-                    className="h-full w-full object-cover"
+                    width={2076}
+                    height={2240}
+                    className="w-full h-auto"
                   />
                 </div>
 
                 <div className="overflow-hidden rounded-sm">
-                  <img
+                  <Image
                     src="/unilinks/flow4.png"
                     alt="workflow"
+                    width={2028}
+                    height={1312}
                     className="h-auto w-full"
                   />
                 </div>
@@ -259,10 +277,12 @@ export function UniLinksPage() {
             </p>
             <div className="rounded-lg my-8">
               <div className="overflow-hidden rounded-sm bg-gray-100">
-                <img
+                <Image
                   src="/unilinks/ui1.png"
                   alt="User Interface Design"
-                  className="h-full w-full object-cover"
+                  width={1440}
+                  height={687}
+                  className="w-full h-auto"
                 />
               </div>
             </div>
@@ -294,10 +314,12 @@ export function UniLinksPage() {
             </p>
             <div className="rounded-lg my-8">
               <div className="overflow-hidden rounded-sm bg-gray-100">
-                <img
+                <Image
                   src="/unilinks/ui2.png"
                   alt="User Interface Design"
-                  className="h-full w-full object-cover"
+                  width={1440}
+                  height={687}
+                  className="w-full h-auto"
                 />
               </div>
             </div>
@@ -320,10 +342,12 @@ export function UniLinksPage() {
             </p>
             <div className="rounded-lg my-8">
               <div className="overflow-hidden rounded-sm bg-gray-100">
-                <img
+                <Image
                   src="/unilinks/ui3.png"
                   alt="User Interface Design"
-                  className="h-full w-full object-cover"
+                  width={1440}
+                  height={687}
+                  className="w-full h-auto"
                 />
               </div>
             </div>
@@ -368,34 +392,42 @@ export function UniLinksPage() {
             <div className="rounded-lg my-8">
               <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
                 <div className="overflow-hidden rounded-sm bg-gray-100">
-                  <img
+                  <Image
                     src="/unilinks/display-1.jpg"
                     alt="personas"
-                    className="h-full w-full object-cover"
+                    width={1080}
+                    height={1080}
+                    className="w-full h-auto"
                   />
                 </div>
 
                 <div className="overflow-hidden rounded-sm bg-gray-100">
-                  <img
+                  <Image
                     src="/unilinks/display-2.jpg"
                     alt="workflow"
-                    className="h-full w-full object-cover"
+                    width={1080}
+                    height={1080}
+                    className="w-full h-auto"
                   />
                 </div>
 
                 <div className="overflow-hidden rounded-sm bg-gray-100">
-                  <img
+                  <Image
                     src="/unilinks/display-3.jpg"
                     alt="workflow"
-                    className="h-full w-full object-cover"
+                    width={1080}
+                    height={1080}
+                    className="w-full h-auto"
                   />
                 </div>
 
                 <div className="overflow-hidden rounded-sm bg-gray-100">
-                  <img
+                  <Image
                     src="/unilinks/display-4.jpg"
                     alt="workflow"
-                    className="h-full w-full object-cover"
+                    width={1080}
+                    height={1080}
+                    className="w-full h-auto"
                   />
                 </div>
               </div>
@@ -435,9 +467,11 @@ export function UniLinksPage() {
           <div className="border-t border-gray-200 py-4 mx-4">
             <div className="flex items-center justify-between gap-6 mt-2">
               <div className="flex items-center gap-5">
-                <img
+                <Image
                   src="/profile-photo.png"
                   alt="Charm"
+                  width={56}
+                  height={56}
                   className="h-14 w-14 rounded-full object-cover"
                 />
 
