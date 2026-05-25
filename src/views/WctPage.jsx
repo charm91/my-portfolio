@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -40,11 +41,16 @@ export function WctPage() {
       <Header />
 
       <div className="fixed top-0 left-0 right-0 h-[30vh] z-0" aria-hidden>
-        <img
-          src="/k-cover.png"
-          alt=""
-          className="w-full h-full object-cover object-center"
-        />
+        <div className="relative h-full w-full">
+          <Image
+            src="/k-cover.png"
+            alt=""
+            fill
+            priority
+            className="object-cover object-center"
+            sizes="100vw"
+          />
+        </div>
       </div>
 
       <section className="relative flex flex-col z-10 mt-28 min-h-[50vh]">
@@ -96,10 +102,12 @@ export function WctPage() {
           </div>
           <motion.div {...scrollReveal} className="mt-10">
             <div className="rounded-2xl overflow-hidden">
-              <img
+              <Image
                 src="/wct/thumbnail.png"
                 alt=""
-                className="w-full h-full object-cover object-center"
+                width={1488}
+                height={1050}
+                className="w-full h-auto"
               />
             </div>
           </motion.div>
@@ -131,10 +139,12 @@ export function WctPage() {
             </p>
             <div className="bg-white my-8">
               <div className="overflow-hidden">
-                <img
+                <Image
                   src="/wct/preview.png"
                   alt="Problem"
-                  className="h-full w-full object-cover"
+                  width={1440}
+                  height={960}
+                  className="w-full h-auto"
                 />
               </div>
             </div>
@@ -164,10 +174,12 @@ export function WctPage() {
             </p>
             <div className="bg-white my-8">
               <div className="overflow-hidden">
-                <img
+                <Image
                   src="/wct/paper.png"
                   alt="Work Flow Diagram"
-                  className="h-full w-full object-cover"
+                  width={1440}
+                  height={1100}
+                  className="w-full h-auto"
                 />
               </div>
             </div>
@@ -213,18 +225,22 @@ export function WctPage() {
             <div className="rounded-lg border border-gray-200 bg-white p-2 shadow-xs my-8">
               <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
                 <div className="overflow-hidden rounded-sm">
-                  <img
+                  <Image
                     src="/wct/solving.png"
                     alt="personas"
-                    className="h-full w-full object-cover"
+                    width={646}
+                    height={1020}
+                    className="w-full h-auto"
                   />
                 </div>
 
                 <div className="overflow-hidden rounded-sm">
-                  <img
+                  <Image
                     src="/wct/diagram.png"
                     alt="workflow"
-                    className="h-full w-full object-cover"
+                    width={710}
+                    height={1020}
+                    className="w-full h-auto"
                   />
                 </div>
               </div>
@@ -254,10 +270,12 @@ export function WctPage() {
             </p>
             <div className="my-8">
               <div className="overflow-hidden ">
-                <img
+                <Image
                   src="/wct/ui1.png"
                   alt="personas"
-                  className="h-full w-full object-cover"
+                  width={1440}
+                  height={975}
+                  className="w-full h-auto"
                 />
               </div>
             </div>
@@ -275,48 +293,60 @@ export function WctPage() {
             <div className="my-8">
               <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
                 <div className="overflow-hidden rounded-sm">
-                  <img
+                  <Image
                     src="/wct/ui2.png"
                     alt="personas"
-                    className="h-full w-full object-cover"
+                    width={504}
+                    height={359}
+                    className="w-full h-auto"
                   />
                 </div>
 
                 <div className="overflow-hidden rounded-sm">
-                  <img
+                  <Image
                     src="/wct/ui3.png"
                     alt="workflow"
-                    className="h-full w-full object-cover"
+                    width={504}
+                    height={358}
+                    className="w-full h-auto"
                   />
                 </div>
                 <div className="overflow-hidden rounded-sm">
-                  <img
+                  <Image
                     src="/wct/ui4.png"
                     alt="personas"
-                    className="h-full w-full object-cover"
+                    width={504}
+                    height={359}
+                    className="w-full h-auto"
                   />
                 </div>
 
                 <div className="overflow-hidden rounded-sm">
-                  <img
+                  <Image
                     src="/wct/ui5.png"
                     alt="workflow"
-                    className="h-full w-full object-cover"
+                    width={504}
+                    height={359}
+                    className="w-full h-auto"
                   />
                 </div>
                 <div className="overflow-hidden rounded-sm">
-                  <img
+                  <Image
                     src="/wct/ui6.png"
                     alt="personas"
-                    className="h-full w-full object-cover"
+                    width={504}
+                    height={357}
+                    className="w-full h-auto"
                   />
                 </div>
 
                 <div className="overflow-hidden rounded-sm">
-                  <img
+                  <Image
                     src="/wct/ui7.png"
                     alt="workflow"
-                    className="h-full w-full object-cover"
+                    width={504}
+                    height={359}
+                    className="w-full h-auto"
                   />
                 </div>
               </div>
@@ -360,9 +390,11 @@ export function WctPage() {
           <div className="border-t border-gray-200 py-4 mx-4">
             <div className="flex items-center justify-between gap-6 mt-2">
               <div className="flex items-center gap-5">
-                <img
+                <Image
                   src="/profile-photo.png"
                   alt="Charm"
+                  width={56}
+                  height={56}
                   className="h-14 w-14 rounded-full object-cover"
                 />
 

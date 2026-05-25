@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -77,10 +78,12 @@ export function Portfolio() {
             >
               <Link href={project.href} className="block">
                 <div className="aspect-4/3 overflow-hidden rounded-3xl relative">
-                  <img
+                  <Image
                     src={project.image}
                     alt={project.title}
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 640px) 100vw, 480px"
                   />
                   <img
                     src="/corner-white.png"

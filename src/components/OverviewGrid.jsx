@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Star, ExternalLink, ArrowDown } from "lucide-react";
 import { Button } from "./ui/button";
@@ -43,10 +44,13 @@ export function OverviewGrid() {
               className="rounded-2xl bg-white overflow-hidden flex-1 flex flex-col"
             >
               <div className="relative aspect-6/3 min-h-[150px]">
-                <img
+                <Image
                   src="/profile-photo.png"
                   alt="Charm Aung"
-                  className="w-full h-full object-cover"
+                  fill
+                  priority
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 480px"
                 />
                 <div className="z-10 absolute bottom-1 right-3 px-4 py-2 rounded-full text-primary text-sm font-normal whitespace-nowrap bg-background">
                   Product Owner • Design-to-Dev Builder
@@ -190,9 +194,11 @@ export function OverviewGrid() {
               <div className="flex items-center justify-between mt-auto">
                 <div className="flex items-center gap-3">
                   <div className="size-10 rounded-full bg-muted overflow-hidden shrink-0">
-                    <img
+                    <Image
                       src="/ye-myat-min.jpeg"
                       alt="Ye Myat Min"
+                      width={40}
+                      height={40}
                       className="w-full h-full object-cover"
                     />
                   </div>

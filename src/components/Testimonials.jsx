@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { Star, X } from "lucide-react";
@@ -132,9 +133,11 @@ export function Testimonials() {
                 </p>
                 <div className="flex items-center justify-between gap-4">
                   <div className="flex items-center gap-3 min-w-0">
-                    <img
+                    <Image
                       src={t.avatar}
                       alt={t.name}
+                      width={48}
+                      height={48}
                       className="size-12 rounded-full object-cover shrink-0 bg-[#e5e7eb]"
                     />
                     <div className="min-w-0">
