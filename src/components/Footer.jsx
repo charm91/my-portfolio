@@ -4,6 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Linkedin, Mail, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { SOCIAL_LINKS, RESUME_URL } from "@/config/site";
 
 const textPrimary = "#1f2937";
 const textSecondary = "#323744";
@@ -60,7 +61,7 @@ export function Footer() {
           className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-12 md:mb-16"
         >
           <a
-            href="https://www.linkedin.com/in/ngu-wah-aung-859b2011a/"
+            href={SOCIAL_LINKS.linkedin}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-4 rounded-full bg-white p-5 md:p-6 hover:shadow-md transition-shadow"
@@ -133,7 +134,7 @@ export function Footer() {
           </p>
           <div className="flex justify-center sm:justify-end gap-2">
             <a
-              href="https://drive.google.com/file/d/10ca6MgWRG0n2AwIk7yJbKf0tGVFJqzFC/view?usp=sharing"
+              href={RESUME_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="text-sm transition-colors hover:bg-black text-secondary hover:text-white px-4 py-1.5 rounded-full"
