@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
+import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
@@ -12,17 +13,53 @@ const textSecondary = "#6b7280";
 const bgPage = "#F8F8F8";
 const inputBg = "#f6f7f9";
 
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const MIN_SUBMIT_MS = 3000;
+const RESUBMIT_COOLDOWN_MS = 30000;
+
 export default function ContactPageClient() {
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
+  const [errorMsg, setErrorMsg] = useState("");
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+  const [honeypot, setHoneypot] = useState("");
+  const [canSubmit, setCanSubmit] = useState(true);
+  const formLoadTime = useRef(Date.now());
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Anti-spam: honeypot — bots fill hidden fields
+    if (honeypot) return;
+
+    // Anti-spam: reject submissions faster than a human can fill the form
+    if (Date.now() - formLoadTime.current < MIN_SUBMIT_MS) return;
+
+    // Anti-spam: cooldown between submissions
+    if (!canSubmit) return;
+
+    // Validation
+    const name = formData.name.trim();
+    const email = formData.email.trim();
+    const message = formData.message.trim();
+
+    if (name.length < 2) {
+      setErrorMsg("Please enter your full name.");
+      setStatus("error");
+      return;
+    }
+    if (!EMAIL_RE.test(email)) {
+      setErrorMsg("Please enter a valid email address.");
+      setStatus("error");
+      return;
+    }
+    if (message.length < 10) {
+      setErrorMsg("Your message is too short. Please add more detail.");
+      setStatus("error");
+      return;
+    }
+
     setStatus("sending");
+    setErrorMsg("");
 
     const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
     const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
@@ -32,19 +69,20 @@ export default function ContactPageClient() {
       console.warn(
         "EmailJS env vars missing. Add NEXT_PUBLIC_EMAILJS_* to .env.local",
       );
+      setErrorMsg("Contact form is not configured. Please reach out via email directly.");
       setStatus("error");
       return;
     }
+
+    // Start cooldown only after we actually attempt the send
+    setCanSubmit(false);
+    setTimeout(() => setCanSubmit(true), RESUBMIT_COOLDOWN_MS);
 
     try {
       await emailjs.send(
         serviceId,
         templateId,
-        {
-          from_name: formData.name,
-          from_email: formData.email,
-          message: formData.message,
-        },
+        { from_name: name, from_email: email, message },
         publicKey,
       );
 
@@ -52,6 +90,7 @@ export default function ContactPageClient() {
       setFormData({ name: "", email: "", message: "" });
     } catch (err) {
       console.error("EmailJS error:", err);
+      setErrorMsg("Something went wrong. Please try again in a moment.");
       setStatus("error");
     }
   };
@@ -59,7 +98,15 @@ export default function ContactPageClient() {
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    // Clear error feedback as the user corrects their input
+    if (status === "error") {
+      setStatus("idle");
+      setErrorMsg("");
+    }
   };
+
+  const isBusy = status === "sending";
+  const isDisabled = isBusy || !canSubmit;
 
   return (
     <div
@@ -145,6 +192,18 @@ export default function ContactPageClient() {
           className="rounded-3xl bg-white p-6 md:p-8"
           style={{ boxShadow: "0 2px 5px rgba(0, 0, 0, 0.06)" }}
         >
+          {/* Honeypot — hidden from real users, attracts bots */}
+          <div aria-hidden="true" style={{ position: "absolute", left: "-9999px", top: "-9999px" }}>
+            <input
+              type="text"
+              name="website"
+              value={honeypot}
+              onChange={(e) => setHoneypot(e.target.value)}
+              tabIndex={-1}
+              autoComplete="off"
+            />
+          </div>
+
           <div className="mb-5 grid grid-cols-1 gap-5 sm:grid-cols-2">
             <div>
               <label
@@ -162,9 +221,11 @@ export default function ContactPageClient() {
                 placeholder="Your name"
                 value={formData.name}
                 onChange={handleChange}
+                disabled={isBusy}
                 className={cn(
                   "w-full rounded-xl border-0 px-4 py-3 text-base outline-none transition-colors",
                   "placeholder:text-[#9ca3af] focus:ring-2 focus:ring-[#1f2937]/20",
+                  "disabled:opacity-60 disabled:cursor-not-allowed",
                 )}
                 style={{ backgroundColor: inputBg, color: textPrimary }}
               />
@@ -186,9 +247,11 @@ export default function ContactPageClient() {
                 placeholder="yourmail@mail.com"
                 value={formData.email}
                 onChange={handleChange}
+                disabled={isBusy}
                 className={cn(
                   "w-full rounded-xl border-0 px-4 py-3 text-base outline-none transition-colors",
                   "placeholder:text-[#9ca3af] focus:ring-2 focus:ring-[#1f2937]/20",
+                  "disabled:opacity-60 disabled:cursor-not-allowed",
                 )}
                 style={{ backgroundColor: inputBg, color: textPrimary }}
               />
@@ -211,33 +274,46 @@ export default function ContactPageClient() {
               placeholder="Your message..."
               value={formData.message}
               onChange={handleChange}
+              disabled={isBusy}
               className={cn(
                 "min-h-[120px] w-full resize-y rounded-xl border-0 px-4 py-3 text-base outline-none transition-colors",
                 "placeholder:text-[#9ca3af] focus:ring-2 focus:ring-[#1f2937]/20",
+                "disabled:opacity-60 disabled:cursor-not-allowed",
               )}
               style={{ backgroundColor: inputBg, color: textPrimary }}
             />
           </div>
 
           {status === "success" && (
-            <p className="mb-4 text-center text-sm text-green-600">
-              Thanks! Your message has been sent.
-            </p>
+            <div className="mb-4 rounded-xl bg-green-50 px-4 py-3 text-center">
+              <p className="text-sm font-medium text-green-700">
+                Thanks! Your message has been sent. I&apos;ll be in touch soon.
+              </p>
+            </div>
           )}
 
           {status === "error" && (
-            <p className="mb-4 text-center text-sm text-red-600">
-              Something went wrong. Please try again later.
-            </p>
+            <div className="mb-4 rounded-xl bg-red-50 px-4 py-3 text-center">
+              <p className="text-sm font-medium text-red-700">
+                {errorMsg || "Something went wrong. Please try again later."}
+              </p>
+            </div>
           )}
 
           <Button
             type="submit"
             size="lg"
-            disabled={status === "sending"}
+            disabled={isDisabled}
             className="h-11 w-full rounded-full bg-[#1f2937] text-base font-medium text-white hover:bg-[#111827]"
           >
-            {status === "sending" ? "Sending..." : "Submit"}
+            {isBusy ? (
+              <span className="flex items-center justify-center gap-2">
+                <Loader2 className="h-4 w-4 animate-spin" />
+                Sending...
+              </span>
+            ) : (
+              "Submit"
+            )}
           </Button>
         </motion.form>
       </main>
