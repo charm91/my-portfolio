@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { SOCIAL_LINKS } from "@/config/site";
+import { SITE, SOCIAL_LINKS } from "@/config/site";
 
 export function CaseStudyAuthor() {
   return (
@@ -7,17 +7,15 @@ export function CaseStudyAuthor() {
       <div className="flex items-center justify-between gap-6 mt-2">
         <div className="flex items-center gap-5">
           <Image
-            src="/profile-photo.png"
-            alt="Charm"
+            src={SITE.profileImage}
+            alt={SITE.displayName}
             width={56}
             height={56}
             className="h-14 w-14 rounded-full object-cover"
           />
           <div>
-            <h3 className="text-base text-gray-900">Charm</h3>
-            <p className="text-sm text-gray-500">
-              Product Owner • Design-to-Dev Builder
-            </p>
+            <h3 className="text-base text-gray-900">{SITE.displayName}</h3>
+            <p className="text-sm text-gray-500">{SITE.tagline}</p>
           </div>
         </div>
         <div className="flex items-center gap-3">

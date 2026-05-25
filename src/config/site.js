@@ -1,5 +1,13 @@
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://ngu-wah-portfolio.vercel.app";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.nguwahaung.com/";
+
+export const SITE = {
+  name: "Charm Aung",
+  displayName: "Charm",
+  tagline: "Product Owner • Design-to-Dev Builder",
+  profileImage: "/profile-photo.png",
+  email: "nguwah106@gmail.com",
+};
 
 export const SOCIAL_LINKS = {
   facebook: "https://www.facebook.com/itscharmm9/",

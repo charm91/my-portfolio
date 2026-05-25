@@ -6,6 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+import { SITE } from "@/config/site";
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -115,7 +116,7 @@ export function Header() {
           className="text-lg font-semibold text-[#1f2937] hover:opacity-80 transition-opacity shrink-0"
           onClick={() => setMenuOpen(false)}
         >
-          <img src="/logo.svg" alt="Charm" className="w-20" />
+          <img src="/logo.svg" alt={SITE.displayName} className="w-20" />
         </Link>
 
         <div className="relative menu-trigger">
