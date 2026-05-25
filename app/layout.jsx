@@ -7,15 +7,17 @@ const inter = Inter({
   display: "swap",
 });
 
+const title = "Charm Aung — Product Designer";
+
 export const metadata = {
   metadataBase: new URL(
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://ngu-wah-portfolio.vercel.app",
   ),
-  title: "Charm Aung — Product Designer",
+  title,
   description:
     "Product design portfolio of Charm Aung. Strategy, UX, and delivery — turning complex problems into clear, usable products.",
   openGraph: {
-    title: "Charm Aung — Product Designer",
+    title,
     description:
       "Product design portfolio of Charm Aung. Strategy, UX, and delivery.",
     type: "website",

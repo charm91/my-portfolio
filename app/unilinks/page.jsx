@@ -1,13 +1,15 @@
 import { UniLinksPage } from "@/views/UniLinksPage";
 
+const title = "UniLinks Case Study — Charm Aung";
+const description =
+  "UniLinks All-in-One Study Abroad Platform — a product design case study by Charm Aung.";
+
 export const metadata = {
-  title: "UniLinks Case Study — Charm Aung",
-  description:
-    "UniLinks All-in-One Study Abroad Platform — a product design case study by Charm Aung.",
+  title,
+  description,
   openGraph: {
-    title: "UniLinks Case Study — Charm Aung",
-    description:
-      "UniLinks All-in-One Study Abroad Platform — a product design case study by Charm Aung.",
+    title,
+    description,
     url: "/unilinks",
     images: [
       {

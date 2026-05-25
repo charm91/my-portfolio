@@ -1,13 +1,15 @@
 import { BetterHRPage } from "@/views/BetterHRPage";
 
+const title = "BetterHR Case Study — Charm Aung";
+const description =
+  "BetterHR Cloud-based HR Management Platform — a product design case study by Charm Aung.";
+
 export const metadata = {
-  title: "BetterHR Case Study — Charm Aung",
-  description:
-    "BetterHR Cloud-based HR Management Platform — a product design case study by Charm Aung.",
+  title,
+  description,
   openGraph: {
-    title: "BetterHR Case Study — Charm Aung",
-    description:
-      "BetterHR Cloud-based HR Management Platform — a product design case study by Charm Aung.",
+    title,
+    description,
     url: "/betterhr",
     images: [
       {
