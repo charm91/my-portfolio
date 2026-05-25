@@ -1,13 +1,15 @@
 import ContactPageClient from "./ContactPageClient";
 
+const title = "Contact — Charm Aung";
+const description =
+  "Get in touch with Charm Aung for product roles, collaboration, and opportunities.";
+
 export const metadata = {
-  title: "Contact — Charm Aung",
-  description:
-    "Get in touch with Charm Aung for product roles, collaboration, and opportunities.",
+  title,
+  description,
   openGraph: {
-    title: "Contact — Charm Aung",
-    description:
-      "Get in touch with Charm Aung for product roles, collaboration, and opportunities.",
+    title,
+    description,
     url: "/contact-me",
     images: [
       {

@@ -1,13 +1,15 @@
 import { WctPage } from "@/views/WctPage";
 
+const title = "WCT Pay Case Study — Charm Aung";
+const description =
+  "WCT Pay Crypto–Fiat Payment Dashboard — a product design case study by Charm Aung.";
+
 export const metadata = {
-  title: "WCT Pay Case Study — Charm Aung",
-  description:
-    "WCT Pay Crypto–Fiat Payment Dashboard — a product design case study by Charm Aung.",
+  title,
+  description,
   openGraph: {
-    title: "WCT Pay Case Study — Charm Aung",
-    description:
-      "WCT Pay Crypto–Fiat Payment Dashboard — a product design case study by Charm Aung.",
+    title,
+    description,
     url: "/wct",
     images: [
       {

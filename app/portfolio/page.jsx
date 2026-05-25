@@ -5,12 +5,15 @@ import { Testimonials } from "@/components/Testimonials";
 import { FAQ } from "@/components/FAQ";
 import { Footer } from "@/components/Footer";
 
+const title = "Portfolio — Charm Aung";
+const description = "Case studies and projects by Charm Aung — product design, UX, and delivery.";
+
 export const metadata = {
-  title: "Portfolio — Charm Aung",
-  description: "Case studies and projects by Charm Aung — product design, UX, and delivery.",
+  title,
+  description,
   openGraph: {
-    title: "Portfolio — Charm Aung",
-    description: "Case studies and projects by Charm Aung — product design, UX, and delivery.",
+    title,
+    description,
     url: "/portfolio",
     images: [
       {
