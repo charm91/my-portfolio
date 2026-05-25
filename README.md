@@ -1,4 +1,4 @@
-# Ngu Wah Aung — Portfolio
+# Charm — Portfolio
 
 Personal product design portfolio. Built with Next.js 15, deployed to Vercel.
 
@@ -8,7 +8,7 @@ Live: [nguwahaung.com](https://www.nguwahaung.com)
 
 ## Project Overview
 
-A portfolio site for Ngu Wah Aung, a Product Owner and Product Designer. It presents case studies, a professional journey timeline, testimonials, and a contact form. The target audience is hiring managers, collaborators, and recruiters in the product and design space.
+A portfolio site for Charm, a Product Owner and Product Designer. It presents case studies, a professional journey timeline, testimonials, and a contact form. The target audience is hiring managers, collaborators, and recruiters in the product and design space.
 
 ---
 

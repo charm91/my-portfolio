@@ -67,7 +67,7 @@ export function OverviewGrid() {
                   className="text-xl font-medium mb-3"
                   style={{ color: textPrimary }}
                 >
-                  Hi, I'm Charm
+                  Hi, I'm {SITE.displayName}
                 </h2>
                 <p
                   className="text-sm leading-relaxed"
@@ -187,7 +187,7 @@ export function OverviewGrid() {
                 className="text-sm md:text-sm leading-relaxed mb-2 pt-4 pb-6"
                 style={{ color: textSecondary }}
               >
-                I am happy to recommend Charm, a great UI/UX designer with a
+                I am happy to recommend {SITE.displayName}, a great UI/UX designer with a
                 talent for coding. She has the ability to blend aesthetics and
                 functionality very well, creating good experiences for users.
                 She will be an asset to any organisation that she joins.
