@@ -133,8 +133,9 @@ export function Footer() {
           </p>
           <div className="flex justify-center sm:justify-end gap-2">
             <a
-              href="/resume.pdf"
-              download="charm-resume.pdf"
+              href="https://drive.google.com/file/d/10ca6MgWRG0n2AwIk7yJbKf0tGVFJqzFC/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
               className="text-sm transition-colors hover:bg-black text-secondary hover:text-white px-4 py-1.5 rounded-full"
             >
               Resume
