@@ -2,14 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
-import {
-  Briefcase,
-  Clock,
-  ExternalLink,
-  Globe,
-  Play,
-  CirclePlay,
-} from "lucide-react";
+import { Briefcase, Clock, Globe, CirclePlay } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 

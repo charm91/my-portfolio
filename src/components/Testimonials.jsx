@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Star, X } from "lucide-react";
+import { Star } from "lucide-react";
 
 const ZayarImage = "/zayar.jpeg";
 const ThetImage = "/ko-chaw.jpeg";

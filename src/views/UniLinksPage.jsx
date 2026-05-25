@@ -3,15 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import {
-  Briefcase,
-  Clock,
-  ExternalLink,
-  Globe,
-  Play,
-  CirclePlay,
-  TabletSmartphone,
-} from "lucide-react";
+import { Clock, Globe, CirclePlay, TabletSmartphone } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 
