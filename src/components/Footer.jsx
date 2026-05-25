@@ -4,7 +4,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Linkedin, Mail, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { SOCIAL_LINKS, RESUME_URL } from "@/config/site";
+import { SITE, SOCIAL_LINKS, RESUME_URL } from "@/config/site";
 
 const textPrimary = "#1f2937";
 const textSecondary = "#323744";
@@ -88,7 +88,7 @@ export function Footer() {
             />
           </a>
           <a
-            href="https://mail.google.com/mail/?view=cm&fs=1&to=nguwah106@gmail.com&su=Hello%20Charm"
+            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${SITE.email}&su=Hello%20${encodeURIComponent(SITE.displayName)}`}
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-4 rounded-full bg-white p-5 md:p-6 transition-shadow hover:shadow-md"
@@ -130,7 +130,7 @@ export function Footer() {
             className="text-sm text-center sm:text-left"
             style={{ color: textSecondary }}
           >
-            © {new Date().getFullYear()} Charm. All rights reserved.
+            © {new Date().getFullYear()} {SITE.displayName}. All rights reserved.
           </p>
           <div className="flex justify-center sm:justify-end gap-2">
             <a

@@ -1,4 +1,5 @@
 import ContactPageClient from "./ContactPageClient";
+import { SITE } from "@/config/site";
 
 const title = "Contact — Charm Aung";
 const description =
@@ -13,7 +14,7 @@ export const metadata = {
     url: "/contact-me",
     images: [
       {
-        url: "/profile-photo.png",
+        url: SITE.profileImage,
         width: 1152,
         height: 832,
         alt: "Contact Charm Aung",

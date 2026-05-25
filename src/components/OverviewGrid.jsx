@@ -4,6 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Star, ExternalLink, ArrowDown } from "lucide-react";
 import { Button } from "./ui/button";
+import { SITE } from "@/config/site";
 
 const container = {
   hidden: { opacity: 0 },
@@ -46,14 +47,14 @@ export function OverviewGrid() {
               <div className="relative aspect-6/3 min-h-[150px]">
                 <Image
                   src="/profile-photo.png"
-                  alt="Charm Aung"
+                  alt={SITE.name}
                   fill
                   priority
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 480px"
                 />
                 <div className="z-10 absolute bottom-1 right-3 px-4 py-2 rounded-full text-primary text-sm font-normal whitespace-nowrap bg-background">
-                  Product Owner • Design-to-Dev Builder
+                  {SITE.tagline}
                 </div>
                 <img
                   src="/corner-white.png"

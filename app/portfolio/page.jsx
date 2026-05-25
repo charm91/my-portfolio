@@ -1,4 +1,5 @@
 import { Header } from "@/components/Header";
+import { SITE } from "@/config/site";
 import { Portfolio } from "@/components/Portfolio";
 import { Journey } from "@/components/Journey";
 import { Testimonials } from "@/components/Testimonials";
@@ -17,7 +18,7 @@ export const metadata = {
     url: "/portfolio",
     images: [
       {
-        url: "/profile-photo.png",
+        url: SITE.profileImage,
         width: 1152,
         height: 832,
         alt: "Charm Aung — Portfolio",

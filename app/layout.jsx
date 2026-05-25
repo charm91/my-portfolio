@@ -1,6 +1,6 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import { SITE_URL } from "@/config/site";
+import { SITE, SITE_URL } from "@/config/site";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -23,7 +23,7 @@ export const metadata = {
     url: "/",
     images: [
       {
-        url: "/profile-photo.png",
+        url: SITE.profileImage,
         width: 1152,
         height: 832,
         alt: "Charm Aung — Product Designer",

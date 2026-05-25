@@ -7,6 +7,7 @@ import emailjs from "@emailjs/browser";
 import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import { SITE } from "@/config/site";
 
 const textPrimary = "#1f2937";
 const textSecondary = "#6b7280";
@@ -144,7 +145,7 @@ export default function ContactPageClient() {
               href="/"
               className="shrink-0 transition-opacity hover:opacity-80"
             >
-              <img src="/logo.svg" alt="Charm" className="w-20" />
+              <img src="/logo.svg" alt={SITE.displayName} className="w-20" />
             </Link>
 
             <Button
