@@ -43,7 +43,7 @@ export default function HomePage() {
       <Header />
       <div className="home-wrapper">
         <div className="home-bg-layer" />
-        <main className="home-content min-h-screen">
+        <main id="main-content" className="home-content min-h-screen">
           <Hero />
           <OverviewGrid />
           <Services />

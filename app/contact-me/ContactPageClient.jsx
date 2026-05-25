@@ -157,7 +157,7 @@ export default function ContactPageClient() {
         </div>
       </motion.header>
 
-      <main className="relative mx-auto max-w-2xl px-4 py-28 sm:px-6 lg:px-8">
+      <main id="main-content" className="relative mx-auto max-w-2xl px-4 py-28 sm:px-6 lg:px-8">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
@@ -189,6 +189,7 @@ export default function ContactPageClient() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4, delay: 0.1 }}
           onSubmit={handleSubmit}
+          noValidate
           className="rounded-3xl bg-white p-6 md:p-8"
           style={{ boxShadow: "0 2px 5px rgba(0, 0, 0, 0.06)" }}
         >
@@ -224,7 +225,7 @@ export default function ContactPageClient() {
                 disabled={isBusy}
                 className={cn(
                   "w-full rounded-xl border-0 px-4 py-3 text-base outline-none transition-colors",
-                  "placeholder:text-[#9ca3af] focus:ring-2 focus:ring-[#1f2937]/20",
+                  "placeholder:text-[#6b7280] focus:ring-2 focus:ring-[#1f2937]/60",
                   "disabled:opacity-60 disabled:cursor-not-allowed",
                 )}
                 style={{ backgroundColor: inputBg, color: textPrimary }}
@@ -250,7 +251,7 @@ export default function ContactPageClient() {
                 disabled={isBusy}
                 className={cn(
                   "w-full rounded-xl border-0 px-4 py-3 text-base outline-none transition-colors",
-                  "placeholder:text-[#9ca3af] focus:ring-2 focus:ring-[#1f2937]/20",
+                  "placeholder:text-[#6b7280] focus:ring-2 focus:ring-[#1f2937]/60",
                   "disabled:opacity-60 disabled:cursor-not-allowed",
                 )}
                 style={{ backgroundColor: inputBg, color: textPrimary }}
@@ -277,7 +278,7 @@ export default function ContactPageClient() {
               disabled={isBusy}
               className={cn(
                 "min-h-[120px] w-full resize-y rounded-xl border-0 px-4 py-3 text-base outline-none transition-colors",
-                "placeholder:text-[#9ca3af] focus:ring-2 focus:ring-[#1f2937]/20",
+                "placeholder:text-[#6b7280] focus:ring-2 focus:ring-[#1f2937]/60",
                 "disabled:opacity-60 disabled:cursor-not-allowed",
               )}
               style={{ backgroundColor: inputBg, color: textPrimary }}
