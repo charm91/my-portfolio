@@ -21,6 +21,8 @@ export function CaseStudyAuthor() {
         <div className="flex items-center gap-3">
           <a
             href={SOCIAL_LINKS.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-slate-400 shadow-xs transition hover:text-slate-600"
             aria-label="Facebook"
           >
@@ -35,6 +37,8 @@ export function CaseStudyAuthor() {
           </a>
           <a
             href={SOCIAL_LINKS.linkedin}
+            target="_blank"
+            rel="noopener noreferrer"
             className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-slate-400 shadow-xs transition hover:text-slate-600"
             aria-label="LinkedIn"
           >
