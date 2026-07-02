@@ -119,8 +119,8 @@ export function Testimonials() {
                 key={i}
                 className="rounded-2xl bg-white p-6 md:p-8 relative shadow-xs"
               >
-                <div className="flex gap-0.5 mb-5" aria-label="4 out of 5 stars">
-                  {[1, 2, 3, 4].map((n) => (
+                <div className="flex gap-0.5 mb-5" aria-label="5 out of 5 stars">
+                  {[1, 2, 3, 4, 5].map((n) => (
                     <Star
                       key={n}
                       className="size-5 fill-[#fbbf24] text-[#fbbf24] shrink-0"

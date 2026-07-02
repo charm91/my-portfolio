@@ -53,8 +53,6 @@ const item = {
   hidden: { opacity: 0, y: 28 },
   show: { opacity: 1, y: 0 },
 };
-const cardShadow = "0 2px 5px rgba(0, 0, 0, 0.06)";
-
 export function Journey() {
   return (
     <section className="py-20 md:py-28 bg-muted/20">
