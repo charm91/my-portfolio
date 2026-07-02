@@ -52,7 +52,7 @@ export function FAQ() {
           <p className="section-category text-xs">FAQ</p>
           <h2 className="section-title mb-1">Working With Me</h2>
           <p className="text-element-content max-w-2xl text-base font-light tracking-wide text-center">
-            A short guide to my role focus, collaboration style, and the kinds of product teams I work best with.
+            Common questions about my role, approach, and collaboration style.
           </p>
         </motion.div>
 

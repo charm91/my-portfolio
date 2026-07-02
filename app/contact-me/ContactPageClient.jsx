@@ -171,7 +171,7 @@ export default function ContactPageClient() {
           </h1>
 
           <p className="text-base md:text-lg" style={{ color: textSecondary }}>
-            Open to conversations about Senior Product Designer roles, <br />
+            Open to conversations about product design roles, <br />
             collaboration, and opportunities.
           </p>
         </motion.div>
@@ -211,7 +211,7 @@ export default function ContactPageClient() {
                 name="name"
                 type="text"
                 required
-                placeholder="Your name"
+                placeholder="Full name"
                 value={formData.name}
                 onChange={handleChange}
                 disabled={isBusy}
@@ -237,7 +237,7 @@ export default function ContactPageClient() {
                 name="email"
                 type="email"
                 required
-                placeholder="yourmail@mail.com"
+                placeholder="you@example.com"
                 value={formData.email}
                 onChange={handleChange}
                 disabled={isBusy}
@@ -264,7 +264,7 @@ export default function ContactPageClient() {
               name="message"
               required
               rows={5}
-              placeholder="Your message..."
+              placeholder="What's on your mind?"
               value={formData.message}
               onChange={handleChange}
               disabled={isBusy}
@@ -305,7 +305,7 @@ export default function ContactPageClient() {
                 Sending...
               </span>
             ) : (
-              "Submit"
+              "Send Message"
             )}
           </Button>
         </motion.form>
