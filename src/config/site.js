@@ -4,9 +4,14 @@ export const SITE_URL =
 export const SITE = {
   name: "Ngu Wah Aung",
   displayName: "Charm",
-  tagline: "Senior Product Designer • Design-to-Dev",
+  tagline: "Senior Product Designer • Fintech & SaaS",
   profileImage: "/profile-photo.png",
   email: "nguwah106@gmail.com",
+  location: "Bangkok, Thailand",
+  careerStartYear: 2013,
+  availability: "Open to Senior Product Designer · SEA & Remote",
+  roles: ["Product Designer", "Product Owner", "Design-to-Dev"],
+  domains: ["Fintech & Banking", "HR SaaS", "Education Platforms", "Multi-role Systems"],
 };
 
 export const SOCIAL_LINKS = {
