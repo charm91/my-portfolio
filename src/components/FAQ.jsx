@@ -11,15 +11,15 @@ import {
 const faqs = [
   {
     q: "What roles are you looking for?",
-    a: "I'm looking for Senior Product Designer roles where I can work on complex product experiences across fintech, SaaS, and multi-role platforms. I'm especially interested in teams that value strong UX craft, product thinking, and close collaboration between design, product, and engineering.",
+    a: "I'm looking for Senior Product Designer roles across fintech, SaaS, and multi-role platforms. I'm especially interested in teams that value strong UX craft, product thinking, and close collaboration between design, product, and engineering.",
   },
   {
     q: "Do you work only as a Product Designer?",
-    a: "Product design is my core focus, but I bring strong product ownership and frontend awareness from working closely with founders, product teams, and engineers. This helps me design experiences that are not only user-centered, but also practical to build and aligned with business goals.",
+    a: "Product design is my core focus, but I also bring product ownership and frontend awareness from working closely with founders, product teams, and engineers. This helps me design experiences that are user-centered, feasible to build, and aligned with business goals.",
   },
   {
     q: "What types of products have you worked on?",
-    a: "I've worked on fintech products, digital banking journeys, HR SaaS platforms, education platforms, internal tools, and multi-role systems. Much of my experience involves turning complex workflows into clear, scalable product experiences.",
+    a: "I've worked on fintech products, digital banking journeys, HR SaaS platforms, education platforms, internal tools, and multi-role systems.",
   },
   {
     q: "How do you usually work with teams?",
@@ -27,11 +27,11 @@ const faqs = [
   },
   {
     q: "Are you open to freelance or contract work?",
-    a: "I'm primarily open to full-time Senior Product Designer roles, but I'm also open to selective contract opportunities involving product design, UX strategy, design systems, complex workflow design, or early-stage product discovery.",
+    a: "I'm primarily open to full-time Senior Product Designer roles, but I'm also open to selective contract opportunities involving product design, UX strategy, design systems, workflow design, or early-stage product discovery.",
   },
   {
     q: "What makes your background different?",
-    a: "My background combines product design, interaction design, product ownership, and frontend experience. This helps me bridge user needs, business requirements, and technical constraints when designing practical, scalable product experiences.",
+    a: "My background combines product design, interaction design, product ownership, and frontend collaboration. That mix helps me connect user needs, business requirements, and technical constraints without losing sight of design quality.",
   },
 ];
 
@@ -52,7 +52,7 @@ export function FAQ() {
           <p className="section-category text-xs">FAQ</p>
           <h2 className="section-title mb-1">Working With Me</h2>
           <p className="text-element-content max-w-2xl text-base font-light tracking-wide text-center">
-            A short guide to how I approach product design, collaborate with teams, and turn complex workflows into clear product experiences.
+            A short guide to my role focus, collaboration style, and the kinds of product teams I work best with.
           </p>
         </motion.div>
 

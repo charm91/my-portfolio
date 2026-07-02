@@ -36,9 +36,8 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-2 text-md md:text-lg text-element-content font-light tracking-wide max-w-lg mx-auto"
         >
-          I turn complex workflows into clear, scalable product experiences
-          through UX strategy, interaction design, and close collaboration
-          with engineering teams.
+          I design fintech and SaaS product experiences that make complex
+          systems easier to understand, use, and ship.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}

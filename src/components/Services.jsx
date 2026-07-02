@@ -9,28 +9,28 @@ const services = [
     icon: Globe,
     title: "Product Design",
     description:
-      "I design clear, practical product experiences that turn complex workflows into intuitive user journeys.",
+      "I design practical product experiences that help users move through complex tasks with less friction.",
     tags: ["UI/UX", "Wireframes", "Prototypes"],
   },
   {
     icon: Settings,
     title: "Product Ownership",
     description:
-      "I bring product ownership experience to help clarify goals, prioritize scope, and align design decisions with business outcomes.",
+      "I bring product ownership experience to clarify goals, prioritize scope, and align design work with business needs.",
     tags: ["Product Strategy", "Prioritization", "Stakeholders"],
   },
   {
     icon: Layers,
     title: "User Research & Strategy",
     description:
-      "I use research, feedback, and product context to understand user needs and guide better design decisions.",
+      "I use research, feedback, and product context to understand user needs and shape better designs.",
     tags: ["UX Research", "Usability Testing", "Product Discovery"],
   },
   {
     icon: Code2,
     title: "Frontend Collaboration",
     description:
-      "I collaborate closely with engineers and understand frontend constraints, helping designs move smoothly from concept to implementation.",
+      "I understand frontend constraints and work closely with engineers to move designs from concept to implementation.",
     tags: ["Developer Handoff", "HTML/CSS", "Tailwind"],
   },
 ];
