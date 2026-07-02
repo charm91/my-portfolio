@@ -4,8 +4,6 @@ import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const cardShadow = "0 2px 5px rgba(0, 0, 0, 0.06)";
-
 export function Hero() {
   return (
     <section
