@@ -62,18 +62,9 @@ export default function ContactPageClient() {
     setStatus("sending");
     setErrorMsg("");
 
-    const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY;
-    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID;
-    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID;
-
-    if (!publicKey || !serviceId || !templateId) {
-      console.warn(
-        "EmailJS env vars missing. Add NEXT_PUBLIC_EMAILJS_* to .env.local",
-      );
-      setErrorMsg("Contact form is not configured. Please reach out via email directly.");
-      setStatus("error");
-      return;
-    }
+    const publicKey = "cXgAIzNSkZVXYkXyE";
+    const serviceId = "service_tgrxl4a";
+    const templateId = "template_hbeyl4c";
 
     // Start cooldown only after we actually attempt the send
     setCanSubmit(false);
@@ -180,7 +171,7 @@ export default function ContactPageClient() {
           </h1>
 
           <p className="text-base md:text-lg" style={{ color: textSecondary }}>
-            Open to conversations about product roles, <br />
+            Open to conversations about Senior Product Designer roles, <br />
             collaboration, and opportunities.
           </p>
         </motion.div>
@@ -289,7 +280,7 @@ export default function ContactPageClient() {
           {status === "success" && (
             <div className="mb-4 rounded-xl bg-green-50 px-4 py-3 text-center">
               <p className="text-sm font-medium text-green-700">
-                Thanks! Your message has been sent. I&apos;ll be in touch soon.
+                Message received! I&apos;ll review it and get back to you soon.
               </p>
             </div>
           )}
