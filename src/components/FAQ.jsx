@@ -11,7 +11,7 @@ import {
 const faqs = [
   {
     q: "What roles are you looking for?",
-    a: "I'm looking for Senior Product Designer roles across fintech, SaaS, and multi-role platforms. I'm especially interested in teams that value strong UX craft, product thinking, and close collaboration between design, product, and engineering.",
+    a: "I'm looking for senior roles in teams that value strong UX craft, product thinking, and close design–engineering collaboration.",
   },
   {
     q: "Do you work only as a Product Designer?",
@@ -27,7 +27,7 @@ const faqs = [
   },
   {
     q: "Are you open to freelance or contract work?",
-    a: "I'm primarily open to full-time Senior Product Designer roles, but I'm also open to selective contract opportunities involving product design, UX strategy, design systems, workflow design, or early-stage product discovery.",
+    a: "I'm primarily open to full-time roles, but also open to selective contract work involving product design, UX strategy, design systems, workflow design, or early-stage product discovery.",
   },
   {
     q: "What makes your background different?",
