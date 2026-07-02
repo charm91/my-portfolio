@@ -14,30 +14,30 @@ const steps = [
   {
     number: "01",
     icon: Search,
-    title: "Discover & Define",
+    title: "Discover & Frame",
     description:
-      "I worked with stakeholders to understand problems, define user needs, and align them with clear product goals.",
+      "I work with stakeholders, users, and domain experts to understand problems, map workflows, and define the right design direction.",
   },
   {
     number: "02",
     icon: Layers,
-    title: "Design & Build",
+    title: "Structure & Design",
     description:
-      "I led design direction, defined key flows, and collaborated closely with engineers to ensure smooth implementation.",
+      "I translate complex requirements into user flows, information architecture, wireframes, and interaction patterns that make products clearer and more usable.",
   },
   {
     number: "03",
     icon: PaintRoller,
-    title: "Refine & Validate",
+    title: "Prototype & Validate",
     description:
-      "I validated ideas through iteration and feedback, refining UX to support usability and product intent.",
+      "I explore ideas through prototypes, feedback, and usability validation, refining the experience to improve clarity, usability, and product fit.",
   },
   {
     number: "04",
     icon: Rocket,
-    title: "Launch & Grow",
+    title: "Align & Deliver",
     description:
-      "I supported launch planning, reviewed outcomes, and contributed to post-launch improvements.",
+      "I collaborate closely with product and engineering teams to support design handoff, implementation quality, and scalable product improvements.",
   },
 ];
 
@@ -65,14 +65,14 @@ export function Journey() {
           viewport={{ once: true }}
           className="flex flex-col justify-center gap-5 items-center mb-10 text-center"
         >
-          <p className="section-category text-xs">The Product Journey</p>
+          <p className="section-category text-xs">Product Design Process</p>
           <h2 className="section-title mb-1">
-            From Strategy to{" "}
-            <span className="font-serif italic font-normal">Delivery</span>
+            From Complexity to{" "}
+            <span className="font-serif italic font-normal">Clarity</span>
           </h2>
           <p className="text-element-content max-w-96 text-base font-light tracking-wide">
-            A clear, collaborative process that connects strategy, design, and
-            delivery to ship meaningful digital products.
+            A practical, collaborative design process for turning complex
+            workflows into clear, scalable digital product experiences.
           </p>
         </motion.div>
 

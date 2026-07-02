@@ -26,8 +26,7 @@ const projects = [
     href: "/unilinks",
   },
   {
-    title:
-      "Building a Secure Authentication System for KBZ Bank's Self-Service Portal",
+    title: "KBZ Bank Digital Banking Authentication System",
     category: "Web & Mobile",
     image: kbzBankImage,
     href: "/kbz-bank",
@@ -103,7 +102,7 @@ export function Portfolio() {
                   <h3 className="font-medium text-foreground group-hover:text-primary transition-colors line-clamp-2 text-left text-base">
                     {project.title}
                   </h3>
-                  <p className="text-sm text-foreground text-right">
+                  <p className="text-sm text-foreground text-right shrink-0">
                     {project.category}
                   </p>
                 </div>
