@@ -48,8 +48,7 @@ export function KBZBankPage() {
             className="text-4xl sm:text-4xl md:text-5xl font-medium text-center leading-tight mb-6 pt-5 tracking-tight"
             style={{ color: textPrimary }}
           >
-            Building a Secure Authentication System for KBZ Bank's Self-Service
-            Portal
+            KBZ Bank Digital Banking Authentication System
           </h1>
           <div className="flex flex-wrap justify-center gap-2">
             <span

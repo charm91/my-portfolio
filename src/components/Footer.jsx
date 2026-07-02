@@ -41,8 +41,7 @@ export function Footer() {
             className="text-sm md:text-base max-w-xl font-light mx-auto mb-8"
             style={{ color: textSecondary }}
           >
-            Interested in working together on fintech, SaaS, or complex product
-            systems? Let's connect.
+            Open to product design roles in fintech, SaaS, and complex product systems.
           </p>
           <Button
             size="lg"
