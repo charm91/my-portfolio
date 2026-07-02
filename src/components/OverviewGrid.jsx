@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Star, ExternalLink, ArrowDown } from "lucide-react";
 import { Button } from "./ui/button";
-import { SITE } from "@/config/site";
+import { SITE, SOCIAL_LINKS } from "@/config/site";
 
 const container = {
   hidden: { opacity: 0 },
@@ -76,8 +76,7 @@ export function OverviewGrid() {
                   I'm a Senior Product Designer working across product strategy,
                   UX, and engineering collaboration. With experience in product
                   design, product ownership, and frontend-aware delivery, I turn
-                  complex workflows into clear, scalable digital product
-                  experiences.
+                  complex workflows into clear, scalable product experiences.
                   <br />
                   <br />
                   My background in interaction design, business strategy, and
@@ -112,7 +111,7 @@ export function OverviewGrid() {
                       className="text-sm font-normal"
                       style={{ color: textSecondary }}
                     >
-                      Open to Senior Product Designer · SEA & Remote
+                      {SITE.availability}
                     </div>
 
                     <ExternalLink
@@ -135,16 +134,14 @@ export function OverviewGrid() {
                   className="font-medium shrink-0"
                   style={{ color: textPrimary }}
                 >
-                  13+ Years
+                  {new Date().getFullYear() - SITE.careerStartYear}+ Years
                 </span>
                 <span className="w-px h-10 bg-border/50 hidden md:inline-block"></span>
                 <ul
                   className="list-disc pl-2 text-sm font-normal"
                   style={{ color: textSecondary }}
                 >
-                  <li>Product Designer</li>
-                  <li>Product Owner</li>
-                  <li>Design-to-Dev</li>
+                  {SITE.roles.map((role) => <li key={role}>{role}</li>)}
                 </ul>
               </div>
             </motion.article>
@@ -165,10 +162,7 @@ export function OverviewGrid() {
                   className="text-sm font-normal pl-2 list-disc"
                   style={{ color: textSecondary }}
                 >
-                  <li>Fintech & Banking</li>
-                  <li>HR SaaS</li>
-                  <li>Education Platforms</li>
-                  <li>Multi-role Systems</li>
+                  {SITE.domains.map((domain) => <li key={domain}>{domain}</li>)}
                 </ul>
               </div>
             </motion.article>
