@@ -41,7 +41,7 @@ export function Footer() {
             className="text-sm md:text-base max-w-xl font-light mx-auto mb-8"
             style={{ color: textSecondary }}
           >
-            Looking for teams where design, product, and engineering work as one.
+            I help teams shape intuitive product experiences through research, interaction design, and close design–engineering collaboration.
           </p>
           <Button
             size="lg"
