@@ -31,7 +31,7 @@ export function Footer() {
             className="section-title text-center mb-4"
             style={{ color: textPrimary }}
           >
-            Open to Product <br /> Owner
+            Open to Senior <br /> Product Designer
             <span className="font-serif italic font-normal">
               {" "}
               Opportunities
@@ -41,8 +41,9 @@ export function Footer() {
             className="text-sm md:text-base max-w-xl font-light mx-auto mb-8"
             style={{ color: textSecondary }}
           >
-            I bring experience across product strategy, UX, <br /> and delivery
-            to help teams build and scale <br /> meaningful products.
+            I help teams turn complex workflows into intuitive, scalable digital
+            product experiences through UX research, interaction design, design
+            systems, and close collaboration with product and engineering teams.
           </p>
           <Button
             size="lg"

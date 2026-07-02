@@ -11,23 +11,27 @@ import {
 const faqs = [
   {
     q: "What roles are you looking for?",
-    a: "I'm looking for Product Owner or Product Manager roles in product-led teams, working closely with design and engineering to shape strategy and delivery.",
+    a: "I'm looking for Senior Product Designer roles where I can work on complex product experiences across fintech, SaaS, and multi-role platforms. I'm especially interested in teams that value strong UX craft, product thinking, and close collaboration between design, product, and engineering.",
   },
   {
-    q: "Do you work only as a Product Owner?",
-    a: "While my long-term focus is Product Ownership, I bring hands-on experience in UX design and frontend development, which helps me collaborate closely with designers and engineers.",
+    q: "Do you work only as a Product Designer?",
+    a: "Product design is my core focus, but I bring strong product ownership and frontend awareness from working closely with founders, product teams, and engineers. This helps me design experiences that are not only user-centered, but also practical to build and aligned with business goals.",
   },
   {
     q: "What types of products have you worked on?",
-    a: "I've worked on internal platforms, B2B and B2C products, and multi-role systems in areas like HR tech and education platforms.",
+    a: "I've worked on fintech products, digital banking journeys, HR SaaS platforms, education platforms, internal tools, and multi-role systems. Much of my experience involves turning complex workflows into clear, scalable product experiences.",
   },
   {
     q: "How do you usually work with teams?",
-    a: "I work closely with stakeholders, designers, and engineers to clarify problems, prioritize scope, and move ideas from concept to delivery in an iterative way.",
+    a: "I work closely with product managers, engineers, business stakeholders, and domain experts to understand problems, map workflows, explore solutions, prototype interactions, and refine designs through feedback and iteration.",
   },
   {
     q: "Are you open to freelance or contract work?",
-    a: "I'm open to full-time Product Owner roles and selective contract opportunities that involve product discovery, UX strategy, or early-stage product setup.",
+    a: "I'm primarily open to full-time Senior Product Designer roles, but I'm also open to selective contract opportunities involving product design, UX strategy, design systems, complex workflow design, or early-stage product discovery.",
+  },
+  {
+    q: "What makes your background different?",
+    a: "My background combines product design, interaction design, product ownership, and frontend experience. This helps me bridge user needs, business requirements, and technical constraints when designing practical, scalable product experiences.",
   },
 ];
 
