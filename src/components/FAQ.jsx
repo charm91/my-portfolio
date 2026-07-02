@@ -15,11 +15,11 @@ const faqs = [
   },
   {
     q: "Do you work only as a Product Designer?",
-    a: "Product design is my core focus, but I also bring product ownership and frontend awareness from working closely with founders, product teams, and engineers. This helps me design experiences that are user-centered, feasible to build, and aligned with business goals.",
+    a: "Product design is my core focus, but I bring strong product ownership and frontend awareness from working closely with founders, product teams, and engineers. This helps me design experiences that are not only user-centered, but also practical to build and aligned with business goals.",
   },
   {
     q: "What types of products have you worked on?",
-    a: "I've worked on fintech products, digital banking journeys, HR SaaS platforms, education platforms, internal tools, and multi-role systems.",
+    a: "I've worked on fintech products, digital banking journeys, HR SaaS platforms, education platforms, internal tools, and multi-role systems. Much of my experience involves turning demanding workflows into clear, scalable product experiences.",
   },
   {
     q: "How do you usually work with teams?",

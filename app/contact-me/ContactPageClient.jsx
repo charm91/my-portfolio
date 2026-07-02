@@ -280,7 +280,7 @@ export default function ContactPageClient() {
           {status === "success" && (
             <div className="mb-4 rounded-xl bg-green-50 px-4 py-3 text-center">
               <p className="text-sm font-medium text-green-700">
-                Message received! I&apos;ll review it and get back to you soon.
+                Thanks! Your message has been sent. I&apos;ll be in touch soon.
               </p>
             </div>
           )}
