@@ -39,6 +39,13 @@ npm run start
 npm run lint
 ```
 
+**Tests**
+
+```bash
+npm test              # run all tests once
+npm run test:watch    # watch mode
+```
+
 **Environment**
 
 No `.env` file required for local development. The site URL defaults to `https://www.nguwahaung.com/` if `NEXT_PUBLIC_SITE_URL` is not set.
@@ -47,4 +54,4 @@ No `.env` file required for local development. The site URL defaults to `https:/
 
 Personal project. Not open to external contributions.
 
-<!-- last-reviewed: da5bb98 -->
+<!-- last-reviewed: ff983ea -->
