@@ -19,7 +19,7 @@ export function Hero() {
           transition={{ duration: 0.5 }}
           className="section-category text-xs"
         >
-          Product Design → Systems → Handoff
+          Strategy → UX → Delivery
         </motion.p>
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
@@ -36,7 +36,7 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-2 text-md md:text-lg text-element-content font-light tracking-wide max-w-lg mx-auto"
         >
-          I design product experiences that turn complex workflows into
+          I shape product experiences that turn complex workflows into
           something clear, usable, and shippable.
         </motion.p>
         <motion.div
