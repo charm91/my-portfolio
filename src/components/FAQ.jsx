@@ -35,10 +35,6 @@ const faqs = [
   },
 ];
 
-const textPrimary = "#242424";
-const textSecondary = "#323744";
-const cardShadow = "0 2px 5px rgba(0, 0, 0, 0.06)";
-
 export function FAQ() {
   return (
     <section id="faq" className="py-20 md:py-28">
