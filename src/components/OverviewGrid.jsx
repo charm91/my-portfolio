@@ -73,14 +73,17 @@ export function OverviewGrid() {
                   className="text-sm leading-relaxed"
                   style={{ color: textSecondary }}
                 >
-                  I work at the intersection of product strategy, UX, and
-                  engineering. With experience as both a Product Owner and
-                  Product Designer, I lead products from discovery to delivery —
-                  shaping not just interfaces, but how systems work end-to-end.
-                  My background in interaction-focused MBA and certifications
-                  (PSPO II, PSM II) allows me to bridge business goals, user
-                  needs, and technical execution to build scalable, real-world
-                  products.
+                  I'm a Senior Product Designer working across product strategy,
+                  UX, and engineering collaboration. With experience in product
+                  design, product ownership, and frontend-aware delivery, I turn
+                  complex workflows into clear, scalable digital product
+                  experiences.
+                  <br />
+                  <br />
+                  My background in interaction design, business strategy, and
+                  Scrum helps me bridge user needs, business goals, and technical
+                  constraints across discovery, UX direction, design systems,
+                  prototypes, and developer handoff.
                 </p>
               </div>
             </motion.article>
@@ -109,7 +112,7 @@ export function OverviewGrid() {
                       className="text-sm font-normal"
                       style={{ color: textSecondary }}
                     >
-                      Open to Product Owner roles SEA / Remote
+                      Open to Senior Product Designer · SEA & Remote
                     </div>
 
                     <ExternalLink
@@ -132,16 +135,16 @@ export function OverviewGrid() {
                   className="font-medium shrink-0"
                   style={{ color: textPrimary }}
                 >
-                  12+ Years
+                  13+ Years
                 </span>
                 <span className="w-px h-10 bg-border/50 hidden md:inline-block"></span>
                 <ul
                   className="list-disc pl-2 text-sm font-normal"
                   style={{ color: textSecondary }}
                 >
-                  <li>Product Owner </li>
                   <li>Product Designer</li>
-                  <li>Design to Dev Builder</li>
+                  <li>Product Owner</li>
+                  <li>Design-to-Dev</li>
                 </ul>
               </div>
             </motion.article>
@@ -162,10 +165,10 @@ export function OverviewGrid() {
                   className="text-sm font-normal pl-2 list-disc"
                   style={{ color: textSecondary }}
                 >
-                  <li>Fintech </li>
+                  <li>Fintech & Banking</li>
                   <li>HR SaaS</li>
-                  <li>Data-driven systems </li>
-                  <li>Multi-role Platforms across complex</li>
+                  <li>Education Platforms</li>
+                  <li>Multi-role Systems</li>
                 </ul>
               </div>
             </motion.article>

@@ -4,7 +4,7 @@ export const SITE_URL =
 export const SITE = {
   name: "Ngu Wah Aung",
   displayName: "Charm",
-  tagline: "Product Owner • Design-to-Dev Builder",
+  tagline: "Senior Product Designer • Design-to-Dev",
   profileImage: "/profile-photo.png",
   email: "nguwah106@gmail.com",
 };

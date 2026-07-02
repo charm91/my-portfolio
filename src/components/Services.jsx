@@ -6,32 +6,32 @@ import { Button } from "./ui/button";
 
 const services = [
   {
-    icon: Settings,
-    title: "Product Ownership",
-    description:
-      "I define product direction, prioritize scope, and work closely with stakeholders and engineers to deliver meaningful outcomes.",
-    tags: ["Roadmaps", "Backlog Prioritization", "OKRs"],
-  },
-  {
     icon: Globe,
     title: "Product Design",
     description:
-      "I design clear, practical UX that supports product goals and real user needs.",
+      "I design clear, practical product experiences that turn complex workflows into intuitive user journeys.",
     tags: ["UI/UX", "Wireframes", "Prototypes"],
+  },
+  {
+    icon: Settings,
+    title: "Product Ownership",
+    description:
+      "I bring product ownership experience to help clarify goals, prioritize scope, and align design decisions with business outcomes.",
+    tags: ["Product Strategy", "Prioritization", "Stakeholders"],
   },
   {
     icon: Layers,
     title: "User Research & Strategy",
     description:
-      "I turn user insights and data into clear product and design decisions.",
-    tags: ["Interviews", "Usability Testing", "Data Analysis"],
+      "I use research, feedback, and product context to understand user needs and guide better design decisions.",
+    tags: ["UX Research", "Usability Testing", "Product Discovery"],
   },
   {
     icon: Code2,
-    title: "Frontend Development",
+    title: "Frontend Collaboration",
     description:
-      "I collaborate closely with engineers and can implement UI to ensure designs ship as intended.",
-    tags: ["Vue.js", "Nuxt", "Tailwind"],
+      "I collaborate closely with engineers and understand frontend constraints, helping designs move smoothly from concept to implementation.",
+    tags: ["Developer Handoff", "HTML/CSS", "Tailwind"],
   },
 ];
 
@@ -80,8 +80,8 @@ export function Services() {
           viewport={{ once: true }}
           className="section-title"
         >
-          From Product Strategy to <br />
-          <span className="font-serif italic font-normal">Execution.</span>
+          Where Product Design <br />
+          <span className="font-serif italic font-normal">Meets Strategy.</span>
         </motion.h2>
 
         {/* 2x2 grid */}
