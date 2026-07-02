@@ -31,17 +31,17 @@ export function Footer() {
             className="section-title text-center mb-4"
             style={{ color: textPrimary }}
           >
-            Open to Senior <br /> Product Designer
+            Open to the
             <span className="font-serif italic font-normal">
               {" "}
-              Opportunities
+              Right Opportunity
             </span>
           </h2>
           <p
             className="text-sm md:text-base max-w-xl font-light mx-auto mb-8"
             style={{ color: textSecondary }}
           >
-            Open to product design roles in fintech, SaaS, and complex product systems.
+            Looking for teams where design, product, and engineering work as one.
           </p>
           <Button
             size="lg"

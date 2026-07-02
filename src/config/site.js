@@ -9,7 +9,7 @@ export const SITE = {
   email: "nguwah106@gmail.com",
   location: "Bangkok, Thailand",
   careerStartYear: 2013,
-  availability: "Open to Senior Product Designer roles · SEA & Remote",
+  availability: "Open to SEA & Remote roles",
   roles: ["Product Design", "Product Ownership", "Design Handoff"],
   domains: ["Fintech", "HR SaaS", "Education", "Multi-role Systems"],
 };

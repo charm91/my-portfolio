@@ -9,7 +9,7 @@ const services = [
     icon: Globe,
     title: "Product Design",
     description:
-      "I design practical product experiences that help users move through complex tasks with less friction.",
+      "I design practical product experiences that help users move through demanding workflows with less effort.",
     tags: ["UI/UX", "Wireframes", "Prototypes"],
   },
   {
@@ -30,7 +30,7 @@ const services = [
     icon: Code2,
     title: "Frontend Collaboration",
     description:
-      "I understand frontend constraints and work closely with engineers to move designs from concept to implementation.",
+      "I understand frontend constraints and bridge the gap between design intent and implementation.",
     tags: ["Developer Handoff", "HTML/CSS", "Tailwind"],
   },
 ];
