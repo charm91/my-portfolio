@@ -21,10 +21,12 @@ git-solo: true
 ## 3. Dev Commands
 
 ```bash
-npm install          # install dependencies
-npm run dev          # dev server on http://localhost:3002
-npm run build        # production build
-npm run lint         # ESLint
+npm install           # install dependencies
+npm run dev           # dev server on http://localhost:3002
+npm run build         # production build
+npm run lint          # ESLint
+npm test              # run all tests (Vitest)
+npm run test:watch    # run tests in watch mode
 ```
 
 ---
@@ -68,4 +70,4 @@ npm run lint         # ESLint
 - Dev port is `3002` (not the Next.js default 3000) — set in `package.json` `dev` script.
 - Tailwind 4 is in use — config lives in `globals.css` via `@theme`, not `tailwind.config.js`.
 
-<!-- last-reviewed: 74b0bef -->
+<!-- last-reviewed: ff983ea -->
