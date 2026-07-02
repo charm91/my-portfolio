@@ -99,7 +99,7 @@ export function Testimonials() {
             What Colleagues Say
           </h2>
           <p className="text-element-content max-w-2xl text-base font-light tracking-wide text-center mt-3">
-            Feedback from people I've worked with across product, design, engineering, and cross-functional teams.
+            Feedback from colleagues, leaders, and collaborators across design, product, and engineering.
           </p>
         </motion.div>
 

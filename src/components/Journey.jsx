@@ -23,21 +23,21 @@ const steps = [
     icon: Layers,
     title: "Structure & Design",
     description:
-      "I translate complex requirements into user flows, information architecture, wireframes, and interaction patterns that make products clearer and more usable.",
+      "I translate requirements into user flows, information architecture, wireframes, and interaction patterns that make products easier to use.",
   },
   {
     number: "03",
     icon: PaintRoller,
     title: "Prototype & Validate",
     description:
-      "I explore ideas through prototypes, feedback, and usability validation, refining the experience to improve clarity, usability, and product fit.",
+      "I test ideas through prototypes, feedback, and usability review, then refine the experience before delivery.",
   },
   {
     number: "04",
     icon: Rocket,
     title: "Align & Deliver",
     description:
-      "I collaborate closely with product and engineering teams to support design handoff, implementation quality, and scalable product improvements.",
+      "I prepare clear design handoff, support implementation, and help teams maintain quality as the product evolves.",
   },
 ];
 
@@ -71,8 +71,8 @@ export function Journey() {
             <span className="font-serif italic font-normal">Clarity</span>
           </h2>
           <p className="text-element-content max-w-96 text-base font-light tracking-wide">
-            A practical, collaborative design process for turning complex
-            workflows into clear, scalable digital product experiences.
+            How I move from problem framing to structured design, validation,
+            and implementation support.
           </p>
         </motion.div>
 

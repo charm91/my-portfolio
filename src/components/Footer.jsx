@@ -41,9 +41,8 @@ export function Footer() {
             className="text-sm md:text-base max-w-xl font-light mx-auto mb-8"
             style={{ color: textSecondary }}
           >
-            I help teams turn complex workflows into intuitive, scalable digital
-            product experiences through UX research, interaction design, design
-            systems, and close collaboration with product and engineering teams.
+            Interested in working together on fintech, SaaS, or complex product
+            systems? Let's connect.
           </p>
           <Button
             size="lg"

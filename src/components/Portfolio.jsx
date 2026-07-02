@@ -54,9 +54,12 @@ export function Portfolio() {
         >
           <p className="section-category text-xs">Portfolio Highlights</p>
           <h2 className="section-title">
-            Showcasing Projects that <br /> Define
-            <span className="font-serif italic font-normal"> My Works</span>
+            Selected Work Across <br />
+            <span className="font-serif italic font-normal">Product Systems.</span>
           </h2>
+          <p className="text-element-content text-base font-light tracking-wide text-center">
+            Product design projects across fintech, HR SaaS, education, and digital banking.
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-1 max-w-xl mx-auto gap-4 md:gap-6">

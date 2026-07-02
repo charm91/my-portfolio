@@ -73,16 +73,15 @@ export function OverviewGrid() {
                   className="text-sm leading-relaxed"
                   style={{ color: textSecondary }}
                 >
-                  I'm a Senior Product Designer working across product strategy,
-                  UX, and engineering collaboration. With experience in product
-                  design, product ownership, and frontend-aware delivery, I turn
-                  complex workflows into clear, scalable product experiences.
+                  I'm a Senior Product Designer with 13+ years of experience
+                  across fintech, banking, HR SaaS, education platforms, and
+                  multi-role digital products.
                   <br />
                   <br />
-                  My background in interaction design, business strategy, and
-                  Scrum helps me bridge user needs, business goals, and technical
-                  constraints across discovery, UX direction, design systems,
-                  prototypes, and developer handoff.
+                  My background spans product design, product ownership,
+                  interaction design, and frontend-aware collaboration. I work
+                  closely with product, engineering, and business teams to shape
+                  practical experiences from early discovery to implementation.
                 </p>
               </div>
             </motion.article>
@@ -155,7 +154,7 @@ export function OverviewGrid() {
                   className="text-sm md:text-base font-medium shrink-0 md:w-[80px]"
                   style={{ color: textSecondary }}
                 >
-                  Domain Experience
+                  Domain Focus
                 </span>
                 <span className="w-px h-10 bg-border/50 hidden md:inline-block"></span>
                 <ul
