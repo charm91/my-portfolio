@@ -131,7 +131,7 @@ export function OverviewGrid() {
             >
               <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6">
                 <span
-                  className="font-medium shrink-0"
+                  className="font-medium shrink-0 md:w-[80px]"
                   style={{ color: textPrimary }}
                 >
                   {new Date().getFullYear() - SITE.careerStartYear}+ Years
@@ -152,7 +152,7 @@ export function OverviewGrid() {
             >
               <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6">
                 <span
-                  className="text-sm md:text-base font-medium shrink-0 md:w-[100px]"
+                  className="text-sm md:text-base font-medium shrink-0 md:w-[80px]"
                   style={{ color: textSecondary }}
                 >
                   Domain Experience
