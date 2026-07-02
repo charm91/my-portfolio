@@ -19,7 +19,7 @@ export function Hero() {
           transition={{ duration: 0.5 }}
           className="section-category text-xs"
         >
-          Strategy → UX → Delivery
+          Product Design → Systems → Handoff
         </motion.p>
         <motion.h1
           initial={{ opacity: 0, y: 24 }}
@@ -36,8 +36,9 @@ export function Hero() {
           transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-2 text-md md:text-lg text-element-content font-light tracking-wide max-w-lg mx-auto"
         >
-          I connect product strategy, UX systems, and development to deliver
-          measurable outcomes.
+          I turn complex workflows into clear, scalable product experiences
+          through UX strategy, interaction design, and close collaboration
+          with engineering teams.
         </motion.p>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
