@@ -14,6 +14,7 @@ Changes to copy or layout are immediately visible after deploy.
 
 ```
 git-solo: true
+git-auto-commit: true
 ```
 
 ---
@@ -69,5 +70,17 @@ npm run test:watch    # run tests in watch mode
 - `app/page.jsx` is a Client Component (`"use client"`) due to `useSearchParams`. Wrapping `ScrollToSection` in `<Suspense>` is required to avoid a Next.js build error.
 - Dev port is `3002` (not the Next.js default 3000) — set in `package.json` `dev` script.
 - Tailwind 4 is in use — config lives in `globals.css` via `@theme`, not `tailwind.config.js`.
+
+---
+
+## Rules
+
+This project follows the rules shipped in claude-helm:
+- ~/.claude/plugins/marketplaces/claude-helm/rules/git.md
+- ~/.claude/plugins/marketplaces/claude-helm/rules/safety.md
+
+At the start of every session, check whether the paths above exist on this machine.
+If either is missing, inform the user: "helm rules are referenced in CLAUDE.md but the
+plugin is not installed on this machine. Install it with: /plugin install claude-helm"
 
 <!-- last-reviewed: ff983ea -->
