@@ -60,8 +60,8 @@ export function FAQ() {
           className="max-w-[600px] mx-auto"
         >
           <Accordion type="single" collapsible className="w-full">
-            {faqs.map((faq, i) => (
-              <AccordionItem key={i} value={`item-${i}`}>
+            {faqs.map((faq) => (
+              <AccordionItem key={faq.q} value={faq.q}>
                 <div className="bg-white px-6 py-3 rounded-3xl">
                   <AccordionTrigger className="text-base font-medium text-left">
                     {faq.q}

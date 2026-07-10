@@ -114,9 +114,9 @@ export function Testimonials() {
             style={{ y }}
             className="p-6 md:p-10 space-y-6 w-full"
           >
-            {testimonials.map((t, i) => (
+            {testimonials.map((t) => (
               <article
-                key={i}
+                key={t.name}
                 className="rounded-2xl bg-white p-6 md:p-8 relative shadow-xs"
               >
                 <div className="flex gap-0.5 mb-5" aria-label="5 out of 5 stars">
