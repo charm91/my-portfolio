@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Rocket, PaintRoller, Layers } from "lucide-react";
+import { Search, Rocket, PaintRoller, Layers } from "lucide-react";
 
 const steps = [
   {
