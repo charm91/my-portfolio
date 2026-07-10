@@ -1,14 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import {
-  Search,
-  PencilRuler,
-  CheckCircle,
-  Rocket,
-  PaintRoller,
-  Layers,
-} from "lucide-react";
+import { Rocket, PaintRoller, Layers } from "lucide-react";
 
 const steps = [
   {
@@ -81,9 +74,9 @@ export function Journey() {
           viewport={{ once: true, margin: "-60px" }}
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
-          {steps.map((step, i) => (
+          {steps.map((step) => (
             <motion.div
-              key={i}
+              key={step.number}
               variants={item}
               className="relative bg-white rounded-2xl"
             >
