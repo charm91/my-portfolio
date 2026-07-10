@@ -21,7 +21,7 @@ export function BetterHRPage() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={pageTransition}
-      className="min-h-screen overflow-auto relative"
+      className="min-h-screen relative"
       style={{ backgroundColor: bgPage }}
     >
       <Header />
