@@ -60,7 +60,7 @@ export function Portfolio() {
 
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-1 max-w-xl mx-auto gap-4 md:gap-6">
+        <div className="grid grid-cols-1 max-w-xl mx-auto gap-4 md:gap-6">
           {projects.map((project) => (
             <motion.article
               key={project.href}
