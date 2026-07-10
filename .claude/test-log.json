@@ -1,0 +1,26 @@
+{
+  "last_test_run_commit": "b4cce8e264d24845e8b8802a9bc15080df604bd3",
+  "last_full_scan_commit": "b4cce8e264d24845e8b8802a9bc15080df604bd3",
+  "findings": [],
+  "full_scan_findings": [
+    { "file": "src/lib/utils.js", "priority": "high", "last_judged_commit": "b4cce8e264d24845e8b8802a9bc15080df604bd3" },
+    { "file": "app/sitemap.js", "priority": "high", "last_judged_commit": "b4cce8e264d24845e8b8802a9bc15080df604bd3" },
+    { "file": "app/robots.js", "priority": "high", "last_judged_commit": "b4cce8e264d24845e8b8802a9bc15080df604bd3" },
+    { "file": "src/components/Portfolio.jsx", "priority": "high", "last_judged_commit": "b4cce8e264d24845e8b8802a9bc15080df604bd3" },
+    { "file": "src/components/Hero.jsx", "priority": "medium", "last_judged_commit": "b4cce8e264d24845e8b8802a9bc15080df604bd3" },
+    { "file": "src/components/Services.jsx", "priority": "medium", "last_judged_commit": "b4cce8e264d24845e8b8802a9bc15080df604bd3" },
+    { "file": "src/components/Journey.jsx", "priority": "medium", "last_judged_commit": "b4cce8e264d24845e8b8802a9bc15080df604bd3" },
+    { "file": "src/components/CaseStudySection.jsx", "priority": "medium", "last_judged_commit": "b4cce8e264d24845e8b8802a9bc15080df604bd3" },
+    { "file": "src/components/CaseStudyAuthor.jsx", "priority": "medium", "last_judged_commit": "b4cce8e264d24845e8b8802a9bc15080df604bd3" },
+    { "file": "src/components/Header.jsx", "priority": "medium", "last_judged_commit": "b4cce8e264d24845e8b8802a9bc15080df604bd3" },
+    { "file": "src/components/Testimonials.jsx", "priority": "low", "last_judged_commit": "b4cce8e264d24845e8b8802a9bc15080df604bd3" },
+    { "file": "src/components/Footer.jsx", "priority": "low", "last_judged_commit": "b4cce8e264d24845e8b8802a9bc15080df604bd3" },
+    { "file": "src/components/OverviewGrid.jsx", "priority": "low", "last_judged_commit": "b4cce8e264d24845e8b8802a9bc15080df604bd3" },
+    { "file": "src/views/BetterHRPage.jsx", "priority": "low", "last_judged_commit": "b4cce8e264d24845e8b8802a9bc15080df604bd3" },
+    { "file": "src/views/KBZBankPage.jsx", "priority": "low", "last_judged_commit": "b4cce8e264d24845e8b8802a9bc15080df604bd3" },
+    { "file": "src/views/UniLinksPage.jsx", "priority": "low", "last_judged_commit": "b4cce8e264d24845e8b8802a9bc15080df604bd3" },
+    { "file": "src/views/WctPage.jsx", "priority": "low", "last_judged_commit": "b4cce8e264d24845e8b8802a9bc15080df604bd3" },
+    { "file": "app/ScrollToSection.jsx", "priority": "low", "last_judged_commit": "b4cce8e264d24845e8b8802a9bc15080df604bd3" },
+    { "file": "app/layout.jsx", "priority": "low", "last_judged_commit": "b4cce8e264d24845e8b8802a9bc15080df604bd3" }
+  ]
+}
