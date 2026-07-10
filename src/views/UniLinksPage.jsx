@@ -226,6 +226,7 @@ export function UniLinksPage() {
                     alt="personas"
                     width={2076}
                     height={2240}
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="w-full h-auto"
                   />
                 </div>
@@ -236,6 +237,7 @@ export function UniLinksPage() {
                     alt="workflow"
                     width={2028}
                     height={1312}
+                    sizes="(max-width: 768px) 100vw, 50vw"
                     className="h-auto w-full"
                   />
                 </div>
