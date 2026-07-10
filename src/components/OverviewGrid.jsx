@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Star, ExternalLink, ArrowDown } from "lucide-react";
 import { Button } from "./ui/button";
 import { SITE, SOCIAL_LINKS } from "@/config/site";
+import { scrollToSection } from "@/lib/utils";
 
 const container = {
   hidden: { opacity: 0 },
@@ -26,7 +27,7 @@ const textSecondary = "#323744";
 export function OverviewGrid() {
   const scrollToContact = (e) => {
     e.preventDefault();
-    document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+    scrollToSection("contact");
   };
 
   return (
@@ -224,11 +225,7 @@ export function OverviewGrid() {
             size="icon-lg"
             aria-label="Scroll down"
             className="rounded-full bg-white border-0 shadow-sm size-10"
-            onClick={() => {
-              document
-                .querySelector("#services")
-                ?.scrollIntoView({ behavior: "smooth" });
-            }}
+            onClick={() => scrollToSection("services")}
           >
             <ArrowDown className="size-5" aria-hidden="true" />
           </Button>
