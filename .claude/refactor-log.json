@@ -1,5 +1,5 @@
 {
-  "last_scanned_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
+  "last_scanned_commit": "735b315ada6e6b72175c1b10136f4c5edaa0c8df",
   "last_mode": "deep",
   "last_scan_date": "2026-07-10",
   "consecutive_quick_count": 0,
@@ -14,11 +14,11 @@
       "file": "src/views/BetterHRPage.jsx",
       "line": 367,
       "description": "Section component (function Section({ title, children })) is defined identically in all four view files — BetterHRPage, KBZBankPage, UniLinksPage, WctPage",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "94e63a8",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0002",
@@ -62,11 +62,11 @@
       "file": "src/config/site.js",
       "line": 2,
       "description": "SITE_URL has a trailing slash ('https://www.nguwahaung.com/') and consumers in sitemap.js and robots.js append paths with a leading slash, producing double-slash URLs like https://www.nguwahaung.com//portfolio",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "804fdb9",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0005",
@@ -77,7 +77,7 @@
       "depends_on": [],
       "file": "src/components/Footer.jsx",
       "line": 9,
-      "description": "Color constants (textPrimary #242424, textSecondary #323744, cardShadow) are re-declared as local JS strings in Footer.jsx, Services.jsx, OverviewGrid.jsx, caseStudy.js, and ContactPageClient.jsx — including a subtle mismatch in bgPage (#F8F8F8 vs #fafafa)",
+      "description": "Color constants (textPrimary, textSecondary, bgPage) are re-declared as local JS strings in Footer.jsx, Services.jsx, OverviewGrid.jsx, caseStudy.js, and ContactPageClient.jsx — values are intentionally different across components (design intent), but a shared token file would make intentional differences explicit",
       "status": "open",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
@@ -94,11 +94,11 @@
       "file": "src/components/Hero.jsx",
       "line": 49,
       "description": "Inline document.querySelector('#id')?.scrollIntoView() scroll utility is copy-pasted in Hero.jsx, OverviewGrid.jsx, Services.jsx, and Header.jsx; should be extracted into a shared scrollToSection(id) helper in src/lib/utils.js",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "804fdb9",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0007",
@@ -110,11 +110,11 @@
       "file": "app/page.jsx",
       "line": 1,
       "description": "Entire homepage is 'use client' solely because ScrollToSection uses useSearchParams; only ScrollToSection needs to be a Client Component — the page shell could be a Server Component with ScrollToSection wrapped in Suspense",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "804fdb9",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0008",
@@ -142,11 +142,11 @@
       "file": "src/components/FAQ.jsx",
       "line": 64,
       "description": "Array index used as React list key; stable key derived from faq.q string is available",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "207518d",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0010",
@@ -158,11 +158,11 @@
       "file": "src/components/Journey.jsx",
       "line": 84,
       "description": "Array index used as React list key; step.number string ('01'–'04') is a stable natural key",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "207518d",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0011",
@@ -174,11 +174,11 @@
       "file": "src/components/Portfolio.jsx",
       "line": 64,
       "description": "Array index used as React list key; project.href is a unique, stable key already available",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "207518d",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0012",
@@ -190,22 +190,22 @@
       "file": "src/components/Testimonials.jsx",
       "line": 117,
       "description": "Array index used as React list key; testimonial.name is unique per entry and a stable key",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "207518d",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0013",
       "category": "code-quality",
       "priority": "high",
-      "risk": "safe",
+      "risk": "needs-review",
       "cluster_id": "c-cq-002",
       "depends_on": [],
       "file": "src/views/WctPage.jsx",
       "line": 32,
-      "description": "WctPage hero uses /k-cover.png (KBZ Bank's cover image) — likely a copy-paste error causing wrong cover art on the WCT Pay case study",
+      "description": "WctPage hero uses /k-cover.png (KBZ Bank's cover image) — likely a copy-paste error, but no WCT-specific cover image (w-cover.png) exists in public/. Owner needs to supply the correct cover image.",
       "status": "open",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
@@ -222,11 +222,11 @@
       "file": "src/views/BetterHRPage.jsx",
       "line": 251,
       "description": "Three divs use class 'bf-gray-100' (typo for 'bg-gray-100'); Tailwind 4 silently ignores unknown utilities, leaving containers without the intended gray background",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "45668fa",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0015",
@@ -238,11 +238,11 @@
       "file": "src/views/UniLinksPage.jsx",
       "line": 151,
       "description": "Image alt text reads 'Fianl Presentation' — misspelling of 'Final Presentation'",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "45668fa",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0016",
@@ -254,11 +254,11 @@
       "file": "src/views/UniLinksPage.jsx",
       "line": 221,
       "description": "Paragraph 'Admissions are still agency-driven and inefficient.' appears twice — once in 'The Core Problem' and again in 'Our Approach', appears to be an accidental paste",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "45668fa",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0017",
@@ -270,11 +270,11 @@
       "file": "src/views/BetterHRPage.jsx",
       "line": 30,
       "description": "Decorative hero image containers use aria-hidden as a bare attribute (equivalent to empty string) instead of aria-hidden='true' — shared across all four view files",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "45668fa",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0018",
@@ -285,12 +285,12 @@
       "depends_on": [],
       "file": "src/views/BetterHRPage.jsx",
       "line": 50,
-      "description": "h1 uses 'text-4xl sm:text-4xl' — the sm: variant is identical to base, a no-op redundancy; also present in UniLinksPage.jsx",
-      "status": "open",
+      "description": "h1 uses 'text-4xl sm:text-4xl' — the sm: variant is identical to base, a no-op redundancy; also present in UniLinksPage.jsx, KBZBankPage.jsx, WctPage.jsx",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "45668fa",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0019",
@@ -302,11 +302,11 @@
       "file": "src/views/UniLinksPage.jsx",
       "line": 250,
       "description": "Section calls without a title prop render empty <h2> elements into the DOM, breaking heading hierarchy for screen readers",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "94e63a8",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0020",
@@ -318,11 +318,11 @@
       "file": "src/components/Services.jsx",
       "line": 51,
       "description": "cardShadow constant is declared but never referenced in JSX or style props — dead code",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "45668fa",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0021",
@@ -334,11 +334,11 @@
       "file": "src/components/OverviewGrid.jsx",
       "line": 22,
       "description": "cardShadow constant is declared but never referenced — dead code",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "45668fa",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0022",
@@ -350,11 +350,11 @@
       "file": "src/components/Journey.jsx",
       "line": 6,
       "description": "Imported icons Search, PencilRuler, and CheckCircle from lucide-react are never used in the component",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "45668fa",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0023",
@@ -366,11 +366,11 @@
       "file": "src/components/Portfolio.jsx",
       "line": 63,
       "description": "'grid-cols-1 md:grid-cols-1' applies single-column layout at both breakpoints, making the md: variant a no-op",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "45668fa",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0024",
@@ -382,11 +382,11 @@
       "file": "app/globals.css",
       "line": 27,
       "description": ".dark block and all --chart-* / --sidebar-* CSS custom properties are leftover shadcn scaffolding; this site has no dark mode toggle, no sidebar, and no chart components",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "45668fa",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0025",
@@ -398,11 +398,11 @@
       "file": "app/contact-me/ContactPageClient.jsx",
       "line": 71,
       "description": "setTimeout that resets canSubmit is never stored in a ref and never cleared; if the component unmounts during the 60s cooldown, the timer fires a state update on an unmounted component",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "45668fa",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0026",
@@ -413,12 +413,12 @@
       "depends_on": [],
       "file": "src/components/ui/accordion.jsx",
       "line": 33,
-      "description": "AccordionTrigger uses rotate-180 animation on a Plus icon; rotating Plus 180° looks identical to the closed state — should be 45° (to form an X) or switch to ChevronDown",
-      "status": "open",
+      "description": "AccordionTrigger uses rotate-180 animation on a Plus icon; rotating Plus 180° looks identical to the closed state — changed to 45° (open state shows × shape)",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "45668fa",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0027",
@@ -446,11 +446,11 @@
       "file": "src/components/OverviewGrid.jsx",
       "line": 59,
       "description": "Decorative corner-white.png loaded with plain <img> tag; next/image is already imported and would provide WebP conversion, lazy loading, and responsive sizing",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "b3711cb",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0029",
@@ -462,11 +462,11 @@
       "file": "src/components/Portfolio.jsx",
       "line": 88,
       "description": "Decorative corner-white.png overlay in each project card loaded with plain <img>; every card renders this unoptimized image",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "b3711cb",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0030",
@@ -478,11 +478,11 @@
       "file": "src/components/Header.jsx",
       "line": 119,
       "description": "Logo loaded with plain <img src='/logo.svg'> instead of Next.js <Image>",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "b3711cb",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0031",
@@ -494,11 +494,11 @@
       "file": "app/contact-me/ContactPageClient.jsx",
       "line": 139,
       "description": "Logo in contact page header loaded with plain <img src='/logo.svg'> instead of Next.js <Image>",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "b3711cb",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0032",
@@ -510,11 +510,11 @@
       "file": "src/components/OverviewGrid.jsx",
       "line": 215,
       "description": "LinkedIn logo SVG loaded via <img src='/linkedin.svg'> — a separate HTTP request for a tiny icon; inline SVG or Next.js Image would be preferable",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "b3711cb",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0033",
@@ -526,11 +526,11 @@
       "file": "app/sitemap.js",
       "line": 5,
       "description": "Every sitemap entry calls new Date() at request time so lastModified always equals 'right now', which defeats crawl-frequency signals for search engines",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "b3711cb",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0034",
@@ -541,7 +541,7 @@
       "depends_on": [],
       "file": "src/components/Testimonials.jsx",
       "line": 45,
-      "description": "VIEWPORT_HEIGHT is a hard-coded 800px constant used as both a scroll-range seed and a minHeight constraint; content may clip or have excessive whitespace on devices that differ significantly from this assumption",
+      "description": "VIEWPORT_HEIGHT is a hard-coded 800px constant used as both a scroll-range seed and a minHeight constraint; content may clip or have excess whitespace on devices that differ significantly from this assumption",
       "status": "open",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
@@ -558,11 +558,11 @@
       "file": "src/views/UniLinksPage.jsx",
       "line": 229,
       "description": "Images flow3.png (2076x2240) and flow4.png (2028x1312) are rendered in a two-column grid but have no sizes attribute, so Next.js cannot select an appropriately-sized srcset variant",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "b3711cb",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0036",
@@ -590,11 +590,11 @@
       "file": "src/__tests__/faq.test.jsx",
       "line": 0,
       "description": "Existing FAQ tests only assert question text is visible; no tests for accordion expand/collapse, answer content visibility, or keyboard interaction — the core interactive behavior is untested",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "79b6caf",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0038",
@@ -622,11 +622,11 @@
       "file": "src/__tests__/contact-form-validation.test.jsx",
       "line": 0,
       "description": "No test for the happy path — valid fields, elapsed cooldown, EmailJS called with correct parameters; the mock is wired up but never exercised",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "79b6caf",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0040",
@@ -638,11 +638,11 @@
       "file": "src/__tests__/site-config.test.js",
       "line": 5,
       "description": "Test asserts years > 10 using new Date().getFullYear() — trivially passes indefinitely and would not catch careerStartYear being changed to a wrong-but-plausible value",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "79b6caf",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0041",
@@ -685,12 +685,12 @@
       "depends_on": [],
       "file": "package.json",
       "line": 0,
-      "description": "legacy-peer-deps=true in .npmrc suppresses peer-dep validation globally; the conflicting Babel 7/8 package is not identified, making it unclear if a direct upgrade would resolve it",
-      "status": "open",
+      "description": "legacy-peer-deps=true in .npmrc suppresses peer-dep validation globally; investigated and confirmed conflict no longer exists — flag removed from .npmrc",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "79b6caf",
+      "resolved_date": "2026-07-10"
     },
     {
       "id": "f-0044",
@@ -702,11 +702,11 @@
       "file": "package.json",
       "line": 24,
       "description": "shadcn (^4.0.5) is listed in runtime dependencies but is a CLI code-generation tool only used at scaffolding time, not at runtime",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "79b6caf",
+      "resolved_date": "2026-07-10"
     }
   ]
 }
