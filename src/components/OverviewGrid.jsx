@@ -56,9 +56,12 @@ export function OverviewGrid() {
                 <div className="z-10 absolute bottom-1 right-3 px-4 py-2 rounded-full text-primary text-sm font-normal whitespace-nowrap bg-background">
                   {SITE.tagline}
                 </div>
-                <img
+                <Image
                   src="/corner-white.png"
                   alt=""
+                  width={200}
+                  height={80}
+                  aria-hidden="true"
                   className="absolute -bottom-0.5 right-0 w-1/2 h-20 overflow-visible"
                 />
               </div>
@@ -212,7 +215,7 @@ export function OverviewGrid() {
                   </div>
                 </div>
 
-                <img src="/linkedin.svg" alt="LinkedIn" className="size-8" />
+                <Image src="/linkedin.svg" alt="LinkedIn" width={32} height={32} />
               </div>
             </motion.article>
           </div>

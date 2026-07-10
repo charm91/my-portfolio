@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { Loader2 } from "lucide-react";
@@ -143,7 +144,7 @@ export default function ContactPageClient() {
               href="/"
               className="shrink-0 transition-opacity hover:opacity-80"
             >
-              <img src="/logo.svg" alt={SITE.displayName} className="w-20" />
+              <Image src="/logo.svg" alt={SITE.displayName} width={80} height={32} />
             </Link>
 
             <Button

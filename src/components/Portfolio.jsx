@@ -85,9 +85,12 @@ export function Portfolio() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 640px) 100vw, 480px"
                   />
-                  <img
+                  <Image
                     src="/corner-white.png"
                     alt=""
+                    width={190}
+                    height={90}
+                    aria-hidden="true"
                     className="absolute -bottom-0.5 -right-0.5 w-[190px] h-[90px] overflow-hidden"
                   />
                   <Button
