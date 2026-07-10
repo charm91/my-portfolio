@@ -1,7 +1,8 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { Loader2 } from "lucide-react";
@@ -25,6 +26,13 @@ export default function ContactPageClient() {
   const [honeypot, setHoneypot] = useState("");
   const [canSubmit, setCanSubmit] = useState(true);
   const formLoadTime = useRef(Date.now());
+  const cooldownTimer = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (cooldownTimer.current) clearTimeout(cooldownTimer.current);
+    };
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -68,7 +76,7 @@ export default function ContactPageClient() {
 
     // Start cooldown only after we actually attempt the send
     setCanSubmit(false);
-    setTimeout(() => setCanSubmit(true), RESUBMIT_COOLDOWN_MS);
+    cooldownTimer.current = setTimeout(() => setCanSubmit(true), RESUBMIT_COOLDOWN_MS);
 
     try {
       await emailjs.send(
@@ -136,7 +144,7 @@ export default function ContactPageClient() {
               href="/"
               className="shrink-0 transition-opacity hover:opacity-80"
             >
-              <img src="/logo.svg" alt={SITE.displayName} className="w-20" />
+              <Image src="/logo.svg" alt={SITE.displayName} width={80} height={32} />
             </Link>
 
             <Button

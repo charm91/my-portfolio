@@ -6,13 +6,13 @@ import { Clock, Globe, CirclePlay, TabletSmartphone } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CaseStudyAuthor } from "@/components/CaseStudyAuthor";
+import { CaseStudySection as Section } from "@/components/CaseStudySection";
 import {
   textPrimary,
   textSecondary,
   bgPage,
   pageTransition,
   scrollReveal,
-  scrollRevealTransition,
 } from "@/config/caseStudy";
 
 export function WctPage() {
@@ -26,7 +26,7 @@ export function WctPage() {
     >
       <Header />
 
-      <div className="fixed top-0 left-0 right-0 h-[30vh] z-0" aria-hidden>
+      <div className="fixed top-0 left-0 right-0 h-[30vh] z-0" aria-hidden="true">
         <div className="relative h-full w-full">
           <Image
             src="/k-cover.png"
@@ -45,7 +45,7 @@ export function WctPage() {
           className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 md:pb-14 w-full bg-white rounded-t-2xl pt-10"
         >
           <h1
-            className="text-4xl sm:text-4xl md:text-5xl font-medium text-center leading-tight mb-6 pt-5 tracking-tight"
+            className="text-4xl md:text-5xl font-medium text-center leading-tight mb-6 pt-5 tracking-tight"
             style={{ color: textPrimary }}
           >
             WCT Pay Crypto–Fiat Payment Dashboard
@@ -381,25 +381,5 @@ export function WctPage() {
         <Footer />
       </motion.div>
     </motion.div>
-  );
-}
-
-function Section({ title, children }) {
-  return (
-    <motion.section
-      initial={{ opacity: 0, y: 28 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-50px", amount: 0.15 }}
-      transition={scrollRevealTransition}
-      className="mb-12 md:mb-16 px-4"
-    >
-      <h2
-        className="text-2xl md:text-3xl font-bold mb-6"
-        style={{ color: textPrimary }}
-      >
-        {title}
-      </h2>
-      <div className="space-y-4 text-base leading-relaxed">{children}</div>
-    </motion.section>
   );
 }

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Star, ExternalLink, ArrowDown } from "lucide-react";
 import { Button } from "./ui/button";
 import { SITE, SOCIAL_LINKS } from "@/config/site";
+import { scrollToSection } from "@/lib/utils";
 
 const container = {
   hidden: { opacity: 0 },
@@ -19,14 +20,13 @@ const item = {
   show: { opacity: 1, y: 0, scale: 1 },
 };
 
-const cardShadow = "0 2px 5px rgba(0, 0, 0, 0.06)";
 const textPrimary = "#242424";
 const textSecondary = "#323744";
 
 export function OverviewGrid() {
   const scrollToContact = (e) => {
     e.preventDefault();
-    document.querySelector("#contact")?.scrollIntoView({ behavior: "smooth" });
+    scrollToSection("contact");
   };
 
   return (
@@ -56,9 +56,12 @@ export function OverviewGrid() {
                 <div className="z-10 absolute bottom-1 right-3 px-4 py-2 rounded-full text-primary text-sm font-normal whitespace-nowrap bg-background">
                   {SITE.tagline}
                 </div>
-                <img
+                <Image
                   src="/corner-white.png"
                   alt=""
+                  width={200}
+                  height={80}
+                  aria-hidden="true"
                   className="absolute -bottom-0.5 right-0 w-1/2 h-20 overflow-visible"
                 />
               </div>
@@ -212,7 +215,7 @@ export function OverviewGrid() {
                   </div>
                 </div>
 
-                <img src="/linkedin.svg" alt="LinkedIn" className="size-8" />
+                <Image src="/linkedin.svg" alt="LinkedIn" width={32} height={32} />
               </div>
             </motion.article>
           </div>
@@ -224,11 +227,7 @@ export function OverviewGrid() {
             size="icon-lg"
             aria-label="Scroll down"
             className="rounded-full bg-white border-0 shadow-sm size-10"
-            onClick={() => {
-              document
-                .querySelector("#services")
-                ?.scrollIntoView({ behavior: "smooth" });
-            }}
+            onClick={() => scrollToSection("services")}
           >
             <ArrowDown className="size-5" aria-hidden="true" />
           </Button>

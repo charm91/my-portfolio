@@ -60,10 +60,10 @@ export function Portfolio() {
 
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-1 max-w-xl mx-auto gap-4 md:gap-6">
-          {projects.map((project, i) => (
+        <div className="grid grid-cols-1 max-w-xl mx-auto gap-4 md:gap-6">
+          {projects.map((project) => (
             <motion.article
-              key={i}
+              key={project.href}
               initial={{ opacity: 0, y: 48, scale: 0.88 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.4 }}
@@ -85,9 +85,12 @@ export function Portfolio() {
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 640px) 100vw, 480px"
                   />
-                  <img
+                  <Image
                     src="/corner-white.png"
                     alt=""
+                    width={190}
+                    height={90}
+                    aria-hidden="true"
                     className="absolute -bottom-0.5 -right-0.5 w-[190px] h-[90px] overflow-hidden"
                   />
                   <Button

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { Settings, Globe, Layers, Code2 } from "lucide-react";
 import { Button } from "./ui/button";
+import { scrollToSection } from "@/lib/utils";
 
 const services = [
   {
@@ -48,16 +49,13 @@ const item = {
   show: { opacity: 1, y: 0 },
 };
 
-const cardShadow = "0 2px 5px rgba(0, 0, 0, 0.06)";
 const textPrimary = "#242424";
 const textSecondary = "#323744";
 
 export function Services() {
   const scrollToPortfolio = (e) => {
     e.preventDefault();
-    document
-      .querySelector("#portfolio")
-      ?.scrollIntoView({ behavior: "smooth" });
+    scrollToSection("portfolio");
   };
 
   return (

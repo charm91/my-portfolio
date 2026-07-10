@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { scrollToSection } from "@/lib/utils";
 
 export function Hero() {
   return (
@@ -46,11 +47,7 @@ export function Hero() {
           <Button
             size="lg"
             className="rounded-full gap-2 group p-4 py-5 my-2 "
-            onClick={() =>
-              document
-                .querySelector("#portfolio")
-                ?.scrollIntoView({ behavior: "smooth" })
-            }
+            onClick={() => scrollToSection("portfolio")}
           >
             View Case Studies
             <ArrowRight className="size-4 transition-transform group-hover:translate-x-1" />
