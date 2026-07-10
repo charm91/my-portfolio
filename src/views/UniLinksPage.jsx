@@ -28,7 +28,7 @@ export function UniLinksPage() {
       <Header />
 
       {/* Hero: fixed background image at top (does not scroll) */}
-      <div className="fixed top-0 left-0 right-0 h-[30vh] z-0" aria-hidden>
+      <div className="fixed top-0 left-0 right-0 h-[30vh] z-0" aria-hidden="true">
         <div className="relative h-full w-full">
           <Image
             src="/u-cover.png"
@@ -48,7 +48,7 @@ export function UniLinksPage() {
           className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 md:pb-14 w-full bg-white rounded-t-2xl pt-10"
         >
           <h1
-            className="text-4xl sm:text-4xl md:text-5xl px-4 font-medium text-center leading-tight mb-6 pt-5 tracking-tight"
+            className="text-4xl md:text-5xl px-4 font-medium text-center leading-tight mb-6 pt-5 tracking-tight"
             style={{ color: textPrimary }}
           >
             UniLinks All-in-One Study Abroad Platform
@@ -149,7 +149,7 @@ export function UniLinksPage() {
               <div className="overflow-hidden rounded-sm bg-gray-100">
                 <Image
                   src="/unilinks/group-photo.png"
-                  alt="Fianl Presentation"
+                  alt="Final Presentation"
                   width={1344}
                   height={680}
                   className="w-full h-auto"
@@ -217,12 +217,6 @@ export function UniLinksPage() {
               students discover and decide, mentors guide and support, and the
               admin team ensures quality, transparency, and process integrity
               throughout the journey.
-            </p>
-            <p className="mb-4">
-              <b>Admissions are still agency-driven and inefficient.</b>
-              <br />
-              Traditional flows depend on third parties, lack transparency, and
-              put business incentives above student experience.
             </p>
             <div className="rounded-lg border border-gray-200 bg-white p-2 shadow-xs my-8">
               <div className="grid grid-cols-1 gap-1 md:grid-cols-2">

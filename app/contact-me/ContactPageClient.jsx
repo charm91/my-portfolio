@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
@@ -25,6 +25,13 @@ export default function ContactPageClient() {
   const [honeypot, setHoneypot] = useState("");
   const [canSubmit, setCanSubmit] = useState(true);
   const formLoadTime = useRef(Date.now());
+  const cooldownTimer = useRef(null);
+
+  useEffect(() => {
+    return () => {
+      if (cooldownTimer.current) clearTimeout(cooldownTimer.current);
+    };
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -68,7 +75,7 @@ export default function ContactPageClient() {
 
     // Start cooldown only after we actually attempt the send
     setCanSubmit(false);
-    setTimeout(() => setCanSubmit(true), RESUBMIT_COOLDOWN_MS);
+    cooldownTimer.current = setTimeout(() => setCanSubmit(true), RESUBMIT_COOLDOWN_MS);
 
     try {
       await emailjs.send(

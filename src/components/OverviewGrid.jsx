@@ -20,7 +20,6 @@ const item = {
   show: { opacity: 1, y: 0, scale: 1 },
 };
 
-const cardShadow = "0 2px 5px rgba(0, 0, 0, 0.06)";
 const textPrimary = "#242424";
 const textSecondary = "#323744";
 

@@ -27,7 +27,7 @@ export function KBZBankPage() {
     >
       <Header />
 
-      <div className="fixed top-0 left-0 right-0 h-[30vh] z-0" aria-hidden>
+      <div className="fixed top-0 left-0 right-0 h-[30vh] z-0" aria-hidden="true">
         <div className="relative h-full w-full">
           <Image
             src="/k-cover.png"
@@ -46,7 +46,7 @@ export function KBZBankPage() {
           className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 md:pb-14 w-full bg-white rounded-t-2xl pt-10"
         >
           <h1
-            className="text-4xl sm:text-4xl md:text-5xl font-medium text-center leading-tight mb-6 pt-5 tracking-tight"
+            className="text-4xl md:text-5xl font-medium text-center leading-tight mb-6 pt-5 tracking-tight"
             style={{ color: textPrimary }}
           >
             KBZ Bank Digital Banking Authentication System
