@@ -13,7 +13,6 @@ import {
   bgPage,
   pageTransition,
   scrollReveal,
-  scrollRevealTransition,
 } from "@/config/caseStudy";
 
 export function WctPage() {
