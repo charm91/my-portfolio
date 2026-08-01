@@ -15,7 +15,7 @@ npm install
 ## Usage
 
 ```bash
-npm run dev      # development server → http://localhost:3002 (set PORT to override, e.g. PORT=3010 npm run dev)
+npm run dev      # development server → http://localhost:3002 (auto-picks the next free port if 3002 is taken)
 npm run build    # production build
 npm run lint     # ESLint
 npm test         # run test suite (Vitest, 60 tests)
