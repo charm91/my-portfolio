@@ -431,11 +431,11 @@
       "file": "src/components/Header.jsx",
       "line": 139,
       "description": "Tailwind ! importance overrides (bg-gray-100!, text-[#1f2937]!) fight the Button component's own variant styles; a dedicated button variant would be cleaner",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "84b6ad9",
+      "resolved_date": "2026-08-01"
     },
     {
       "id": "f-0028",
@@ -735,11 +735,11 @@
       "file": "package.json",
       "line": 46,
       "description": "package.json is missing a trailing newline at end of file (likely stripped by an automated version-bump step)",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "b07092d5d007ec8eef446f9ac16d0be9d2994e56",
       "first_found_date": "2026-08-01",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "84b6ad9",
+      "resolved_date": "2026-08-01"
     },
     {
       "id": "f-0047",
