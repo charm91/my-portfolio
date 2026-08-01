@@ -13,7 +13,7 @@ Changes to copy or layout are immediately visible after deploy.
 ## 2. Project Config
 
 ```
-git-solo: true
+git-strategy: solo
 git-auto-commit: true
 ```
 
@@ -36,21 +36,30 @@ npm run test:watch    # run tests in watch mode
 
 | Path | Why it matters |
 |---|---|
-| `src/config/site.js` | Single source of truth for personal info (name, email, tagline, availability, roles, domains, SITE_URL). Change here, not in components. |
+| `src/config/site.js` | Single source of truth for personal info (name, email, tagline, availability, roles, domains) and `SITE_URL`. Change here, not in components. |
 | `src/config/caseStudy.js` | Shared design tokens (textPrimary, bgPage) and animation configs (pageTransition, scrollReveal) for all case study pages. |
 | `src/lib/utils.js` | `cn()` for Tailwind class merging; `scrollToSection(id)` used by Hero, Services, OverviewGrid, Header for smooth nav. |
 | `app/page.jsx` | Homepage entry — Server Component. Composes all section components in order. Handles `?scrollTo=` query param via `<ScrollToSection>` in `<Suspense>`. |
 | `app/ScrollToSection.jsx` | Client Component; reads `useSearchParams` and scrolls to target section. Must stay in `<Suspense>` to avoid Next.js build error. |
+| `app/sitemap.js` / `app/robots.js` | Sitemap entries are hand-maintained per route (not generated); both read `SITE_URL` from `src/config/site.js`. |
 | `src/components/` | Homepage section components (Hero, OverviewGrid, Services, Portfolio, Journey, Testimonials, FAQ, Footer, Header). One file per section. |
 | `src/views/` | Full case study page content (BetterHRPage, KBZBankPage, UniLinksPage, WctPage). Long JSX files with inline prose. |
 | `app/[case]/page.jsx` | Thin route files — sets metadata/OG tags, renders the matching view from `src/views/`. |
 | `app/contact-me/ContactPageClient.jsx` | Contact form with EmailJS integration, honeypot spam guard, and submission cooldown. |
 | `app/globals.css` | Tailwind 4 config via `@theme` block. No `tailwind.config.js` exists. |
-| `src/__tests__/` | 17 test files, 60 tests. Vitest + React Testing Library. Ledger at `.claude/test-log.json`. |
+| `src/__tests__/` | 17 test files, 60 tests. Vitest + React Testing Library. Ledger at `.claude/helm/test-log.json`. |
 
 ---
 
-## 5. Behavior Rules
+## 5. Domain Rules
+
+- Contact form anti-spam is three-layered: a hidden honeypot field, a 3s minimum-fill timer, and a 30s resubmit cooldown (`app/contact-me/ContactPageClient.jsx`) — don't remove or weaken any layer without discussing with the owner.
+- `SITE_URL` (`src/config/site.js`) falls back to the production domain (`https://www.nguwahaung.com`) when `NEXT_PUBLIC_SITE_URL` is unset — it drives OG tags, `sitemap.js`, and `robots.js`, so a missing env var silently points metadata at production even in dev.
+- Adding a new case study page requires a manual entry in `app/sitemap.js` — there is no auto-discovery of routes.
+
+---
+
+## 6. Behavior Rules
 
 - Edit copy directly in component files or `src/config/site.js` — no CMS.
 - Personal details (name, email, availability, social links, resume URL) must be updated in `src/config/site.js` only.
@@ -60,7 +69,7 @@ npm run test:watch    # run tests in watch mode
 
 ---
 
-## 6. Hard Safety Rules
+## 7. Hard Safety Rules
 
 - Do not push to `main` without the owner's explicit instruction.
 - Do not add new npm dependencies without confirming with the owner.
@@ -68,7 +77,7 @@ npm run test:watch    # run tests in watch mode
 
 ---
 
-## 7. Known Traps
+## 8. Known Traps
 
 - `ScrollToSection` uses `useSearchParams` — it must be wrapped in `<Suspense>` in `app/page.jsx` or Next.js build fails.
 - Dev port is `3002` (not the Next.js default 3000) — set in `package.json` `dev` script.
@@ -89,4 +98,4 @@ At the start of every session, check whether the paths above exist on this machi
 If either is missing, inform the user: "helm rules are referenced in CLAUDE.md but the
 plugin is not installed on this machine. Install it with: /plugin install claude-helm"
 
-<!-- last-reviewed: 24615053d6f5ee8cb4825dfee4df31cbc9c066c6 -->
+<!-- last-reviewed: 23a5433ba8e725f499c522a68cefed5e2cf61596 -->
