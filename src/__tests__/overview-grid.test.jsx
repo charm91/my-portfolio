@@ -4,14 +4,6 @@ import React from "react";
 import { OverviewGrid } from "../components/OverviewGrid";
 import { SITE } from "../config/site.js";
 
-vi.mock("framer-motion", () => ({
-  motion: new Proxy({}, {
-    get: (_, tag) =>
-      ({ children, initial, animate, transition, viewport, whileInView, variants, ...props }) =>
-        React.createElement(tag, props, children),
-  }),
-}));
-
 vi.mock("next/image", () => ({
   default: ({ src, alt }) => <img src={src} alt={alt} />,
 }));

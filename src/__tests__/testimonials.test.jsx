@@ -3,12 +3,20 @@ import { render, screen } from "@testing-library/react";
 import React from "react";
 import { Testimonials } from "../components/Testimonials";
 
+// Overrides the shared framer-motion mock (vitest.setup.js) to also stub
+// useScroll/useTransform, which this component uses for scroll-driven motion.
+// vi.mock factories can't reference imported helpers (hoisting), so the
+// motion proxy is inlined here rather than reusing test-utils/mockMotion.
 vi.mock("framer-motion", () => ({
-  motion: new Proxy({}, {
-    get: (_, tag) =>
-      ({ children, initial, animate, transition, viewport, whileInView, style, ...props }) =>
-        React.createElement(tag, props, children),
-  }),
+  motion: new Proxy(
+    {},
+    {
+      get:
+        (_, tag) =>
+        ({ children, initial, animate, transition, viewport, whileInView, variants, exit, style, ...props }) =>
+          React.createElement(tag, { style, ...props }, children),
+    },
+  ),
   useScroll: () => ({ scrollYProgress: { get: () => 0 } }),
   useTransform: () => 0,
 }));

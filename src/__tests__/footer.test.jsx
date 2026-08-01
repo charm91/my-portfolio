@@ -3,14 +3,6 @@ import { render, screen } from "@testing-library/react";
 import React from "react";
 import { Footer } from "../components/Footer";
 
-vi.mock("framer-motion", () => ({
-  motion: new Proxy({}, {
-    get: (_, tag) =>
-      ({ children, initial, animate, transition, viewport, whileInView, ...props }) =>
-        React.createElement(tag, props, children),
-  }),
-}));
-
 vi.mock("next/link", () => ({
   default: ({ children, href, ...props }) => <a href={href} {...props}>{children}</a>,
 }));

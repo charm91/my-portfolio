@@ -14,19 +14,6 @@ vi.mock("next/image", () => ({
   default: ({ src, alt, ...props }) => <img src={src} alt={alt} {...props} />,
 }));
 
-// Render each motion.* as its correct HTML tag so form/button semantics work
-vi.mock("framer-motion", () => ({
-  motion: new Proxy(
-    {},
-    {
-      get: (_, tag) =>
-        ({ children, initial, animate, transition, viewport, whileInView, style, ...props }) =>
-          React.createElement(tag, { style, ...props }, children),
-    }
-  ),
-  AnimatePresence: ({ children }) => children,
-}));
-
 vi.mock("@emailjs/browser", () => ({
   default: { send: vi.fn().mockResolvedValue({}) },
 }));
