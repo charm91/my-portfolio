@@ -24,7 +24,7 @@ readme-style: standard
 
 ```bash
 npm install           # install dependencies
-npm run dev           # dev server on http://localhost:3002 (override with PORT=xxxx)
+npm run dev           # dev server on http://localhost:3002 (auto-falls back to next free port if taken)
 npm run build         # production build
 npm run lint          # ESLint
 npm test              # run all tests (Vitest)
@@ -81,7 +81,7 @@ npm run test:watch    # run tests in watch mode
 ## 8. Known Traps
 
 - `ScrollToSection` uses `useSearchParams` — it must be wrapped in `<Suspense>` in `app/page.jsx` or Next.js build fails.
-- Dev port defaults to `3002` (not the Next.js default 3000), set in `package.json`'s `dev` script as `next dev -p ${PORT:-3002}` — override with `PORT=xxxx npm run dev` if 3002 is taken.
+- Dev port defaults to `3002` (not the Next.js default 3000). `npm run dev` runs `scripts/dev.js`, which probes port availability (starting at `$PORT` or 3002) and auto-increments to the next free port if it's taken — no manual override needed, though `PORT=xxxx npm run dev` still works to change the starting point.
 - Tailwind 4 is in use — config lives in `globals.css` via `@theme`, not `tailwind.config.js`.
 - Case study root `motion.div` must **not** have `overflow-auto` — it forces div-level scroll and kills compositor-thread scroll performance.
 - `whileInView` observers fire on the main thread. Keep them sparse on long content pages; `CaseStudySection` is intentionally a plain `<section>` for this reason.
