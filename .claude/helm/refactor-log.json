@@ -31,11 +31,11 @@
       "file": "src/views/BetterHRPage.jsx",
       "line": 20,
       "description": "The full case study page shell (fixed hero image, header, white card layout, footer, motion wrapper) is copy-pasted across all four view files with only the cover image and title differing",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "678877d",
+      "resolved_date": "2026-08-01"
     },
     {
       "id": "f-0003",
@@ -47,11 +47,11 @@
       "file": "app/betterhr/page.jsx",
       "line": 0,
       "description": "Four near-identical case study route files (betterhr, kbz-bank, unilinks, wct) each duplicate the same metadata/OG-tag pattern; a single app/[case]/page.jsx dynamic route with generateStaticParams + generateMetadata would reduce them to one file",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "678877d",
+      "resolved_date": "2026-08-01"
     },
     {
       "id": "f-0004",
@@ -79,11 +79,11 @@
       "file": "src/components/Footer.jsx",
       "line": 9,
       "description": "Color constants (textPrimary, textSecondary, bgPage) are re-declared as local JS strings in Footer.jsx, Services.jsx, OverviewGrid.jsx, caseStudy.js, and ContactPageClient.jsx \u2014 values are intentionally different across components (design intent), but a shared token file would make intentional differences explicit",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "069577c",
+      "resolved_date": "2026-08-01"
     },
     {
       "id": "f-0006",
@@ -127,11 +127,11 @@
       "file": "app/portfolio/page.jsx",
       "line": 30,
       "description": "PortfolioPage duplicates the home-wrapper / home-bg-layer / home-content layout shell that app/page.jsx uses; extracting a shared HomeShell component would eliminate the duplication",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "27a9069",
+      "resolved_date": "2026-08-01"
     },
     {
       "id": "f-0009",
@@ -207,11 +207,11 @@
       "file": "src/views/WctPage.jsx",
       "line": 32,
       "description": "WctPage hero still uses /k-cover.png (KBZ Bank's cover image) instead of its own cover \u2014 a WCT-specific asset (public/wct.png) now exists, so this is now a mechanical one-line swap rather than something needing owner input",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "678877d",
+      "resolved_date": "2026-08-01"
     },
     {
       "id": "f-0014",
@@ -740,6 +740,22 @@
       "first_found_date": "2026-08-01",
       "resolved_commit": null,
       "resolved_date": null
+    },
+    {
+      "id": "f-0047",
+      "category": "code-quality",
+      "priority": "low",
+      "risk": "safe",
+      "cluster_id": "c-arc-003",
+      "depends_on": [],
+      "file": "src/components/Footer.jsx",
+      "line": 11,
+      "description": "cardShadow constant declared but never referenced — same dead-code pattern already fixed in Services.jsx and OverviewGrid.jsx (f-0020, f-0021), missed in Footer.jsx; found while extracting shared color tokens",
+      "status": "fixed",
+      "first_found_commit": "069577c",
+      "first_found_date": "2026-08-01",
+      "resolved_commit": "069577c",
+      "resolved_date": "2026-08-01"
     }
   ]
 }
