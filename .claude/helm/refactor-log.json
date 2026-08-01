@@ -543,7 +543,8 @@
       "file": "src/components/Testimonials.jsx",
       "line": 45,
       "description": "VIEWPORT_HEIGHT is a hard-coded 800px constant used as both a scroll-range seed and a minHeight constraint; content may clip or have excess whitespace on devices that differ significantly from this assumption",
-      "status": "open",
+      "status": "skipped-by-user",
+      "note": "Confirmed with owner this is a deliberate fixed-size scroll card (\"Fixed 800px viewport, no scrollbar\" per in-code comment), not an actual device-viewport assumption. Owner wants to evaluate mobile appearance visually before deciding on a responsive treatment.",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
       "resolved_commit": null,
@@ -607,11 +608,12 @@
       "file": "src/__tests__/contact-form-validation.test.jsx",
       "line": 41,
       "description": "All form interactions use fireEvent.change/click instead of @testing-library/user-event; fireEvent does not simulate real browser events (no focus, blur, keyboard sequence) and can miss onBlur validation bugs",
-      "status": "open",
+      "status": "fixed",
+      "note": "Migration exposed a real pre-existing bug in the framer-motion test mock (uncached Proxy caused remounts, dropping focus between keystrokes) — fixed alongside, see f-0045",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "628c055",
+      "resolved_date": "2026-08-01"
     },
     {
       "id": "f-0039",
@@ -655,10 +657,11 @@
       "file": "src/__tests__/contact-form-validation.test.jsx",
       "line": 1,
       "description": "Explicit vitest imports (describe, it, expect, vi) are used even though globals: true makes them implicit \u2014 inconsistent style with no clear convention",
-      "status": "open",
+      "status": "auto-resolved",
+      "note": "All 17 test files now consistently use explicit vitest imports \u2014 no longer inconsistent, this has become the de facto convention",
       "first_found_commit": "e35ddcfd88a6f1eb46a436fcf01bb2bb6afb721c",
       "first_found_date": "2026-07-10",
-      "resolved_commit": null,
+      "resolved_commit": "6d606ac",
       "resolved_date": null
     },
     {
@@ -719,11 +722,11 @@
       "file": "src/__tests__/hero.test.jsx",
       "line": 6,
       "description": "The same framer-motion Proxy mock (~7-11 lines) is duplicated near-identically across 11 test files (faq, header, contact-form-validation, journey, hero, footer, services, overview-grid, portfolio, testimonials, views) — should be extracted into a shared test helper",
-      "status": "open",
+      "status": "fixed",
       "first_found_commit": "b07092d5d007ec8eef446f9ac16d0be9d2994e56",
       "first_found_date": "2026-08-01",
-      "resolved_commit": null,
-      "resolved_date": null
+      "resolved_commit": "078ae10",
+      "resolved_date": "2026-08-01"
     },
     {
       "id": "f-0046",
