@@ -3,14 +3,6 @@ import { render, screen } from "@testing-library/react";
 import React from "react";
 import { Portfolio } from "../components/Portfolio";
 
-vi.mock("framer-motion", () => ({
-  motion: new Proxy({}, {
-    get: (_, tag) =>
-      ({ children, initial, animate, transition, viewport, whileInView, variants, style, ...props }) =>
-        React.createElement(tag, { style, ...props }, children),
-  }),
-}));
-
 vi.mock("next/image", () => ({
   default: ({ src, alt }) => <img src={src} alt={alt} />,
 }));

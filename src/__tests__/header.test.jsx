@@ -4,15 +4,6 @@ import userEvent from "@testing-library/user-event";
 import React from "react";
 import { Header } from "../components/Header";
 
-vi.mock("framer-motion", () => ({
-  motion: new Proxy({}, {
-    get: (_, tag) =>
-      ({ children, initial, animate, transition, ...props }) =>
-        React.createElement(tag, props, children),
-  }),
-  AnimatePresence: ({ children }) => <>{children}</>,
-}));
-
 vi.mock("next/image", () => ({
   default: ({ src, alt }) => <img src={src} alt={alt} />,
 }));

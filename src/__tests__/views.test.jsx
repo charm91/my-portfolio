@@ -6,14 +6,6 @@ import { KBZBankPage } from "../views/KBZBankPage";
 import { UniLinksPage } from "../views/UniLinksPage";
 import { WctPage } from "../views/WctPage";
 
-vi.mock("framer-motion", () => ({
-  motion: new Proxy({}, {
-    get: (_, tag) =>
-      ({ children, initial, animate, transition, viewport, whileInView, style, ...props }) =>
-        React.createElement(tag, { style, ...props }, children),
-  }),
-}));
-
 vi.mock("next/image", () => ({
   default: ({ src, alt }) => <img src={src} alt={alt} />,
 }));

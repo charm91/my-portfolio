@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { Settings, Globe, Layers, Code2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { scrollToSection } from "@/lib/utils";
+import { COLORS } from "@/config/theme";
 
 const services = [
   {
@@ -49,8 +50,8 @@ const item = {
   show: { opacity: 1, y: 0 },
 };
 
-const textPrimary = "#242424";
-const textSecondary = "#323744";
+const textPrimary = COLORS.textPrimaryHome;
+const textSecondary = COLORS.textSecondary;
 
 export function Services() {
   const scrollToPortfolio = (e) => {
