@@ -15,6 +15,7 @@ Changes to copy or layout are immediately visible after deploy.
 ```
 git-strategy: solo
 git-auto-commit: true
+readme-style: standard
 ```
 
 ---
