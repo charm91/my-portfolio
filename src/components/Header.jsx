@@ -136,9 +136,10 @@ export function Header() {
           ) : (
             <Button
               asChild
+              variant="chip"
               className={cn(
                 "rounded-full px-5 py-2 h-9 text-sm font-medium transition-colors",
-                "bg-gray-100! hover:bg-gray-200! text-[#1f2937]! cursor-pointer",
+                "bg-gray-100 hover:bg-gray-200 cursor-pointer",
               )}
             >
               <Link href="/">Back to Home</Link>
@@ -179,7 +180,8 @@ export function Header() {
                   })}
                 </nav>
                 <Button
-                  className="w-full justify-start rounded-full py-5 px-4 text-sm font-medium bg-white text-[#1f2937]! hover:bg-[#f3f4f6]!"
+                  variant="chip"
+                  className="w-full justify-start rounded-full py-5 px-4 text-sm font-medium bg-white hover:bg-[#f3f4f6]"
                   size="sm"
                   asChild
                 >

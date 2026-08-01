@@ -150,7 +150,8 @@ export default function ContactPageClient() {
 
             <Button
               asChild
-              className="rounded-full bg-gray-100 px-5 py-2 h-9 text-sm font-medium hover:bg-gray-200! text-[#1f2937]!"
+              variant="chip"
+              className="rounded-full bg-gray-100 px-5 py-2 h-9 text-sm font-medium hover:bg-gray-200"
             >
               <Link href="/">Back to Home</Link>
             </Button>
