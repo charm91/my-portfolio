@@ -3,14 +3,6 @@ import { render, screen } from "@testing-library/react";
 import React from "react";
 import { Hero } from "../components/Hero";
 
-vi.mock("framer-motion", () => ({
-  motion: new Proxy({}, {
-    get: (_, tag) =>
-      ({ children, initial, animate, transition, ...props }) =>
-        React.createElement(tag, props, children),
-  }),
-}));
-
 vi.mock("@/components/ui/button", () => ({
   Button: ({ children, onClick, ...props }) => <button onClick={onClick} {...props}>{children}</button>,
 }));

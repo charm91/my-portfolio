@@ -4,17 +4,6 @@ import userEvent from "@testing-library/user-event";
 import React from "react";
 import { FAQ } from "../components/FAQ";
 
-vi.mock("framer-motion", () => ({
-  motion: new Proxy(
-    {},
-    {
-      get: (_, tag) =>
-        ({ children, initial, animate, transition, viewport, whileInView, ...props }) =>
-          <div {...props}>{children}</div>,
-    }
-  ),
-}));
-
 // Stateful mock that simulates real expand/collapse so click tests are meaningful
 vi.mock("@/components/ui/accordion", () => {
   const AccordionContext = React.createContext({ open: false, onToggle: () => {} });
