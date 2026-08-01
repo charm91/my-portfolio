@@ -3,15 +3,35 @@ import { render, screen } from "@testing-library/react";
 import React from "react";
 import { Testimonials } from "../components/Testimonials";
 
-vi.mock("framer-motion", () => ({
-  motion: new Proxy({}, {
-    get: (_, tag) =>
-      ({ children, initial, animate, transition, viewport, whileInView, style, ...props }) =>
-        React.createElement(tag, props, children),
-  }),
-  useScroll: () => ({ scrollYProgress: { get: () => 0 } }),
-  useTransform: () => 0,
-}));
+// Overrides the shared framer-motion mock (vitest.setup.js) to also stub
+// useScroll/useTransform, which this component uses for scroll-driven motion.
+// vi.mock factories can't reference imported helpers (hoisting), so the
+// motion proxy is inlined here rather than reusing test-utils/mockMotion.
+// Components are cached per tag — an uncached Proxy would return a new
+// function component on every access, causing React to remount the subtree
+// (and drop focus) on every render.
+vi.mock("framer-motion", () => {
+  const cache = new Map();
+  return {
+    motion: new Proxy(
+      {},
+      {
+        get(_, tag) {
+          if (!cache.has(tag)) {
+            cache.set(
+              tag,
+              ({ children, initial, animate, transition, viewport, whileInView, variants, exit, style, ...props }) =>
+                React.createElement(tag, { style, ...props }, children),
+            );
+          }
+          return cache.get(tag);
+        },
+      },
+    ),
+    useScroll: () => ({ scrollYProgress: { get: () => 0 } }),
+    useTransform: () => 0,
+  };
+});
 
 vi.mock("next/image", () => ({
   default: ({ src, alt }) => <img src={src} alt={alt} />,

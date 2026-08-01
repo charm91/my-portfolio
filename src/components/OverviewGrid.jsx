@@ -6,6 +6,7 @@ import { Star, ExternalLink, ArrowDown } from "lucide-react";
 import { Button } from "./ui/button";
 import { SITE, SOCIAL_LINKS } from "@/config/site";
 import { scrollToSection } from "@/lib/utils";
+import { COLORS } from "@/config/theme";
 
 const container = {
   hidden: { opacity: 0 },
@@ -20,8 +21,8 @@ const item = {
   show: { opacity: 1, y: 0, scale: 1 },
 };
 
-const textPrimary = "#242424";
-const textSecondary = "#323744";
+const textPrimary = COLORS.textPrimaryHome;
+const textSecondary = COLORS.textSecondary;
 
 export function OverviewGrid() {
   const scrollToContact = (e) => {

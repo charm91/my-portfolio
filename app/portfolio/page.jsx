@@ -1,4 +1,4 @@
-import { Header } from "@/components/Header";
+import { HomeShell } from "@/components/HomeShell";
 import { SITE } from "@/config/site";
 import { Portfolio } from "@/components/Portfolio";
 import { Journey } from "@/components/Journey";
@@ -29,18 +29,12 @@ export const metadata = {
 
 export default function PortfolioPage() {
   return (
-    <>
-      <Header />
-      <div className="home-wrapper">
-        <div className="home-bg-layer" />
-        <main id="main-content">
-          <Portfolio />
-          <Journey />
-          <Testimonials />
-          <FAQ />
-          <Footer />
-        </main>
-      </div>
-    </>
+    <HomeShell>
+      <Portfolio />
+      <Journey />
+      <Testimonials />
+      <FAQ />
+      <Footer />
+    </HomeShell>
   );
 }
