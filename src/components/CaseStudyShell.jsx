@@ -25,8 +25,14 @@ export function CaseStudyShell({ coverImage, title, tags, liveUrl, thumbnail, ch
     >
       <Header />
 
-      {/* Hero: fixed background image at top (does not scroll) */}
-      <div className="fixed top-0 left-0 right-0 h-[30vh] z-0" aria-hidden="true">
+      {/* Hero: fixed background image at top (does not scroll).
+          will-change promotes this to its own compositor layer so the
+          browser doesn't repaint it on every scroll frame. */}
+      <div
+        className="fixed top-0 left-0 right-0 h-[30vh] z-0"
+        style={{ willChange: "transform" }}
+        aria-hidden="true"
+      >
         <div className="relative h-full w-full">
           <Image
             src={coverImage}
