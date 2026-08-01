@@ -5,10 +5,10 @@ import { motion } from "framer-motion";
 import { Linkedin, Mail, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SITE, SOCIAL_LINKS, RESUME_URL } from "@/config/site";
+import { COLORS } from "@/config/theme";
 
-const textPrimary = "#1f2937";
-const textSecondary = "#323744";
-const cardShadow = "0 2px 5px rgba(0, 0, 0, 0.06)";
+const textPrimary = COLORS.textPrimary;
+const textSecondary = COLORS.textSecondary;
 
 export function Footer() {
   return (
@@ -23,7 +23,7 @@ export function Footer() {
         >
           <span
             className="inline-block px-4 py-1.5 rounded-full text-xs font-medium mb-5"
-            style={{ backgroundColor: "#f6f7f9", color: textPrimary }}
+            style={{ backgroundColor: COLORS.inputBg, color: textPrimary }}
           >
             Let's Connect
           </span>

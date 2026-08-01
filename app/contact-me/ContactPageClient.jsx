@@ -9,11 +9,12 @@ import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { SITE } from "@/config/site";
+import { COLORS } from "@/config/theme";
 
-const textPrimary = "#1f2937";
-const textSecondary = "#6b7280";
-const bgPage = "#F8F8F8";
-const inputBg = "#f6f7f9";
+const textPrimary = COLORS.textPrimary;
+const textSecondary = COLORS.textSecondaryContact;
+const bgPage = COLORS.bgPageContact;
+const inputBg = COLORS.inputBg;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const MIN_SUBMIT_MS = 3000;

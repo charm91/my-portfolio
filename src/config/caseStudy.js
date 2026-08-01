@@ -1,6 +1,8 @@
-export const textPrimary = "#1f2937";
-export const textSecondary = "#4b5563";
-export const bgPage = "#fafafa";
+import { COLORS } from "@/config/theme";
+
+export const textPrimary = COLORS.textPrimary;
+export const textSecondary = COLORS.textSecondaryCaseStudy;
+export const bgPage = COLORS.bgPage;
 
 export const pageTransition = { duration: 0.4, ease: "easeOut" };
 
