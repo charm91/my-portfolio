@@ -22,7 +22,7 @@ export function KBZBankPage() {
         <p className="mb-4">
           KBZ Bank set out to enable customers to open bank accounts
           digitally, reducing dependency on physical branches. However,
-          onboarding in banking is inherently complex—requiring identity
+          onboarding in banking is inherently complex: requiring identity
           verification, regulatory compliance, and multiple layers of data
           validation.
         </p>
@@ -34,7 +34,7 @@ export function KBZBankPage() {
       </Section>
       <Section title="The Challenge">
         <p className="mb-4">
-          The onboarding flow was not a simple sign-up—it was a multi-step
+          The onboarding flow was not a simple sign-up; it was a multi-step
           process with strict requirements and frequent failure points.
         </p>
         <p className="mb-4">Users had to:</p>
@@ -63,7 +63,7 @@ export function KBZBankPage() {
           </div>
         </div>
         <p className="mb-4">
-          The biggest issue was not just the number of steps—but the lack of
+          The biggest issue was not just the number of steps, but the lack of
           clarity in how the system works.
         </p>
         <p className="mb-4">Users didn't understand:</p>
@@ -80,13 +80,13 @@ export function KBZBankPage() {
       <Section title="Approach">
         <p className="mb-4">
           Instead of simplifying only the UI, I focused on restructuring the
-          onboarding logic—making the system behavior clearer and reducing
+          onboarding logic, making the system behavior clearer and reducing
           unnecessary effort.
         </p>
       </Section>
       <Section title="Designing a Structured Journey">
         <p className="mb-4">
-          The onboarding process included multiple dependent steps—from
+          The onboarding process included multiple dependent steps, from
           identity capture to account activation. I redesigned the flow into
           a guided, progressive journey, where each step builds on the
           previous one and reduces user effort whenever possible.
@@ -130,7 +130,7 @@ export function KBZBankPage() {
 
       <Section title="Creating a Multi-System Validation Flow">
         <p className="mb-4">
-          Authentication doesn't happen in a single step—it spans across
+          Authentication doesn't happen in a single step; it spans across
           multiple systems. <br />
           After onboarding, validation continues through different channels:
         </p>
@@ -161,7 +161,7 @@ export function KBZBankPage() {
 
       <Section title="Designing for Real System States, Not Just Errors">
         <p className="mb-4">
-          The onboarding journey doesn't end at submission—it continues
+          The onboarding journey doesn't end at submission; it continues
           through multiple system responses delivered via inbox
           notifications. <br /> Users may encounter different outcomes such
           as:
@@ -257,7 +257,7 @@ export function KBZBankPage() {
           <p className="mb-4">
             This project shifted my perspective from designing screens to
             designing systems. I learned that in financial products,
-            complexity cannot be removed—but it can be structured in a way
+            complexity cannot be removed, but it can be structured in a way
             users can navigate with confidence.
           </p>
           <p className="mb-4">
