@@ -42,7 +42,7 @@ export function UniLinksPage() {
           I co-founded UniLinks while pursuing my Master's degree at
           Harbour.Space, originally as a capstone project. The idea emerged
           from close friends who were informally helping students navigate
-          real challenges — unclear admission information, difficulty
+          real challenges: unclear admission information, difficulty
           choosing the right programs, financial pressure abroad, and
           reliance on costly, opaque education agencies.
         </p>
@@ -54,7 +54,7 @@ export function UniLinksPage() {
           needed.
         </p>
         <p className="mb-4">
-          UniLinks was created to bridge that gap — enabling students to
+          UniLinks was created to bridge that gap, enabling students to
           guide students, transparently and sustainably.
         </p>
         <div className="rounded-lg border border-gray-200 bg-white p-2 shadow-xs my-8">
@@ -74,13 +74,13 @@ export function UniLinksPage() {
         <p className="mb-4">
           <b>Students lack real, trustworthy admission insight.</b> <br />
           Most rely on marketing-heavy university pages, costly agents, or
-          fragmented social content—making it hard to understand what
+          fragmented social content, making it hard to understand what
           studying a program is actually like.
         </p>
         <p className="mb-4">
           <b>International students face financial</b> <br />
           pressure. Many struggle with living costs, have limited work
-          options, and want to help others—but lack a structured, ethical
+          options, and want to help others, but lack a structured, ethical
           way to do so.
         </p>
         <p className="mb-4">
@@ -115,7 +115,7 @@ export function UniLinksPage() {
       </Section>
       <Section title="Our Approach: A Student-First Admission Model">
         <p className="mb-4">
-          That's why we built UniLinks — to redesign the admission journey
+          That's why we built UniLinks to redesign the admission journey
           from a student's perspective. Instead of relying on marketing
           content or third-party agencies, UniLinks connects prospective
           students directly with those already studying the same program and
@@ -158,7 +158,7 @@ export function UniLinksPage() {
       </Section>
       <Section>
         <h3 className="text-xl md:text-2xl font-bold mb-6 text-gray-800">
-          1. Student Portal — Discover & Decide with Confidence
+          1. Student Portal: Discover & Decide with Confidence
         </h3>
         <p className="mb-4">Students can:</p>
         <ul className="list-disc pl-5 space-y-1">
@@ -188,7 +188,7 @@ export function UniLinksPage() {
 
       <Section>
         <h3 className="text-xl md:text-2xl font-bold mb-6 text-gray-800">
-          2. Mentor Portal — Students Helping Students
+          2. Mentor Portal: Students Helping Students
         </h3>
         <p className="mb-4">Mentors are:</p>
         <ul className="list-disc pl-5 space-y-1">
@@ -207,7 +207,7 @@ export function UniLinksPage() {
         </ul>
         <p className="mb-4">
           In return, mentors receive a contribution bonus from UniLinks
-          after successful admissions — helping them support their living
+          after successful admissions, helping them support their living
           costs abroad. This creates a sustainable, ethical incentive model.
         </p>
         <div className="rounded-lg my-8">
@@ -225,7 +225,7 @@ export function UniLinksPage() {
 
       <Section>
         <h3 className="text-xl md:text-2xl font-bold mb-6 text-gray-800">
-          3. Admin Portal — Quality, Trust & Process Management
+          3. Admin Portal: Quality, Trust & Process Management
         </h3>
         <p className="mb-4">The UniLinks admin team:</p>
         <ul className="list-disc pl-5 space-y-1">

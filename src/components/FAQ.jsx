@@ -11,7 +11,7 @@ import {
 const faqs = [
   {
     q: "What roles are you looking for?",
-    a: "I'm looking for senior roles in teams that value strong UX craft, product thinking, and close design–engineering collaboration.",
+    a: "I'm looking for senior roles in teams that value strong UX craft, product thinking, and close design and engineering collaboration.",
   },
   {
     q: "Do you work only as a Product Designer?",

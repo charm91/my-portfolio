@@ -41,7 +41,7 @@ export function Footer() {
             className="text-sm md:text-base max-w-xl font-light mx-auto mb-8"
             style={{ color: textSecondary }}
           >
-            I help teams shape intuitive product experiences through research, interaction design, and close design–engineering collaboration.
+            I help teams shape intuitive product experiences through research, interaction design, and close design and engineering collaboration.
           </p>
           <Button
             size="lg"

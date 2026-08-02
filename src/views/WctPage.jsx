@@ -21,9 +21,9 @@ export function WctPage() {
       <Section title="Project Overview">
         <p className="mb-4">
           When I joined the WCT Pay project, the core challenge wasn’t just
-          designing screens — it was making sense of a system that most
+          designing screens; it was making sense of a system that most
           users don’t fully understand. Crypto payments, fiat settlements,
-          invoicing, payouts — all of these existed, but they were
+          invoicing, payouts: all of these existed, but they were
           fragmented. Merchants had to mentally connect multiple steps,
           often across different tools. The goal was simple on paper:
         </p>
@@ -61,13 +61,13 @@ export function WctPage() {
         <p className="mb-4">It was about how everything was connected</p>
         <p className="mb-4">
           <b>From a user’s perspective,</b> the experience wasn’t one
-          journey — it was several disconnected steps. And worse, users had
+          journey; it was several disconnected steps. And worse, users had
           to think in two different mental models at the same time: Crypto…
           and fiat.
         </p>
         <p>
           <b>The system expected them to translate</b> between the two,
-          understand where their money was, and make decisions confidently —
+          understand where their money was, and make decisions confidently,
           all without enough clarity.
         </p>
         <p>
@@ -92,8 +92,8 @@ export function WctPage() {
           problem: This isn’t a dashboard. It’s a money lifecycle.
         </p>
         <p className="mb-4">
-          Every action — whether it’s invoicing, receiving funds, or
-          withdrawing, is just part of one continuous journey:
+          Every action (whether it’s invoicing, receiving funds, or
+          withdrawing) is just part of one continuous journey:
         </p>
 
         <div className="border-l-3 border-green-500 text-lg font-medium italic px-6 py-4 my-4 block text-black">
@@ -121,7 +121,7 @@ export function WctPage() {
           fiat as separate concepts, the system translates everything into
           value. Users still see what they hold, but more importantly, they
           understand what it means.
-          <br /> It’s a small shift — but it removes constant mental
+          <br /> It’s a small shift, but it removes constant mental
           calculation. <br /> And that’s where clarity starts.
         </p>
         <div className="rounded-lg border border-gray-200 bg-white p-2 shadow-xs my-8">
@@ -165,7 +165,7 @@ export function WctPage() {
           Instead of optimizing for speed or visual complexity, I made sure
           these moments feel clear, controlled, and intentional.
           <br /> Sometimes that meant simplifying the interface. Sometimes
-          it meant adding friction — like confirmation steps — to help users
+          it meant adding friction (like confirmation steps) to help users
           feel more confident before completing an action.
           <br /> Because in fintech, fast doesn’t always mean good.
           Confident does.
@@ -260,7 +260,7 @@ export function WctPage() {
         </p>
         <p>
           I learned that clarity doesn’t come from simplifying the system
-          itself — it comes from simplifying how users experience it.
+          itself; it comes from simplifying how users experience it.
         </p>
         <p>
           It’s not about removing complexity, It’s about absorbing it into

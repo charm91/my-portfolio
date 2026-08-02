@@ -186,7 +186,7 @@ export function BetterHRPage() {
         </div>
       </Section>
 
-      <Section title="Design–Development Collaboration">
+      <Section title="Design & Development Collaboration">
         <p>
           Alongside design, I also contributed to frontend development.
           Working closely with engineers allowed me to:
@@ -260,7 +260,7 @@ export function BetterHRPage() {
           </ul>
           <p>
             This experience reinforced my interest in product ownership and
-            building systems that solve real operational problems—not just
+            building systems that solve real operational problems, not just
             surface-level usability issues.
           </p>
         </div>
