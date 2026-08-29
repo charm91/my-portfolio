@@ -12,8 +12,8 @@ export function generateMetadata({ params }) {
   const entry = CASE_STUDIES[params.case];
   if (!entry) return {};
 
-  const title = `${entry.title} — ${SITE.displayName}`;
-  const description = `${entry.description} — a product design case study by ${SITE.displayName}.`;
+  const title = `${entry.title}: ${SITE.displayName}`;
+  const description = `${entry.description}, a product design case study by ${SITE.displayName}.`;
 
   return {
     title,
