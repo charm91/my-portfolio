@@ -1,6 +1,6 @@
 # ngu-wah-portfolio
 
-Personal portfolio site for Ngu Wah Aung (Charm), Senior Product Designer — showcasing case studies in fintech, HR SaaS, and education products.
+Personal portfolio site for Ngu Wah Aung (Charm), Senior Product Designer, showcasing case studies in fintech, HR SaaS, and education products.
 
 Live at **[nguwahaung.com](https://www.nguwahaung.com/)**
 
@@ -25,7 +25,7 @@ npm test         # run test suite (Vitest, 60 tests)
 
 | Path | Purpose |
 |---|---|
-| `src/config/site.js` | All personal info — name, email, social links, availability |
+| `src/config/site.js` | All personal info: name, email, social links, availability |
 | `src/components/` | Homepage sections (Hero, Portfolio, FAQ, etc.) |
 | `src/views/` | Case study page content (BetterHR, KBZ, UniLinks, WCT) |
 | `app/contact-me/` | Contact form (EmailJS) |
@@ -39,7 +39,7 @@ npm test         # run test suite (Vitest, 60 tests)
 
 ## Contributing
 
-Solo project — no pull requests. Changes go directly to `main`.
+Solo project: no pull requests. Changes go directly to `main`.
 
 ## License
 
