@@ -1,7 +1,7 @@
 import ContactPageClient from "./ContactPageClient";
 import { SITE } from "@/config/site";
 
-const title = `Contact — ${SITE.displayName}`;
+const title = `Contact: ${SITE.displayName}`;
 const description = `Get in touch with ${SITE.displayName} for product roles, collaboration, and opportunities.`;
 
 export const metadata = {
