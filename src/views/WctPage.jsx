@@ -12,8 +12,8 @@ export function WctPage() {
       title="WCT Pay Crypto–Fiat Payment Dashboard"
       tags={[
         { icon: TabletSmartphone, label: "WebApp (Responsive)" },
-        { icon: Globe, label: "Crypto–Fiat Management Platform" },
-        { icon: Clock, label: "Founding → Growth phase" },
+        { icon: Globe, label: "Fintech / Cross-Border Settlements" },
+        { icon: Clock, label: "Growth phase" },
       ]}
       liveUrl="https://www.wctpay.com/"
       thumbnail={{ src: "/wct/thumbnail.png", width: 1488, height: 1050 }}

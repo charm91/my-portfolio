@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { Briefcase, Clock, Globe } from "lucide-react";
+import { Clock, Globe, TabletSmartphone } from "lucide-react";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
 import { CaseStudySection as Section } from "@/components/CaseStudySection";
 
@@ -11,9 +11,9 @@ export function BetterHRPage() {
       coverImage="/b-cover.png"
       title="BetterHR Cloud-based HR Management Platform"
       tags={[
-        { icon: Briefcase, label: "Cloud-based HR Management" },
-        { icon: Globe, label: "Web & Mobile" },
-        { icon: Clock, label: "Founding → Growth phase" },
+        { icon: TabletSmartphone, label: "WebApp + Mobile App" },
+        { icon: Globe, label: "HRTech / Payroll Management" },
+        { icon: Clock, label: "Founding phase" },
       ]}
       liveUrl="https://betterhr.com/"
       thumbnail={{ src: "/betterhr/thumbnail.png", width: 1488, height: 1050 }}

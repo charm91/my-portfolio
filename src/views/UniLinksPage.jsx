@@ -12,7 +12,7 @@ export function UniLinksPage() {
       title="UniLinks All-in-One Study Abroad Platform"
       tags={[
         { icon: TabletSmartphone, label: "WebApp (Responsive)" },
-        { icon: Globe, label: "Admission Platform" },
+        { icon: Globe, label: "EdTech / Study Abroad Consulting" },
         { icon: Clock, label: "Founding → Growth phase" },
       ]}
       liveUrl="https://unilinks.co/"

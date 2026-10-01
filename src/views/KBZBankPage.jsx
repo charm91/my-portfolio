@@ -13,7 +13,7 @@ export function KBZBankPage() {
       tags={[
         { icon: TabletSmartphone, label: "WebApp (Responsive)" },
         { icon: Globe, label: "Fintech / Digital Banking" },
-        { icon: Clock, label: "Founding → Growth phase" },
+        { icon: Clock, label: "Scale phase" },
       ]}
       liveUrl="https://selfservice.kbzbank.com/"
       thumbnail={{ src: "/kbz/thumbnail.png", width: 1492, height: 1028 }}
