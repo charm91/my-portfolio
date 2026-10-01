@@ -26,7 +26,7 @@ describe("Portfolio", () => {
 
   it("renders all 4 project titles", () => {
     render(<Portfolio />);
-    expect(screen.getByText("BetterHR Cloud-based HR Management Platform")).toBeInTheDocument();
+    expect(screen.getByText("Better HR Cloud-based HR Management Platform")).toBeInTheDocument();
     expect(screen.getByText("UniLinks All-in-One Study Abroad Platform")).toBeInTheDocument();
     expect(screen.getByText("KBZ Bank Digital Banking Authentication System")).toBeInTheDocument();
     expect(screen.getByText("WCT Pay Crypto–Fiat Payment Dashboard")).toBeInTheDocument();

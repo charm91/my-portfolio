@@ -14,7 +14,7 @@ const wctImage = "/wct.png";
 
 const projects = [
   {
-    title: "BetterHR Cloud-based HR Management Platform",
+    title: "Better HR Cloud-based HR Management Platform",
     category: "Web & Mobile",
     image: betterhrImage,
     href: "/betterhr",

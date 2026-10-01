@@ -6,13 +6,13 @@ import { WctPage } from "@/views/WctPage";
 export const CASE_STUDIES = {
   betterhr: {
     Component: BetterHRPage,
-    title: "BetterHR Case Study",
-    description: "BetterHR Cloud-based HR Management Platform",
+    title: "Better HR Case Study",
+    description: "Better HR Cloud-based HR Management Platform",
     thumbnail: {
       url: "/betterhr/thumbnail.png",
       width: 1488,
       height: 1050,
-      alt: "BetterHR Case Study",
+      alt: "Better HR Case Study",
     },
   },
   "kbz-bank": {

@@ -9,7 +9,7 @@ export function BetterHRPage() {
   return (
     <CaseStudyShell
       coverImage="/b-cover.png"
-      title="BetterHR Cloud-based HR Management Platform"
+      title="Better HR Cloud-based HR Management Platform"
       tags={[
         { icon: TabletSmartphone, label: "WebApp + Mobile App" },
         { icon: Globe, label: "HRTech / Payroll Management" },
@@ -20,13 +20,13 @@ export function BetterHRPage() {
     >
       <Section title="Project Overview">
         <p className="mb-4">
-          BetterHR is a cloud-based HR management platform designed for
+          Better HR is a cloud-based HR management platform designed for
           small and medium-sized businesses across Southeast Asia. The
           platform helps companies manage attendance, leave, payroll, and
           employee data through a single, centralized system.
         </p>
         <p className="mb-4">
-          I joined BetterHR as a founding member of the product team,
+          I joined Better HR as a founding member of the product team,
           working in a hybrid role that combined product design, frontend
           development, and direct collaboration with clients and internal
           stakeholders. At this early stage, the team was small, which meant
@@ -55,7 +55,7 @@ export function BetterHRPage() {
       </Section>
       <Section title="The Context">
         <p className="mb-4">
-          Before BetterHR, many SMEs relied on spreadsheets, paper forms,
+          Before Better HR, many SMEs relied on spreadsheets, paper forms,
           and disconnected tools to manage HR operations. These workflows
           were time-consuming, error-prone, and difficult to scale as
           companies grew. The challenge was not only to design a usable
@@ -218,7 +218,7 @@ export function BetterHRPage() {
 
       <Section title="Outcome">
         <p>
-          BetterHR evolved into a stable HR platform used by companies
+          Better HR evolved into a stable HR platform used by companies
           across multiple countries in Southeast Asia. The system helped HR
           teams move away from manual processes and manage core operations
           digitally in one place.
@@ -247,7 +247,7 @@ export function BetterHRPage() {
             Reflection
           </h2>
           <p className="mb-4">
-            Being part of BetterHR from an early stage taught me the
+            Being part of Better HR from an early stage taught me the
             importance of deep user understanding, early validation, and
             cross-functional collaboration. The project strengthened my
             experience in:

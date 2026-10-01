@@ -26,7 +26,7 @@ describe("BetterHRPage", () => {
   it("renders the main heading", () => {
     render(<BetterHRPage />);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
-      "BetterHR Cloud-based HR Management Platform"
+      "Better HR Cloud-based HR Management Platform"
     );
   });
 });
