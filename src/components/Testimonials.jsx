@@ -15,7 +15,7 @@ const testimonials = [
     quote:
       "I confidently recommend Charm for any frontend and UI/UX design role. Having collaborated with her for 1.5 years, I can affirm her unwavering dedication and consistent performance. She consistently delivers high-quality work, demonstrating a strong grasp of both frontend development and user experience design principles.",
     name: "Zayar Zy",
-    role: "Chief Operating Officer, BetterHR",
+    role: "Chief Operating Officer, Better HR",
     avatar: ZayarImage,
   },
   {
