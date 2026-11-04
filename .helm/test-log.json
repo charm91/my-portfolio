@@ -18,11 +18,26 @@
       "reason": "Testimonials mocks never deliver ResizeObserver callbacks; stale measurement can clip later content.",
       "action": "improve",
       "layer": "component integration",
-      "state": "open",
+      "state": "resolved",
       "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
       "tests": [
-        "src/__tests__/testimonials.test.jsx"
-      ]
+        "src/__tests__/testimonials.test.jsx::recomputes scroll bounds and section extent when the testimonial content resizes",
+        "src/__tests__/testimonials.test.jsx::clamps %ipx content to zero overflow instead of reversing its travel",
+        "src/__tests__/testimonials.test.jsx::disconnects its content observer on unmount"
+      ],
+      "closure": {
+        "reason": "tested",
+        "refs": [
+          "src/__tests__/testimonials.test.jsx::recomputes scroll bounds and section extent when the testimonial content resizes",
+          "src/__tests__/testimonials.test.jsx::clamps %ipx content to zero overflow instead of reversing its travel",
+          "src/__tests__/testimonials.test.jsx::disconnects its content observer on unmount"
+        ],
+        "method": "runtime",
+        "outcome": "21 tests passed in 4 files. Preserved existing render/visibility/reveal/collapse guarantees and verified named card destinations, single-open keyboard disclosure, resize bounds/cleanup and social hrefs.",
+        "commit": "e2f98d02c2937f2cc874448e091e8fc917bd1354",
+        "command": "npm test -- src/__tests__/portfolio.test.jsx src/__tests__/faq.test.jsx src/__tests__/testimonials.test.jsx src/__tests__/case-study-author.test.jsx",
+        "scope": "Portfolio with real Button, FAQ with real Radix accordion, Testimonials synthetic ResizeObserver measurements, author links in Vitest/jsdom; no visual/browser certification."
+      }
     },
     {
       "id": "g-319cc0b0-d064-41f0-889a-3563aa6680a6",
@@ -125,11 +140,30 @@
       "reason": "FAQ tests implement independent disclosure state in a replacement wrapper, bypassing the shipped Radix integration.",
       "action": "improve",
       "layer": "component integration",
-      "state": "open",
+      "state": "resolved",
       "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
       "tests": [
-        "src/__tests__/faq.test.jsx"
-      ]
+        "src/__tests__/faq.test.jsx::answers are hidden before any trigger is clicked",
+        "src/__tests__/faq.test.jsx::clicking a trigger reveals its answer",
+        "src/__tests__/faq.test.jsx::clicking an open trigger collapses it",
+        "src/__tests__/faq.test.jsx::opening another question closes the previously open answer",
+        "src/__tests__/faq.test.jsx::supports %s to open and collapse a focused question"
+      ],
+      "closure": {
+        "reason": "tested",
+        "refs": [
+          "src/__tests__/faq.test.jsx::answers are hidden before any trigger is clicked",
+          "src/__tests__/faq.test.jsx::clicking a trigger reveals its answer",
+          "src/__tests__/faq.test.jsx::clicking an open trigger collapses it",
+          "src/__tests__/faq.test.jsx::opening another question closes the previously open answer",
+          "src/__tests__/faq.test.jsx::supports %s to open and collapse a focused question"
+        ],
+        "method": "runtime",
+        "outcome": "21 tests passed in 4 files. Preserved existing render/visibility/reveal/collapse guarantees and verified named card destinations, single-open keyboard disclosure, resize bounds/cleanup and social hrefs.",
+        "commit": "e2f98d02c2937f2cc874448e091e8fc917bd1354",
+        "command": "npm test -- src/__tests__/portfolio.test.jsx src/__tests__/faq.test.jsx src/__tests__/testimonials.test.jsx src/__tests__/case-study-author.test.jsx",
+        "scope": "Portfolio with real Button, FAQ with real Radix accordion, Testimonials synthetic ResizeObserver measurements, author links in Vitest/jsdom; no visual/browser certification."
+      }
     },
     {
       "id": "g-77b31c4d-21bf-4765-9314-7c0b7493f85f",
@@ -232,11 +266,22 @@
       "reason": "Existing author tests assert labels but no profile destinations.",
       "action": "improve",
       "layer": "component integration",
-      "state": "open",
+      "state": "resolved",
       "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
       "tests": [
-        "src/__tests__/case-study-author.test.jsx"
-      ]
+        "src/__tests__/case-study-author.test.jsx::renders LinkedIn and Facebook social links"
+      ],
+      "closure": {
+        "reason": "tested",
+        "refs": [
+          "src/__tests__/case-study-author.test.jsx::renders LinkedIn and Facebook social links"
+        ],
+        "method": "runtime",
+        "outcome": "21 tests passed in 4 files. Preserved existing render/visibility/reveal/collapse guarantees and verified named card destinations, single-open keyboard disclosure, resize bounds/cleanup and social hrefs.",
+        "commit": "e2f98d02c2937f2cc874448e091e8fc917bd1354",
+        "command": "npm test -- src/__tests__/portfolio.test.jsx src/__tests__/faq.test.jsx src/__tests__/testimonials.test.jsx src/__tests__/case-study-author.test.jsx",
+        "scope": "Portfolio with real Button, FAQ with real Radix accordion, Testimonials synthetic ResizeObserver measurements, author links in Vitest/jsdom; no visual/browser certification."
+      }
     },
     {
       "id": "g-a6d43b22-e1e6-410b-948a-ef742fdb01f5",
@@ -255,11 +300,26 @@
       "reason": "Global href searches allow card destinations to be swapped; See All is checked only as text and Button is mocked.",
       "action": "improve",
       "layer": "component integration",
-      "state": "open",
+      "state": "resolved",
       "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
       "tests": [
-        "src/__tests__/portfolio.test.jsx"
-      ]
+        "src/__tests__/portfolio.test.jsx::each card links to the correct slug",
+        "src/__tests__/portfolio.test.jsx::shows See All button when not on /portfolio",
+        "src/__tests__/portfolio.test.jsx::hides See All button when on /portfolio"
+      ],
+      "closure": {
+        "reason": "tested",
+        "refs": [
+          "src/__tests__/portfolio.test.jsx::each card links to the correct slug",
+          "src/__tests__/portfolio.test.jsx::shows See All button when not on /portfolio",
+          "src/__tests__/portfolio.test.jsx::hides See All button when on /portfolio"
+        ],
+        "method": "runtime",
+        "outcome": "21 tests passed in 4 files. Preserved existing render/visibility/reveal/collapse guarantees and verified named card destinations, single-open keyboard disclosure, resize bounds/cleanup and social hrefs.",
+        "commit": "e2f98d02c2937f2cc874448e091e8fc917bd1354",
+        "command": "npm test -- src/__tests__/portfolio.test.jsx src/__tests__/faq.test.jsx src/__tests__/testimonials.test.jsx src/__tests__/case-study-author.test.jsx",
+        "scope": "Portfolio with real Button, FAQ with real Radix accordion, Testimonials synthetic ResizeObserver measurements, author links in Vitest/jsdom; no visual/browser certification."
+      }
     },
     {
       "id": "g-b12c1173-814f-47af-9c94-274ddca7cb18",
