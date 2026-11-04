@@ -286,13 +286,28 @@
       "reason": "CTA tests assert control presence but not click-to-section behavior.",
       "action": "improve",
       "layer": "component integration",
-      "state": "open",
+      "state": "resolved",
       "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
       "tests": [
-        "src/__tests__/hero.test.jsx",
-        "src/__tests__/services.test.jsx",
-        "src/__tests__/overview-grid.test.jsx"
-      ]
+        "src/__tests__/hero.test.jsx::renders the View Case Studies CTA button and scrolls to portfolio",
+        "src/__tests__/services.test.jsx::renders Explore Projects and scrolls to portfolio",
+        "src/__tests__/overview-grid.test.jsx::renders the scroll-down button and scrolls to services",
+        "src/__tests__/overview-grid.test.jsx::Let's Connect scrolls to the contact section"
+      ],
+      "closure": {
+        "reason": "tested",
+        "refs": [
+          "src/__tests__/hero.test.jsx::renders the View Case Studies CTA button and scrolls to portfolio",
+          "src/__tests__/services.test.jsx::renders Explore Projects and scrolls to portfolio",
+          "src/__tests__/overview-grid.test.jsx::renders the scroll-down button and scrolls to services",
+          "src/__tests__/overview-grid.test.jsx::Let's Connect scrolls to the contact section"
+        ],
+        "method": "runtime",
+        "outcome": "26 tests passed in 5 files. Existing rendering guarantees retained; menu, section targets, active-section fallback and configured contact/resume destinations verified.",
+        "commit": "61a90d427e1d8c4596e7dc74e3602e490cefa8da",
+        "command": "npm test -- src/__tests__/header.test.jsx src/__tests__/hero.test.jsx src/__tests__/services.test.jsx src/__tests__/overview-grid.test.jsx src/__tests__/footer.test.jsx",
+        "scope": "Header, Hero, Services, OverviewGrid and Footer in Vitest/jsdom; synthetic targets and constructible observer; no live navigation."
+      }
     },
     {
       "id": "g-b5313665-7efb-43bb-b017-416607ed36f1",
@@ -309,11 +324,22 @@
       "reason": "Existing observer stub drops callbacks; incorrect highlighting is confusing but does not prevent navigation.",
       "action": "improve",
       "layer": "component integration",
-      "state": "open",
+      "state": "resolved",
       "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
       "tests": [
-        "src/__tests__/header.test.jsx"
-      ]
+        "src/__tests__/header.test.jsx::highlights the furthest visible section regardless of notification order and falls back when it leaves"
+      ],
+      "closure": {
+        "reason": "tested",
+        "refs": [
+          "src/__tests__/header.test.jsx::highlights the furthest visible section regardless of notification order and falls back when it leaves"
+        ],
+        "method": "runtime",
+        "outcome": "26 tests passed in 5 files. Existing rendering guarantees retained; menu, section targets, active-section fallback and configured contact/resume destinations verified.",
+        "commit": "61a90d427e1d8c4596e7dc74e3602e490cefa8da",
+        "command": "npm test -- src/__tests__/header.test.jsx src/__tests__/hero.test.jsx src/__tests__/services.test.jsx src/__tests__/overview-grid.test.jsx src/__tests__/footer.test.jsx",
+        "scope": "Header, Hero, Services, OverviewGrid and Footer in Vitest/jsdom; synthetic targets and constructible observer; no live navigation."
+      }
     },
     {
       "id": "g-b880e171-68ab-4187-96b6-156e46c0209d",
@@ -330,11 +356,28 @@
       "reason": "Header cases cover initial rendering and opening, not destination clicks, dismissal or configured link targets.",
       "action": "improve",
       "layer": "component integration",
-      "state": "open",
+      "state": "resolved",
       "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
       "tests": [
-        "src/__tests__/header.test.jsx"
-      ]
+        "src/__tests__/header.test.jsx::choosing %s scrolls to %s and closes the menu",
+        "src/__tests__/header.test.jsx::keeps the menu open for interior clicks and dismisses it with the trigger or outside click",
+        "src/__tests__/header.test.jsx::opens the nav menu and shows all nav items on click",
+        "src/__tests__/header.test.jsx::shows Back to Home link on non-home pages"
+      ],
+      "closure": {
+        "reason": "tested",
+        "refs": [
+          "src/__tests__/header.test.jsx::choosing %s scrolls to %s and closes the menu",
+          "src/__tests__/header.test.jsx::keeps the menu open for interior clicks and dismisses it with the trigger or outside click",
+          "src/__tests__/header.test.jsx::opens the nav menu and shows all nav items on click",
+          "src/__tests__/header.test.jsx::shows Back to Home link on non-home pages"
+        ],
+        "method": "runtime",
+        "outcome": "26 tests passed in 5 files. Existing rendering guarantees retained; menu, section targets, active-section fallback and configured contact/resume destinations verified.",
+        "commit": "61a90d427e1d8c4596e7dc74e3602e490cefa8da",
+        "command": "npm test -- src/__tests__/header.test.jsx src/__tests__/hero.test.jsx src/__tests__/services.test.jsx src/__tests__/overview-grid.test.jsx src/__tests__/footer.test.jsx",
+        "scope": "Header, Hero, Services, OverviewGrid and Footer in Vitest/jsdom; synthetic targets and constructible observer; no live navigation."
+      }
     },
     {
       "id": "g-badcdf0c-4a42-485b-91b8-ffd99040a394",
@@ -420,11 +463,28 @@
       "reason": "Footer tests assert labels without destinations; broken contact/resume links impede prospective clients.",
       "action": "improve",
       "layer": "component integration",
-      "state": "open",
+      "state": "resolved",
       "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
       "tests": [
-        "src/__tests__/footer.test.jsx"
-      ]
+        "src/__tests__/footer.test.jsx::renders the Contact Me link",
+        "src/__tests__/footer.test.jsx::renders the LinkedIn card",
+        "src/__tests__/footer.test.jsx::renders the Email card",
+        "src/__tests__/footer.test.jsx::links Resume to the configured document"
+      ],
+      "closure": {
+        "reason": "tested",
+        "refs": [
+          "src/__tests__/footer.test.jsx::renders the Contact Me link",
+          "src/__tests__/footer.test.jsx::renders the LinkedIn card",
+          "src/__tests__/footer.test.jsx::renders the Email card",
+          "src/__tests__/footer.test.jsx::links Resume to the configured document"
+        ],
+        "method": "runtime",
+        "outcome": "26 tests passed in 5 files. Existing rendering guarantees retained; menu, section targets, active-section fallback and configured contact/resume destinations verified.",
+        "commit": "61a90d427e1d8c4596e7dc74e3602e490cefa8da",
+        "command": "npm test -- src/__tests__/header.test.jsx src/__tests__/hero.test.jsx src/__tests__/services.test.jsx src/__tests__/overview-grid.test.jsx src/__tests__/footer.test.jsx",
+        "scope": "Header, Hero, Services, OverviewGrid and Footer in Vitest/jsdom; synthetic targets and constructible observer; no live navigation."
+      }
     },
     {
       "id": "g-f7bc4ded-556f-494e-9fbd-01ae31b1ddf6",
