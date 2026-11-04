@@ -1,13 +1,12 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import React from "react";
 import { Services } from "../components/Services";
 
 vi.mock("@/components/ui/button", () => ({
   Button: ({ children, onClick, ...props }) => <button onClick={onClick} {...props}>{children}</button>,
 }));
-
-vi.mock("@/lib/utils", () => ({ scrollToSection: vi.fn() }));
 
 vi.mock("lucide-react", () => ({
   Settings: () => <svg />,
@@ -25,8 +24,14 @@ describe("Services", () => {
     expect(screen.getByText("Frontend Collaboration")).toBeInTheDocument();
   });
 
-  it("renders the Explore Projects CTA button", () => {
-    render(<Services />);
-    expect(screen.getByRole("button", { name: /Explore Projects/i })).toBeInTheDocument();
+  it("renders Explore Projects and scrolls to portfolio", async () => {
+    const user = userEvent.setup();
+    render(<><Services /><section id="portfolio" /></>);
+    const target = document.getElementById("portfolio");
+    target.scrollIntoView = vi.fn();
+    const button = screen.getByRole("button", { name: /Explore Projects/i });
+    expect(button).toBeInTheDocument();
+    await user.click(button);
+    expect(target.scrollIntoView).toHaveBeenCalledExactlyOnceWith({ behavior: "smooth" });
   });
 });

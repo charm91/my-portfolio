@@ -1,5 +1,6 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
 import React from "react";
 import { OverviewGrid } from "../components/OverviewGrid";
 import { SITE } from "../config/site.js";
@@ -11,8 +12,6 @@ vi.mock("next/image", () => ({
 vi.mock("@/components/ui/button", () => ({
   Button: ({ children, onClick, ...props }) => <button onClick={onClick} {...props}>{children}</button>,
 }));
-
-vi.mock("@/lib/utils", () => ({ scrollToSection: vi.fn() }));
 
 vi.mock("lucide-react", () => ({
   Star: () => <svg />,
@@ -39,8 +38,23 @@ describe("OverviewGrid", () => {
     });
   });
 
-  it("renders the scroll-down button", () => {
-    render(<OverviewGrid />);
-    expect(screen.getByRole("button", { name: /scroll down/i })).toBeInTheDocument();
+  it("renders the scroll-down button and scrolls to services", async () => {
+    const user = userEvent.setup();
+    render(<><OverviewGrid /><section id="services" /></>);
+    const target = document.getElementById("services");
+    target.scrollIntoView = vi.fn();
+    const button = screen.getByRole("button", { name: /scroll down/i });
+    expect(button).toBeInTheDocument();
+    await user.click(button);
+    expect(target.scrollIntoView).toHaveBeenCalledExactlyOnceWith({ behavior: "smooth" });
+  });
+
+  it("Let's Connect scrolls to the contact section", async () => {
+    const user = userEvent.setup();
+    render(<><OverviewGrid /><section id="contact" /></>);
+    const target = document.getElementById("contact");
+    target.scrollIntoView = vi.fn();
+    await user.click(screen.getByRole("link", { name: /Let's Connect/i }));
+    expect(target.scrollIntoView).toHaveBeenCalledExactlyOnceWith({ behavior: "smooth" });
   });
 });
