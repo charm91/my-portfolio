@@ -623,6 +623,12 @@
       "blocker": {
         "kind": "clarification",
         "note": "Choose the intended Case Studies destination from case-study pages before production fix or acceptance test. Excluded from approved test edits."
+      },
+      "decision": {
+        "type": "accepted-risk",
+        "note": "Owner said \"ignore it\" after reviewing the ineffective Case Studies fragment link on case-study pages and the proposed /portfolio destination. Leave the link unchanged.",
+        "date": "2026-11-04",
+        "commit": "1ef9fb20c6103d6389c251d2dd3716d0e0ceff72"
       }
     }
   ]
