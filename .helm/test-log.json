@@ -460,11 +460,22 @@
       "reason": "SEO tests derive expectations from the same imported SITE_URL and cannot detect a lost override/fallback.",
       "action": "improve",
       "layer": "component integration",
-      "state": "open",
+      "state": "resolved",
       "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
       "tests": [
-        "src/__tests__/site-config.test.js"
-      ]
+        "src/__tests__/site-config.test.js::uses the %s site origin consistently"
+      ],
+      "closure": {
+        "reason": "tested",
+        "refs": [
+          "src/__tests__/site-config.test.js::uses the %s site origin consistently"
+        ],
+        "method": "runtime",
+        "outcome": "Focused route/SEO verification: 33 tests passed in 6 files. Final suite: 103 tests passed in 19 files. Production build compiled, lint/type checks completed and 12 static pages generated, including all 4 case routes. No skips or unresolved failures reported.",
+        "commit": "fa2d8724faaaf1b739c15c1deaf35d8273ee6eac",
+        "command": "npm test -- src/__tests__/scroll-to-section.test.jsx src/__tests__/case-study-routes.test.jsx src/__tests__/site-config.test.js src/__tests__/views.test.jsx src/__tests__/sitemap.test.js src/__tests__/robots.test.js\nnpm test\nNEXT_TELEMETRY_DISABLED=1 npm run build",
+        "scope": "Vitest/jsdom query-scroll, route/metadata, site-origin, existing view/sitemap/robots contracts; final whole suite; Next 15.5.18 production build on the unchanged executable tree. No live EmailJS or deployment."
+      }
     },
     {
       "id": "g-c208a501-6517-4238-8762-75c5e3e46cb1",
@@ -475,14 +486,37 @@
       ],
       "paths": [
         "app/ScrollToSection.jsx",
-        "app/page.jsx"
+        "app/page.jsx",
+        "src/__tests__/scroll-to-section.test.jsx"
       ],
       "priority": "medium",
       "reason": "No current test executes the query-scroll effect or cancellation of stale scheduled scrolling.",
       "action": "add",
       "layer": "component integration",
-      "state": "open",
-      "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b"
+      "state": "resolved",
+      "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
+      "closure": {
+        "reason": "tested",
+        "refs": [
+          "src/__tests__/scroll-to-section.test.jsx::scrolls to %s after the layout delay",
+          "src/__tests__/scroll-to-section.test.jsx::leaves existing sections alone for query %s",
+          "src/__tests__/scroll-to-section.test.jsx::cancels the previous target when the query changes before its deadline",
+          "src/__tests__/scroll-to-section.test.jsx::cancels a queued scroll when the query is removed",
+          "src/__tests__/scroll-to-section.test.jsx::cancels a queued scroll on unmount"
+        ],
+        "method": "runtime",
+        "outcome": "Focused route/SEO verification: 33 tests passed in 6 files. Final suite: 103 tests passed in 19 files. Production build compiled, lint/type checks completed and 12 static pages generated, including all 4 case routes. No skips or unresolved failures reported.",
+        "commit": "fa2d8724faaaf1b739c15c1deaf35d8273ee6eac",
+        "command": "npm test -- src/__tests__/scroll-to-section.test.jsx src/__tests__/case-study-routes.test.jsx src/__tests__/site-config.test.js src/__tests__/views.test.jsx src/__tests__/sitemap.test.js src/__tests__/robots.test.js\nnpm test\nNEXT_TELEMETRY_DISABLED=1 npm run build",
+        "scope": "Vitest/jsdom query-scroll, route/metadata, site-origin, existing view/sitemap/robots contracts; final whole suite; Next 15.5.18 production build on the unchanged executable tree. No live EmailJS or deployment."
+      },
+      "tests": [
+        "src/__tests__/scroll-to-section.test.jsx::scrolls to %s after the layout delay",
+        "src/__tests__/scroll-to-section.test.jsx::leaves existing sections alone for query %s",
+        "src/__tests__/scroll-to-section.test.jsx::cancels the previous target when the query changes before its deadline",
+        "src/__tests__/scroll-to-section.test.jsx::cancels a queued scroll when the query is removed",
+        "src/__tests__/scroll-to-section.test.jsx::cancels a queued scroll on unmount"
+      ]
     },
     {
       "id": "g-e7ce9b6f-9373-4a08-b53a-60ed8ac42b50",
@@ -497,14 +531,37 @@
         "app/[case]/page.jsx",
         "src/config/caseStudies.js",
         "src/components/Portfolio.jsx",
-        "app/sitemap.js"
+        "app/sitemap.js",
+        "src/__tests__/case-study-routes.test.jsx"
       ],
       "priority": "medium",
       "reason": "Existing views tests bypass the route entrypoint, so route dispatch, unsupported slug handling and metadata can regress.",
       "action": "add",
       "layer": "component integration",
-      "state": "open",
-      "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b"
+      "state": "resolved",
+      "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
+      "closure": {
+        "reason": "tested",
+        "refs": [
+          "src/__tests__/case-study-routes.test.jsx::/$slug renders its matching case-study headline",
+          "src/__tests__/case-study-routes.test.jsx::/$slug generates matching search and share metadata",
+          "src/__tests__/case-study-routes.test.jsx::uses Next's not-found boundary for an unsupported slug",
+          "src/__tests__/case-study-routes.test.jsx::returns no case metadata for an unsupported slug",
+          "src/__tests__/case-study-routes.test.jsx::connects every visible case card to a generated route and sitemap entry"
+        ],
+        "method": "runtime",
+        "outcome": "Focused route/SEO verification: 33 tests passed in 6 files. Final suite: 103 tests passed in 19 files. Production build compiled, lint/type checks completed and 12 static pages generated, including all 4 case routes. No skips or unresolved failures reported.",
+        "commit": "fa2d8724faaaf1b739c15c1deaf35d8273ee6eac",
+        "command": "npm test -- src/__tests__/scroll-to-section.test.jsx src/__tests__/case-study-routes.test.jsx src/__tests__/site-config.test.js src/__tests__/views.test.jsx src/__tests__/sitemap.test.js src/__tests__/robots.test.js\nnpm test\nNEXT_TELEMETRY_DISABLED=1 npm run build",
+        "scope": "Vitest/jsdom query-scroll, route/metadata, site-origin, existing view/sitemap/robots contracts; final whole suite; Next 15.5.18 production build on the unchanged executable tree. No live EmailJS or deployment."
+      },
+      "tests": [
+        "src/__tests__/case-study-routes.test.jsx::/$slug renders its matching case-study headline",
+        "src/__tests__/case-study-routes.test.jsx::/$slug generates matching search and share metadata",
+        "src/__tests__/case-study-routes.test.jsx::uses Next's not-found boundary for an unsupported slug",
+        "src/__tests__/case-study-routes.test.jsx::returns no case metadata for an unsupported slug",
+        "src/__tests__/case-study-routes.test.jsx::connects every visible case card to a generated route and sitemap entry"
+      ]
     },
     {
       "id": "g-e80e9cc1-9bc8-4f0e-b0dd-52c37b8cff5d",
