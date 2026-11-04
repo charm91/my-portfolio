@@ -39,11 +39,32 @@
       "reason": "No current test fills the honeypot or verifies zero outbound sends for that path.",
       "action": "add",
       "layer": "component integration",
-      "state": "open",
+      "state": "resolved",
       "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
       "tests": [
-        "src/__tests__/contact-form-validation.test.jsx"
-      ]
+        "src/__tests__/contact-form-validation.test.jsx::blocks at 2999ms and permits a send at the 3000ms fill-time boundary",
+        "src/__tests__/contact-form-validation.test.jsx::silently rejects a filled honeypot even with valid fields and enough fill time",
+        "src/__tests__/contact-form-validation.test.jsx::enforces the full 30s cooldown after %s and permits a retry at the boundary",
+        "src/__tests__/contact-form-validation.test.jsx::locks inputs and prevents another button submission while delivery is pending, even after cooldown",
+        "src/__tests__/contact-form-validation.test.jsx::shows success message after email sends",
+        "src/__tests__/contact-form-validation.test.jsx::does not start a cooldown for validation errors"
+      ],
+      "closure": {
+        "reason": "tested",
+        "refs": [
+          "src/__tests__/contact-form-validation.test.jsx::blocks at 2999ms and permits a send at the 3000ms fill-time boundary",
+          "src/__tests__/contact-form-validation.test.jsx::silently rejects a filled honeypot even with valid fields and enough fill time",
+          "src/__tests__/contact-form-validation.test.jsx::enforces the full 30s cooldown after %s and permits a retry at the boundary",
+          "src/__tests__/contact-form-validation.test.jsx::locks inputs and prevents another button submission while delivery is pending, even after cooldown",
+          "src/__tests__/contact-form-validation.test.jsx::shows success message after email sends",
+          "src/__tests__/contact-form-validation.test.jsx::does not start a cooldown for validation errors"
+        ],
+        "method": "runtime",
+        "outcome": "13 tests passed in 1 file, including preserved 7 cases and fill-time, honeypot, cooldown success/failure, pending and retry guarantees.",
+        "commit": "2c3d029a9ead8bafaf64619def8ff5c645e6ccfd",
+        "command": "npm test -- src/__tests__/contact-form-validation.test.jsx",
+        "scope": "Contact form component in Vitest/jsdom; EmailJS mocked; Date and bounded scheduled-timer fixtures."
+      }
     },
     {
       "id": "g-3ba0075c-4893-4ccc-8bd7-c6d3ba3f0a4c",
@@ -60,11 +81,32 @@
       "reason": "Current tests cover validation and success text but omit pending lock, rejection feedback, preserved inputs and cleared success fields.",
       "action": "improve",
       "layer": "component integration",
-      "state": "open",
+      "state": "resolved",
       "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
       "tests": [
-        "src/__tests__/contact-form-validation.test.jsx"
-      ]
+        "src/__tests__/contact-form-validation.test.jsx::blocks at 2999ms and permits a send at the 3000ms fill-time boundary",
+        "src/__tests__/contact-form-validation.test.jsx::silently rejects a filled honeypot even with valid fields and enough fill time",
+        "src/__tests__/contact-form-validation.test.jsx::enforces the full 30s cooldown after %s and permits a retry at the boundary",
+        "src/__tests__/contact-form-validation.test.jsx::locks inputs and prevents another button submission while delivery is pending, even after cooldown",
+        "src/__tests__/contact-form-validation.test.jsx::shows success message after email sends",
+        "src/__tests__/contact-form-validation.test.jsx::does not start a cooldown for validation errors"
+      ],
+      "closure": {
+        "reason": "tested",
+        "refs": [
+          "src/__tests__/contact-form-validation.test.jsx::blocks at 2999ms and permits a send at the 3000ms fill-time boundary",
+          "src/__tests__/contact-form-validation.test.jsx::silently rejects a filled honeypot even with valid fields and enough fill time",
+          "src/__tests__/contact-form-validation.test.jsx::enforces the full 30s cooldown after %s and permits a retry at the boundary",
+          "src/__tests__/contact-form-validation.test.jsx::locks inputs and prevents another button submission while delivery is pending, even after cooldown",
+          "src/__tests__/contact-form-validation.test.jsx::shows success message after email sends",
+          "src/__tests__/contact-form-validation.test.jsx::does not start a cooldown for validation errors"
+        ],
+        "method": "runtime",
+        "outcome": "13 tests passed in 1 file, including preserved 7 cases and fill-time, honeypot, cooldown success/failure, pending and retry guarantees.",
+        "commit": "2c3d029a9ead8bafaf64619def8ff5c645e6ccfd",
+        "command": "npm test -- src/__tests__/contact-form-validation.test.jsx",
+        "scope": "Contact form component in Vitest/jsdom; EmailJS mocked; Date and bounded scheduled-timer fixtures."
+      }
     },
     {
       "id": "g-76988325-e6b1-4d48-a737-cf79557e5c0a",
@@ -104,11 +146,32 @@
       "reason": "No current test protects cooldown or its persistence after a rejected send; repeated attempts can consume EmailJS quota.",
       "action": "add",
       "layer": "component integration",
-      "state": "open",
+      "state": "resolved",
       "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
       "tests": [
-        "src/__tests__/contact-form-validation.test.jsx"
-      ]
+        "src/__tests__/contact-form-validation.test.jsx::blocks at 2999ms and permits a send at the 3000ms fill-time boundary",
+        "src/__tests__/contact-form-validation.test.jsx::silently rejects a filled honeypot even with valid fields and enough fill time",
+        "src/__tests__/contact-form-validation.test.jsx::enforces the full 30s cooldown after %s and permits a retry at the boundary",
+        "src/__tests__/contact-form-validation.test.jsx::locks inputs and prevents another button submission while delivery is pending, even after cooldown",
+        "src/__tests__/contact-form-validation.test.jsx::shows success message after email sends",
+        "src/__tests__/contact-form-validation.test.jsx::does not start a cooldown for validation errors"
+      ],
+      "closure": {
+        "reason": "tested",
+        "refs": [
+          "src/__tests__/contact-form-validation.test.jsx::blocks at 2999ms and permits a send at the 3000ms fill-time boundary",
+          "src/__tests__/contact-form-validation.test.jsx::silently rejects a filled honeypot even with valid fields and enough fill time",
+          "src/__tests__/contact-form-validation.test.jsx::enforces the full 30s cooldown after %s and permits a retry at the boundary",
+          "src/__tests__/contact-form-validation.test.jsx::locks inputs and prevents another button submission while delivery is pending, even after cooldown",
+          "src/__tests__/contact-form-validation.test.jsx::shows success message after email sends",
+          "src/__tests__/contact-form-validation.test.jsx::does not start a cooldown for validation errors"
+        ],
+        "method": "runtime",
+        "outcome": "13 tests passed in 1 file, including preserved 7 cases and fill-time, honeypot, cooldown success/failure, pending and retry guarantees.",
+        "commit": "2c3d029a9ead8bafaf64619def8ff5c645e6ccfd",
+        "command": "npm test -- src/__tests__/contact-form-validation.test.jsx",
+        "scope": "Contact form component in Vitest/jsdom; EmailJS mocked; Date and bounded scheduled-timer fixtures."
+      }
     },
     {
       "id": "g-7ed9078f-15d7-4ed5-9cba-674f53055bb4",
@@ -125,11 +188,32 @@
       "reason": "Current minimum-fill test checks absence of an error but never checks outbound sends; a removed guard could pass.",
       "action": "improve",
       "layer": "component integration",
-      "state": "open",
+      "state": "resolved",
       "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
       "tests": [
-        "src/__tests__/contact-form-validation.test.jsx"
-      ]
+        "src/__tests__/contact-form-validation.test.jsx::blocks at 2999ms and permits a send at the 3000ms fill-time boundary",
+        "src/__tests__/contact-form-validation.test.jsx::silently rejects a filled honeypot even with valid fields and enough fill time",
+        "src/__tests__/contact-form-validation.test.jsx::enforces the full 30s cooldown after %s and permits a retry at the boundary",
+        "src/__tests__/contact-form-validation.test.jsx::locks inputs and prevents another button submission while delivery is pending, even after cooldown",
+        "src/__tests__/contact-form-validation.test.jsx::shows success message after email sends",
+        "src/__tests__/contact-form-validation.test.jsx::does not start a cooldown for validation errors"
+      ],
+      "closure": {
+        "reason": "tested",
+        "refs": [
+          "src/__tests__/contact-form-validation.test.jsx::blocks at 2999ms and permits a send at the 3000ms fill-time boundary",
+          "src/__tests__/contact-form-validation.test.jsx::silently rejects a filled honeypot even with valid fields and enough fill time",
+          "src/__tests__/contact-form-validation.test.jsx::enforces the full 30s cooldown after %s and permits a retry at the boundary",
+          "src/__tests__/contact-form-validation.test.jsx::locks inputs and prevents another button submission while delivery is pending, even after cooldown",
+          "src/__tests__/contact-form-validation.test.jsx::shows success message after email sends",
+          "src/__tests__/contact-form-validation.test.jsx::does not start a cooldown for validation errors"
+        ],
+        "method": "runtime",
+        "outcome": "13 tests passed in 1 file, including preserved 7 cases and fill-time, honeypot, cooldown success/failure, pending and retry guarantees.",
+        "commit": "2c3d029a9ead8bafaf64619def8ff5c645e6ccfd",
+        "command": "npm test -- src/__tests__/contact-form-validation.test.jsx",
+        "scope": "Contact form component in Vitest/jsdom; EmailJS mocked; Date and bounded scheduled-timer fixtures."
+      }
     },
     {
       "id": "g-a5b76e0c-0512-40a5-bd4a-1950e03691bf",
