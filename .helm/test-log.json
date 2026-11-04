@@ -1,0 +1,368 @@
+{
+  "schema_version": 3,
+  "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
+  "full_scan_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
+  "cases": [
+    {
+      "id": "g-2fa872bd-a832-416f-ad34-8531a525ccfe",
+      "expected": "ResizeObserver recomputes clipped testimonial overflow, clamps short content to zero, disconnects on cleanup; measurement wiring only, no visual claim.",
+      "basis": [
+        "src/components/Testimonials.jsx (static code evidence; intended behavior inferred from implementation)",
+        "src/__tests__/testimonials.test.jsx (existing assertions inspected)"
+      ],
+      "paths": [
+        "src/components/Testimonials.jsx",
+        "src/__tests__/testimonials.test.jsx"
+      ],
+      "priority": "medium",
+      "reason": "Testimonials mocks never deliver ResizeObserver callbacks; stale measurement can clip later content.",
+      "action": "improve",
+      "layer": "component integration",
+      "state": "open",
+      "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
+      "tests": [
+        "src/__tests__/testimonials.test.jsx"
+      ]
+    },
+    {
+      "id": "g-319cc0b0-d064-41f0-889a-3563aa6680a6",
+      "expected": "Filled honeypot silently rejects and sends nothing.",
+      "basis": [
+        "app/contact-me/ContactPageClient.jsx (static code evidence; intended behavior inferred from implementation)",
+        "src/__tests__/contact-form-validation.test.jsx (existing assertions inspected)"
+      ],
+      "paths": [
+        "app/contact-me/ContactPageClient.jsx",
+        "src/__tests__/contact-form-validation.test.jsx"
+      ],
+      "priority": "medium",
+      "reason": "No current test fills the honeypot or verifies zero outbound sends for that path.",
+      "action": "add",
+      "layer": "component integration",
+      "state": "open",
+      "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
+      "tests": [
+        "src/__tests__/contact-form-validation.test.jsx"
+      ]
+    },
+    {
+      "id": "g-3ba0075c-4893-4ccc-8bd7-c6d3ba3f0a4c",
+      "expected": "Pending disables submit/fields; success clears inputs; rejected EmailJS preserves inputs, shows retry feedback, and can retry after cooldown.",
+      "basis": [
+        "app/contact-me/ContactPageClient.jsx (static code evidence; intended behavior inferred from implementation)",
+        "src/__tests__/contact-form-validation.test.jsx (existing assertions inspected)"
+      ],
+      "paths": [
+        "app/contact-me/ContactPageClient.jsx",
+        "src/__tests__/contact-form-validation.test.jsx"
+      ],
+      "priority": "medium",
+      "reason": "Current tests cover validation and success text but omit pending lock, rejection feedback, preserved inputs and cleared success fields.",
+      "action": "improve",
+      "layer": "component integration",
+      "state": "open",
+      "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
+      "tests": [
+        "src/__tests__/contact-form-validation.test.jsx"
+      ]
+    },
+    {
+      "id": "g-76988325-e6b1-4d48-a737-cf79557e5c0a",
+      "expected": "Use real Accordion wrapper; answers open/collapse, one at a time, keyboard activation. Preserve heading/questions/initial hidden/reveal/collapse duties.",
+      "basis": [
+        "src/components/FAQ.jsx (static code evidence; intended behavior inferred from implementation)",
+        "src/components/ui/accordion.jsx (static code evidence; intended behavior inferred from implementation)",
+        "src/__tests__/faq.test.jsx (existing assertions inspected)"
+      ],
+      "paths": [
+        "src/components/FAQ.jsx",
+        "src/components/ui/accordion.jsx",
+        "src/__tests__/faq.test.jsx"
+      ],
+      "priority": "medium",
+      "reason": "FAQ tests implement independent disclosure state in a replacement wrapper, bypassing the shipped Radix integration.",
+      "action": "improve",
+      "layer": "component integration",
+      "state": "open",
+      "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
+      "tests": [
+        "src/__tests__/faq.test.jsx"
+      ]
+    },
+    {
+      "id": "g-77b31c4d-21bf-4765-9314-7c0b7493f85f",
+      "expected": "30s resubmit cooldown persists after both success and failure; exact re-enable boundary; validation rejection does not start it.",
+      "basis": [
+        "app/contact-me/ContactPageClient.jsx (static code evidence; intended behavior inferred from implementation)",
+        "src/__tests__/contact-form-validation.test.jsx (existing assertions inspected)"
+      ],
+      "paths": [
+        "app/contact-me/ContactPageClient.jsx",
+        "src/__tests__/contact-form-validation.test.jsx"
+      ],
+      "priority": "medium",
+      "reason": "No current test protects cooldown or its persistence after a rejected send; repeated attempts can consume EmailJS quota.",
+      "action": "add",
+      "layer": "component integration",
+      "state": "open",
+      "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
+      "tests": [
+        "src/__tests__/contact-form-validation.test.jsx"
+      ]
+    },
+    {
+      "id": "g-7ed9078f-15d7-4ed5-9cba-674f53055bb4",
+      "expected": "Minimum-fill guard: no EmailJS send before 3000ms; eligible at boundary; preserve silent handling.",
+      "basis": [
+        "app/contact-me/ContactPageClient.jsx (static code evidence; intended behavior inferred from implementation)",
+        "src/__tests__/contact-form-validation.test.jsx (existing assertions inspected)"
+      ],
+      "paths": [
+        "app/contact-me/ContactPageClient.jsx",
+        "src/__tests__/contact-form-validation.test.jsx"
+      ],
+      "priority": "medium",
+      "reason": "Current minimum-fill test checks absence of an error but never checks outbound sends; a removed guard could pass.",
+      "action": "improve",
+      "layer": "component integration",
+      "state": "open",
+      "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
+      "tests": [
+        "src/__tests__/contact-form-validation.test.jsx"
+      ]
+    },
+    {
+      "id": "g-a5b76e0c-0512-40a5-bd4a-1950e03691bf",
+      "expected": "Social link href matches configured profile.",
+      "basis": [
+        "src/components/CaseStudyAuthor.jsx (static code evidence; intended behavior inferred from implementation)",
+        "src/config/site.js (static code evidence; intended behavior inferred from implementation)",
+        "src/__tests__/case-study-author.test.jsx (existing assertions inspected)"
+      ],
+      "paths": [
+        "src/components/CaseStudyAuthor.jsx",
+        "src/config/site.js",
+        "src/__tests__/case-study-author.test.jsx"
+      ],
+      "priority": "low",
+      "reason": "Existing author tests assert labels but no profile destinations.",
+      "action": "improve",
+      "layer": "component integration",
+      "state": "open",
+      "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
+      "tests": [
+        "src/__tests__/case-study-author.test.jsx"
+      ]
+    },
+    {
+      "id": "g-a6d43b22-e1e6-410b-948a-ef742fdb01f5",
+      "expected": "Each named project links to its own correct case; See All links to /portfolio; use real Button/asChild; preserve titles/visibility.",
+      "basis": [
+        "src/components/Portfolio.jsx (static code evidence; intended behavior inferred from implementation)",
+        "src/components/ui/button.jsx (static code evidence; intended behavior inferred from implementation)",
+        "src/__tests__/portfolio.test.jsx (existing assertions inspected)"
+      ],
+      "paths": [
+        "src/components/Portfolio.jsx",
+        "src/components/ui/button.jsx",
+        "src/__tests__/portfolio.test.jsx"
+      ],
+      "priority": "medium",
+      "reason": "Global href searches allow card destinations to be swapped; See All is checked only as text and Button is mocked.",
+      "action": "improve",
+      "layer": "component integration",
+      "state": "open",
+      "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
+      "tests": [
+        "src/__tests__/portfolio.test.jsx"
+      ]
+    },
+    {
+      "id": "g-b12c1173-814f-47af-9c94-274ddca7cb18",
+      "expected": "Primary CTA clicks reach portfolio/contact/services as labeled through real scroll helper.",
+      "basis": [
+        "src/components/Hero.jsx (static code evidence; intended behavior inferred from implementation)",
+        "src/components/Services.jsx (static code evidence; intended behavior inferred from implementation)",
+        "src/components/OverviewGrid.jsx (static code evidence; intended behavior inferred from implementation)",
+        "src/lib/utils.js (static code evidence; intended behavior inferred from implementation)",
+        "src/__tests__/hero.test.jsx (existing assertions inspected)",
+        "src/__tests__/services.test.jsx (existing assertions inspected)",
+        "src/__tests__/overview-grid.test.jsx (existing assertions inspected)"
+      ],
+      "paths": [
+        "src/components/Hero.jsx",
+        "src/components/Services.jsx",
+        "src/components/OverviewGrid.jsx",
+        "src/lib/utils.js",
+        "src/__tests__/hero.test.jsx",
+        "src/__tests__/services.test.jsx",
+        "src/__tests__/overview-grid.test.jsx"
+      ],
+      "priority": "medium",
+      "reason": "CTA tests assert control presence but not click-to-section behavior.",
+      "action": "improve",
+      "layer": "component integration",
+      "state": "open",
+      "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
+      "tests": [
+        "src/__tests__/hero.test.jsx",
+        "src/__tests__/services.test.jsx",
+        "src/__tests__/overview-grid.test.jsx"
+      ]
+    },
+    {
+      "id": "g-b5313665-7efb-43bb-b017-416607ed36f1",
+      "expected": "Active section observer handles multiple intersecting entries and leaving/fallback.",
+      "basis": [
+        "src/components/Header.jsx (static code evidence; intended behavior inferred from implementation)",
+        "src/__tests__/header.test.jsx (existing assertions inspected)"
+      ],
+      "paths": [
+        "src/components/Header.jsx",
+        "src/__tests__/header.test.jsx"
+      ],
+      "priority": "low",
+      "reason": "Existing observer stub drops callbacks; incorrect highlighting is confusing but does not prevent navigation.",
+      "action": "improve",
+      "layer": "component integration",
+      "state": "open",
+      "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
+      "tests": [
+        "src/__tests__/header.test.jsx"
+      ]
+    },
+    {
+      "id": "g-b880e171-68ab-4187-96b6-156e46c0209d",
+      "expected": "Each visible section navigates to correct target and closes menu; trigger/outside dismiss; interior retains; route links have correct href.",
+      "basis": [
+        "src/components/Header.jsx (static code evidence; intended behavior inferred from implementation)",
+        "src/__tests__/header.test.jsx (existing assertions inspected)"
+      ],
+      "paths": [
+        "src/components/Header.jsx",
+        "src/__tests__/header.test.jsx"
+      ],
+      "priority": "medium",
+      "reason": "Header cases cover initial rendering and opening, not destination clicks, dismissal or configured link targets.",
+      "action": "improve",
+      "layer": "component integration",
+      "state": "open",
+      "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
+      "tests": [
+        "src/__tests__/header.test.jsx"
+      ]
+    },
+    {
+      "id": "g-badcdf0c-4a42-485b-91b8-ffd99040a394",
+      "expected": "SITE_URL unset fallback and optional override propagate to SEO consumers with isolated env/module fixtures.",
+      "basis": [
+        "src/config/site.js (static code evidence; intended behavior inferred from implementation)",
+        "app/layout.jsx (static code evidence; intended behavior inferred from implementation)",
+        "app/sitemap.js (static code evidence; intended behavior inferred from implementation)",
+        "app/robots.js (static code evidence; intended behavior inferred from implementation)",
+        "src/__tests__/site-config.test.js (existing assertions inspected)"
+      ],
+      "paths": [
+        "src/config/site.js",
+        "app/layout.jsx",
+        "app/sitemap.js",
+        "app/robots.js",
+        "src/__tests__/site-config.test.js"
+      ],
+      "priority": "low",
+      "reason": "SEO tests derive expectations from the same imported SITE_URL and cannot detect a lost override/fallback.",
+      "action": "improve",
+      "layer": "component integration",
+      "state": "open",
+      "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
+      "tests": [
+        "src/__tests__/site-config.test.js"
+      ]
+    },
+    {
+      "id": "g-c208a501-6517-4238-8762-75c5e3e46cb1",
+      "expected": "Query target/#target scroll after timer; absent/missing target safe; query changes/unmount cancel stale scroll.",
+      "basis": [
+        "app/ScrollToSection.jsx (static code evidence; intended behavior inferred from implementation)",
+        "app/page.jsx (static code evidence; intended behavior inferred from implementation)"
+      ],
+      "paths": [
+        "app/ScrollToSection.jsx",
+        "app/page.jsx"
+      ],
+      "priority": "medium",
+      "reason": "No current test executes the query-scroll effect or cancellation of stale scheduled scrolling.",
+      "action": "add",
+      "layer": "component integration",
+      "state": "open",
+      "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b"
+    },
+    {
+      "id": "g-e7ce9b6f-9373-4a08-b53a-60ed8ac42b50",
+      "expected": "Known case URL dispatch and metadata, unknown route notFound, metadata empty; connect Portfolio cases/static params/sitemap; maintain Next15 sync compatibility limitation.",
+      "basis": [
+        "app/[case]/page.jsx (static code evidence; intended behavior inferred from implementation)",
+        "src/config/caseStudies.js (static code evidence; intended behavior inferred from implementation)",
+        "src/components/Portfolio.jsx (static code evidence; intended behavior inferred from implementation)",
+        "app/sitemap.js (static code evidence; intended behavior inferred from implementation)"
+      ],
+      "paths": [
+        "app/[case]/page.jsx",
+        "src/config/caseStudies.js",
+        "src/components/Portfolio.jsx",
+        "app/sitemap.js"
+      ],
+      "priority": "medium",
+      "reason": "Existing views tests bypass the route entrypoint, so route dispatch, unsupported slug handling and metadata can regress.",
+      "action": "add",
+      "layer": "component integration",
+      "state": "open",
+      "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b"
+    },
+    {
+      "id": "g-e80e9cc1-9bc8-4f0e-b0dd-52c37b8cff5d",
+      "expected": "Contact, LinkedIn, Gmail compose recipient/subject, resume links point to intended configured destinations.",
+      "basis": [
+        "src/components/Footer.jsx (static code evidence; intended behavior inferred from implementation)",
+        "src/config/site.js (static code evidence; intended behavior inferred from implementation)",
+        "src/__tests__/footer.test.jsx (existing assertions inspected)"
+      ],
+      "paths": [
+        "src/components/Footer.jsx",
+        "src/config/site.js",
+        "src/__tests__/footer.test.jsx"
+      ],
+      "priority": "medium",
+      "reason": "Footer tests assert labels without destinations; broken contact/resume links impede prospective clients.",
+      "action": "improve",
+      "layer": "component integration",
+      "state": "open",
+      "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
+      "tests": [
+        "src/__tests__/footer.test.jsx"
+      ]
+    },
+    {
+      "id": "g-f7bc4ded-556f-494e-9fbd-01ae31b1ddf6",
+      "expected": "Clarify intended Case Studies link destination on case pages; current #portfolio has no target there. Do not bless broken hash or silently fix source.",
+      "basis": [
+        "src/components/Footer.jsx (static code evidence; intended behavior inferred from implementation)",
+        "src/components/CaseStudyShell.jsx (static code evidence; intended behavior inferred from implementation)"
+      ],
+      "paths": [
+        "src/components/Footer.jsx",
+        "src/components/CaseStudyShell.jsx"
+      ],
+      "priority": "medium",
+      "reason": "Case Studies uses a fragment with no matching target on case-study pages; intended cross-page destination is unknown.",
+      "action": "manual",
+      "layer": "manual",
+      "state": "open",
+      "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
+      "blocker": {
+        "kind": "clarification",
+        "note": "Choose the intended Case Studies destination from case-study pages before production fix or acceptance test. Excluded from approved test edits."
+      }
+    }
+  ]
+}
