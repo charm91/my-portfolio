@@ -4,7 +4,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { Star, ExternalLink, ArrowDown } from "lucide-react";
 import { Button } from "./ui/button";
-import { SITE, SOCIAL_LINKS } from "@/config/site";
+import { SITE } from "@/config/site";
 import { scrollToSection } from "@/lib/utils";
 import { COLORS } from "@/config/theme";
 
