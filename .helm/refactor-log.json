@@ -87,8 +87,32 @@
         ],
         "invariant": "Remove only the unused SOCIAL_LINKS, ChevronDown and button-file React bindings. Preserve all package declarations, used imports, exports, variant definitions, classes, ref/prop forwarding, Button asChild behavior and accordion interaction."
       },
-      "state": "open",
-      "depends_on": []
+      "state": "resolved",
+      "depends_on": [],
+      "closure": {
+        "origin": "native",
+        "kind": "fixed",
+        "commit": "c51d5271ddb742ce6584b5c40eed11afcd3fe950",
+        "date": "2026-11-04",
+        "method": "runtime",
+        "evidence": [
+          "Removed only unused SOCIAL_LINKS from OverviewGrid.jsx, ChevronDown from ui/accordion.jsx and the React namespace import from ui/button.jsx.",
+          "Reviewed the complete diff: no exports, JSX, variants, classes, props/refs, package declarations, test cases or fixtures changed. React.forwardRef imports in the accordion remain intact.",
+          "Combined verification includes the configured portrait change and all shared Button/Accordion consumers."
+        ],
+        "checks": [
+          {
+            "command": "npm test",
+            "scope": "Entire existing Vitest/jsdom suite, including navigation, contact form, real Button/Accordion, routes and configuration consumers.",
+            "outcome": "103 tests passed in 19 files; no skips or unresolved failures reported."
+          },
+          {
+            "command": "NEXT_TELEMETRY_DISABLED=1 npm run build",
+            "scope": "Next.js 15.5.18 production compilation, lint/type checks and static route generation for the final combined source tree.",
+            "outcome": "Build passed; all 12 static pages generated, including the 4 case-study routes."
+          }
+        ]
+      }
     }
   ]
 }
