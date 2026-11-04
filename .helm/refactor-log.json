@@ -35,8 +35,27 @@
         ],
         "invariant": "The current portrait URL remains /profile-photo.png; keep its alt text, fill layout, priority, sizes, styling, copy and section-navigation behavior unchanged. Personal-image selection comes from the established SITE configuration."
       },
-      "state": "open",
-      "depends_on": []
+      "state": "resolved",
+      "depends_on": [],
+      "closure": {
+        "origin": "native",
+        "kind": "fixed",
+        "commit": "a361249f52731246aa5efc6d796327b9c1adb5f0",
+        "date": "2026-11-04",
+        "method": "runtime",
+        "evidence": [
+          "src/components/OverviewGrid.jsx now reads SITE.profileImage for the homepage portrait.",
+          "Static exact-byte comparison confirmed the only component change was the src substitution; SITE.profileImage still equals /profile-photo.png. All presentation props and existing tests were preserved.",
+          "Owner approved the concrete configuration-sharing change with 'apply selected plan'."
+        ],
+        "checks": [
+          {
+            "command": "npm test -- src/__tests__/overview-grid.test.jsx",
+            "scope": "Existing OverviewGrid component suite in Vitest/jsdom; unchanged five scenarios.",
+            "outcome": "5 tests passed in 1 file."
+          }
+        ]
+      }
     },
     {
       "id": "r-be237544-f76f-4457-b0ac-2c9c529cda5c",
