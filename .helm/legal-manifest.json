@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "documents": [
-    { "file": "app/legal/privacy-policy/page.mdx", "generated_at": "2026-08-01", "generated_at_commit": "008e56bcdaf051b7f6ebee672d79e1108ebec98d" },
+    { "file": "legal/privacy-policy.md", "generated_at": "2026-11-04", "generated_at_commit": "7c1413629247b77b5c66f2df7afcf703d2c68fd8" },
     { "file": "app/legal/terms/page.mdx", "generated_at": "2026-08-01", "generated_at_commit": "008e56bcdaf051b7f6ebee672d79e1108ebec98d" }
   ]
 }
