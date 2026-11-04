@@ -1,0 +1,75 @@
+{
+  "schema_version": 2,
+  "assessed_commit": "548aa52fb72a43c505870b08402ff05d123157aa",
+  "full_scan_commit": "548aa52fb72a43c505870b08402ff05d123157aa",
+  "findings": [
+    {
+      "id": "r-567d3c62-8055-4d49-b1f1-205ce11153be",
+      "category": "Consistency",
+      "summary": "The homepage portrait repeats the configured profile-image path, so updating SITE.profileImage leaves OverviewGrid using the previous image.",
+      "paths": [
+        "src/components/OverviewGrid.jsx",
+        "src/config/site.js",
+        "src/components/CaseStudyAuthor.jsx",
+        "app/layout.jsx",
+        "src/__tests__/overview-grid.test.jsx"
+      ],
+      "found": {
+        "origin": "native",
+        "commit": "548aa52fb72a43c505870b08402ff05d123157aa",
+        "date": "2026-11-04"
+      },
+      "assessment": {
+        "origin": "native",
+        "commit": "548aa52fb72a43c505870b08402ff05d123157aa",
+        "date": "2026-11-04",
+        "priority": "low",
+        "risk": "needs-review",
+        "reason": "A small concrete maintenance inconsistency: one personal-image change currently requires a separate homepage source edit despite the project rule placing personal details in site.js. Use the existing configuration property instead of adding an abstraction.",
+        "evidence": [
+          "AGENTS.md Behavior Rules: update personal details in src/config/site.js only.",
+          "src/components/OverviewGrid.jsx:50 hardcodes /profile-photo.png while already importing SITE.",
+          "src/config/site.js:8 defines SITE.profileImage as the same current /profile-photo.png path.",
+          "src/components/CaseStudyAuthor.jsx and app/layout.jsx consume SITE.profileImage; homepage and metadata therefore have separate image sources today.",
+          "Read all OverviewGrid implementation and all five existing component-test cases; no production edits or new runtime checks performed during this scan."
+        ],
+        "invariant": "The current portrait URL remains /profile-photo.png; keep its alt text, fill layout, priority, sizes, styling, copy and section-navigation behavior unchanged. Personal-image selection comes from the established SITE configuration."
+      },
+      "state": "open",
+      "depends_on": []
+    },
+    {
+      "id": "r-be237544-f76f-4457-b0ac-2c9c529cda5c",
+      "category": "Code Quality",
+      "summary": "Three unused import bindings make the dependency lists of OverviewGrid and the shared UI wrappers inaccurate.",
+      "paths": [
+        "src/components/OverviewGrid.jsx",
+        "src/components/ui/accordion.jsx",
+        "src/components/ui/button.jsx"
+      ],
+      "found": {
+        "origin": "native",
+        "commit": "548aa52fb72a43c505870b08402ff05d123157aa",
+        "date": "2026-11-04"
+      },
+      "assessment": {
+        "origin": "native",
+        "commit": "548aa52fb72a43c505870b08402ff05d123157aa",
+        "date": "2026-11-04",
+        "priority": "low",
+        "risk": "safe",
+        "reason": "Removing proven-unused bindings provides a small readability benefit without restructuring components or removing packages. No performance improvement is claimed.",
+        "evidence": [
+          "Full-file/reference review: SOCIAL_LINKS appears only in the import at src/components/OverviewGrid.jsx:7.",
+          "Full-file/reference review: ChevronDown appears only in the icon import at src/components/ui/accordion.jsx:5; the trigger uses Plus.",
+          "Full-file/reference review: the React namespace appears only in its import at src/components/ui/button.jsx:3; the configured Next/Vite React toolchain supplies JSX transformation.",
+          "React remains required in accordion.jsx for React.forwardRef; preserve it there.",
+          "Actual Button and Accordion consumers and their existing tests were reviewed; no dependency uninstall or public export removal is proposed."
+        ],
+        "invariant": "Remove only the unused SOCIAL_LINKS, ChevronDown and button-file React bindings. Preserve all package declarations, used imports, exports, variant definitions, classes, ref/prop forwarding, Button asChild behavior and accordion interaction."
+      },
+      "state": "open",
+      "depends_on": []
+    }
+  ]
+}
