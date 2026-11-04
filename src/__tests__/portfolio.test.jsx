@@ -16,11 +16,6 @@ vi.mock("next/navigation", () => ({
   usePathname: () => mockPathname(),
 }));
 
-vi.mock("@/components/ui/button", () => ({
-  Button: ({ children, asChild, ...props }) =>
-    asChild ? children : <button {...props}>{children}</button>,
-}));
-
 describe("Portfolio", () => {
   beforeEach(() => mockPathname.mockReturnValue("/"));
 
@@ -34,15 +29,20 @@ describe("Portfolio", () => {
 
   it("each card links to the correct slug", () => {
     render(<Portfolio />);
-    expect(document.querySelector('a[href="/betterhr"]')).not.toBeNull();
-    expect(document.querySelector('a[href="/unilinks"]')).not.toBeNull();
-    expect(document.querySelector('a[href="/kbz-bank"]')).not.toBeNull();
-    expect(document.querySelector('a[href="/wct"]')).not.toBeNull();
+    for (const [title, href] of [
+      ["Better HR Cloud-based HR Management Platform", "/betterhr"],
+      ["UniLinks All-in-One Study Abroad Platform", "/unilinks"],
+      ["KBZ Bank Digital Banking Authentication System", "/kbz-bank"],
+      ["WCT Pay Crypto–Fiat Payment Dashboard", "/wct"],
+    ]) {
+      expect(screen.getByRole("link", { name: new RegExp(title) })).toHaveAttribute("href", href);
+    }
   });
 
   it("shows See All button when not on /portfolio", () => {
     render(<Portfolio />);
     expect(screen.getByText("See All")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "See All" })).toHaveAttribute("href", "/portfolio");
   });
 
   it("hides See All button when on /portfolio", () => {

@@ -1,36 +1,8 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect } from "vitest";
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import { FAQ } from "../components/FAQ";
-
-// Stateful mock that simulates real expand/collapse so click tests are meaningful
-vi.mock("@/components/ui/accordion", () => {
-  const AccordionContext = React.createContext({ open: false, onToggle: () => {} });
-
-  const Accordion = ({ children }) => <div>{children}</div>;
-
-  const AccordionItem = ({ children }) => {
-    const [open, setOpen] = React.useState(false);
-    return (
-      <AccordionContext.Provider value={{ open, onToggle: () => setOpen((o) => !o) }}>
-        <div>{children}</div>
-      </AccordionContext.Provider>
-    );
-  };
-
-  const AccordionTrigger = ({ children }) => {
-    const { open, onToggle } = React.useContext(AccordionContext);
-    return <button aria-expanded={open} onClick={onToggle}>{children}</button>;
-  };
-
-  const AccordionContent = ({ children }) => {
-    const { open } = React.useContext(AccordionContext);
-    return open ? <div>{children}</div> : null;
-  };
-
-  return { Accordion, AccordionItem, AccordionTrigger, AccordionContent };
-});
 
 describe("FAQ", () => {
   it("renders all 6 question triggers", () => {
@@ -50,7 +22,8 @@ describe("FAQ", () => {
 
   it("answers are hidden before any trigger is clicked", () => {
     render(<FAQ />);
-    expect(screen.queryByText(/I'm looking for senior roles/)).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "What roles are you looking for?" })).toHaveAttribute("aria-expanded", "false");
+    expect(screen.queryByRole("region")).not.toBeInTheDocument();
   });
 
   it("clicking a trigger reveals its answer", async () => {
@@ -58,7 +31,9 @@ describe("FAQ", () => {
     render(<FAQ />);
     const trigger = screen.getByText("What roles are you looking for?");
     await user.click(trigger);
-    expect(screen.getByText(/I'm looking for senior roles/)).toBeInTheDocument();
+    expect(trigger).toHaveAttribute("aria-expanded", "true");
+    expect(screen.getByText(/I'm looking for senior roles/)).toBeVisible();
+    expect(screen.getByRole("region", { name: "What roles are you looking for?" })).toBeVisible();
   });
 
   it("clicking an open trigger collapses it", async () => {
@@ -68,6 +43,36 @@ describe("FAQ", () => {
     await user.click(trigger);
     expect(screen.getByText(/I'm looking for senior roles/)).toBeInTheDocument();
     await user.click(trigger);
-    expect(screen.queryByText(/I'm looking for senior roles/)).not.toBeInTheDocument();
+    expect(trigger).toHaveAttribute("aria-expanded", "false");
+    expect(screen.queryByRole("region", { name: "What roles are you looking for?" })).not.toBeInTheDocument();
+  });
+
+  it("opening another question closes the previously open answer", async () => {
+    const user = userEvent.setup();
+    render(<FAQ />);
+    const first = screen.getByRole("button", { name: "What roles are you looking for?" });
+    const second = screen.getByRole("button", { name: "Do you work only as a Product Designer?" });
+    await user.click(first);
+    expect(screen.getByRole("region", { name: first.textContent })).toBeVisible();
+    await user.click(second);
+    expect(first).toHaveAttribute("aria-expanded", "false");
+    expect(second).toHaveAttribute("aria-expanded", "true");
+    expect(screen.queryByRole("region", { name: first.textContent })).not.toBeInTheDocument();
+    expect(screen.getByRole("region", { name: second.textContent })).toBeVisible();
+    expect(screen.getAllByRole("region")).toHaveLength(1);
+  });
+
+  it.each([["Enter", "{Enter}"], ["Space", " "]])("supports %s to open and collapse a focused question", async (_, key) => {
+    const user = userEvent.setup();
+    render(<FAQ />);
+    const trigger = screen.getByRole("button", { name: "What roles are you looking for?" });
+    await user.tab();
+    expect(trigger).toHaveFocus();
+    await user.keyboard(key);
+    expect(trigger).toHaveAttribute("aria-expanded", "true");
+    expect(screen.getByText(/I'm looking for senior roles/)).toBeVisible();
+    await user.keyboard(key);
+    expect(trigger).toHaveAttribute("aria-expanded", "false");
+    expect(screen.queryByRole("region")).not.toBeInTheDocument();
   });
 });
