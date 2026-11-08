@@ -436,8 +436,37 @@
         ],
         "invariant": "Every test keeps its scenarios, assertions, the per-file overrides that differ (for example Image props and Link extras) and its isolation. No test is skipped, merged or loosened."
       },
-      "state": "open",
-      "depends_on": []
+      "state": "resolved",
+      "depends_on": [],
+      "closure": {
+        "origin": "native",
+        "kind": "fixed",
+        "commit": "67b736bda98baacd6d306435faae851cfa77a70e",
+        "date": "2026-11-08",
+        "method": "runtime",
+        "evidence": [
+          "src/__tests__/test-utils/mocks.jsx now holds the next/image and next/link mock factories and the IntersectionObserver class, loaded through async vi.mock factories.",
+          "The contact test's next/image mock, which spreads props, was kept as it was.",
+          "Sorted verbose test names and results were identical before and after the change; no test was added, removed, skipped or loosened."
+        ],
+        "checks": [
+          {
+            "command": "npm test",
+            "scope": "Vitest 4.1.10 in jsdom on Node 24.21.0, full suite after wave 2 (R6, R7)",
+            "outcome": "24 files, 136 tests passed; the 136 verbose test names match the run before each change"
+          },
+          {
+            "command": "npm run lint",
+            "scope": "eslint over app, src, scripts and root config after wave 2",
+            "outcome": "0 errors, 2 warnings (the baseline had 11 no-img-element warnings)"
+          },
+          {
+            "command": "npm run build",
+            "scope": "Next.js production build after wave 2; fetches the Inter font from Google at build time",
+            "outcome": "compiled successfully"
+          }
+        ]
+      }
     },
     {
       "id": "r-d24a8865-9acf-4cb0-b049-0b30a58abfc0",
@@ -473,8 +502,36 @@
         ],
         "invariant": "Remove only the unused default React import in those files. Keep React where it is referenced (for example vitest.setup.js and ui/accordion.jsx) and change no test body."
       },
-      "state": "open",
-      "depends_on": []
+      "state": "resolved",
+      "depends_on": [],
+      "closure": {
+        "origin": "native",
+        "kind": "fixed",
+        "commit": "3c4637b5ea67e595c0317eb7adb76a0779273c2e",
+        "date": "2026-11-08",
+        "method": "runtime",
+        "evidence": [
+          "The unused default React import was removed from the ten listed test files and nothing else changed.",
+          "The ten files still pass under the automatic JSX runtime."
+        ],
+        "checks": [
+          {
+            "command": "npm test",
+            "scope": "Vitest 4.1.10 in jsdom on Node 24.21.0, full suite after wave 2 (R6, R7)",
+            "outcome": "24 files, 136 tests passed; the 136 verbose test names match the run before each change"
+          },
+          {
+            "command": "npm run lint",
+            "scope": "eslint over app, src, scripts and root config after wave 2",
+            "outcome": "0 errors, 2 warnings (the baseline had 11 no-img-element warnings)"
+          },
+          {
+            "command": "npm run build",
+            "scope": "Next.js production build after wave 2; fetches the Inter font from Google at build time",
+            "outcome": "compiled successfully"
+          }
+        ]
+      }
     }
   ]
 }
