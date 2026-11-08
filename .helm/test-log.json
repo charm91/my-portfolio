@@ -271,8 +271,24 @@
       "action": "add",
       "layer": "integration",
       "id": "g-804ac262-c89a-441f-a62e-32f124a61c1f",
-      "state": "open",
-      "assessed_commit": "1edceed298d8e1c54a274dd1c69b7256847f8c6f"
+      "state": "resolved",
+      "assessed_commit": "1edceed298d8e1c54a274dd1c69b7256847f8c6f",
+      "tests": [
+        "src/__tests__/section-targets.test.jsx::renders exactly one real element with id %s",
+        "src/__tests__/section-targets.test.jsx::points every in-page link at a rendered section"
+      ],
+      "closure": {
+        "reason": "tested",
+        "refs": [
+          "src/__tests__/section-targets.test.jsx::renders exactly one real element with id %s",
+          "src/__tests__/section-targets.test.jsx::points every in-page link at a rendered section"
+        ],
+        "method": "runtime",
+        "outcome": "Each of the six home section ids is rendered exactly once by the real sections, and every in-page link in Header, Hero, OverviewGrid, Services and Footer targets a rendered id. Renaming the services id made both checks fail, then the source was restored.",
+        "commit": "d7cd147a50bad584812b328785f41f890bc2dfe0",
+        "command": "npx vitest run src/__tests__/section-targets.test.jsx",
+        "scope": "jsdom Vitest 4.1.10 on Node 24.21.0; full suite npm test on the final tree: 24 files, 135 tests passed; npm run lint: 0 errors"
+      }
     },
     {
       "id": "g-a5b76e0c-0512-40a5-bd4a-1950e03691bf",
@@ -519,8 +535,24 @@
       "action": "add",
       "layer": "integration",
       "id": "g-bd508a0b-0673-4c0d-9612-4b1186de888a",
-      "state": "open",
-      "assessed_commit": "1edceed298d8e1c54a274dd1c69b7256847f8c6f"
+      "state": "resolved",
+      "assessed_commit": "1edceed298d8e1c54a274dd1c69b7256847f8c6f",
+      "tests": [
+        "src/__tests__/skip-link.test.jsx::targets #main-content",
+        "src/__tests__/skip-link.test.jsx::has exactly one #main-content landmark on %s"
+      ],
+      "closure": {
+        "reason": "tested",
+        "refs": [
+          "src/__tests__/skip-link.test.jsx::targets #main-content",
+          "src/__tests__/skip-link.test.jsx::has exactly one #main-content landmark on %s"
+        ],
+        "method": "runtime",
+        "outcome": "The layout skip link targets #main-content and the home, case-study and contact shells each render exactly one main with that id. Renaming the HomeShell id and the skip link target each made a check fail, then the source was restored.",
+        "commit": "87a7856778dcd6fe24d670e58cc3af9f422fbb1d",
+        "command": "npx vitest run src/__tests__/skip-link.test.jsx",
+        "scope": "jsdom Vitest 4.1.10 on Node 24.21.0; full suite npm test on the final tree: 24 files, 135 tests passed; npm run lint: 0 errors"
+      }
     },
     {
       "id": "g-c208a501-6517-4238-8762-75c5e3e46cb1",
@@ -579,8 +611,22 @@
       "action": "add",
       "layer": "unit",
       "id": "g-df11bd1d-20a7-4915-98e6-78c8831ad54d",
-      "state": "open",
-      "assessed_commit": "1edceed298d8e1c54a274dd1c69b7256847f8c6f"
+      "state": "resolved",
+      "assessed_commit": "1edceed298d8e1c54a274dd1c69b7256847f8c6f",
+      "tests": [
+        "src/__tests__/motion-provider.test.jsx::lets the visitor's reduced-motion preference control animations around its children"
+      ],
+      "closure": {
+        "reason": "tested",
+        "refs": [
+          "src/__tests__/motion-provider.test.jsx::lets the visitor's reduced-motion preference control animations around its children"
+        ],
+        "method": "runtime",
+        "outcome": "MotionProvider renders its children inside a motion configuration with reducedMotion set to user. Changing the prop to never made the check fail, then the source was restored.",
+        "commit": "e2720e4e07a7bb2897a3fc92e9d6ccd07773c90c",
+        "command": "npx vitest run src/__tests__/motion-provider.test.jsx",
+        "scope": "jsdom Vitest 4.1.10 on Node 24.21.0; full suite npm test on the final tree: 24 files, 135 tests passed; npm run lint: 0 errors"
+      }
     },
     {
       "id": "g-e7ce9b6f-9373-4a08-b53a-60ed8ac42b50",
