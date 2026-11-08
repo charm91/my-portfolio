@@ -19,7 +19,7 @@ const services = [
     icon: Settings,
     title: "Product Ownership",
     description:
-      "I bring product ownership experience to clarify goals, prioritize scope, and align design with business needs.",
+      "I clarify goals, prioritize scope, and align design with business needs.",
     tags: ["Product Strategy", "Prioritization", "Stakeholders"],
   },
   {
