@@ -3,7 +3,6 @@
 import { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -127,10 +126,7 @@ export default function ContactPageClient() {
         }}
       />
 
-      <motion.header
-        initial={{ y: -80 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
+      <header
         className="fixed left-0 right-0 top-0 z-50 px-4 pt-3 md:pt-4"
       >
         <div className="mx-auto w-full max-w-xl">
@@ -157,13 +153,10 @@ export default function ContactPageClient() {
             </Button>
           </div>
         </div>
-      </motion.header>
+      </header>
 
       <main id="main-content" className="relative mx-auto max-w-2xl px-4 py-28 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
+        <div
           className="mb-10 text-center"
         >
           <span
@@ -184,12 +177,9 @@ export default function ContactPageClient() {
             Open to conversations about product design roles, <br />
             collaboration, and opportunities.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.form
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.1 }}
+        <form
           onSubmit={handleSubmit}
           noValidate
           className="rounded-3xl bg-white p-6 md:p-8"
@@ -318,7 +308,7 @@ export default function ContactPageClient() {
               "Send Message"
             )}
           </Button>
-        </motion.form>
+        </form>
       </main>
     </div>
   );

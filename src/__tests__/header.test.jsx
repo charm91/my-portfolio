@@ -24,8 +24,6 @@ vi.mock("@/components/ui/button", () => ({
     asChild ? children : <button {...props}>{children}</button>,
 }));
 
-vi.mock("@/lib/utils", () => ({ cn: (...c) => c.filter(Boolean).join(" ") }));
-
 // jsdom does not implement IntersectionObserver — arrow fns can't be constructors
 class MockIntersectionObserver {
   static instances = [];
@@ -111,6 +109,16 @@ describe("Header", () => {
     }
     expect(screen.queryByRole("navigation")).not.toBeInTheDocument();
     expect(screen.getByRole("button", { name: "Open menu" })).toBeInTheDocument();
+  });
+
+  it("respects reduced motion for menu navigation", async () => {
+    vi.stubGlobal("matchMedia", vi.fn(() => ({ matches: true })));
+    const user = userEvent.setup();
+    const { sections } = renderWithSections();
+    await user.click(screen.getByRole("button", { name: "Open menu" }));
+    await user.click(screen.getByRole("button", { name: "Testimonials", exact: true }));
+    expect(sections.testimonials.scrollIntoView).toHaveBeenCalledExactlyOnceWith({ behavior: "auto" });
+    expect(screen.queryByRole("navigation")).not.toBeInTheDocument();
   });
 
   it("keeps the menu open for interior clicks and dismisses it with the trigger or outside click", async () => {

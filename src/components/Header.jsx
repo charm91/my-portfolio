@@ -4,7 +4,7 @@ import { useState, useEffect, useRef } from "react";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import { cn, getScrollBehavior } from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
 import { SITE } from "@/config/site";
@@ -65,7 +65,7 @@ export function Header() {
 
   const scrollToSection = (href) => {
     const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: "smooth" });
+    if (el) el.scrollIntoView({ behavior: getScrollBehavior() });
     setMenuOpen(false);
   };
 
@@ -95,10 +95,7 @@ export function Header() {
   }, [menuOpen]);
 
   return (
-    <motion.header
-      initial={{ y: -80 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
+    <header
       className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-3 md:pt-4 max-w-xl mx-auto"
     >
       {/* Pill-shaped nav bar: white, rounded, shadow */}
@@ -149,9 +146,9 @@ export function Header() {
           <AnimatePresence>
             {menuOpen && (
               <motion.div
-                initial={{ opacity: 0, y: -8 }}
+                initial={{ opacity: 0, y: -4 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -8 }}
+                exit={{ opacity: 0, y: -4 }}
                 transition={{ duration: 0.2 }}
                 className="menu-panel absolute right-0 top-full mt-2 w-48 rounded-2xl bg-white p-3 shadow-lg border border-gray-100"
                 style={{
@@ -198,6 +195,6 @@ export function Header() {
           </AnimatePresence>
         </div>
       </div>
-    </motion.header>
+    </header>
   );
 }

@@ -30,6 +30,7 @@ describe("ScrollToSection query navigation", () => {
     cleanup();
     vi.clearAllTimers();
     vi.useRealTimers();
+    vi.unstubAllGlobals();
   });
 
   it.each(["portfolio", "#portfolio"])("scrolls to %s after the layout delay", (value) => {
@@ -48,6 +49,14 @@ describe("ScrollToSection query navigation", () => {
     act(() => vi.runAllTimers());
     expect(portfolio.scrollIntoView).not.toHaveBeenCalled();
     expect(contact.scrollIntoView).not.toHaveBeenCalled();
+  });
+
+  it("respects reduced motion when navigating from another route", () => {
+    vi.stubGlobal("matchMedia", vi.fn(() => ({ matches: true })));
+    query.value = "portfolio";
+    const { portfolio } = renderTargets();
+    act(() => vi.runAllTimers());
+    expect(portfolio.scrollIntoView).toHaveBeenCalledExactlyOnceWith({ behavior: "auto", block: "start" });
   });
 
   it("cancels the previous target when the query changes before its deadline", () => {

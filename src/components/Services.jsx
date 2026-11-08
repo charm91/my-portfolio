@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { sectionReveal } from "@/config/motion";
 import { Settings, Globe, Layers, Code2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { scrollToSection } from "@/lib/utils";
@@ -37,19 +38,6 @@ const services = [
   },
 ];
 
-const container = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 24 },
-  show: { opacity: 1, y: 0 },
-};
-
 const textPrimary = COLORS.textPrimaryHome;
 const textSecondary = COLORS.textSecondary;
 
@@ -64,9 +52,7 @@ export function Services() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Pill label */}
         <motion.div
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...sectionReveal}
           className="flex justify-center mb-5"
         >
           <span className="section-category text-xs">What I Do</span>
@@ -74,9 +60,7 @@ export function Services() {
 
         {/* Main heading - centered */}
         <motion.h2
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...sectionReveal}
           className="section-title"
         >
           Where Product Design <br />
@@ -85,16 +69,12 @@ export function Services() {
 
         {/* 2x2 grid */}
         <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-60px" }}
+          {...sectionReveal}
           className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6"
         >
           {services.map((s, i) => (
-            <motion.article
+            <article
               key={i}
-              variants={item}
               className="rounded-2xl bg-white p-4 md:p-6"
             >
               <div className="flex flex-col">
@@ -127,15 +107,13 @@ export function Services() {
                   ))}
                 </div>
               </div>
-            </motion.article>
+            </article>
           ))}
         </motion.div>
 
         {/* Explore Projects button - centered */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...sectionReveal}
           className="mt-12 md:mt-14 flex justify-center"
         >
           <Button

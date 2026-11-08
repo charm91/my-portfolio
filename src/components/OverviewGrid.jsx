@@ -2,23 +2,12 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { sectionReveal } from "@/config/motion";
 import { Star, ExternalLink, ArrowDown } from "lucide-react";
 import { Button } from "./ui/button";
 import { SITE } from "@/config/site";
 import { scrollToSection } from "@/lib/utils";
 import { COLORS } from "@/config/theme";
-
-const container = {
-  hidden: {},
-  show: {
-    transition: { staggerChildren: 0.08 },
-  },
-};
-
-const item = {
-  hidden: { opacity: 0, y: 16, scale: 0.96 },
-  show: { opacity: 1, y: 0, scale: 1 },
-};
 
 const textPrimary = COLORS.textPrimaryHome;
 const textSecondary = COLORS.textSecondary;
@@ -32,11 +21,7 @@ export function OverviewGrid() {
   return (
     <section className="py-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          variants={container}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-60px" }}
+        <div
           className="grid lg:grid-cols-5 gap-6 md:gap-5"
         >
           <div className="flex flex-col gap-4 md:gap-5 lg:col-span-3 w-full">
@@ -88,7 +73,7 @@ export function OverviewGrid() {
               </div>
             </article>
             <motion.article
-              variants={item}
+              {...sectionReveal}
               className="rounded-2xl bg-white p-5 md:p-6"
             >
               <a
@@ -96,7 +81,7 @@ export function OverviewGrid() {
                 onClick={scrollToContact}
                 className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6"
               >
-                <span className="size-6 bg-emerald-200 rounded-full shrink-0 relative animate-pulse">
+                <span className="size-6 bg-emerald-200 rounded-full shrink-0 relative">
                   <span
                     className="size-3 rounded-full bg-emerald-400 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2"
                     aria-hidden
@@ -127,7 +112,7 @@ export function OverviewGrid() {
 
           <div className="flex flex-col gap-4 md:gap-5 lg:col-span-2 w-full">
             <motion.article
-              variants={item}
+              {...sectionReveal}
               className="rounded-2xl bg-white p-5 md:p-6"
             >
               <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6">
@@ -148,7 +133,7 @@ export function OverviewGrid() {
             </motion.article>
 
             <motion.article
-              variants={item}
+              {...sectionReveal}
               className="rounded-2xl bg-white p-5 md:p-6"
             >
               <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6">
@@ -169,7 +154,7 @@ export function OverviewGrid() {
             </motion.article>
 
             <motion.article
-              variants={item}
+              {...sectionReveal}
               className="rounded-2xl bg-white p-5 md:p-6"
             >
               <div className="flex gap-2 mb-2 bg-background rounded-full px-3 py-2 w-fit">
@@ -218,7 +203,7 @@ export function OverviewGrid() {
               </div>
             </motion.article>
           </div>
-        </motion.div>
+        </div>
 
         <div className="text-center mt-10">
           <Button

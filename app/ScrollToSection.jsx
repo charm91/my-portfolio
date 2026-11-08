@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import { useSearchParams } from "next/navigation";
+import { getScrollBehavior } from "@/lib/utils";
 
 export function ScrollToSection() {
   const searchParams = useSearchParams();
@@ -15,7 +16,7 @@ export function ScrollToSection() {
     if (!el) return;
 
     const timer = setTimeout(() => {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
+      el.scrollIntoView({ behavior: getScrollBehavior(), block: "start" });
     }, 100);
 
     return () => clearTimeout(timer);

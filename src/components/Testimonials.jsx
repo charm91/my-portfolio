@@ -1,8 +1,4 @@
-"use client";
-
 import Image from "next/image";
-import { useRef, useState, useEffect } from "react";
-import { motion, scroll, useMotionValue, useTransform } from "framer-motion";
 import { Star } from "lucide-react";
 
 const ZayarImage = "/zayar.jpeg";
@@ -42,71 +38,12 @@ const testimonials = [
 ];
 
 const textPrimary = "#242424";
-const VIEWPORT_HEIGHT = 800;
 
 export function Testimonials() {
-  const sectionRef = useRef(null);
-  const contentRef = useRef(null);
-  const [scrollRange, setScrollRange] = useState(800);
-
-  const scrollYProgress = useMotionValue(0);
-
-  const y = useTransform(
-    scrollYProgress,
-    [0, 0.15, 0.85, 1],
-    [0, 0, -scrollRange, -scrollRange],
-  );
-
-  useEffect(() => {
-    const desktop = window.matchMedia("(min-width: 768px)");
-    let stopTracking;
-
-    const updateTracking = () => {
-      stopTracking?.();
-      stopTracking = undefined;
-      scrollYProgress.set(0);
-      if (!desktop.matches) return;
-
-      const el = contentRef.current;
-      const updateRange = () => {
-        setScrollRange(Math.max(0, el.scrollHeight - VIEWPORT_HEIGHT));
-      };
-      updateRange();
-      const observer = new ResizeObserver(updateRange);
-      observer.observe(el);
-      const stopScroll = scroll((_, info) => scrollYProgress.set(info.y.progress), {
-        target: sectionRef.current,
-        offset: ["start end", "end start"],
-      });
-      stopTracking = () => {
-        stopScroll();
-        observer.disconnect();
-      };
-    };
-
-    updateTracking();
-    desktop.addEventListener("change", updateTracking);
-    return () => {
-      desktop.removeEventListener("change", updateTracking);
-      stopTracking?.();
-    };
-  }, [scrollYProgress]);
-
   return (
-    <section
-      ref={sectionRef}
-      id="testimonials"
-      className="pb-10 pt-20 max-md:min-h-0!"
-      style={{ minHeight: VIEWPORT_HEIGHT + scrollRange - 500 }}
-    >
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header - centered */}
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mb-12"
-        >
+    <section id="testimonials" className="pb-10 pt-20">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-12">
           <span
             className="px-4 py-1.5 rounded-full text-xs font-medium bg-white text-center mx-auto inline-block"
             style={{
@@ -119,78 +56,64 @@ export function Testimonials() {
           <h2 className="text-3xl md:text-4xl font-bold text-[#1f2937] mt-4">
             What Colleagues Say
           </h2>
-        </motion.div>
-
-        {/* Mobile cards stay in document flow; desktop retains the scroll effect. */}
-        <div
-          className="relative max-w-[600px] mx-auto rounded-2xl md:h-[800px] md:overflow-hidden"
-          style={{
-            backgroundImage: "linear-gradient(180deg, #fff, #f6f7f9 46%, #fff)",
-            backgroundSize: "100% 100%",
-          }}
-        >
-          <motion.div
-            ref={contentRef}
-            style={{ y }}
-            className="p-4 md:p-10 space-y-6 w-full max-md:transform-none!"
-          >
-            {testimonials.map((t) => (
-              <article
-                key={t.name}
-                className="rounded-2xl bg-white p-5 md:p-8 relative shadow-xs"
-              >
-                <div className="flex gap-0.5 mb-5" aria-label="5 out of 5 stars">
-                  {[1, 2, 3, 4, 5].map((n) => (
-                    <Star
-                      key={n}
-                      className="size-5 fill-[#fbbf24] text-[#fbbf24] shrink-0"
-                      strokeWidth={1.5}
-                      aria-hidden="true"
-                    />
-                  ))}
-                </div>
-                <p className="text-[#323744] text-sm leading-relaxed mb-6">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-                <div className="flex items-center justify-between gap-4">
-                  <div className="flex flex-1 items-center gap-3 min-w-0">
-                    <Image
-                      src={t.avatar}
-                      alt={t.name}
-                      width={48}
-                      height={48}
-                      className="size-12 rounded-full object-cover shrink-0 bg-[#e5e7eb]"
-                    />
-                    <div className="min-w-0">
-                      <p className="font-bold text-[#1f2937] text-lg">
-                        {t.name}
-                      </p>
-                      <p className="text-sm text-[#6b7280]">
-                        {t.role}
-                      </p>
-                    </div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {testimonials.map((t) => (
+            <article
+              key={t.name}
+              className="rounded-2xl bg-white p-5 md:p-8 relative shadow-xs flex flex-col"
+            >
+              <div className="flex gap-0.5 mb-5" aria-label="5 out of 5 stars">
+                {[1, 2, 3, 4, 5].map((n) => (
+                  <Star
+                    key={n}
+                    className="size-5 fill-[#fbbf24] text-[#fbbf24] shrink-0"
+                    strokeWidth={1.5}
+                    aria-hidden="true"
+                  />
+                ))}
+              </div>
+              <p className="text-[#323744] text-sm leading-relaxed mb-6">
+                &ldquo;{t.quote}&rdquo;
+              </p>
+              <div className="flex items-center justify-between gap-4 mt-auto">
+                <div className="flex flex-1 items-center gap-3 min-w-0">
+                  <Image
+                    src={t.avatar}
+                    alt={t.name}
+                    width={48}
+                    height={48}
+                    className="size-12 rounded-full object-cover shrink-0 bg-[#e5e7eb]"
+                  />
+                  <div className="min-w-0">
+                    <p className="font-bold text-[#1f2937] text-lg">
+                      {t.name}
+                    </p>
+                    <p className="text-sm text-[#6b7280]">
+                      {t.role}
+                    </p>
                   </div>
-                  <span className="shrink-0">
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                    >
-                      <path
-                        fill="none"
-                        stroke="#000"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                        d="m13.081 10.712l-4.786-6.71a.6.6 0 0 0-.489-.252H5.28a.6.6 0 0 0-.488.948l6.127 8.59m2.162-2.576l6.127 8.59a.6.6 0 0 1-.488.948h-2.526a.6.6 0 0 1-.489-.252l-4.786-6.71m2.162-2.576l5.842-6.962m-8.004 9.538L5.077 20.25"
-                      ></path>
-                    </svg>
-                  </span>
                 </div>
-              </article>
-            ))}
-          </motion.div>
+                <span className="shrink-0">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      fill="none"
+                      stroke="#000"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth="2"
+                      d="m13.081 10.712l-4.786-6.71a.6.6 0 0 0-.489-.252H5.28a.6.6 0 0 0-.488.948l6.127 8.59m2.162-2.576l6.127 8.59a.6.6 0 0 1-.488.948h-2.526a.6.6 0 0 1-.489-.252l-4.786-6.71m2.162-2.576l5.842-6.962m-8.004 9.538L5.077 20.25"
+                    ></path>
+                  </svg>
+                </span>
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>

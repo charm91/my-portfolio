@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { sectionReveal } from "@/config/motion";
 import {
   Accordion,
   AccordionContent,
@@ -40,9 +41,7 @@ export function FAQ() {
     <section id="faq" className="py-20 md:py-28">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...sectionReveal}
           className="flex flex-col justify-center items-center gap-4 mb-10"
         >
           <p className="section-category text-xs">FAQ</p>
@@ -53,10 +52,7 @@ export function FAQ() {
         </motion.div>
 
         <motion.div
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
+          {...sectionReveal}
           className="max-w-[600px] mx-auto"
         >
           <Accordion type="single" collapsible className="w-full">

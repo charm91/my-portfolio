@@ -1,7 +1,6 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
 import { CirclePlay } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
@@ -10,17 +9,12 @@ import {
   textPrimary,
   textSecondary,
   bgPage,
-  pageTransition,
-  scrollReveal,
   CASE_STUDY_HERO_IMAGE_SIZES,
 } from "@/config/caseStudy";
 
 export function CaseStudyShell({ coverImage, title, tags, liveUrl, thumbnail, children }) {
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={pageTransition}
+    <div
       className="min-h-screen relative"
       style={{ backgroundColor: bgPage }}
     >
@@ -48,8 +42,7 @@ export function CaseStudyShell({ coverImage, title, tags, liveUrl, thumbnail, ch
 
       {/* Hero content and page content scroll over the fixed image */}
       <section className="relative flex flex-col z-10 mt-28 min-h-[50vh]">
-        <motion.div
-          {...scrollReveal}
+        <div
           className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 md:pb-14 w-full bg-white rounded-t-2xl pt-10"
         >
           <h1
@@ -75,15 +68,15 @@ export function CaseStudyShell({ coverImage, title, tags, liveUrl, thumbnail, ch
               href={liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 rounded-3xl bg-[#1f2937] px-5 py-2.5 font-medium text-white transition-all duration-200 hover:-translate-y-0.5 hover:scale-[1.02] hover:bg-[#111827] hover:shadow-lg active:translate-y-0 active:scale-100"
+              className="group inline-flex items-center gap-2 rounded-3xl bg-[#1f2937] px-5 py-2.5 font-medium text-white transition-colors duration-200 hover:bg-[#111827]"
             >
-              <CirclePlay className="size-5 transition-all duration-200 group-hover:scale-110 group-hover:translate-x-0.5" />
-              <span className="transition-all duration-200 group-hover:translate-x-0.5">
+              <CirclePlay className="size-5" />
+              <span>
                 Live Project
               </span>
             </a>
           </div>
-          <motion.div {...scrollReveal} className="mt-10">
+          <div className="mt-10">
             <div className="rounded-2xl overflow-hidden">
               <Image
                 src={thumbnail.src}
@@ -94,8 +87,8 @@ export function CaseStudyShell({ coverImage, title, tags, liveUrl, thumbnail, ch
                 className="w-full h-auto"
               />
             </div>
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
         <main
           id="main-content"
           className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 py-12 tracking-tight rounded-b-2xl bg-white"
@@ -106,9 +99,7 @@ export function CaseStudyShell({ coverImage, title, tags, liveUrl, thumbnail, ch
         </main>
       </section>
 
-      <motion.div {...scrollReveal}>
-        <Footer />
-      </motion.div>
-    </motion.div>
+      <Footer />
+    </div>
   );
 }

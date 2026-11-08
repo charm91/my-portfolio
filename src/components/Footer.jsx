@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { sectionReveal } from "@/config/motion";
 import { Linkedin, Mail, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SITE, SOCIAL_LINKS, RESUME_URL } from "@/config/site";
@@ -16,9 +17,7 @@ export function Footer() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main CTA card - white, rounded, centered */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...sectionReveal}
           className="rounded-3xl bg-white p-8 md:p-10 text-center mb-8 md:mb-10"
         >
           <span
@@ -54,9 +53,7 @@ export function Footer() {
 
         {/* Contact link cards - two cards, horizontal on desktop, stack on mobile */}
         <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...sectionReveal}
           className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-12 md:mb-16"
         >
           <a
@@ -120,9 +117,7 @@ export function Footer() {
 
         {/* Footer bar - copyright left, links right; stack on mobile */}
         <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
+          {...sectionReveal}
           className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-4 pt-6 border-t border-[#d1d5db]"
         >
           <p
