@@ -1,6 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
-import React from "react";
 import { Footer } from "../components/Footer";
 import { SITE, SOCIAL_LINKS, RESUME_URL } from "../config/site";
 

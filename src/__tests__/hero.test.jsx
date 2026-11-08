@@ -1,6 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
 import { fireEvent, render, screen } from "@testing-library/react";
-import React from "react";
 import { Hero } from "../components/Hero";
 
 vi.mock("lucide-react", () => ({ ArrowRight: () => <svg /> }));
