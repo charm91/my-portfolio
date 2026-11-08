@@ -21,12 +21,13 @@ export function CaseStudyAuthor() {
         <div className="flex shrink-0 items-center gap-3">
           <a
             href={SOCIAL_LINKS.facebook}
-            target="_blank"
             rel="noopener noreferrer"
-            className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-slate-400 shadow-xs transition hover:text-slate-600"
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-slate-400 shadow-xs transition hover:text-slate-600 focus-visible:text-slate-600 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
             aria-label="Facebook"
           >
             <svg
+              aria-hidden="true"
+              focusable="false"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"
@@ -37,12 +38,13 @@ export function CaseStudyAuthor() {
           </a>
           <a
             href={SOCIAL_LINKS.linkedin}
-            target="_blank"
             rel="noopener noreferrer"
-            className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-slate-400 shadow-xs transition hover:text-slate-600"
+            className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-slate-400 shadow-xs transition hover:text-slate-600 focus-visible:text-slate-600 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
             aria-label="LinkedIn"
           >
             <svg
+              aria-hidden="true"
+              focusable="false"
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 24 24"
               fill="currentColor"

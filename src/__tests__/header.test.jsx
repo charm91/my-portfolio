@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
-import { act, cleanup, render, screen } from "@testing-library/react";
+import { act, cleanup, fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import { Header } from "../components/Header";
@@ -12,11 +12,9 @@ vi.mock("next/link", () => ({
   default: ({ children, href, ...props }) => <a href={href} {...props}>{children}</a>,
 }));
 
-const mockPush = vi.fn();
 const mockPathname = vi.fn();
 vi.mock("next/navigation", () => ({
   usePathname: () => mockPathname(),
-  useRouter: () => ({ push: mockPush }),
 }));
 
 vi.mock("@/components/ui/button", () => ({
@@ -62,7 +60,6 @@ describe("Header", () => {
     MockIntersectionObserver.instances = [];
     vi.stubGlobal("IntersectionObserver", MockIntersectionObserver);
     mockPathname.mockReturnValue("/");
-    mockPush.mockReset();
   });
 
   afterEach(() => {
@@ -108,7 +105,7 @@ describe("Header", () => {
     expect(document.getElementById(trigger.getAttribute("aria-controls")))
       .toContainElement(screen.getByRole("navigation"));
     await user.tab();
-    expect(screen.getByRole("button", { name: "Home", exact: true })).toHaveFocus();
+    expect(screen.getByRole("link", { name: "Home", exact: true })).toHaveFocus();
     await user.keyboard("{Escape}");
     expect(trigger).toHaveFocus();
     expect(trigger).toHaveAttribute("aria-expanded", "false");
@@ -125,27 +122,27 @@ describe("Header", () => {
     expect(screen.getByRole("button", { name: "Open menu" })).toHaveAttribute("aria-expanded", "false");
   });
 
-  it.each(destinations)("choosing %s scrolls to %s and closes the menu", async (label, id) => {
+  it.each(destinations)("choosing %s keeps native navigation to #%s and closes the menu", async (label, id) => {
     const user = userEvent.setup();
-    const { sections } = renderWithSections();
+    renderWithSections();
     await user.click(screen.getByRole("button", { name: "Open menu" }));
-    await user.click(screen.getByRole("button", { name: label, exact: true }));
-    expect(sections[id].scrollIntoView).toHaveBeenCalledExactlyOnceWith({ behavior: "smooth" });
-    for (const [otherId, element] of Object.entries(sections)) {
-      if (otherId !== id) expect(element.scrollIntoView).not.toHaveBeenCalled();
-    }
+    const link = screen.getByRole("link", { name: label, exact: true });
+    expect(link).toHaveAttribute("href", `#${id}`);
+    expect(document.getElementById(id)).toBeInTheDocument();
+    // A true return means React did not cancel the browser's link activation.
+    expect(fireEvent.click(link, { button: 0 })).toBe(true);
     expect(screen.queryByRole("navigation")).not.toBeInTheDocument();
-    expect(screen.getByRole("button", { name: "Open menu" })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Open menu" })).toHaveFocus();
   });
 
-  it("respects reduced motion for menu navigation", async () => {
-    vi.stubGlobal("matchMedia", vi.fn(() => ({ matches: true })));
+  it.each(["ctrlKey", "metaKey", "shiftKey", "altKey"])("preserves the browser's %s link behavior", async (modifier) => {
     const user = userEvent.setup();
-    const { sections } = renderWithSections();
+    renderWithSections();
     await user.click(screen.getByRole("button", { name: "Open menu" }));
-    await user.click(screen.getByRole("button", { name: "Testimonials", exact: true }));
-    expect(sections.testimonials.scrollIntoView).toHaveBeenCalledExactlyOnceWith({ behavior: "auto" });
-    expect(screen.queryByRole("navigation")).not.toBeInTheDocument();
+    const link = screen.getByRole("link", { name: "Testimonials", exact: true });
+    expect(fireEvent.click(link, { button: 0, [modifier]: true })).toBe(true);
+    expect(screen.getByRole("navigation")).toBeInTheDocument();
+    expect(link).toHaveAttribute("href", "#testimonials");
   });
 
   it("keeps the menu open for interior clicks and dismisses it with the trigger or outside click", async () => {
@@ -167,18 +164,18 @@ describe("Header", () => {
     const observer = MockIntersectionObserver.instances[0];
     expect(observer.observe.mock.calls.map(([element]) => element)).toEqual(Object.values(sections));
     await user.click(screen.getByRole("button", { name: "Open menu" }));
-    expect(screen.getByRole("button", { name: "Home", exact: true })).toHaveClass("text-white");
+    expect(screen.getByRole("link", { name: "Home", exact: true })).toHaveClass("text-white");
 
     act(() => observer.notify([
       { target: sections.portfolio, isIntersecting: true },
       { target: sections.home, isIntersecting: true },
       { target: sections.services, isIntersecting: true },
     ]));
-    expect(screen.getByRole("button", { name: "Portfolio", exact: true })).toHaveClass("text-white");
-    expect(screen.getByRole("button", { name: "Home", exact: true })).not.toHaveClass("text-white");
+    expect(screen.getByRole("link", { name: "Portfolio", exact: true })).toHaveClass("text-white");
+    expect(screen.getByRole("link", { name: "Home", exact: true })).not.toHaveClass("text-white");
     act(() => observer.notify([{ target: sections.portfolio, isIntersecting: false }]));
-    expect(screen.getByRole("button", { name: "What I Do", exact: true })).toHaveClass("text-white");
+    expect(screen.getByRole("link", { name: "What I Do", exact: true })).toHaveClass("text-white");
     act(() => observer.notify([{ target: sections.portfolio, isIntersecting: true }]));
-    expect(screen.getByRole("button", { name: "Portfolio", exact: true })).toHaveClass("text-white");
+    expect(screen.getByRole("link", { name: "Portfolio", exact: true })).toHaveClass("text-white");
   });
 });

@@ -17,12 +17,19 @@ vi.mock("@/components/CaseStudyAuthor", () => ({ CaseStudyAuthor: () => null }))
 vi.mock("lucide-react", () => ({
   Clock: () => <svg />,
   Globe: () => <svg />,
-  CirclePlay: () => <svg />,
+  ExternalLink: () => <svg />,
   TabletSmartphone: () => <svg />,
   Briefcase: () => <svg />,
 }));
 
 describe("BetterHRPage", () => {
+  it("keeps the live-project destination without forcing a new tab", () => {
+    render(<BetterHRPage />);
+    const link = screen.getByRole("link", { name: "Live Project" });
+    expect(link).toHaveAttribute("href", "https://betterhr.com/");
+    expect(link).not.toHaveAttribute("target");
+  });
+
   it("renders the main heading", () => {
     render(<BetterHRPage />);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(

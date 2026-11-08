@@ -3,7 +3,6 @@
 import { Reveal, RevealGrid } from "@/components/Reveal";
 import { Settings, Globe, Layers, Code2 } from "lucide-react";
 import { Button } from "./ui/button";
-import { scrollToSection } from "@/lib/utils";
 import { COLORS } from "@/config/theme";
 
 const services = [
@@ -41,11 +40,6 @@ const textPrimary = COLORS.textPrimaryHome;
 const textSecondary = COLORS.textSecondary;
 
 export function Services() {
-  const scrollToPortfolio = (e) => {
-    e.preventDefault();
-    scrollToSection("portfolio");
-  };
-
   return (
     <section id="services" className="py-16 md:py-28">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -116,9 +110,9 @@ export function Services() {
           <Button
             size="lg"
             className="rounded-full gap-2 group px-4 py-5"
-            onClick={scrollToPortfolio}
+            asChild
           >
-            Explore Projects
+            <a href="#portfolio">Explore Projects</a>
           </Button>
         </Reveal>
       </div>

@@ -2,7 +2,6 @@
 
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { scrollToSection } from "@/lib/utils";
 
 export function Hero() {
   return (
@@ -34,10 +33,12 @@ export function Hero() {
           <Button
             size="lg"
             className="rounded-full gap-2 group p-4 py-5 my-2 "
-            onClick={() => scrollToSection("portfolio")}
+            asChild
           >
-            View Case Studies
-            <ArrowRight className="size-4 transition-transform duration-(--motion-duration-feedback) motion-safe:group-hover:translate-x-1 motion-safe:group-focus-visible:translate-x-1" />
+            <a href="#portfolio">
+              View Case Studies
+              <ArrowRight className="size-4 transition-transform duration-(--motion-duration-feedback) motion-safe:group-hover:translate-x-1 motion-safe:group-focus-visible:translate-x-1" />
+            </a>
           </Button>
         </div>
       </div>

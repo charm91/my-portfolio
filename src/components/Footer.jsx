@@ -55,7 +55,6 @@ export function Footer() {
         >
           <a
             href={SOCIAL_LINKS.linkedin}
-            target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-4 rounded-full bg-white p-5 md:p-6 hover:shadow-md focus-visible:shadow-md transition-shadow duration-(--motion-duration-feedback) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
           >
@@ -82,7 +81,6 @@ export function Footer() {
           </a>
           <a
             href={`https://mail.google.com/mail/?view=cm&fs=1&to=${SITE.email}&su=Hello%20${encodeURIComponent(SITE.displayName)}`}
-            target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-4 rounded-full bg-white p-5 md:p-6 transition-shadow duration-(--motion-duration-feedback) hover:shadow-md focus-visible:shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
           >
@@ -125,18 +123,18 @@ export function Footer() {
           <div className="flex justify-center sm:justify-end gap-2">
             <a
               href={RESUME_URL}
-              target="_blank"
               rel="noopener noreferrer"
-              className="text-sm transition-colors duration-(--motion-duration-feedback) hover:bg-black text-secondary hover:text-white focus-visible:bg-black focus-visible:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary px-4 py-1.5 rounded-full"
+              className="inline-flex items-center gap-1.5 text-sm transition-colors duration-(--motion-duration-feedback) hover:bg-black text-secondary hover:text-white focus-visible:bg-black focus-visible:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary px-4 py-1.5 rounded-full"
             >
               Resume
+              <ExternalLink className="size-3.5" aria-hidden="true" />
             </a>
-            <a
-              href="#portfolio"
+            <Link
+              href="/#portfolio"
               className="text-sm transition-colors duration-(--motion-duration-feedback) hover:bg-black text-secondary hover:text-white focus-visible:bg-black focus-visible:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary px-4 py-1.5 rounded-full"
             >
               Case Studies
-            </a>
+            </Link>
           </div>
         </Reveal>
       </div>

@@ -5,21 +5,15 @@ import cornerWhiteAsset from "../../public/corner-white.png";
 import yeMyatMinAsset from "../../public/ye-myat-min.jpeg";
 import linkedinAsset from "../../public/linkedin.svg";
 import { Reveal } from "@/components/Reveal";
-import { Star, ExternalLink, ArrowDown } from "lucide-react";
+import { Star, ArrowDown } from "lucide-react";
 import { Button } from "./ui/button";
 import { SITE } from "@/config/site";
-import { scrollToSection } from "@/lib/utils";
 import { COLORS } from "@/config/theme";
 
 const textPrimary = COLORS.textPrimaryHome;
 const textSecondary = COLORS.textSecondary;
 
 export function OverviewGrid() {
-  const scrollToContact = (e) => {
-    e.preventDefault();
-    scrollToSection("contact");
-  };
-
   return (
     <section className="py-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -84,7 +78,6 @@ export function OverviewGrid() {
             >
               <a
                 href="#contact"
-                onClick={scrollToContact}
                 className="group flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
               >
                 <span className="size-6 bg-emerald-200 rounded-full shrink-0 relative availability-signal">
@@ -106,7 +99,7 @@ export function OverviewGrid() {
                       {SITE.availability}
                     </div>
 
-                    <ExternalLink
+                    <ArrowDown
                       className="size-5 shrink-0 text-[#242424] group-hover:opacity-70 group-focus-visible:opacity-70 transition-opacity duration-(--motion-duration-feedback)"
                       strokeWidth={2}
                     />
@@ -223,9 +216,11 @@ export function OverviewGrid() {
             size="icon-lg"
             aria-label="Scroll down"
             className="rounded-full bg-white border-0 shadow-sm size-10"
-            onClick={() => scrollToSection("services")}
+            asChild
           >
-            <ArrowDown className="size-5" aria-hidden="true" />
+            <a href="#services">
+              <ArrowDown className="size-5" aria-hidden="true" />
+            </a>
           </Button>
         </div>
       </div>

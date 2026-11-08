@@ -48,6 +48,18 @@ describe("Footer", () => {
     expect(screen.getByRole("link", { name: "Resume" })).toHaveAttribute("href", RESUME_URL);
   });
 
+  it("lets the browser choose how to open external destinations", () => {
+    render(<Footer />);
+    for (const name of [/LinkedIn/i, /Email/i, "Resume"]) {
+      expect(screen.getByRole("link", { name })).not.toHaveAttribute("target");
+    }
+  });
+
+  it("returns to the homepage portfolio section from any route", () => {
+    render(<Footer />);
+    expect(screen.getByRole("link", { name: "Case Studies" })).toHaveAttribute("href", "/#portfolio");
+  });
+
   it("renders copyright with the current year", () => {
     render(<Footer />);
     const year = new Date().getFullYear().toString();

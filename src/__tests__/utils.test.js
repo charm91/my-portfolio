@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
-import { cn, scrollToSection } from "../lib/utils";
+import { cn, getScrollBehavior } from "../lib/utils";
 
 describe("cn", () => {
   it("merges class names", () => {
@@ -15,31 +15,17 @@ describe("cn", () => {
   });
 });
 
-describe("scrollToSection", () => {
-  afterEach(() => {
-    vi.restoreAllMocks();
-    vi.unstubAllGlobals();
-  });
+describe("getScrollBehavior", () => {
+  afterEach(() => vi.unstubAllGlobals());
 
-  it("queries the correct element ID and calls scrollIntoView with smooth behavior", () => {
-    const el = { scrollIntoView: vi.fn() };
-    vi.spyOn(document, "querySelector").mockReturnValue(el);
-    scrollToSection("portfolio");
-    expect(document.querySelector).toHaveBeenCalledWith("#portfolio");
-    expect(el.scrollIntoView).toHaveBeenCalledWith({ behavior: "smooth" });
-  });
-
-  it("does not throw when element is not found", () => {
-    vi.spyOn(document, "querySelector").mockReturnValue(null);
-    expect(() => scrollToSection("missing")).not.toThrow();
+  it("uses smooth scrolling when no reduced-motion preference is set", () => {
+    vi.stubGlobal("matchMedia", vi.fn(() => ({ matches: false })));
+    expect(getScrollBehavior()).toBe("smooth");
   });
 
   it("uses immediate scrolling when the visitor prefers reduced motion", () => {
     vi.stubGlobal("matchMedia", vi.fn(() => ({ matches: true })));
-    const el = { scrollIntoView: vi.fn() };
-    vi.spyOn(document, "querySelector").mockReturnValue(el);
-    scrollToSection("portfolio");
+    expect(getScrollBehavior()).toBe("auto");
     expect(window.matchMedia).toHaveBeenCalledWith("(prefers-reduced-motion: reduce)");
-    expect(el.scrollIntoView).toHaveBeenCalledWith({ behavior: "auto" });
   });
 });

@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { CirclePlay } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CaseStudyAuthor } from "@/components/CaseStudyAuthor";
@@ -66,11 +66,10 @@ export function CaseStudyShell({ coverImage, title, tags, liveUrl, thumbnail, ch
           <div className="flex justify-center mt-8 mb-4 entrance-rise entrance-delay-2">
             <a
               href={liveUrl}
-              target="_blank"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 rounded-3xl bg-[#1f2937] px-5 py-2.5 font-medium text-white transition-[transform,background-color] duration-(--motion-duration-feedback) motion-safe:hover:-translate-y-0.5 motion-safe:focus-visible:-translate-y-0.5 hover:bg-[#111827] focus-visible:bg-[#111827] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
             >
-              <CirclePlay className="size-5 transition-transform duration-(--motion-duration-feedback) motion-safe:group-hover:scale-110 motion-safe:group-focus-visible:scale-110" />
+              <ExternalLink className="size-5 transition-transform duration-(--motion-duration-feedback) motion-safe:group-hover:scale-110 motion-safe:group-focus-visible:scale-110" aria-hidden="true" />
               <span>
                 Live Project
               </span>

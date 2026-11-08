@@ -43,7 +43,7 @@ npx vitest run src/__tests__/contact-form-validation.test.jsx
 | `src/components/CaseStudySection.jsx` / `src/views/*.jsx` | Plain content sections and inline case-study prose for Better HR, KBZ Bank, UniLinks and WCT Pay. |
 | `src/config/theme.js` / `src/config/caseStudy.js` | Shared color tokens; case-study token exports and transition/reveal configurations. |
 | `app/globals.css` | Tailwind 4 theme, shared section styles and fixed homepage background; no `tailwind.config.js`. |
-| `src/lib/utils.js` | `cn()` merges Tailwind classes; `scrollToSection(id)` supports section CTAs. |
+| `src/lib/utils.js` | `cn()` merges Tailwind classes; `getScrollBehavior()` respects reduced motion for query-driven section navigation. Section CTAs use native fragment links. |
 | `app/contact-me/ContactPageClient.jsx` | Client-side form validation, three anti-spam guards and EmailJS delivery. |
 | `app/sitemap.js` / `app/robots.js` | Hand-maintained sitemap and crawler configuration, both using `SITE_URL`. |
 | `src/__tests__/` / `vitest.setup.js` | Vitest, jsdom and React Testing Library; shared motion mock in `test-utils/mockMotion.js`. |

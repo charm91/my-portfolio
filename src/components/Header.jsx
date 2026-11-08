@@ -2,11 +2,11 @@
 
 import { useState, useEffect, useRef, useId } from "react";
 import logoAsset from "../../public/logo.svg";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, useIsPresent } from "framer-motion";
 import { menuMotion } from "@/config/motion";
 import { Button } from "@/components/ui/button";
-import { cn, getScrollBehavior } from "@/lib/utils";
+import { cn } from "@/lib/utils";
 import Link from "next/link";
 import Image from "next/image";
 import { SITE } from "@/config/site";
@@ -32,7 +32,6 @@ function MenuPanel({ children, ...props }) {
 
 export function Header() {
   const pathname = usePathname();
-  const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeHref, setActiveHref] = useState("#home");
   const visibleSections = useRef(new Set());
@@ -76,22 +75,11 @@ export function Header() {
     return () => observer.disconnect();
   }, [isHome]);
 
-  const scrollToSection = (href) => {
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: getScrollBehavior() });
+  const handleNavClick = (event) => {
+    // Leave modified clicks to the browser, including opening a new tab.
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
     setMenuOpen(false);
     menuTrigger.current?.focus({ preventScroll: true });
-  };
-
-  const handleNavClick = (item) => {
-    if (isHome) {
-      scrollToSection(item.href);
-    } else {
-      // Navigate to home with a query param; home page reads it and scrolls
-      const id = item.href.replace(/^#/, "");
-      router.push(`/?scrollTo=${id}`);
-      setMenuOpen(false);
-    }
   };
 
   useEffect(() => {
@@ -194,11 +182,11 @@ export function Header() {
                   {navItems.map((item) => {
                     const isActive = isHome && activeHref === item.href;
                     return (
-                      <button
+                      <a
                         key={item.href}
-                        type="button"
+                        href={isHome ? item.href : `/?scrollTo=${item.href.slice(1)}`}
                         aria-current={isActive ? "location" : undefined}
-                        onClick={() => handleNavClick(item)}
+                        onClick={handleNavClick}
                         className={cn(
                           "w-full rounded-full py-2.5 px-4 text-left text-sm font-medium transition-colors duration-(--motion-duration-feedback) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
                           isActive
@@ -207,7 +195,7 @@ export function Header() {
                         )}
                       >
                         {item.label}
-                      </button>
+                      </a>
                     );
                   })}
                 </nav>

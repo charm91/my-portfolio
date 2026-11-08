@@ -24,5 +24,12 @@ describe("CaseStudyAuthor", () => {
     expect(screen.getByLabelText("Facebook")).toBeInTheDocument();
     expect(screen.getByRole("link", { name: "LinkedIn" })).toHaveAttribute("href", SOCIAL_LINKS.linkedin);
     expect(screen.getByRole("link", { name: "Facebook" })).toHaveAttribute("href", SOCIAL_LINKS.facebook);
+    for (const name of ["Facebook", "LinkedIn"]) {
+      const link = screen.getByRole("link", { name });
+      expect(link).not.toHaveAttribute("target");
+      expect(link).toHaveClass("focus-visible:outline-2");
+      expect(link.querySelector("svg")).toHaveAttribute("aria-hidden", "true");
+      expect(link.querySelector("svg")).toHaveAttribute("focusable", "false");
+    }
   });
 });
