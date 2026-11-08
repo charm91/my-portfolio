@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { CASE_STUDY_IMAGE_SIZES, CASE_STUDY_GRID_IMAGE_SIZES } from "@/config/caseStudy";
 import { Clock, Globe, TabletSmartphone } from "lucide-react";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
 import { CaseStudySection as Section } from "@/components/CaseStudySection";
@@ -49,6 +50,7 @@ export function BetterHRPage() {
             alt="problem-statement"
             width={1080}
             height={594}
+            sizes={CASE_STUDY_IMAGE_SIZES}
             className="w-full h-auto"
           />
         </div>
@@ -90,6 +92,7 @@ export function BetterHRPage() {
                 alt="Meeting room discussion"
                 width={678}
                 height={542}
+                sizes={CASE_STUDY_GRID_IMAGE_SIZES}
                 className="w-full h-auto"
               />
             </div>
@@ -100,6 +103,7 @@ export function BetterHRPage() {
                 alt="Presentation session"
                 width={678}
                 height={542}
+                sizes={CASE_STUDY_GRID_IMAGE_SIZES}
                 className="w-full h-auto"
               />
             </div>
@@ -132,6 +136,7 @@ export function BetterHRPage() {
             alt="Presentation session"
             width={479}
             height={335}
+            sizes={CASE_STUDY_IMAGE_SIZES}
             className="w-full h-auto max-h-80 object-cover"
           />
         </div>
@@ -141,6 +146,7 @@ export function BetterHRPage() {
             alt="Presentation session"
             width={778}
             height={444}
+            sizes={CASE_STUDY_IMAGE_SIZES}
             className="w-full h-auto bg-gray-100"
           />
         </div>
@@ -169,6 +175,7 @@ export function BetterHRPage() {
                 alt="betterhrUI"
                 width={504}
                 height={512}
+                sizes={CASE_STUDY_GRID_IMAGE_SIZES}
                 className="w-full h-auto"
               />
             </div>
@@ -179,6 +186,7 @@ export function BetterHRPage() {
                 alt="betterhrUI"
                 width={504}
                 height={516}
+                sizes={CASE_STUDY_GRID_IMAGE_SIZES}
                 className="w-full h-auto"
               />
             </div>
@@ -209,6 +217,7 @@ export function BetterHRPage() {
                 alt="betterhrUI"
                 width={1440}
                 height={878}
+                sizes={CASE_STUDY_IMAGE_SIZES}
                 className="w-full h-auto"
               />
             </div>
@@ -235,6 +244,7 @@ export function BetterHRPage() {
                 alt="betterhrUI"
                 width={720}
                 height={520}
+                sizes={CASE_STUDY_IMAGE_SIZES}
                 className="w-full h-auto"
               />
             </div>

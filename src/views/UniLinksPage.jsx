@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { CASE_STUDY_IMAGE_SIZES, CASE_STUDY_GRID_IMAGE_SIZES } from "@/config/caseStudy";
 import { Clock, Globe, TabletSmartphone } from "lucide-react";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
 import { CaseStudySection as Section } from "@/components/CaseStudySection";
@@ -64,6 +65,7 @@ export function UniLinksPage() {
               alt="Final Presentation"
               width={1344}
               height={680}
+              sizes={CASE_STUDY_IMAGE_SIZES}
               className="w-full h-auto"
             />
           </div>
@@ -97,6 +99,7 @@ export function UniLinksPage() {
                 alt="personas"
                 width={710}
                 height={474}
+                sizes={CASE_STUDY_GRID_IMAGE_SIZES}
                 className="w-full h-auto"
               />
             </div>
@@ -107,6 +110,7 @@ export function UniLinksPage() {
                 alt="workflow"
                 width={710}
                 height={474}
+                sizes={CASE_STUDY_GRID_IMAGE_SIZES}
                 className="w-full h-auto"
               />
             </div>
@@ -138,7 +142,7 @@ export function UniLinksPage() {
                 alt="personas"
                 width={2076}
                 height={2240}
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes={CASE_STUDY_GRID_IMAGE_SIZES}
                 className="w-full h-auto"
               />
             </div>
@@ -149,7 +153,7 @@ export function UniLinksPage() {
                 alt="workflow"
                 width={2028}
                 height={1312}
-                sizes="(max-width: 768px) 100vw, 50vw"
+                sizes={CASE_STUDY_GRID_IMAGE_SIZES}
                 className="h-auto w-full"
               />
             </div>
@@ -180,6 +184,7 @@ export function UniLinksPage() {
               alt="User Interface Design"
               width={1440}
               height={687}
+              sizes={CASE_STUDY_IMAGE_SIZES}
               className="w-full h-auto"
             />
           </div>
@@ -217,6 +222,7 @@ export function UniLinksPage() {
               alt="User Interface Design"
               width={1440}
               height={687}
+              sizes={CASE_STUDY_IMAGE_SIZES}
               className="w-full h-auto"
             />
           </div>
@@ -245,6 +251,7 @@ export function UniLinksPage() {
               alt="User Interface Design"
               width={1440}
               height={687}
+              sizes={CASE_STUDY_IMAGE_SIZES}
               className="w-full h-auto"
             />
           </div>
@@ -295,6 +302,7 @@ export function UniLinksPage() {
                 alt="personas"
                 width={1080}
                 height={1080}
+                sizes={CASE_STUDY_GRID_IMAGE_SIZES}
                 className="w-full h-auto"
               />
             </div>
@@ -305,6 +313,7 @@ export function UniLinksPage() {
                 alt="workflow"
                 width={1080}
                 height={1080}
+                sizes={CASE_STUDY_GRID_IMAGE_SIZES}
                 className="w-full h-auto"
               />
             </div>
@@ -315,6 +324,7 @@ export function UniLinksPage() {
                 alt="workflow"
                 width={1080}
                 height={1080}
+                sizes={CASE_STUDY_GRID_IMAGE_SIZES}
                 className="w-full h-auto"
               />
             </div>
@@ -325,6 +335,7 @@ export function UniLinksPage() {
                 alt="workflow"
                 width={1080}
                 height={1080}
+                sizes={CASE_STUDY_GRID_IMAGE_SIZES}
                 className="w-full h-auto"
               />
             </div>

@@ -1,15 +1,17 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { act, cleanup, render, screen } from "@testing-library/react";
 import React from "react";
-import { useTransform } from "framer-motion";
+import { scroll, useMotionValue, useTransform } from "framer-motion";
 import { Testimonials } from "../components/Testimonials";
 
 // Keep stable motion components while exposing the measured transform endpoint.
 vi.mock("framer-motion", async () => {
   const { createMotionProxy } = await import("./test-utils/mockMotion");
+  const progress = { get: () => 0, set: vi.fn() };
   return {
     motion: createMotionProxy(),
-    useScroll: () => ({ scrollYProgress: { get: () => 0 } }),
+    scroll: vi.fn(() => vi.fn()),
+    useMotionValue: () => progress,
     useTransform: vi.fn(() => 0),
   };
 });
@@ -39,10 +41,18 @@ function deliverHeight(observer, height) {
 }
 
 describe("Testimonials", () => {
+  let media;
+
   beforeEach(() => {
     MockResizeObserver.instances = [];
     vi.stubGlobal("ResizeObserver", MockResizeObserver);
     vi.clearAllMocks();
+    media = {
+      matches: true,
+      addEventListener: vi.fn(),
+      removeEventListener: vi.fn(),
+    };
+    vi.stubGlobal("matchMedia", vi.fn(() => media));
   });
 
   afterEach(() => {
@@ -91,8 +101,45 @@ describe("Testimonials", () => {
     const observer = MockResizeObserver.instances[0];
     expect(observer.observe).toHaveBeenCalledTimes(1);
     expect(observer.disconnect).not.toHaveBeenCalled();
+    const stopScroll = scroll.mock.results[0].value;
     unmount();
     expect(observer.disconnect).toHaveBeenCalledTimes(1);
+    expect(stopScroll).toHaveBeenCalledTimes(1);
+    expect(media.removeEventListener).toHaveBeenCalledWith("change", media.addEventListener.mock.calls[0][1]);
+  });
+
+  it("keeps mobile cards readable without subscribing to scroll or content resize", () => {
+    media.matches = false;
+    render(<Testimonials />);
+    expect(screen.getByText("Thiri Aung")).toBeInTheDocument();
+    expect(scroll).not.toHaveBeenCalled();
+    expect(MockResizeObserver.instances).toHaveLength(0);
+  });
+
+  it("starts and stops desktop tracking as the viewport crosses the breakpoint", () => {
+    media.matches = false;
+    const { unmount } = render(<Testimonials />);
+    const change = media.addEventListener.mock.calls[0][1];
+    media.matches = true;
+    act(() => change());
+    expect(scroll).toHaveBeenCalledTimes(1);
+    const observer = MockResizeObserver.instances[0];
+    const stopScroll = scroll.mock.results[0].value;
+    act(() => scroll.mock.calls[0][0](0.5, { y: { progress: 0.5 } }));
+    expect(useMotionValue().set).toHaveBeenLastCalledWith(0.5);
+
+    media.matches = false;
+    act(() => change());
+    expect(stopScroll).toHaveBeenCalledTimes(1);
+    expect(observer.disconnect).toHaveBeenCalledTimes(1);
+    expect(useMotionValue().set).toHaveBeenLastCalledWith(0);
+
+    media.matches = true;
+    act(() => change());
+    expect(scroll).toHaveBeenCalledTimes(2);
+    expect(MockResizeObserver.instances).toHaveLength(2);
+    unmount();
+    expect(scroll.mock.results[1].value).toHaveBeenCalledTimes(1);
   });
 
 });

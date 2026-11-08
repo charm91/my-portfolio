@@ -74,7 +74,7 @@ export function Portfolio() {
                 mass: 0.8,
                 delay: 0.05 * i,
               }}
-              className="group rounded-3xl overflow-hidden bg-card hover:shadow-xs transition-all duration-300 p-2"
+              className="group rounded-3xl overflow-hidden bg-card hover:shadow-xs transition-shadow duration-300 p-2"
             >
               <Link href={project.href} className="block">
                 <div className="aspect-4/3 overflow-hidden rounded-3xl relative">

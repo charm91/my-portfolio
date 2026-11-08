@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { CASE_STUDY_IMAGE_SIZES } from "@/config/caseStudy";
 import { Clock, Globe, TabletSmartphone } from "lucide-react";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
 import { CaseStudySection as Section } from "@/components/CaseStudySection";
@@ -58,6 +59,7 @@ export function KBZBankPage() {
               alt="Work Flow Diagram"
               width={1440}
               height={835}
+              sizes={CASE_STUDY_IMAGE_SIZES}
               className="w-full h-auto"
             />
           </div>
@@ -98,6 +100,7 @@ export function KBZBankPage() {
               alt="User Interface"
               width={1440}
               height={1637}
+              sizes={CASE_STUDY_IMAGE_SIZES}
               className="w-full h-auto"
             />
           </div>
@@ -122,6 +125,7 @@ export function KBZBankPage() {
               alt="User Interface"
               width={1440}
               height={1180}
+              sizes={CASE_STUDY_IMAGE_SIZES}
               className="w-full h-auto"
             />
           </div>
@@ -153,6 +157,7 @@ export function KBZBankPage() {
               alt="Flow Chart"
               width={1440}
               height={487}
+              sizes={CASE_STUDY_IMAGE_SIZES}
               className="w-full h-auto"
             />
           </div>
@@ -183,6 +188,7 @@ export function KBZBankPage() {
               alt="User Interface"
               width={1440}
               height={1357}
+              sizes={CASE_STUDY_IMAGE_SIZES}
               className="w-full h-auto"
             />
           </div>
@@ -215,6 +221,7 @@ export function KBZBankPage() {
               alt="User Interface"
               width={1440}
               height={741}
+              sizes={CASE_STUDY_IMAGE_SIZES}
               className="w-full h-auto"
             />
           </div>
@@ -243,6 +250,7 @@ export function KBZBankPage() {
               alt="User Interface"
               width={1440}
               height={487}
+              sizes={CASE_STUDY_IMAGE_SIZES}
               className="w-full h-auto"
             />
           </div>

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { useRef, useState, useEffect } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { motion, scroll, useMotionValue, useTransform } from "framer-motion";
 import { Star } from "lucide-react";
 
 const ZayarImage = "/zayar.jpeg";
@@ -49,10 +49,7 @@ export function Testimonials() {
   const contentRef = useRef(null);
   const [scrollRange, setScrollRange] = useState(800);
 
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start end", "end start"],
-  });
+  const scrollYProgress = useMotionValue(0);
 
   const y = useTransform(
     scrollYProgress,
@@ -61,15 +58,39 @@ export function Testimonials() {
   );
 
   useEffect(() => {
-    const el = contentRef.current;
-    if (!el) return;
-    const ro = new ResizeObserver(() => {
-      const contentHeight = el.scrollHeight;
-      setScrollRange(Math.max(0, contentHeight - VIEWPORT_HEIGHT));
-    });
-    ro.observe(el);
-    return () => ro.disconnect();
-  }, []);
+    const desktop = window.matchMedia("(min-width: 768px)");
+    let stopTracking;
+
+    const updateTracking = () => {
+      stopTracking?.();
+      stopTracking = undefined;
+      scrollYProgress.set(0);
+      if (!desktop.matches) return;
+
+      const el = contentRef.current;
+      const updateRange = () => {
+        setScrollRange(Math.max(0, el.scrollHeight - VIEWPORT_HEIGHT));
+      };
+      updateRange();
+      const observer = new ResizeObserver(updateRange);
+      observer.observe(el);
+      const stopScroll = scroll((_, info) => scrollYProgress.set(info.y.progress), {
+        target: sectionRef.current,
+        offset: ["start end", "end start"],
+      });
+      stopTracking = () => {
+        stopScroll();
+        observer.disconnect();
+      };
+    };
+
+    updateTracking();
+    desktop.addEventListener("change", updateTracking);
+    return () => {
+      desktop.removeEventListener("change", updateTracking);
+      stopTracking?.();
+    };
+  }, [scrollYProgress]);
 
   return (
     <section

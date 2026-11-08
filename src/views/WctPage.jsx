@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { CASE_STUDY_IMAGE_SIZES, CASE_STUDY_GRID_IMAGE_SIZES } from "@/config/caseStudy";
 import { Clock, Globe, TabletSmartphone } from "lucide-react";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
 import { CaseStudySection as Section } from "@/components/CaseStudySection";
@@ -46,6 +47,7 @@ export function WctPage() {
               alt="Problem"
               width={1440}
               height={960}
+              sizes={CASE_STUDY_IMAGE_SIZES}
               className="w-full h-auto"
             />
           </div>
@@ -81,6 +83,7 @@ export function WctPage() {
               alt="Work Flow Diagram"
               width={1440}
               height={1100}
+              sizes={CASE_STUDY_IMAGE_SIZES}
               className="w-full h-auto"
             />
           </div>
@@ -132,6 +135,7 @@ export function WctPage() {
                 alt="personas"
                 width={646}
                 height={1020}
+                sizes={CASE_STUDY_GRID_IMAGE_SIZES}
                 className="w-full h-auto"
               />
             </div>
@@ -142,6 +146,7 @@ export function WctPage() {
                 alt="workflow"
                 width={710}
                 height={1020}
+                sizes={CASE_STUDY_GRID_IMAGE_SIZES}
                 className="w-full h-auto"
               />
             </div>
@@ -177,6 +182,7 @@ export function WctPage() {
               alt="personas"
               width={1440}
               height={975}
+              sizes={CASE_STUDY_IMAGE_SIZES}
               className="w-full h-auto"
             />
           </div>
@@ -200,6 +206,7 @@ export function WctPage() {
                 alt="personas"
                 width={504}
                 height={359}
+                sizes={CASE_STUDY_GRID_IMAGE_SIZES}
                 className="w-full h-auto"
               />
             </div>
@@ -210,6 +217,7 @@ export function WctPage() {
                 alt="workflow"
                 width={504}
                 height={358}
+                sizes={CASE_STUDY_GRID_IMAGE_SIZES}
                 className="w-full h-auto"
               />
             </div>
@@ -219,6 +227,7 @@ export function WctPage() {
                 alt="personas"
                 width={504}
                 height={359}
+                sizes={CASE_STUDY_GRID_IMAGE_SIZES}
                 className="w-full h-auto"
               />
             </div>
@@ -229,6 +238,7 @@ export function WctPage() {
                 alt="workflow"
                 width={504}
                 height={359}
+                sizes={CASE_STUDY_GRID_IMAGE_SIZES}
                 className="w-full h-auto"
               />
             </div>
@@ -238,6 +248,7 @@ export function WctPage() {
                 alt="personas"
                 width={504}
                 height={357}
+                sizes={CASE_STUDY_GRID_IMAGE_SIZES}
                 className="w-full h-auto"
               />
             </div>
@@ -248,6 +259,7 @@ export function WctPage() {
                 alt="workflow"
                 width={504}
                 height={359}
+                sizes={CASE_STUDY_GRID_IMAGE_SIZES}
                 className="w-full h-auto"
               />
             </div>

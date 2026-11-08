@@ -12,6 +12,7 @@ import {
   bgPage,
   pageTransition,
   scrollReveal,
+  CASE_STUDY_HERO_IMAGE_SIZES,
 } from "@/config/caseStudy";
 
 export function CaseStudyShell({ coverImage, title, tags, liveUrl, thumbnail, children }) {
@@ -89,6 +90,7 @@ export function CaseStudyShell({ coverImage, title, tags, liveUrl, thumbnail, ch
                 alt=""
                 width={thumbnail.width}
                 height={thumbnail.height}
+                sizes={CASE_STUDY_HERO_IMAGE_SIZES}
                 className="w-full h-auto"
               />
             </div>

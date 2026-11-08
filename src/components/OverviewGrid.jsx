@@ -9,9 +9,8 @@ import { scrollToSection } from "@/lib/utils";
 import { COLORS } from "@/config/theme";
 
 const container = {
-  hidden: { opacity: 0 },
+  hidden: {},
   show: {
-    opacity: 1,
     transition: { staggerChildren: 0.08 },
   },
 };
@@ -41,8 +40,7 @@ export function OverviewGrid() {
           className="grid lg:grid-cols-5 gap-6 md:gap-5"
         >
           <div className="flex flex-col gap-4 md:gap-5 lg:col-span-3 w-full">
-            <motion.article
-              variants={item}
+            <article
               className="rounded-2xl bg-white overflow-hidden flex-1 flex flex-col"
             >
               <div className="relative aspect-6/3 min-h-[150px]">
@@ -88,7 +86,7 @@ export function OverviewGrid() {
                   practical experiences from early discovery to implementation.
                 </p>
               </div>
-            </motion.article>
+            </article>
             <motion.article
               variants={item}
               className="rounded-2xl bg-white p-5 md:p-6"
