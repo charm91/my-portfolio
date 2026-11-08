@@ -1,41 +1,30 @@
-export const motionEase = [0.22, 1, 0.36, 1];
-
-export const sectionReveal = {
-  initial: { opacity: 0, y: 18 },
-  whileInView: { opacity: 1, y: 0 },
-  viewport: { once: true, amount: 0.1 },
-  transition: { duration: 0.5, ease: motionEase },
+// Seconds for Motion; matching CSS tokens live in app/globals.css.
+export const MOTION = {
+  feedback: 0.14,
+  panel: 0.2,
+  reveal: 0.36,
+  expressive: 0.52,
+  stagger: 0.06,
+  processStagger: 0.08,
+  easeOut: [0.22, 1, 0.36, 1],
+  easeStandard: [0.2, 0, 0.38, 0.9],
 };
 
-// One viewport observer coordinates each group instead of observing every card.
-export const staggerReveal = {
-  variants: {
-    hidden: {},
-    show: { transition: { staggerChildren: 0.075 } },
+export const revealPresets = {
+  section: { distance: 16, scale: 1, transition: { duration: MOTION.reveal, ease: MOTION.easeOut } },
+  overview: { distance: 16, scale: 0.98, transition: { duration: 0.4, ease: MOTION.easeOut } },
+  process: { distance: 20, scale: 1, transition: { duration: 0.42, ease: MOTION.easeOut } },
+  project: { distance: 28, scale: 0.97, transition: { type: "spring", duration: MOTION.expressive, bounce: 0.12 } },
+  testimonial: { distance: 8, scale: 1, transition: { duration: 0.32, ease: MOTION.easeOut } },
+  visual: { distance: 20, scale: 0.99, transition: { duration: 0.42, ease: MOTION.easeOut } },
+};
+
+export const menuMotion = {
+  initial: { opacity: 0, y: -8, scale: 0.97 },
+  animate: { opacity: 1, y: 0, scale: 1 },
+  exit: {
+    opacity: 0, y: -4, scale: 0.98,
+    transition: { duration: MOTION.feedback, ease: MOTION.easeStandard },
   },
-  initial: "hidden",
-  whileInView: "show",
-  viewport: { once: true, amount: 0.1 },
-};
-
-export const staggerItem = {
-  hidden: { opacity: 0, y: 24 },
-  show: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.5, ease: motionEase },
-  },
-};
-
-export const overviewReveal = {
-  ...sectionReveal,
-  initial: { opacity: 0, y: 16, scale: 0.97 },
-  whileInView: { opacity: 1, y: 0, scale: 1 },
-};
-
-export const projectReveal = {
-  initial: { opacity: 0, y: 36, scale: 0.95 },
-  whileInView: { opacity: 1, y: 0, scale: 1 },
-  viewport: { once: true, amount: 0.15 },
-  transition: { type: "spring", stiffness: 110, damping: 22, mass: 0.7 },
+  transition: { duration: MOTION.panel, ease: MOTION.easeOut },
 };

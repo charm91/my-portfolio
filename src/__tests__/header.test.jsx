@@ -98,6 +98,33 @@ describe("Header", () => {
     expect(screen.queryByRole("button", { name: /open menu/i })).not.toBeInTheDocument();
   });
 
+  it("exposes its open state and restores trigger focus on Escape", async () => {
+    const user = userEvent.setup();
+    render(<Header />);
+    const trigger = screen.getByRole("button", { name: "Open menu" });
+    expect(trigger).toHaveAttribute("aria-expanded", "false");
+    await user.click(trigger);
+    expect(trigger).toHaveAttribute("aria-expanded", "true");
+    expect(document.getElementById(trigger.getAttribute("aria-controls")))
+      .toContainElement(screen.getByRole("navigation"));
+    await user.tab();
+    expect(screen.getByRole("button", { name: "Home", exact: true })).toHaveFocus();
+    await user.keyboard("{Escape}");
+    expect(trigger).toHaveFocus();
+    expect(trigger).toHaveAttribute("aria-expanded", "false");
+    expect(screen.queryByRole("navigation")).not.toBeInTheDocument();
+  });
+
+  it("dismisses the disclosure when keyboard focus leaves it", async () => {
+    const user = userEvent.setup();
+    render(<><Header /><button>After header</button></>);
+    await user.click(screen.getByRole("button", { name: "Open menu" }));
+    for (let index = 0; index < 7; index += 1) await user.tab();
+    expect(screen.getByRole("button", { name: "After header" })).toHaveFocus();
+    expect(screen.queryByRole("navigation")).not.toBeInTheDocument();
+    expect(screen.getByRole("button", { name: "Open menu" })).toHaveAttribute("aria-expanded", "false");
+  });
+
   it.each(destinations)("choosing %s scrolls to %s and closes the menu", async (label, id) => {
     const user = userEvent.setup();
     const { sections } = renderWithSections();

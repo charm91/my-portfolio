@@ -5,6 +5,7 @@ import zinThantAsset from "../../public/zin-thant.jpeg";
 import thiriAsset from "../../public/thiri.jpeg";
 import { Star } from "lucide-react";
 import { TestimonialScroll } from "@/components/TestimonialScroll";
+import { Reveal } from "@/components/Reveal";
 
 const ZayarImage = zayarAsset.src;
 const ThetImage = koChawAsset.src;
@@ -48,7 +49,7 @@ export function Testimonials() {
   return (
     <section id="testimonials" className="pb-10 pt-20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <Reveal preset="testimonial" className="text-center mb-12">
           <span
             className="px-4 py-1.5 rounded-full text-xs font-medium bg-white text-center mx-auto inline-block"
             style={{
@@ -61,10 +62,13 @@ export function Testimonials() {
           <h2 className="text-3xl md:text-4xl font-bold text-[#1f2937] mt-4">
             What Colleagues Say
           </h2>
-        </div>
+        </Reveal>
         <TestimonialScroll>
           {testimonials.map((t) => (
-            <article
+            <Reveal
+              as="article"
+              preset="testimonial"
+              mobileOnly
               key={t.name}
               className="rounded-2xl bg-white p-5 md:p-8 relative shadow-xs flex flex-col"
             >
@@ -117,7 +121,7 @@ export function Testimonials() {
                   </svg>
                 </span>
               </div>
-            </article>
+            </Reveal>
           ))}
         </TestimonialScroll>
       </div>

@@ -8,10 +8,9 @@ import wctAsset from "../../public/wct.png";
 import cornerWhiteAsset from "../../public/corner-white.png";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { sectionReveal, projectReveal } from "@/config/motion";
+import { Reveal } from "@/components/Reveal";
 import { ArrowRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 
 const kbzBankImage = kbzAsset.src;
 const uniLinksImage = unilinksAsset.src;
@@ -53,8 +52,7 @@ export function Portfolio() {
   return (
     <section id="portfolio" className="py-20 md:py-28">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          {...sectionReveal}
+        <Reveal
           className="flex flex-col justify-center items-center gap-5 mb-10"
         >
           <p className="section-category text-xs">Portfolio Highlights</p>
@@ -63,22 +61,23 @@ export function Portfolio() {
             <span className="font-serif italic font-normal">Product Systems.</span>
           </Heading>
 
-        </motion.div>
+        </Reveal>
 
         <div className="grid grid-cols-1 max-w-xl mx-auto gap-4 md:gap-6">
           {projects.map((project) => (
-            <motion.article
+            <Reveal
+              as="article"
+              preset="project"
               key={project.href}
-              {...projectReveal}
-              className="group rounded-3xl overflow-hidden bg-card hover:shadow-xs transition-shadow duration-300 p-2"
+              className="rounded-3xl overflow-hidden bg-card hover:shadow-xs focus-within:shadow-xs transition-shadow duration-(--motion-duration-panel) p-2"
             >
-              <Link href={project.href} className="block">
+              <Link href={project.href} className="group block rounded-3xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
                 <div className="aspect-4/3 overflow-hidden rounded-3xl relative">
                   <Image
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover transition-transform duration-300 ease-out motion-safe:group-hover:scale-[1.035]"
+                    className="object-cover transition-transform duration-(--motion-duration-reveal) ease-out motion-safe:group-hover:scale-[1.035] motion-safe:group-focus-visible:scale-[1.035]"
                     sizes="(max-width: 640px) 100vw, 480px"
                   />
                   <Image
@@ -89,14 +88,15 @@ export function Portfolio() {
                     aria-hidden="true"
                     className="absolute -bottom-0.5 -right-0.5 w-[190px] h-[90px] overflow-hidden"
                   />
-                  <Button
-                    size="lg"
-                    variant="outline"
-                    className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary bg-[#f6f7f9] rounded-full absolute bottom-2 right-5 border-0"
+                  <span
+                    className={buttonVariants({
+                      size: "lg", variant: "outline",
+                      className: "mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary bg-[#f6f7f9] rounded-full absolute bottom-2 right-5 border-0 motion-safe:group-active:translate-y-px",
+                    })}
                   >
                     See Details
-                    <ArrowRight className="size-5 transition-transform duration-200 motion-safe:group-hover:-rotate-30" />
-                  </Button>
+                    <ArrowRight className="size-5 transition-transform duration-(--motion-duration-feedback) motion-safe:group-hover:-rotate-30 motion-safe:group-focus-visible:-rotate-30" />
+                  </span>
                 </div>
                 <div className="p-6 flex flex-col items-start gap-2 sm:flex-row sm:justify-between sm:items-baseline sm:gap-6">
                   <h3 className="min-w-0 font-medium text-foreground group-hover:text-primary transition-colors sm:line-clamp-2 text-left text-base">
@@ -107,19 +107,18 @@ export function Portfolio() {
                   </p>
                 </div>
               </Link>
-            </motion.article>
+            </Reveal>
           ))}
         </div>
 
         {!isPortfolioPage && (
-          <motion.div
-            {...sectionReveal}
+          <Reveal
             className="mt-12 text-center"
           >
             <Button size="lg" className="rounded-full px-8 h-10" asChild>
               <Link href="/portfolio">See All</Link>
             </Button>
-          </motion.div>
+          </Reveal>
         )}
       </div>
     </section>

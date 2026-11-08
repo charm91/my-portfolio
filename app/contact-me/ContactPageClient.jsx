@@ -183,6 +183,7 @@ export default function ContactPageClient() {
         <form
           onSubmit={handleSubmit}
           noValidate
+          aria-busy={isBusy}
           className="rounded-3xl bg-white p-6 md:p-8 entrance-rise entrance-delay-1"
           style={{ boxShadow: "0 2px 5px rgba(0, 0, 0, 0.06)" }}
         >
@@ -217,7 +218,7 @@ export default function ContactPageClient() {
                 onChange={handleChange}
                 disabled={isBusy}
                 className={cn(
-                  "w-full rounded-xl border-0 px-4 py-3 text-base outline-none transition-colors",
+                  "w-full rounded-xl border-0 px-4 py-3 text-base outline-none transition-colors duration-(--motion-duration-feedback)",
                   "placeholder:text-[#6b7280] focus:ring-2 focus:ring-[#1f2937]/60",
                   "disabled:opacity-60 disabled:cursor-not-allowed",
                 )}
@@ -243,7 +244,7 @@ export default function ContactPageClient() {
                 onChange={handleChange}
                 disabled={isBusy}
                 className={cn(
-                  "w-full rounded-xl border-0 px-4 py-3 text-base outline-none transition-colors",
+                  "w-full rounded-xl border-0 px-4 py-3 text-base outline-none transition-colors duration-(--motion-duration-feedback)",
                   "placeholder:text-[#6b7280] focus:ring-2 focus:ring-[#1f2937]/60",
                   "disabled:opacity-60 disabled:cursor-not-allowed",
                 )}
@@ -270,7 +271,7 @@ export default function ContactPageClient() {
               onChange={handleChange}
               disabled={isBusy}
               className={cn(
-                "min-h-[120px] w-full resize-y rounded-xl border-0 px-4 py-3 text-base outline-none transition-colors",
+                "min-h-[120px] w-full resize-y rounded-xl border-0 px-4 py-3 text-base outline-none transition-colors duration-(--motion-duration-feedback)",
                 "placeholder:text-[#6b7280] focus:ring-2 focus:ring-[#1f2937]/60",
                 "disabled:opacity-60 disabled:cursor-not-allowed",
               )}
@@ -278,21 +279,25 @@ export default function ContactPageClient() {
             />
           </div>
 
-          {status === "success" && (
-            <div className="mb-4 rounded-xl bg-green-50 px-4 py-3 text-center">
-              <p className="text-sm font-medium text-green-700">
-                Thanks! Your message has been sent. I&apos;ll be in touch soon.
-              </p>
-            </div>
-          )}
+          <div role="status" aria-live="polite" aria-atomic="true">
+            {status === "success" && (
+              <div className="status-enter mb-4 rounded-xl bg-green-50 px-4 py-3 text-center">
+                <p className="text-sm font-medium text-green-700">
+                  Thanks! Your message has been sent. I&apos;ll be in touch soon.
+                </p>
+              </div>
+            )}
+          </div>
 
-          {status === "error" && (
-            <div className="mb-4 rounded-xl bg-red-50 px-4 py-3 text-center">
-              <p className="text-sm font-medium text-red-700">
-                {errorMsg || "Something went wrong. Please try again later."}
-              </p>
-            </div>
-          )}
+          <div role="alert" aria-atomic="true">
+            {status === "error" && (
+              <div className="status-enter mb-4 rounded-xl bg-red-50 px-4 py-3 text-center">
+                <p className="text-sm font-medium text-red-700">
+                  {errorMsg || "Something went wrong. Please try again later."}
+                </p>
+              </div>
+            )}
+          </div>
 
           <Button
             type="submit"
@@ -302,7 +307,7 @@ export default function ContactPageClient() {
           >
             {isBusy ? (
               <span className="flex items-center justify-center gap-2">
-                <Loader2 className="h-4 w-4 animate-spin" />
+                <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
                 Sending...
               </span>
             ) : (

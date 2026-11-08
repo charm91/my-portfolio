@@ -4,8 +4,7 @@ import Image from "next/image";
 import cornerWhiteAsset from "../../public/corner-white.png";
 import yeMyatMinAsset from "../../public/ye-myat-min.jpeg";
 import linkedinAsset from "../../public/linkedin.svg";
-import { motion } from "framer-motion";
-import { overviewReveal } from "@/config/motion";
+import { Reveal } from "@/components/Reveal";
 import { Star, ExternalLink, ArrowDown } from "lucide-react";
 import { Button } from "./ui/button";
 import { SITE } from "@/config/site";
@@ -75,14 +74,15 @@ export function OverviewGrid() {
                 </p>
               </div>
             </article>
-            <motion.article
-              {...overviewReveal}
-              className="rounded-2xl bg-white p-5 md:p-6"
+            <Reveal
+              as="article"
+              preset="overview"
+              className="availability-card rounded-2xl bg-white p-5 md:p-6"
             >
               <a
                 href="#contact"
                 onClick={scrollToContact}
-                className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6"
+                className="group flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
               >
                 <span className="size-6 bg-emerald-200 rounded-full shrink-0 relative availability-signal">
                   <span
@@ -104,18 +104,19 @@ export function OverviewGrid() {
                     </div>
 
                     <ExternalLink
-                      className="size-5 shrink-0 text-[#242424] group-hover:opacity-70 transition-opacity"
+                      className="size-5 shrink-0 text-[#242424] group-hover:opacity-70 group-focus-visible:opacity-70 transition-opacity duration-(--motion-duration-feedback)"
                       strokeWidth={2}
                     />
                   </div>
                 </div>
               </a>
-            </motion.article>
+            </Reveal>
           </div>
 
           <div className="flex flex-col gap-4 md:gap-5 lg:col-span-2 w-full">
-            <motion.article
-              {...overviewReveal}
+            <Reveal
+              as="article"
+              preset="overview"
               className="rounded-2xl bg-white p-5 md:p-6"
             >
               <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6">
@@ -133,10 +134,11 @@ export function OverviewGrid() {
                   {SITE.roles.map((role) => <li key={role}>{role}</li>)}
                 </ul>
               </div>
-            </motion.article>
+            </Reveal>
 
-            <motion.article
-              {...overviewReveal}
+            <Reveal
+              as="article"
+              preset="overview"
               className="rounded-2xl bg-white p-5 md:p-6"
             >
               <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6">
@@ -154,10 +156,11 @@ export function OverviewGrid() {
                   {SITE.domains.map((domain) => <li key={domain}>{domain}</li>)}
                 </ul>
               </div>
-            </motion.article>
+            </Reveal>
 
-            <motion.article
-              {...overviewReveal}
+            <Reveal
+              as="article"
+              preset="overview"
               className="rounded-2xl bg-white p-5 md:p-6"
             >
               <div className="flex gap-2 mb-2 bg-background rounded-full px-3 py-2 w-fit">
@@ -204,7 +207,7 @@ export function OverviewGrid() {
 
                 <Image src={linkedinAsset.src} alt="LinkedIn" width={32} height={32} />
               </div>
-            </motion.article>
+            </Reveal>
           </div>
         </div>
 

@@ -68,9 +68,9 @@ export function CaseStudyShell({ coverImage, title, tags, liveUrl, thumbnail, ch
               href={liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 rounded-3xl bg-[#1f2937] px-5 py-2.5 font-medium text-white transition-[transform,background-color] duration-200 motion-safe:hover:-translate-y-0.5 hover:bg-[#111827]"
+              className="group inline-flex items-center gap-2 rounded-3xl bg-[#1f2937] px-5 py-2.5 font-medium text-white transition-[transform,background-color] duration-(--motion-duration-feedback) motion-safe:hover:-translate-y-0.5 motion-safe:focus-visible:-translate-y-0.5 hover:bg-[#111827] focus-visible:bg-[#111827] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
             >
-              <CirclePlay className="size-5 transition-transform duration-200 motion-safe:group-hover:scale-110" />
+              <CirclePlay className="size-5 transition-transform duration-(--motion-duration-feedback) motion-safe:group-hover:scale-110 motion-safe:group-focus-visible:scale-110" />
               <span>
                 Live Project
               </span>

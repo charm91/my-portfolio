@@ -5,6 +5,13 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  --motion-duration-feedback: 140ms;
+  --motion-duration-panel: 200ms;
+  --motion-duration-reveal: 360ms;
+  --motion-duration-expressive: 520ms;
+  --motion-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-ease-standard: cubic-bezier(0.2, 0, 0.38, 0.9);
+  --motion-entry-distance: 16px;
   --background: #fafafa;
   --foreground: oklch(0.145 0 0);
   --element-content: #323744;
@@ -103,18 +110,32 @@
 
 /* First-paint content stays visible; only transforms are animated on entry. */
 @keyframes entrance-rise {
-  from { transform: translateY(20px); }
+  from { transform: translateY(var(--motion-entry-distance)); }
   to { transform: none; }
 }
 
 @keyframes entrance-drop {
-  from { transform: translateY(-24px); }
+  from { transform: translateY(-18px); }
   to { transform: none; }
 }
 
 @keyframes availability-signal {
-  0%, 100% { transform: scale(1); opacity: 0.45; }
-  50% { transform: scale(1.5); opacity: 0; }
+  from { transform: scale(1); opacity: 0.45; }
+  to { transform: scale(1.5); opacity: 0; }
+}
+
+.accordion-content {
+  animation-duration: var(--motion-duration-panel);
+  animation-timing-function: var(--motion-ease-standard);
+}
+
+@keyframes status-enter {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: none; }
+}
+
+@media (max-width: 767px) {
+  :root { --motion-entry-distance: 12px; }
 }
 
 .testimonial-rail {
@@ -140,16 +161,20 @@
 
 @media (prefers-reduced-motion: no-preference) {
   .entrance-rise {
-    animation: entrance-rise 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: entrance-rise var(--motion-duration-expressive) var(--motion-ease-out) both;
   }
 
   .entrance-drop {
-    animation: entrance-drop 450ms cubic-bezier(0.22, 1, 0.36, 1) both;
+    animation: entrance-drop var(--motion-duration-reveal) var(--motion-ease-out) both;
   }
 
-  .entrance-delay-1 { animation-delay: 70ms; }
-  .entrance-delay-2 { animation-delay: 140ms; }
-  .entrance-delay-3 { animation-delay: 210ms; }
+  .entrance-delay-1 { animation-delay: 60ms; }
+  .entrance-delay-2 { animation-delay: 120ms; }
+  .entrance-delay-3 { animation-delay: 180ms; }
+
+  .status-enter {
+    animation: status-enter var(--motion-duration-panel) var(--motion-ease-out);
+  }
 
   .availability-signal::before {
     content: "";
@@ -158,8 +183,11 @@
     border-radius: inherit;
     background: #6ee7b7;
     opacity: 0;
-    /* A short greeting, rather than a permanent animation loop. */
-    animation: availability-signal 2s ease-out 3;
+  }
+
+  .availability-card:is([data-reveal="running"], [data-reveal="done"]) .availability-signal::before {
+    /* Two short pulses start only when the availability card is visible. */
+    animation: availability-signal 1.6s ease-out 2;
   }
 }
 
@@ -195,6 +223,11 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
   *,
   *::before,
   *::after {

@@ -1,9 +1,10 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useId } from "react";
 import logoAsset from "../../public/logo.svg";
 import { usePathname, useRouter } from "next/navigation";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useIsPresent } from "framer-motion";
+import { menuMotion } from "@/config/motion";
 import { Button } from "@/components/ui/button";
 import { cn, getScrollBehavior } from "@/lib/utils";
 import Link from "next/link";
@@ -20,12 +21,23 @@ const navItems = [
 
 const sectionIds = navItems.map(({ href }) => href.slice(1));
 
+function MenuPanel({ children, ...props }) {
+  const isPresent = useIsPresent();
+  return (
+    <motion.div {...props} {...menuMotion} inert={!isPresent ? true : undefined}>
+      {children}
+    </motion.div>
+  );
+}
+
 export function Header() {
   const pathname = usePathname();
   const router = useRouter();
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeHref, setActiveHref] = useState("#home");
   const visibleSections = useRef(new Set());
+  const menuTrigger = useRef(null);
+  const menuId = useId();
   const isHome = pathname === "/";
 
   useEffect(() => {
@@ -68,6 +80,7 @@ export function Header() {
     const el = document.querySelector(href);
     if (el) el.scrollIntoView({ behavior: getScrollBehavior() });
     setMenuOpen(false);
+    menuTrigger.current?.focus({ preventScroll: true });
   };
 
   const handleNavClick = (item) => {
@@ -92,7 +105,17 @@ export function Header() {
       }
     };
     document.addEventListener("pointerdown", onPointerDown);
-    return () => document.removeEventListener("pointerdown", onPointerDown);
+    const onKeyDown = (event) => {
+      if (event.key !== "Escape") return;
+      event.preventDefault();
+      setMenuOpen(false);
+      menuTrigger.current?.focus({ preventScroll: true });
+    };
+    document.addEventListener("keydown", onKeyDown);
+    return () => {
+      document.removeEventListener("pointerdown", onPointerDown);
+      document.removeEventListener("keydown", onKeyDown);
+    };
   }, [menuOpen]);
 
   return (
@@ -118,14 +141,26 @@ export function Header() {
           <Image src={logoAsset.src} alt={SITE.displayName} width={80} height={32} />
         </Link>
 
-        <div className="relative menu-trigger">
+        <div
+          className="relative menu-trigger"
+          onBlurCapture={(event) => {
+            // A pointer click on panel padding can blur a button without
+            // moving focus to another control. Outside clicks close separately.
+            if (event.relatedTarget && !event.currentTarget.contains(event.relatedTarget)) {
+              setMenuOpen(false);
+            }
+          }}
+        >
           {isHome ? (
             <button
               type="button"
+              ref={menuTrigger}
               aria-label={menuOpen ? "Close menu" : "Open menu"}
+              aria-expanded={menuOpen}
+              aria-controls={menuId}
               onClick={() => setMenuOpen((o) => !o)}
               className={cn(
-                "rounded-full px-5 py-2 text-sm font-medium transition-colors",
+                "rounded-full px-5 py-2 text-sm font-medium transition-colors duration-(--motion-duration-feedback) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
                 "bg-gray-100 hover:bg-gray-200 text-[#1f2937] cursor-pointer",
               )}
             >
@@ -146,11 +181,9 @@ export function Header() {
 
           <AnimatePresence>
             {menuOpen && (
-              <motion.div
-                initial={{ opacity: 0, y: -8, scale: 0.97 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -6, scale: 0.98 }}
-                transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+              <MenuPanel
+                key="site-menu"
+                id={menuId}
                 className="menu-panel origin-top-right absolute right-0 top-full mt-2 w-48 rounded-2xl bg-white p-3 shadow-lg border border-gray-100"
                 style={{
                   boxShadow:
@@ -164,9 +197,10 @@ export function Header() {
                       <button
                         key={item.href}
                         type="button"
+                        aria-current={isActive ? "location" : undefined}
                         onClick={() => handleNavClick(item)}
                         className={cn(
-                          "w-full rounded-full py-2.5 px-4 text-left text-sm font-medium transition-colors",
+                          "w-full rounded-full py-2.5 px-4 text-left text-sm font-medium transition-colors duration-(--motion-duration-feedback) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
                           isActive
                             ? "bg-[#1f2937] text-white"
                             : "text-[#1f2937] hover:bg-[#f3f4f6]",
@@ -191,7 +225,7 @@ export function Header() {
                     Contact Me
                   </Link>
                 </Button>
-              </motion.div>
+              </MenuPanel>
             )}
           </AnimatePresence>
         </div>

@@ -1,7 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { sectionReveal, staggerReveal, staggerItem } from "@/config/motion";
+import { Reveal, RevealGrid } from "@/components/Reveal";
 import { Search, Rocket, PaintRoller, Layers } from "lucide-react";
 
 const steps = [
@@ -39,8 +38,7 @@ export function Journey() {
   return (
     <section className="py-20 md:py-28 bg-muted/20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          {...sectionReveal}
+        <Reveal
           className="flex flex-col justify-center gap-5 items-center mb-10 text-center"
         >
           <p className="section-category text-xs">Product Design Process</p>
@@ -52,16 +50,15 @@ export function Journey() {
             How I move from problem framing to structured design, validation,
             and implementation support.
           </p>
-        </motion.div>
+        </Reveal>
 
-        <motion.div
-          {...staggerReveal}
+        <RevealGrid
+          preset="process"
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
           {steps.map((step) => (
-            <motion.div
+            <div
               key={step.number}
-              variants={staggerItem}
               className="relative bg-white rounded-2xl"
             >
               <div className="p-6  h-full flex flex-col">
@@ -76,9 +73,9 @@ export function Journey() {
                   {step.description}
                 </p>
               </div>
-            </motion.div>
+            </div>
           ))}
-        </motion.div>
+        </RevealGrid>
       </div>
     </section>
   );

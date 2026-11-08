@@ -86,6 +86,7 @@ describe("Contact form validation", () => {
     await setField(user, "Message", "Long enough message here");
     await submitForm(user);
     expect(screen.getByText("Please enter your full name.")).toBeInTheDocument();
+    expect(screen.getByRole("alert")).toHaveTextContent("Please enter your full name.");
   });
 
   it("shows error when email is invalid", async () => {
@@ -149,6 +150,7 @@ describe("Contact form validation", () => {
     await setField(user, "Message", "This is a long enough test message");
     await submitForm(user);
     expect(screen.getByText(/your message has been sent/i)).toBeInTheDocument();
+    expect(screen.getByRole("status")).toHaveTextContent(/your message has been sent/i);
     expect(screen.getByLabelText("Your Name")).toHaveValue("");
     expect(screen.getByLabelText("Email Address")).toHaveValue("");
     expect(screen.getByLabelText("Message")).toHaveValue("");

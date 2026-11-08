@@ -39,6 +39,15 @@ describe("Portfolio", () => {
     }
   });
 
+  it("offers one keyboard destination per project without nested controls", () => {
+    render(<Portfolio />);
+    for (const article of screen.getAllByRole("article")) {
+      expect(article.querySelectorAll("a")).toHaveLength(1);
+      expect(article.querySelector("button, [tabindex]")).toBeNull();
+      expect(article.querySelector("a")).toHaveTextContent("See Details");
+    }
+  });
+
   it("shows See All button when not on /portfolio", () => {
     render(<Portfolio />);
     expect(screen.getByText("See All")).toBeInTheDocument();

@@ -37,7 +37,7 @@ export function Hero() {
             onClick={() => scrollToSection("portfolio")}
           >
             View Case Studies
-            <ArrowRight className="size-4 transition-transform motion-safe:group-hover:translate-x-1" />
+            <ArrowRight className="size-4 transition-transform duration-(--motion-duration-feedback) motion-safe:group-hover:translate-x-1 motion-safe:group-focus-visible:translate-x-1" />
           </Button>
         </div>
       </div>

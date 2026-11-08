@@ -9,20 +9,22 @@ export function generateStaticParams() {
   return Object.keys(CASE_STUDIES).map((caseSlug) => ({ case: caseSlug }));
 }
 
-export function generateMetadata({ params }) {
-  const entry = CASE_STUDIES[params.case];
+export async function generateMetadata({ params }) {
+  const { case: slug } = await params;
+  const entry = CASE_STUDIES[slug];
   if (!entry) return {};
 
   return getPageMetadata({
     title: `${entry.title} | ${SITE.name}`,
     description: `${entry.description}, a product design case study by ${SITE.name} (${SITE.displayName}).`,
-    path: `/${params.case}`,
+    path: `/${slug}`,
     image: entry.thumbnail,
   });
 }
 
-export default function Page({ params }) {
-  const entry = CASE_STUDIES[params.case];
+export default async function Page({ params }) {
+  const { case: slug } = await params;
+  const entry = CASE_STUDIES[slug];
   if (!entry) notFound();
 
   const { Component } = entry;

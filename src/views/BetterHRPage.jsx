@@ -1,5 +1,7 @@
 "use client";
 
+import { Reveal } from "@/components/Reveal";
+
 import Image from "next/image";
 import bCoverAsset from "../../public/b-cover.png";
 import betterhrThumbnailAsset from "../../public/betterhr/thumbnail.png";
@@ -178,7 +180,7 @@ export function BetterHRPage() {
           Each flow was designed to handle edge cases, such as corrections,
           approvals, and policy variations.
         </p>
-        <div className="rounded-lg bg-gray-100 p-2 my-8">
+        <Reveal preset="visual" className="rounded-lg bg-gray-100 p-2 my-8">
           <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
             <div className="overflow-hidden rounded-sm bg-gray-100">
               <Image
@@ -202,7 +204,7 @@ export function BetterHRPage() {
               />
             </div>
           </div>
-        </div>
+        </Reveal>
       </Section>
 
       <Section title="Design & Development Collaboration">

@@ -1,5 +1,7 @@
 "use client";
 
+import { Reveal } from "@/components/Reveal";
+
 import Image from "next/image";
 import uCoverAsset from "../../public/u-cover.png";
 import unilinksThumbnailAsset from "../../public/unilinks/thumbnail.png";
@@ -147,7 +149,7 @@ export function UniLinksPage() {
           admin team ensures quality, transparency, and process integrity
           throughout the journey.
         </p>
-        <div className="rounded-lg border border-gray-200 bg-white p-2 shadow-xs my-8">
+        <Reveal preset="visual" className="rounded-lg border border-gray-200 bg-white p-2 shadow-xs my-8">
           <div className="grid grid-cols-1 gap-1 md:grid-cols-2">
             <div className="hidden md:block overflow-hidden rounded-sm">
               <Image
@@ -171,7 +173,7 @@ export function UniLinksPage() {
               />
             </div>
           </div>
-        </div>
+        </Reveal>
       </Section>
       <Section>
         <h3 className="text-xl md:text-2xl font-bold mb-6 text-gray-800">

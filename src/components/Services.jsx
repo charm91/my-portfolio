@@ -1,7 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { sectionReveal, staggerReveal, staggerItem } from "@/config/motion";
+import { Reveal, RevealGrid } from "@/components/Reveal";
 import { Settings, Globe, Layers, Code2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { scrollToSection } from "@/lib/utils";
@@ -51,31 +50,28 @@ export function Services() {
     <section id="services" className="py-16 md:py-28">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Pill label */}
-        <motion.div
-          {...sectionReveal}
+        <Reveal
           className="flex justify-center mb-5"
         >
           <span className="section-category text-xs">What I Do</span>
-        </motion.div>
+        </Reveal>
 
         {/* Main heading - centered */}
-        <motion.h2
-          {...sectionReveal}
+        <Reveal
+          as="h2"
           className="section-title"
         >
           Where Product Design <br />
           <span className="font-serif italic font-normal">Meets Strategy.</span>
-        </motion.h2>
+        </Reveal>
 
         {/* 2x2 grid */}
-        <motion.div
-          {...staggerReveal}
+        <RevealGrid
           className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6"
         >
-          {services.map((s, i) => (
-            <motion.article
-              key={i}
-              variants={staggerItem}
+          {services.map((s) => (
+            <article
+              key={s.title}
               className="rounded-2xl bg-white p-4 md:p-6"
             >
               <div className="flex flex-col">
@@ -108,13 +104,12 @@ export function Services() {
                   ))}
                 </div>
               </div>
-            </motion.article>
+            </article>
           ))}
-        </motion.div>
+        </RevealGrid>
 
         {/* Explore Projects button - centered */}
-        <motion.div
-          {...sectionReveal}
+        <Reveal
           className="mt-12 md:mt-14 flex justify-center"
         >
           <Button
@@ -124,7 +119,7 @@ export function Services() {
           >
             Explore Projects
           </Button>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   );

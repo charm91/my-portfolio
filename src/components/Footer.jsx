@@ -1,8 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { sectionReveal } from "@/config/motion";
+import { Reveal, RevealGrid } from "@/components/Reveal";
 import { Linkedin, Mail, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SITE, SOCIAL_LINKS, RESUME_URL } from "@/config/site";
@@ -16,8 +15,7 @@ export function Footer() {
     <footer id="contact" className="py-16 md:py-28 z-10 relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main CTA card - white, rounded, centered */}
-        <motion.div
-          {...sectionReveal}
+        <Reveal
           className="rounded-3xl bg-white p-8 md:p-10 text-center mb-8 md:mb-10"
         >
           <span
@@ -49,18 +47,17 @@ export function Footer() {
           >
             <Link href="/contact-me">Contact Me</Link>
           </Button>
-        </motion.div>
+        </Reveal>
 
         {/* Contact link cards - two cards, horizontal on desktop, stack on mobile */}
-        <motion.div
-          {...sectionReveal}
+        <RevealGrid
           className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-12 md:mb-16"
         >
           <a
             href={SOCIAL_LINKS.linkedin}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-4 rounded-full bg-white p-5 md:p-6 hover:shadow-md transition-shadow"
+            className="flex items-center gap-4 rounded-full bg-white p-5 md:p-6 hover:shadow-md focus-visible:shadow-md transition-shadow duration-(--motion-duration-feedback) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
           >
             <div
               className="flex size-12 shrink-0 items-center justify-center rounded-full text-white"
@@ -87,7 +84,7 @@ export function Footer() {
             href={`https://mail.google.com/mail/?view=cm&fs=1&to=${SITE.email}&su=Hello%20${encodeURIComponent(SITE.displayName)}`}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-4 rounded-full bg-white p-5 md:p-6 transition-shadow hover:shadow-md"
+            className="flex items-center gap-4 rounded-full bg-white p-5 md:p-6 transition-shadow duration-(--motion-duration-feedback) hover:shadow-md focus-visible:shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
           >
             <div
               className="flex size-12 shrink-0 items-center justify-center rounded-full text-white"
@@ -113,11 +110,10 @@ export function Footer() {
               strokeWidth={2}
             />
           </a>
-        </motion.div>
+        </RevealGrid>
 
         {/* Footer bar - copyright left, links right; stack on mobile */}
-        <motion.div
-          {...sectionReveal}
+        <Reveal
           className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-4 pt-6 border-t border-[#d1d5db]"
         >
           <p
@@ -131,18 +127,18 @@ export function Footer() {
               href={RESUME_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-sm transition-colors hover:bg-black text-secondary hover:text-white px-4 py-1.5 rounded-full"
+              className="text-sm transition-colors duration-(--motion-duration-feedback) hover:bg-black text-secondary hover:text-white focus-visible:bg-black focus-visible:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary px-4 py-1.5 rounded-full"
             >
               Resume
             </a>
             <a
               href="#portfolio"
-              className="text-sm transition-colors hover:bg-black text-secondary hover:text-white px-4 py-1.5 rounded-full"
+              className="text-sm transition-colors duration-(--motion-duration-feedback) hover:bg-black text-secondary hover:text-white focus-visible:bg-black focus-visible:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary px-4 py-1.5 rounded-full"
             >
               Case Studies
             </a>
           </div>
-        </motion.div>
+        </Reveal>
       </div>
     </footer>
   );
