@@ -10,7 +10,7 @@ const steps = [
     icon: Search,
     title: "Discover & Frame",
     description:
-      "I work with stakeholders, users, and domain experts to understand problems, map workflows, and define the right design direction.",
+      "I work with stakeholders, users, and domain experts to understand problems, clarify goals, map workflows, and define the right design direction.",
   },
   {
     number: "02",
