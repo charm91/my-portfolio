@@ -21,8 +21,8 @@ function mediaQuery(matches = false) {
 
 let reduced;
 let desktop;
-function enter(element) {
-  act(() => Observer.instances.at(-1).notify([{ target: element, isIntersecting: true }]));
+function enter(element, intersectionRatio = 1) {
+  act(() => Observer.instances.at(-1).notify([{ target: element, isIntersecting: true, intersectionRatio }]));
 }
 
 beforeEach(() => {
@@ -50,7 +50,7 @@ describe("progressive scroll reveals", () => {
   it("waits for each mobile card's own viewport entry and plays it only once", () => {
     render(<RevealGrid><article>First</article><article>Second</article></RevealGrid>);
     const [first, second] = screen.getAllByRole("article");
-    expect(first).not.toHaveStyle({ opacity: "0" });
+    expect(first).toHaveStyle({ opacity: "0" });
     expect(animate).not.toHaveBeenCalled();
     enter(first);
     expect(animate).toHaveBeenCalledTimes(1);
@@ -64,11 +64,34 @@ describe("progressive scroll reveals", () => {
     expect(animate.mock.calls[1][2].delay).toBe(0);
   });
 
-  it.each([["section", 0.06], ["process", 0.08]])("coordinates desktop pairs with the %s rhythm", (preset, delay) => {
+  it.each([["service", 0.1], ["process", 0.15]])("restores the full desktop %s sequence", (preset, stagger) => {
     desktop.matches = true;
-    render(<RevealGrid preset={preset}><article>First</article><article>Second</article></RevealGrid>);
-    enter(screen.getAllByRole("article")[1]);
-    expect(animate.mock.calls[0][2].delay).toBe(delay);
+    render(<RevealGrid preset={preset}>
+      {["First", "Second", "Third", "Fourth"].map(label => <article key={label}>{label}</article>)}
+    </RevealGrid>);
+    screen.getAllByRole("article").forEach(element => enter(element));
+    expect(animate.mock.calls.map(([, , options]) => options.delay)).toEqual([0, stagger, stagger * 2, stagger * 3]);
+  });
+
+  it("prepares the project spring offscreen and waits until 40% of the card is visible", () => {
+    render(<Reveal as="article" preset="project">Project</Reveal>);
+    const card = screen.getByRole("article");
+    expect(card).toHaveStyle({ opacity: "0", transform: "translateY(48px) scale(0.88)" });
+    enter(card, 0.2);
+    expect(animate).not.toHaveBeenCalled();
+    enter(card, 0.4);
+    expect(animate).toHaveBeenCalledTimes(1);
+    expect(animate.mock.calls[0][0]).toBe(card);
+  });
+
+  it("reveals a tall project even when 40% cannot fit in the viewport", () => {
+    Element.prototype.getBoundingClientRect.mockReturnValue({
+      top: window.innerHeight + 100,
+      height: window.innerHeight * 4,
+    });
+    render(<Reveal as="article" preset="project">Tall project</Reveal>);
+    enter(screen.getByRole("article"), 0.2);
+    expect(animate).toHaveBeenCalledTimes(1);
   });
 
   it("does not hide content already visible at hydration or a restored scroll position", () => {
@@ -90,9 +113,9 @@ describe("progressive scroll reveals", () => {
   });
 
   it("keeps a keyboard-focused action visible when focus scrolls its card into view", () => {
-    render(<Reveal as="article"><button>Project</button></Reveal>);
+    render(<Reveal as="article" preset="project"><button>Project</button></Reveal>);
     screen.getByRole("button").focus();
-    enter(screen.getByRole("article"));
+    enter(screen.getByRole("article"), 0.1);
     expect(animate).not.toHaveBeenCalled();
     expect(screen.getByRole("article")).toHaveStyle({ opacity: "1", transform: "none" });
   });

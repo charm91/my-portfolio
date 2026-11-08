@@ -5,7 +5,7 @@ import { spring } from "framer-motion";
 import { animate } from "framer-motion/dom/mini";
 import { MOTION, revealPresets } from "@/config/motion";
 
-function useReveal(ref, preset, group = false, mobileOnly = false) {
+function useReveal(ref, preset, group = false, mobileOnly = false, entryDelay = 0) {
   useEffect(() => {
     const root = ref.current;
     if (!root || !window.IntersectionObserver || !window.matchMedia) return;
@@ -16,6 +16,10 @@ function useReveal(ref, preset, group = false, mobileOnly = false) {
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     const desktop = window.matchMedia("(min-width: 768px)");
     const config = revealPresets[preset];
+    // Short landscape viewports must still be able to reveal a tall card.
+    const visibleFraction = (window.innerHeight * 0.6) / (root.getBoundingClientRect().height || 1);
+    const amount = Math.min(config.amount ?? 0, visibleFraction);
+    const startTransform = `translateY(${config.distance}px) scale(${config.scale})`;
 
     const finish = (element) => {
       running.get(element)?.stop();
@@ -28,7 +32,11 @@ function useReveal(ref, preset, group = false, mobileOnly = false) {
 
     const observer = new IntersectionObserver((entries) => {
       for (const entry of entries) {
-        if (!entry.isIntersecting || !pending.has(entry.target)) continue;
+        if (
+          !entry.isIntersecting ||
+          (entry.intersectionRatio ?? 1) < amount ||
+          !pending.has(entry.target)
+        ) continue;
         const element = entry.target;
         observer.unobserve(element);
         pending.delete(element);
@@ -37,14 +45,14 @@ function useReveal(ref, preset, group = false, mobileOnly = false) {
           continue;
         }
 
-        const distance = desktop.matches ? config.distance : Math.min(12, config.distance);
         const stagger = preset === "process" ? MOTION.processStagger : MOTION.stagger;
-        // Coordinate pairs on desktop; each mobile card waits for its own entry.
-        const delay = group && desktop.matches ? (elements.indexOf(element) % 2) * stagger : 0;
+        // Restore the full desktop sequence; mobile cards enter independently.
+        const desktopDelay = group ? elements.indexOf(element) * stagger : entryDelay;
+        const delay = desktop.matches ? desktopDelay : 0;
         element.dataset.reveal = "running";
         const controls = animate(element, {
           opacity: [0, 1],
-          transform: [`translateY(${distance}px) scale(${config.scale})`, "translateY(0px) scale(1)"],
+          transform: [startTransform, "translateY(0px) scale(1)"],
         }, {
           ...config.transition,
           ...(config.transition.type === "spring" ? { type: spring } : {}),
@@ -59,14 +67,21 @@ function useReveal(ref, preset, group = false, mobileOnly = false) {
           element.style.transform = "none";
         });
       }
-    }, { rootMargin: "0px 0px -16px 0px", threshold: 0 });
+    }, { rootMargin: group ? "0px 0px -60px 0px" : "0px", threshold: amount });
 
     for (const element of elements) {
-      // Restored positions and first-paint content must not disappear on hydration.
-      if (reduced.matches || (mobileOnly && desktop.matches) || element.getBoundingClientRect().top < window.innerHeight) {
+      const bounds = element.getBoundingClientRect();
+      // Skip content above a restored scroll position. Overview and project
+      // cards also play their original entrance when visible on a fresh visit.
+      const skipVisible = !config.animateOnMount && bounds.top < window.innerHeight;
+      if (reduced.matches || (mobileOnly && desktop.matches) || bounds.bottom <= 0 || skipVisible) {
         finish(element);
       } else {
         element.dataset.reveal = "pending";
+        // Prepare below the viewport so a later reveal never visibly snaps
+        // from full size back to its starting scale at the trigger point.
+        element.style.opacity = "0";
+        element.style.transform = startTransform;
         observer.observe(element);
       }
     }
@@ -82,21 +97,29 @@ function useReveal(ref, preset, group = false, mobileOnly = false) {
         elements.forEach(finish);
       }
     };
+    const showFocused = (event) => {
+      const element = elements.find((candidate) => candidate.contains(event.target));
+      if (!element) return;
+      observer.unobserve(element);
+      finish(element);
+    };
+    root.addEventListener("focusin", showFocused);
     reduced.addEventListener?.("change", reduceMotion);
     desktop.addEventListener?.("change", widen);
     return () => {
       observer.disconnect();
       reduced.removeEventListener?.("change", reduceMotion);
       desktop.removeEventListener?.("change", widen);
+      root.removeEventListener("focusin", showFocused);
       running.forEach((controls) => controls.stop());
       running.clear();
     };
-  }, [ref, preset, group, mobileOnly]);
+  }, [ref, preset, group, mobileOnly, entryDelay]);
 }
 
-export function Reveal({ as = "div", preset = "section", mobileOnly = false, className = "", children, ...props }) {
+export function Reveal({ as = "div", preset = "section", mobileOnly = false, delay = 0, className = "", children, ...props }) {
   const ref = useRef(null);
-  useReveal(ref, preset, false, mobileOnly);
+  useReveal(ref, preset, false, mobileOnly, delay);
   const Component = as;
   return <Component {...props} ref={ref} className={`motion-reveal ${className}`}>{children}</Component>;
 }

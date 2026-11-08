@@ -64,10 +64,11 @@ export function Portfolio() {
         </Reveal>
 
         <div className="grid grid-cols-1 max-w-xl mx-auto gap-4 md:gap-6">
-          {projects.map((project) => (
+          {projects.map((project, index) => (
             <Reveal
               as="article"
               preset="project"
+              delay={0.05 * index}
               key={project.href}
               className="rounded-3xl overflow-hidden bg-card hover:shadow-xs focus-within:shadow-xs transition-shadow duration-(--motion-duration-panel) p-2"
             >
@@ -77,7 +78,7 @@ export function Portfolio() {
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover transition-transform duration-(--motion-duration-reveal) ease-out motion-safe:group-hover:scale-[1.035] motion-safe:group-focus-visible:scale-[1.035]"
+                    className="object-cover transition-transform duration-(--motion-duration-reveal) ease-out motion-safe:group-hover:scale-105 motion-safe:group-focus-visible:scale-105"
                     sizes="(max-width: 640px) 100vw, 480px"
                   />
                   <Image
@@ -95,7 +96,7 @@ export function Portfolio() {
                     })}
                   >
                     See Details
-                    <ArrowRight className="size-5 transition-transform duration-(--motion-duration-feedback) motion-safe:group-hover:-rotate-30 motion-safe:group-focus-visible:-rotate-30" />
+                    <ArrowRight className="size-5 transition-transform duration-200 motion-safe:group-hover:rotate-330 motion-safe:group-focus-visible:rotate-330" />
                   </span>
                 </div>
                 <div className="p-6 flex flex-col items-start gap-2 sm:flex-row sm:justify-between sm:items-baseline sm:gap-6">

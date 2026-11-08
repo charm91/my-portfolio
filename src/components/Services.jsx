@@ -67,6 +67,7 @@ export function Services() {
 
         {/* 2x2 grid */}
         <RevealGrid
+          preset="service"
           className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6"
         >
           {services.map((s) => (

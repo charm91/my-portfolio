@@ -7,11 +7,11 @@
 :root {
   --motion-duration-feedback: 140ms;
   --motion-duration-panel: 200ms;
-  --motion-duration-reveal: 360ms;
-  --motion-duration-expressive: 520ms;
-  --motion-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --motion-duration-reveal: 500ms;
+  --motion-duration-expressive: 500ms;
+  --motion-ease-out: cubic-bezier(0, 0, 0.58, 1);
   --motion-ease-standard: cubic-bezier(0.2, 0, 0.38, 0.9);
-  --motion-entry-distance: 16px;
+  --motion-entry-distance: 24px;
   --background: #fafafa;
   --foreground: oklch(0.145 0 0);
   --element-content: #323744;
@@ -108,14 +108,14 @@
   z-index: 1;
 }
 
-/* First-paint content stays visible; only transforms are animated on entry. */
+/* Staged page entrances use the original fade and upward movement. */
 @keyframes entrance-rise {
-  from { transform: translateY(var(--motion-entry-distance)); }
-  to { transform: none; }
+  from { opacity: 0; transform: translateY(var(--motion-entry-distance)); }
+  to { opacity: 1; transform: none; }
 }
 
 @keyframes entrance-drop {
-  from { transform: translateY(-18px); }
+  from { transform: translateY(-80px); }
   to { transform: none; }
 }
 
@@ -132,10 +132,6 @@
 @keyframes status-enter {
   from { opacity: 0; transform: translateY(4px); }
   to { opacity: 1; transform: none; }
-}
-
-@media (max-width: 767px) {
-  :root { --motion-entry-distance: 12px; }
 }
 
 .testimonial-rail {
@@ -168,9 +164,9 @@
     animation: entrance-drop var(--motion-duration-reveal) var(--motion-ease-out) both;
   }
 
-  .entrance-delay-1 { animation-delay: 60ms; }
-  .entrance-delay-2 { animation-delay: 120ms; }
-  .entrance-delay-3 { animation-delay: 180ms; }
+  .entrance-delay-1 { animation-delay: 100ms; }
+  .entrance-delay-2 { animation-delay: 200ms; }
+  .entrance-delay-3 { animation-delay: 350ms; }
 
   .status-enter {
     animation: status-enter var(--motion-duration-panel) var(--motion-ease-out);

@@ -27,7 +27,9 @@ export function OverviewGrid() {
           className="grid lg:grid-cols-5 gap-6 md:gap-5"
         >
           <div className="flex flex-col gap-4 md:gap-5 lg:col-span-3 w-full">
-            <article
+            <Reveal
+              as="article"
+              preset="overview"
               className="rounded-2xl bg-white overflow-hidden flex-1 flex flex-col"
             >
               <div className="relative aspect-6/3 min-h-[150px]">
@@ -73,10 +75,11 @@ export function OverviewGrid() {
                   practical experiences from early discovery to implementation.
                 </p>
               </div>
-            </article>
+            </Reveal>
             <Reveal
               as="article"
               preset="overview"
+              delay={0.08}
               className="availability-card rounded-2xl bg-white p-5 md:p-6"
             >
               <a
@@ -117,6 +120,7 @@ export function OverviewGrid() {
             <Reveal
               as="article"
               preset="overview"
+              delay={0.16}
               className="rounded-2xl bg-white p-5 md:p-6"
             >
               <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6">
@@ -139,6 +143,7 @@ export function OverviewGrid() {
             <Reveal
               as="article"
               preset="overview"
+              delay={0.24}
               className="rounded-2xl bg-white p-5 md:p-6"
             >
               <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6">
@@ -161,6 +166,7 @@ export function OverviewGrid() {
             <Reveal
               as="article"
               preset="overview"
+              delay={0.32}
               className="rounded-2xl bg-white p-5 md:p-6"
             >
               <div className="flex gap-2 mb-2 bg-background rounded-full px-3 py-2 w-fit">

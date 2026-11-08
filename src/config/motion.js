@@ -2,21 +2,28 @@
 export const MOTION = {
   feedback: 0.14,
   panel: 0.2,
-  reveal: 0.36,
-  expressive: 0.52,
-  stagger: 0.06,
-  processStagger: 0.08,
-  easeOut: [0.22, 1, 0.36, 1],
+  reveal: 0.5,
+  expressive: 0.5,
+  stagger: 0.1,
+  processStagger: 0.15,
+  easeOut: [0, 0, 0.58, 1],
   easeStandard: [0.2, 0, 0.38, 0.9],
 };
 
 export const revealPresets = {
-  section: { distance: 16, scale: 1, transition: { duration: MOTION.reveal, ease: MOTION.easeOut } },
-  overview: { distance: 16, scale: 0.98, transition: { duration: 0.4, ease: MOTION.easeOut } },
-  process: { distance: 20, scale: 1, transition: { duration: 0.42, ease: MOTION.easeOut } },
-  project: { distance: 28, scale: 0.97, transition: { type: "spring", duration: MOTION.expressive, bounce: 0.12 } },
-  testimonial: { distance: 8, scale: 1, transition: { duration: 0.32, ease: MOTION.easeOut } },
-  visual: { distance: 20, scale: 0.99, transition: { duration: 0.42, ease: MOTION.easeOut } },
+  section: { distance: 16, scale: 1, transition: { type: "spring", stiffness: 500, damping: 25 } },
+  service: { distance: 24, scale: 1, transition: { type: "spring", stiffness: 500, damping: 25 } },
+  overview: {
+    distance: 16, scale: 0.96, animateOnMount: true,
+    transition: { type: "spring", stiffness: 500, damping: 25 },
+  },
+  process: { distance: 28, scale: 1, transition: { type: "spring", stiffness: 500, damping: 25 } },
+  project: {
+    distance: 48, scale: 0.88, amount: 0.4, animateOnMount: true,
+    transition: { type: "spring", stiffness: 80, damping: 18, mass: 0.8 },
+  },
+  testimonial: { distance: 16, scale: 1, transition: { type: "spring", stiffness: 500, damping: 25 } },
+  visual: { distance: 28, scale: 1, amount: 0.15, transition: { duration: 0.5, ease: MOTION.easeOut } },
 };
 
 export const menuMotion = {
