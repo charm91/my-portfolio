@@ -8,6 +8,7 @@ import thiriAsset from "../../public/thiri.jpeg";
 import { Star } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { COLORS } from "@/config/theme";
 
 const ZayarImage = zayarAsset.src;
 const ThetImage = koChawAsset.src;
@@ -45,7 +46,7 @@ const testimonials = [
   },
 ];
 
-const textPrimary = "#242424";
+const textPrimary = COLORS.textPrimaryHome;
 
 const VIEWPORT_HEIGHT = 800;
 
