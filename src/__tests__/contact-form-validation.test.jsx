@@ -79,6 +79,12 @@ describe("Contact form validation", () => {
     vi.setSystemTime(4000);
   }
 
+  it("links the logo and Back to Home to the homepage", () => {
+    render(<ContactPageClient />);
+    expect(screen.getByRole("link", { name: "Charm" })).toHaveAttribute("href", "/");
+    expect(screen.getByRole("link", { name: "Back to Home" })).toHaveAttribute("href", "/");
+  });
+
   it("shows error when name is too short", async () => {
     renderAndAdvanceTime();
     await setField(user, "Your Name", "A");
