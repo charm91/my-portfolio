@@ -1,4 +1,4 @@
-# Ngu Wah Aung — Portfolio
+# Ngu Wah Aung’s Portfolio
 
 Personal portfolio of Ngu Wah Aung (Charm), Senior Product Designer.
 
