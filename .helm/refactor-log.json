@@ -143,8 +143,42 @@
         ],
         "invariant": "Contact route markup other than the header stays identical. The header keeps the logo link to '/', the Back to Home link to '/', the same visual layout and the 0.5s slide-in. Form behaviour, anti-spam guards and EmailJS arguments are untouched."
       },
-      "state": "open",
-      "depends_on": []
+      "state": "resolved",
+      "depends_on": [],
+      "closure": {
+        "origin": "native",
+        "kind": "fixed",
+        "commit": "e1be7d728e522879faf43772b2e973febc7a66f5",
+        "date": "2026-11-08",
+        "method": "runtime",
+        "evidence": [
+          "ContactPageClient.jsx now renders the shared Header instead of its own pill bar and no longer imports Link, Image, logo or SITE.",
+          "The guard test added in 65de5ce asserts the logo link and Back to Home both point to '/' and passed before and after the change.",
+          "Known visual effect: the contact bar is 32px narrower on wide screens, matching the shared Header."
+        ],
+        "checks": [
+          {
+            "command": "npx vitest run src/__tests__/contact-form-validation.test.jsx src/__tests__/header.test.jsx",
+            "scope": "contact form and Header tests including the new guard",
+            "outcome": "31 tests passed"
+          },
+          {
+            "command": "npm test",
+            "scope": "Vitest 4.1.10 in jsdom on Node 24.21.0, full suite after wave 1 (R1-R4)",
+            "outcome": "24 files, 136 tests passed (baseline 135 plus the R1 guard)"
+          },
+          {
+            "command": "npm run lint",
+            "scope": "eslint over app, src, scripts and root config after wave 1",
+            "outcome": "0 errors, 11 existing no-img-element warnings"
+          },
+          {
+            "command": "npm run build",
+            "scope": "Next.js production build after wave 1; fetches the Inter font from Google at build time",
+            "outcome": "compiled successfully; /contact-me First Load JS 169 kB (baseline 166 kB)"
+          }
+        ]
+      }
     },
     {
       "id": "r-46833e73-c1d3-44e1-b292-9722c0c81c0b",
@@ -173,8 +207,40 @@
         ],
         "invariant": "The rendered colour stays #242424 and every other colour in Testimonials, including Tailwind class literals, is unchanged."
       },
-      "state": "open",
-      "depends_on": []
+      "state": "resolved",
+      "depends_on": [],
+      "closure": {
+        "origin": "native",
+        "kind": "fixed",
+        "commit": "1f912055e9dc24ff186e96df4fa498021eed5234",
+        "date": "2026-11-08",
+        "method": "runtime",
+        "evidence": [
+          "Testimonials.jsx now reads COLORS.textPrimaryHome, whose value is the same #242424 as the removed literal."
+        ],
+        "checks": [
+          {
+            "command": "npx vitest run src/__tests__/testimonials.test.jsx src/__tests__/testimonial-scroll.test.jsx",
+            "scope": "testimonials rendering and scroll tests",
+            "outcome": "6 tests passed"
+          },
+          {
+            "command": "npm test",
+            "scope": "Vitest 4.1.10 in jsdom on Node 24.21.0, full suite after wave 1 (R1-R4)",
+            "outcome": "24 files, 136 tests passed (baseline 135 plus the R1 guard)"
+          },
+          {
+            "command": "npm run lint",
+            "scope": "eslint over app, src, scripts and root config after wave 1",
+            "outcome": "0 errors, 11 existing no-img-element warnings"
+          },
+          {
+            "command": "npm run build",
+            "scope": "Next.js production build after wave 1; fetches the Inter font from Google at build time",
+            "outcome": "compiled successfully; /contact-me First Load JS 169 kB (baseline 166 kB)"
+          }
+        ]
+      }
     },
     {
       "id": "r-46027ab5-aade-4c58-91ef-fb860e204c6c",
@@ -203,8 +269,41 @@
         ],
         "invariant": "Both links keep their hrefs, accessible names, target and rel (LinkedIn new tab with warning; Email same tab), focus styles, class output and DOM order."
       },
-      "state": "open",
-      "depends_on": []
+      "state": "resolved",
+      "depends_on": [],
+      "closure": {
+        "origin": "native",
+        "kind": "fixed",
+        "commit": "9f7ed5ea1c0ef716b318540e30d0ce0505695343",
+        "date": "2026-11-08",
+        "method": "runtime",
+        "evidence": [
+          "Footer.jsx now renders both contact cards through one local ContactCard component; hrefs, LinkedIn target/title/aria-label/rel and Email same-tab behaviour are unchanged.",
+          "The LinkedIn card's Tailwind classes now follow the Email card's order, with no styling effect."
+        ],
+        "checks": [
+          {
+            "command": "npx vitest run src/__tests__/footer.test.jsx",
+            "scope": "Footer link names, destinations, target and rel",
+            "outcome": "7 tests passed"
+          },
+          {
+            "command": "npm test",
+            "scope": "Vitest 4.1.10 in jsdom on Node 24.21.0, full suite after wave 1 (R1-R4)",
+            "outcome": "24 files, 136 tests passed (baseline 135 plus the R1 guard)"
+          },
+          {
+            "command": "npm run lint",
+            "scope": "eslint over app, src, scripts and root config after wave 1",
+            "outcome": "0 errors, 11 existing no-img-element warnings"
+          },
+          {
+            "command": "npm run build",
+            "scope": "Next.js production build after wave 1; fetches the Inter font from Google at build time",
+            "outcome": "compiled successfully; /contact-me First Load JS 169 kB (baseline 166 kB)"
+          }
+        ]
+      }
     },
     {
       "id": "r-c444e582-c204-4d1e-8a4e-2ec24bbc3c82",
@@ -232,8 +331,41 @@
         ],
         "invariant": "Both links keep their order, hrefs, aria-labels, same-tab behaviour, class output and hidden decorative SVGs."
       },
-      "state": "open",
-      "depends_on": []
+      "state": "resolved",
+      "depends_on": [],
+      "closure": {
+        "origin": "native",
+        "kind": "fixed",
+        "commit": "ef4a64499693901356ed2daa9ac38181380a1060",
+        "date": "2026-11-08",
+        "method": "runtime",
+        "evidence": [
+          "CaseStudyAuthor.jsx now maps one anchor over a two-entry link list; the SVG path data was moved verbatim.",
+          "Order, hrefs, aria-labels, same-tab behaviour and hidden decorative SVGs are unchanged."
+        ],
+        "checks": [
+          {
+            "command": "npx vitest run src/__tests__/case-study-author.test.jsx",
+            "scope": "author links, labels, focus class and SVG attributes",
+            "outcome": "3 tests passed"
+          },
+          {
+            "command": "npm test",
+            "scope": "Vitest 4.1.10 in jsdom on Node 24.21.0, full suite after wave 1 (R1-R4)",
+            "outcome": "24 files, 136 tests passed (baseline 135 plus the R1 guard)"
+          },
+          {
+            "command": "npm run lint",
+            "scope": "eslint over app, src, scripts and root config after wave 1",
+            "outcome": "0 errors, 11 existing no-img-element warnings"
+          },
+          {
+            "command": "npm run build",
+            "scope": "Next.js production build after wave 1; fetches the Inter font from Google at build time",
+            "outcome": "compiled successfully; /contact-me First Load JS 169 kB (baseline 166 kB)"
+          }
+        ]
+      }
     },
     {
       "id": "r-41f565d9-3105-4a5a-9305-531c253a35c7",
