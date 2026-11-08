@@ -9,7 +9,7 @@ import cornerWhiteAsset from "../../public/corner-white.png";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { sectionReveal } from "@/config/motion";
+import { sectionReveal, projectReveal } from "@/config/motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -69,7 +69,7 @@ export function Portfolio() {
           {projects.map((project) => (
             <motion.article
               key={project.href}
-              {...sectionReveal}
+              {...projectReveal}
               className="group rounded-3xl overflow-hidden bg-card hover:shadow-xs transition-shadow duration-300 p-2"
             >
               <Link href={project.href} className="block">
@@ -78,7 +78,7 @@ export function Portfolio() {
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover transition-transform duration-200 motion-safe:group-hover:scale-[1.02]"
+                    className="object-cover transition-transform duration-300 ease-out motion-safe:group-hover:scale-[1.035]"
                     sizes="(max-width: 640px) 100vw, 480px"
                   />
                   <Image
@@ -95,7 +95,7 @@ export function Portfolio() {
                     className="mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary bg-[#f6f7f9] rounded-full absolute bottom-2 right-5 border-0"
                   >
                     See Details
-                    <ArrowRight className="size-5 transition-transform duration-200 motion-safe:group-hover:-rotate-12" />
+                    <ArrowRight className="size-5 transition-transform duration-200 motion-safe:group-hover:-rotate-30" />
                   </Button>
                 </div>
                 <div className="p-6 flex flex-col items-start gap-2 sm:flex-row sm:justify-between sm:items-center sm:gap-6">

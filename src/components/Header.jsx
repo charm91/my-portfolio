@@ -97,7 +97,7 @@ export function Header() {
 
   return (
     <header
-      className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-3 md:pt-4 max-w-xl mx-auto"
+      className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-3 md:pt-4 max-w-xl mx-auto entrance-drop"
     >
       {/* Pill-shaped nav bar: white, rounded, shadow */}
       <div
@@ -147,11 +147,11 @@ export function Header() {
           <AnimatePresence>
             {menuOpen && (
               <motion.div
-                initial={{ opacity: 0, y: -4 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -4 }}
-                transition={{ duration: 0.2 }}
-                className="menu-panel absolute right-0 top-full mt-2 w-48 rounded-2xl bg-white p-3 shadow-lg border border-gray-100"
+                initial={{ opacity: 0, y: -8, scale: 0.97 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -6, scale: 0.98 }}
+                transition={{ duration: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                className="menu-panel origin-top-right absolute right-0 top-full mt-2 w-48 rounded-2xl bg-white p-3 shadow-lg border border-gray-100"
                 style={{
                   boxShadow:
                     "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",

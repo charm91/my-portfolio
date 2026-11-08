@@ -128,7 +128,7 @@ export default function ContactPageClient() {
       />
 
       <header
-        className="fixed left-0 right-0 top-0 z-50 px-4 pt-3 md:pt-4"
+        className="fixed left-0 right-0 top-0 z-50 px-4 pt-3 md:pt-4 entrance-drop"
       >
         <div className="mx-auto w-full max-w-xl">
           <div
@@ -158,7 +158,7 @@ export default function ContactPageClient() {
 
       <main id="main-content" className="relative mx-auto max-w-2xl px-4 py-28 sm:px-6 lg:px-8">
         <div
-          className="mb-10 text-center"
+          className="mb-10 text-center entrance-rise"
         >
           <span
             className="mb-5 inline-block rounded-full bg-white px-4 py-1.5 text-sm font-medium"
@@ -183,7 +183,7 @@ export default function ContactPageClient() {
         <form
           onSubmit={handleSubmit}
           noValidate
-          className="rounded-3xl bg-white p-6 md:p-8"
+          className="rounded-3xl bg-white p-6 md:p-8 entrance-rise entrance-delay-1"
           style={{ boxShadow: "0 2px 5px rgba(0, 0, 0, 0.06)" }}
         >
           {/* Honeypot — hidden from real users, attracts bots */}

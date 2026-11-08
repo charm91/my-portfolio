@@ -101,6 +101,99 @@
   z-index: 1;
 }
 
+/* First-paint content stays visible; only transforms are animated on entry. */
+@keyframes entrance-rise {
+  from { transform: translateY(20px); }
+  to { transform: none; }
+}
+
+@keyframes entrance-drop {
+  from { transform: translateY(-24px); }
+  to { transform: none; }
+}
+
+@keyframes availability-signal {
+  0%, 100% { transform: scale(1); opacity: 0.45; }
+  50% { transform: scale(1.5); opacity: 0; }
+}
+
+.testimonial-rail {
+  max-width: 600px;
+  margin-inline: auto;
+}
+
+.testimonial-viewport {
+  border-radius: 1rem;
+  background: linear-gradient(180deg, #fff, #f6f7f9 46%, #fff);
+}
+
+.testimonial-track {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+@media (min-width: 768px) {
+  .testimonial-track { padding: 2.5rem; }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .entrance-rise {
+    animation: entrance-rise 600ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .entrance-drop {
+    animation: entrance-drop 450ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .entrance-delay-1 { animation-delay: 70ms; }
+  .entrance-delay-2 { animation-delay: 140ms; }
+  .entrance-delay-3 { animation-delay: 210ms; }
+
+  .availability-signal::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: #6ee7b7;
+    opacity: 0;
+    /* A short greeting, rather than a permanent animation loop. */
+    animation: availability-signal 2s ease-out 3;
+  }
+}
+
+@keyframes testimonial-scroll {
+  from { transform: translateY(0); }
+  to { transform: translateY(calc(-1 * var(--testimonial-travel))); }
+}
+
+/* The browser drives this transform. JS measures only when dimensions change. */
+@supports (animation-timeline: --testimonials) and (animation-range: contain) and (view-timeline-inset: 1px) {
+  @media (min-width: 768px) and (min-height: 600px) and (prefers-reduced-motion: no-preference) {
+    .testimonial-rail[data-scroll="true"] {
+      --testimonial-viewport-height: min(700px, calc(100svh - 8rem));
+      height: calc(var(--testimonial-viewport-height) + var(--testimonial-travel, 0px));
+      view-timeline-name: --testimonials;
+      view-timeline-axis: block;
+      view-timeline-inset: 6rem calc(100svh - 6rem - var(--testimonial-viewport-height));
+    }
+
+    .testimonial-rail[data-scroll="true"] .testimonial-viewport {
+      position: sticky;
+      top: 6rem;
+      height: var(--testimonial-viewport-height);
+      overflow: clip;
+    }
+
+    .testimonial-rail[data-scroll="true"] .testimonial-track {
+      animation: testimonial-scroll 1ms linear both;
+      animation-timeline: --testimonials;
+      animation-range: contain 0% contain 100%;
+    }
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

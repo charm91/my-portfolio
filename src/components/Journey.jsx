@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { sectionReveal } from "@/config/motion";
+import { sectionReveal, staggerReveal, staggerItem } from "@/config/motion";
 import { Search, Rocket, PaintRoller, Layers } from "lucide-react";
 
 const steps = [
@@ -55,12 +55,13 @@ export function Journey() {
         </motion.div>
 
         <motion.div
-          {...sectionReveal}
+          {...staggerReveal}
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
           {steps.map((step) => (
-            <div
+            <motion.div
               key={step.number}
+              variants={staggerItem}
               className="relative bg-white rounded-2xl"
             >
               <div className="p-6  h-full flex flex-col">
@@ -75,7 +76,7 @@ export function Journey() {
                   {step.description}
                 </p>
               </div>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
       </div>

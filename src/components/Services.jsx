@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { sectionReveal } from "@/config/motion";
+import { sectionReveal, staggerReveal, staggerItem } from "@/config/motion";
 import { Settings, Globe, Layers, Code2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { scrollToSection } from "@/lib/utils";
@@ -69,12 +69,13 @@ export function Services() {
 
         {/* 2x2 grid */}
         <motion.div
-          {...sectionReveal}
+          {...staggerReveal}
           className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6"
         >
           {services.map((s, i) => (
-            <article
+            <motion.article
               key={i}
+              variants={staggerItem}
               className="rounded-2xl bg-white p-4 md:p-6"
             >
               <div className="flex flex-col">
@@ -107,7 +108,7 @@ export function Services() {
                   ))}
                 </div>
               </div>
-            </article>
+            </motion.article>
           ))}
         </motion.div>
 

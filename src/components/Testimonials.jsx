@@ -4,6 +4,7 @@ import koChawAsset from "../../public/ko-chaw.jpeg";
 import zinThantAsset from "../../public/zin-thant.jpeg";
 import thiriAsset from "../../public/thiri.jpeg";
 import { Star } from "lucide-react";
+import { TestimonialScroll } from "@/components/TestimonialScroll";
 
 const ZayarImage = zayarAsset.src;
 const ThetImage = koChawAsset.src;
@@ -61,7 +62,7 @@ export function Testimonials() {
             What Colleagues Say
           </h2>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <TestimonialScroll>
           {testimonials.map((t) => (
             <article
               key={t.name}
@@ -118,7 +119,7 @@ export function Testimonials() {
               </div>
             </article>
           ))}
-        </div>
+        </TestimonialScroll>
       </div>
     </section>
   );
