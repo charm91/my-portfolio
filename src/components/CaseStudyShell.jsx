@@ -73,6 +73,9 @@ export function CaseStudyShell({ coverImage, title, tags, liveUrl, thumbnail, ch
           <div className="flex justify-center mt-8 mb-4">
             <a
               href={liveUrl}
+              target="_blank"
+              title="Opens in a new tab"
+              aria-label="Live Project (opens in a new tab)"
               rel="noopener noreferrer"
               className="group inline-flex items-center gap-2 rounded-3xl bg-[#1f2937] px-5 py-2.5 font-medium text-white transition-[transform,background-color,box-shadow] duration-200 motion-safe:hover:-translate-y-0.5 motion-safe:hover:scale-[1.02] motion-safe:focus-visible:-translate-y-0.5 motion-safe:focus-visible:scale-[1.02] hover:bg-[#111827] focus-visible:bg-[#111827] hover:shadow-lg focus-visible:shadow-lg motion-safe:active:translate-y-0 motion-safe:active:scale-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
             >

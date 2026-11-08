@@ -23,18 +23,27 @@ vi.mock("lucide-react", () => ({
 }));
 
 describe("BetterHRPage", () => {
-  it("keeps the live-project destination without forcing a new tab", () => {
-    render(<BetterHRPage />);
-    const link = screen.getByRole("link", { name: "Live Project" });
-    expect(link).toHaveAttribute("href", "https://betterhr.com/");
-    expect(link).not.toHaveAttribute("target");
-  });
-
   it("renders the main heading", () => {
     render(<BetterHRPage />);
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
       "Better HR Cloud-based HR Management Platform"
     );
+  });
+});
+
+describe("Live-project navigation", () => {
+  it.each([
+    [BetterHRPage, "https://betterhr.com/"],
+    [KBZBankPage, "https://selfservice.kbzbank.com/"],
+    [UniLinksPage, "https://unilinks.co/"],
+    [WctPage, "https://www.wctpay.com/"],
+  ])("opens %s in a new tab with an accessible warning", (Page, href) => {
+    render(<Page />);
+    const link = screen.getByRole("link", { name: "Live Project (opens in a new tab)" });
+    expect(link).toHaveAttribute("href", href);
+    expect(link).toHaveAttribute("target", "_blank");
+    expect(link).toHaveAttribute("title", "Opens in a new tab");
+    expect(link).toHaveAttribute("rel", "noopener noreferrer");
   });
 });
 

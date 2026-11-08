@@ -45,13 +45,16 @@ describe("Footer", () => {
 
   it("links Resume to the configured document", () => {
     render(<Footer />);
-    expect(screen.getByRole("link", { name: "Resume" })).toHaveAttribute("href", RESUME_URL);
+    expect(screen.getByRole("link", { name: "Resume (opens in a new tab)" })).toHaveAttribute("href", RESUME_URL);
   });
 
-  it("lets the browser choose how to open external destinations", () => {
+  it("opens the selected external destinations in a new tab with a warning", () => {
     render(<Footer />);
-    for (const name of [/LinkedIn/i, /Email/i, "Resume"]) {
-      expect(screen.getByRole("link", { name })).not.toHaveAttribute("target");
+    for (const name of ["LinkedIn", "Email", "Resume"]) {
+      const link = screen.getByRole("link", { name: `${name} (opens in a new tab)` });
+      expect(link).toHaveAttribute("target", "_blank");
+      expect(link).toHaveAttribute("title", "Opens in a new tab");
+      expect(link).toHaveAttribute("rel", "noopener noreferrer");
     }
   });
 

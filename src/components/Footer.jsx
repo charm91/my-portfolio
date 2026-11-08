@@ -61,6 +61,9 @@ export function Footer() {
         >
           <a
             href={SOCIAL_LINKS.linkedin}
+            target="_blank"
+            title="Opens in a new tab"
+            aria-label="LinkedIn (opens in a new tab)"
             rel="noopener noreferrer"
             className="flex items-center gap-4 rounded-full bg-white p-5 md:p-6 hover:shadow-md focus-visible:shadow-md transition-shadow duration-150 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
           >
@@ -87,6 +90,9 @@ export function Footer() {
           </a>
           <a
             href={`https://mail.google.com/mail/?view=cm&fs=1&to=${SITE.email}&su=Hello%20${encodeURIComponent(SITE.displayName)}`}
+            target="_blank"
+            title="Opens in a new tab"
+            aria-label="Email (opens in a new tab)"
             rel="noopener noreferrer"
             className="flex items-center gap-4 rounded-full bg-white p-5 md:p-6 transition-shadow duration-150 hover:shadow-md focus-visible:shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
           >
@@ -132,6 +138,9 @@ export function Footer() {
           <div className="flex justify-center sm:justify-end gap-2">
             <a
               href={RESUME_URL}
+              target="_blank"
+              title="Opens in a new tab"
+              aria-label="Resume (opens in a new tab)"
               rel="noopener noreferrer"
               className="inline-flex items-center gap-1.5 text-sm transition-colors duration-150 hover:bg-black text-secondary hover:text-white focus-visible:bg-black focus-visible:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary px-4 py-1.5 rounded-full"
             >
