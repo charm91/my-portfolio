@@ -24,7 +24,7 @@ const steps = [
     icon: PaintRoller,
     title: "Prototype & Validate",
     description:
-      "I test ideas through prototypes, feedback, and usability review, then refine the experience before delivery.",
+      "I test ideas through prototypes, feedback, and usability review, then refine the experience and address key findings before delivery.",
   },
   {
     number: "04",
