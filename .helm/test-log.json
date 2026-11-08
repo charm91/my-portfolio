@@ -1,7 +1,7 @@
 {
   "schema_version": 3,
-  "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
-  "full_scan_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
+  "assessed_commit": "1edceed298d8e1c54a274dd1c69b7256847f8c6f",
+  "full_scan_commit": "1edceed298d8e1c54a274dd1c69b7256847f8c6f",
   "cases": [
     {
       "id": "g-2fa872bd-a832-416f-ad34-8531a525ccfe",
@@ -250,6 +250,31 @@
       }
     },
     {
+      "expected": "Every Header menu link and every Hero, Services, OverviewGrid and Footer fragment link (#home, #services, #portfolio, #testimonials, #faq, #contact) resolves to an element rendered by the real home sections.",
+      "basis": [
+        "AGENTS.md Known Traps: keep target section IDs aligned with Header navigation items",
+        "src/__tests__/header.test.jsx creates its own section elements, so real component IDs are not checked"
+      ],
+      "paths": [
+        "src/components/Header.jsx",
+        "src/components/Hero.jsx",
+        "src/components/OverviewGrid.jsx",
+        "src/components/Services.jsx",
+        "src/components/Portfolio.jsx",
+        "src/components/Testimonials.jsx",
+        "src/components/FAQ.jsx",
+        "src/components/Footer.jsx",
+        "src/__tests__/header.test.jsx"
+      ],
+      "priority": "medium",
+      "reason": "Renaming a section ID in a real component would silently break in-page navigation while every existing test still passes; the failure is visible to visitors but recoverable.",
+      "action": "add",
+      "layer": "integration",
+      "id": "g-804ac262-c89a-441f-a62e-32f124a61c1f",
+      "state": "open",
+      "assessed_commit": "1edceed298d8e1c54a274dd1c69b7256847f8c6f"
+    },
+    {
       "id": "g-a5b76e0c-0512-40a5-bd4a-1950e03691bf",
       "expected": "Social link href matches configured profile.",
       "basis": [
@@ -478,6 +503,26 @@
       }
     },
     {
+      "expected": "The layout's skip link targets #main-content and each page shell (HomeShell, CaseStudyShell, contact page) renders exactly one main element with that id.",
+      "basis": [
+        "app/layout.jsx skip link href=\"#main-content\"",
+        "src/components/HomeShell.jsx, src/components/CaseStudyShell.jsx and app/contact-me/ContactPageClient.jsx define id=\"main-content\" (static code evidence; intended behavior inferred from implementation)"
+      ],
+      "paths": [
+        "app/layout.jsx",
+        "src/components/HomeShell.jsx",
+        "src/components/CaseStudyShell.jsx",
+        "app/contact-me/ContactPageClient.jsx"
+      ],
+      "priority": "medium",
+      "reason": "The skip link and its targets live in four files with no test linking them; a shell refactor could remove keyboard bypass without any failing test.",
+      "action": "add",
+      "layer": "integration",
+      "id": "g-bd508a0b-0673-4c0d-9612-4b1186de888a",
+      "state": "open",
+      "assessed_commit": "1edceed298d8e1c54a274dd1c69b7256847f8c6f"
+    },
+    {
       "id": "g-c208a501-6517-4238-8762-75c5e3e46cb1",
       "expected": "Query target/#target scroll after timer; absent/missing target safe; query changes/unmount cancel stale scroll.",
       "basis": [
@@ -517,6 +562,25 @@
         "src/__tests__/scroll-to-section.test.jsx::cancels a queued scroll when the query is removed",
         "src/__tests__/scroll-to-section.test.jsx::cancels a queued scroll on unmount"
       ]
+    },
+    {
+      "expected": "MotionProvider wraps children in a motion configuration that respects the visitor's reduced-motion preference (reducedMotion=\"user\").",
+      "basis": [
+        "src/components/MotionProvider.jsx",
+        "app/layout.jsx wraps the whole site in MotionProvider (static code evidence; intended behavior inferred from implementation)"
+      ],
+      "paths": [
+        "src/components/MotionProvider.jsx",
+        "app/layout.jsx",
+        "vitest.setup.js"
+      ],
+      "priority": "low",
+      "reason": "Site-wide reduced-motion handling for Framer Motion depends on one prop, and the global motion mock has no MotionConfig, so nothing tests it.",
+      "action": "add",
+      "layer": "unit",
+      "id": "g-df11bd1d-20a7-4915-98e6-78c8831ad54d",
+      "state": "open",
+      "assessed_commit": "1edceed298d8e1c54a274dd1c69b7256847f8c6f"
     },
     {
       "id": "g-e7ce9b6f-9373-4a08-b53a-60ed8ac42b50",
@@ -615,14 +679,14 @@
         "src/components/CaseStudyShell.jsx"
       ],
       "priority": "medium",
-      "reason": "Case Studies uses a fragment with no matching target on case-study pages; intended cross-page destination is unknown.",
+      "reason": "Reassessed: the Footer Case Studies link is now /#portfolio and src/__tests__/footer.test.jsx asserts it, so the ineffective fragment on case pages appears fixed. Owner confirmation that /#portfolio is the intended destination is still needed before closure.",
       "action": "manual",
       "layer": "manual",
       "state": "open",
-      "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
+      "assessed_commit": "1edceed298d8e1c54a274dd1c69b7256847f8c6f",
       "blocker": {
         "kind": "clarification",
-        "note": "Choose the intended Case Studies destination from case-study pages before production fix or acceptance test. Excluded from approved test edits."
+        "note": "Confirm /#portfolio as the intended Case Studies destination from case-study pages; then close with the footer test as evidence."
       },
       "decision": {
         "type": "accepted-risk",
