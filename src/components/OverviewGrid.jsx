@@ -114,7 +114,7 @@ export function OverviewGrid() {
                     </div>
 
                     <ArrowRight
-                      className="size-5 shrink-0 text-[#242424] group-hover:opacity-70 group-focus-visible:opacity-70 transition-opacity duration-150"
+                      className="size-5 shrink-0 text-[#242424] group-hover:opacity-70 group-focus-visible:opacity-70 transition-[transform,opacity] duration-150 motion-safe:group-hover:translate-x-1 motion-safe:group-focus-visible:translate-x-1"
                       strokeWidth={2}
                     />
                   </div>
