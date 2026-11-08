@@ -21,25 +21,25 @@ const wctImage = wctAsset.src;
 const projects = [
   {
     title: "Better HR Cloud-based HR Management Platform",
-    category: "WebApp + Mobile App",
+    category: "Web + Mobile Apps",
     image: betterhrImage,
     href: "/betterhr",
   },
   {
     title: "UniLinks All-in-One Study Abroad Platform",
-    category: "WebApp (Responsive)",
+    category: "Web App",
     image: uniLinksImage,
     href: "/unilinks",
   },
   {
     title: "KBZ Bank Digital Banking Authentication System",
-    category: "WebApp (Responsive)",
+    category: "Web App",
     image: kbzBankImage,
     href: "/kbz-bank",
   },
   {
     title: "WCT Pay Crypto–Fiat Payment Dashboard",
-    category: "WebApp (Responsive)",
+    category: "Web App",
     image: wctImage,
     href: "/wct",
   },
