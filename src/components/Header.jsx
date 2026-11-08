@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect, useRef } from "react";
+import logoAsset from "../../public/logo.svg";
 import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
@@ -114,7 +115,7 @@ export function Header() {
           className="text-lg font-semibold text-[#1f2937] hover:opacity-80 transition-opacity shrink-0"
           onClick={() => setMenuOpen(false)}
         >
-          <Image src="/logo.svg" alt={SITE.displayName} width={80} height={32} />
+          <Image src={logoAsset.src} alt={SITE.displayName} width={80} height={32} />
         </Link>
 
         <div className="relative menu-trigger">

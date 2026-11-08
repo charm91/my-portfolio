@@ -1,6 +1,19 @@
 "use client";
 
 import Image from "next/image";
+import uCoverAsset from "../../public/u-cover.png";
+import unilinksThumbnailAsset from "../../public/unilinks/thumbnail.png";
+import unilinksGroupPhotoAsset from "../../public/unilinks/group-photo.png";
+import unilinksFlow1Asset from "../../public/unilinks/flow1.png";
+import unilinksFlow2Asset from "../../public/unilinks/flow2.png";
+import unilinksFlow3Asset from "../../public/unilinks/flow3.png";
+import unilinksFlow4Asset from "../../public/unilinks/flow4.png";
+import unilinksUi1Asset from "../../public/unilinks/ui1.png";
+import unilinksUi2Asset from "../../public/unilinks/ui2.png";
+import unilinksUi3Asset from "../../public/unilinks/ui3.png";
+import unilinksDisplay1Asset from "../../public/unilinks/display-1.jpg";
+import unilinksDisplay2Asset from "../../public/unilinks/display-2.jpg";
+import unilinksDisplay3Asset from "../../public/unilinks/display-3.jpg";
 import { CASE_STUDY_IMAGE_SIZES, CASE_STUDY_GRID_IMAGE_SIZES } from "@/config/caseStudy";
 import { Clock, Globe, TabletSmartphone } from "lucide-react";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
@@ -9,7 +22,7 @@ import { CaseStudySection as Section } from "@/components/CaseStudySection";
 export function UniLinksPage() {
   return (
     <CaseStudyShell
-      coverImage="/u-cover.png"
+      coverImage={uCoverAsset.src}
       title="UniLinks All-in-One Study Abroad Platform"
       tags={[
         { icon: TabletSmartphone, label: "WebApp (Responsive)" },
@@ -17,7 +30,7 @@ export function UniLinksPage() {
         { icon: Clock, label: "Founding → Growth phase" },
       ]}
       liveUrl="https://unilinks.co/"
-      thumbnail={{ src: "/unilinks/thumbnail.png", width: 1488, height: 1050 }}
+      thumbnail={{ src: unilinksThumbnailAsset.src, width: 1488, height: 1050 }}
     >
       <Section title="Project Overview">
         <p className="mb-4">
@@ -61,7 +74,7 @@ export function UniLinksPage() {
         <div className="rounded-lg border border-gray-200 bg-white p-2 shadow-xs my-8">
           <div className="overflow-hidden rounded-sm bg-gray-100">
             <Image
-              src="/unilinks/group-photo.png"
+              src={unilinksGroupPhotoAsset.src}
               alt="Final Presentation"
               width={1344}
               height={680}
@@ -95,7 +108,7 @@ export function UniLinksPage() {
           <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
             <div className="overflow-hidden rounded-sm bg-gray-100">
               <Image
-                src="/unilinks/flow1.png"
+                src={unilinksFlow1Asset.src}
                 alt="personas"
                 width={710}
                 height={474}
@@ -106,7 +119,7 @@ export function UniLinksPage() {
 
             <div className="overflow-hidden rounded-sm bg-gray-100">
               <Image
-                src="/unilinks/flow2.png"
+                src={unilinksFlow2Asset.src}
                 alt="workflow"
                 width={710}
                 height={474}
@@ -138,7 +151,7 @@ export function UniLinksPage() {
           <div className="grid grid-cols-1 gap-1 md:grid-cols-2">
             <div className="hidden md:block overflow-hidden rounded-sm">
               <Image
-                src="/unilinks/flow3.png"
+                src={unilinksFlow3Asset.src}
                 alt="personas"
                 width={2076}
                 height={2240}
@@ -149,7 +162,7 @@ export function UniLinksPage() {
 
             <div className="overflow-hidden rounded-sm">
               <Image
-                src="/unilinks/flow4.png"
+                src={unilinksFlow4Asset.src}
                 alt="workflow"
                 width={2028}
                 height={1312}
@@ -180,7 +193,7 @@ export function UniLinksPage() {
         <div className="rounded-lg my-8">
           <div className="overflow-hidden rounded-sm bg-gray-100">
             <Image
-              src="/unilinks/ui1.png"
+              src={unilinksUi1Asset.src}
               alt="User Interface Design"
               width={1440}
               height={687}
@@ -218,7 +231,7 @@ export function UniLinksPage() {
         <div className="rounded-lg my-8">
           <div className="overflow-hidden rounded-sm bg-gray-100">
             <Image
-              src="/unilinks/ui2.png"
+              src={unilinksUi2Asset.src}
               alt="User Interface Design"
               width={1440}
               height={687}
@@ -247,7 +260,7 @@ export function UniLinksPage() {
         <div className="rounded-lg my-8">
           <div className="overflow-hidden rounded-sm bg-gray-100">
             <Image
-              src="/unilinks/ui3.png"
+              src={unilinksUi3Asset.src}
               alt="User Interface Design"
               width={1440}
               height={687}
@@ -298,7 +311,7 @@ export function UniLinksPage() {
           <div className="grid grid-cols-1 gap-3 md:grid-cols-2">
             <div className="overflow-hidden rounded-sm bg-gray-100">
               <Image
-                src="/unilinks/display-1.jpg"
+                src={unilinksDisplay1Asset.src}
                 alt="personas"
                 width={1080}
                 height={1080}
@@ -309,7 +322,7 @@ export function UniLinksPage() {
 
             <div className="overflow-hidden rounded-sm bg-gray-100">
               <Image
-                src="/unilinks/display-2.jpg"
+                src={unilinksDisplay2Asset.src}
                 alt="workflow"
                 width={1080}
                 height={1080}
@@ -320,7 +333,7 @@ export function UniLinksPage() {
 
             <div className="overflow-hidden rounded-sm bg-gray-100">
               <Image
-                src="/unilinks/display-3.jpg"
+                src={unilinksDisplay3Asset.src}
                 alt="workflow"
                 width={1080}
                 height={1080}
@@ -331,7 +344,7 @@ export function UniLinksPage() {
 
             <div className="overflow-hidden rounded-sm bg-gray-100">
               <Image
-                src="/unilinks/display-1.jpg"
+                src={unilinksDisplay1Asset.src}
                 alt="workflow"
                 width={1080}
                 height={1080}

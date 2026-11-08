@@ -67,7 +67,7 @@ npx vitest run src/__tests__/contact-form-validation.test.jsx
 - **Personal details and links:** [src/config/site.js](src/config/site.js).
 - **Homepage sections:** [src/components](src/components).
 - **Case-study prose:** [src/views](src/views), rendered through the shared case-study shell.
-- **Images:** [public](public), referenced using root-relative URLs.
+- **Images:** [public](public), imported by their components or configuration. Next.js generates content-hashed URLs for long-lived caching; replacing an image updates its URL automatically. The homepage background is imported through CSS.
 - **Styling:** [app/globals.css](app/globals.css) contains the Tailwind 4 theme; [src/config/theme.js](src/config/theme.js) holds shared color tokens.
 
 To add a case study, create its view, register it in [src/config/caseStudies.js](src/config/caseStudies.js), add its portfolio card in [Portfolio.jsx](src/components/Portfolio.jsx), and add its URL to [app/sitemap.js](app/sitemap.js).

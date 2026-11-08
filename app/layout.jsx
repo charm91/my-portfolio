@@ -1,4 +1,5 @@
 import { Inter } from "next/font/google";
+import faviconAsset from "../public/favicon.png";
 import "./globals.css";
 import { SITE, SITE_URL } from "@/config/site";
 import { MotionProvider } from "@/components/MotionProvider";
@@ -37,7 +38,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en" className={inter.variable}>
       <head>
-        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="icon" href={faviconAsset.src} type="image/png" />
       </head>
       <body>
         <a

@@ -1,6 +1,11 @@
 "use client";
 
 import Image from "next/image";
+import kbzAsset from "../../public/kbz.png";
+import unilinksAsset from "../../public/unilinks.png";
+import betterAsset from "../../public/better.png";
+import wctAsset from "../../public/wct.png";
+import cornerWhiteAsset from "../../public/corner-white.png";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { motion } from "framer-motion";
@@ -8,10 +13,10 @@ import { sectionReveal } from "@/config/motion";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const kbzBankImage = "/kbz.png";
-const uniLinksImage = "/unilinks.png";
-const betterhrImage = "/better.png";
-const wctImage = "/wct.png";
+const kbzBankImage = kbzAsset.src;
+const uniLinksImage = unilinksAsset.src;
+const betterhrImage = betterAsset.src;
+const wctImage = wctAsset.src;
 
 const projects = [
   {
@@ -76,7 +81,7 @@ export function Portfolio() {
                     sizes="(max-width: 640px) 100vw, 480px"
                   />
                   <Image
-                    src="/corner-white.png"
+                    src={cornerWhiteAsset.src}
                     alt=""
                     width={190}
                     height={90}

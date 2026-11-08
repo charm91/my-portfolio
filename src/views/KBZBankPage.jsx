@@ -1,6 +1,15 @@
 "use client";
 
 import Image from "next/image";
+import kCoverAsset from "../../public/k-cover.png";
+import kbzThumbnailAsset from "../../public/kbz/thumbnail.png";
+import kbzDiagramAsset from "../../public/kbz/diagram.png";
+import kbzFlowchartAsset from "../../public/kbz/flowchart.png";
+import kbzUi1Asset from "../../public/kbz/ui1.png";
+import kbzUi2Asset from "../../public/kbz/ui2.png";
+import kbzUi3Asset from "../../public/kbz/ui3.png";
+import kbzUi4Asset from "../../public/kbz/ui4.png";
+import kbzUi5Asset from "../../public/kbz/ui5.png";
 import { CASE_STUDY_IMAGE_SIZES } from "@/config/caseStudy";
 import { Clock, Globe, TabletSmartphone } from "lucide-react";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
@@ -9,7 +18,7 @@ import { CaseStudySection as Section } from "@/components/CaseStudySection";
 export function KBZBankPage() {
   return (
     <CaseStudyShell
-      coverImage="/k-cover.png"
+      coverImage={kCoverAsset.src}
       title="KBZ Bank Digital Banking Authentication System"
       tags={[
         { icon: TabletSmartphone, label: "WebApp (Responsive)" },
@@ -17,7 +26,7 @@ export function KBZBankPage() {
         { icon: Clock, label: "Scale phase" },
       ]}
       liveUrl="https://selfservice.kbzbank.com/"
-      thumbnail={{ src: "/kbz/thumbnail.png", width: 1492, height: 1028 }}
+      thumbnail={{ src: kbzThumbnailAsset.src, width: 1492, height: 1028 }}
     >
       <Section title="Project Overview">
         <p className="mb-4">
@@ -55,7 +64,7 @@ export function KBZBankPage() {
         <div className="bg-white my-8">
           <div className="overflow-hidden">
             <Image
-              src="/kbz/diagram.png"
+              src={kbzDiagramAsset.src}
               alt="Work Flow Diagram"
               width={1440}
               height={835}
@@ -96,7 +105,7 @@ export function KBZBankPage() {
         <div className="bg-white my-8">
           <div className="overflow-hidden">
             <Image
-              src="/kbz/flowchart.png"
+              src={kbzFlowchartAsset.src}
               alt="User Interface"
               width={1440}
               height={1637}
@@ -121,7 +130,7 @@ export function KBZBankPage() {
         <div className="bg-white my-8">
           <div className="overflow-hidden">
             <Image
-              src="/kbz/ui1.png"
+              src={kbzUi1Asset.src}
               alt="User Interface"
               width={1440}
               height={1180}
@@ -153,7 +162,7 @@ export function KBZBankPage() {
         <div className="bg-white my-8">
           <div className="overflow-hidden">
             <Image
-              src="/kbz/ui2.png"
+              src={kbzUi2Asset.src}
               alt="Flow Chart"
               width={1440}
               height={487}
@@ -184,7 +193,7 @@ export function KBZBankPage() {
         <div className="bg-white my-8">
           <div className="overflow-hidden">
             <Image
-              src="/kbz/ui3.png"
+              src={kbzUi3Asset.src}
               alt="User Interface"
               width={1440}
               height={1357}
@@ -217,7 +226,7 @@ export function KBZBankPage() {
         <div className="bg-white my-8">
           <div className="overflow-hidden">
             <Image
-              src="/kbz/ui4.png"
+              src={kbzUi4Asset.src}
               alt="User Interface"
               width={1440}
               height={741}
@@ -246,7 +255,7 @@ export function KBZBankPage() {
         <div className="bg-white my-8">
           <div className="overflow-hidden">
             <Image
-              src="/kbz/ui5.png"
+              src={kbzUi5Asset.src}
               alt="User Interface"
               width={1440}
               height={487}

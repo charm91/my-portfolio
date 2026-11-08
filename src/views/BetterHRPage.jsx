@@ -1,6 +1,17 @@
 "use client";
 
 import Image from "next/image";
+import bCoverAsset from "../../public/b-cover.png";
+import betterhrThumbnailAsset from "../../public/betterhr/thumbnail.png";
+import betterhrProblemAsset from "../../public/betterhr/problem.png";
+import betterhrGroup1Asset from "../../public/betterhr/group1.png";
+import betterhrGroup2Asset from "../../public/betterhr/group2.png";
+import betterhrUx1Asset from "../../public/betterhr/ux1.png";
+import betterhrUx2Asset from "../../public/betterhr/ux2.png";
+import betterhrUi1Asset from "../../public/betterhr/ui1.png";
+import betterhrUi2Asset from "../../public/betterhr/ui2.png";
+import betterhrUi3Asset from "../../public/betterhr/ui3.png";
+import betterhrUi4Asset from "../../public/betterhr/ui4.png";
 import { CASE_STUDY_IMAGE_SIZES, CASE_STUDY_GRID_IMAGE_SIZES } from "@/config/caseStudy";
 import { Clock, Globe, TabletSmartphone } from "lucide-react";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
@@ -9,7 +20,7 @@ import { CaseStudySection as Section } from "@/components/CaseStudySection";
 export function BetterHRPage() {
   return (
     <CaseStudyShell
-      coverImage="/b-cover.png"
+      coverImage={bCoverAsset.src}
       title="Better HR Cloud-based HR Management Platform"
       tags={[
         { icon: TabletSmartphone, label: "WebApp + Mobile App" },
@@ -17,7 +28,7 @@ export function BetterHRPage() {
         { icon: Clock, label: "Founding phase" },
       ]}
       liveUrl="https://betterhr.com/"
-      thumbnail={{ src: "/betterhr/thumbnail.png", width: 1488, height: 1050 }}
+      thumbnail={{ src: betterhrThumbnailAsset.src, width: 1488, height: 1050 }}
     >
       <Section title="Project Overview">
         <p className="mb-4">
@@ -46,7 +57,7 @@ export function BetterHRPage() {
         </p>
         <div className="rounded-2xl overflow-hidden">
           <Image
-            src="/betterhr/problem.png"
+            src={betterhrProblemAsset.src}
             alt="problem-statement"
             width={1080}
             height={594}
@@ -88,7 +99,7 @@ export function BetterHRPage() {
           <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
             <div className="hidden md:block overflow-hidden rounded-sm bg-gray-100">
               <Image
-                src="/betterhr/group1.png"
+                src={betterhrGroup1Asset.src}
                 alt="Meeting room discussion"
                 width={678}
                 height={542}
@@ -99,7 +110,7 @@ export function BetterHRPage() {
 
             <div className="overflow-hidden rounded-sm bg-gray-100">
               <Image
-                src="/betterhr/group2.png"
+                src={betterhrGroup2Asset.src}
                 alt="Presentation session"
                 width={678}
                 height={542}
@@ -132,7 +143,7 @@ export function BetterHRPage() {
 
         <div className="overflow-hidden md:px-3 sm:px-2 mt-8">
           <Image
-            src="/betterhr/ux1.png"
+            src={betterhrUx1Asset.src}
             alt="Presentation session"
             width={479}
             height={335}
@@ -142,7 +153,7 @@ export function BetterHRPage() {
         </div>
         <div className="overflow-hidden">
           <Image
-            src="/betterhr/ux2.png"
+            src={betterhrUx2Asset.src}
             alt="Presentation session"
             width={778}
             height={444}
@@ -171,7 +182,7 @@ export function BetterHRPage() {
           <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
             <div className="overflow-hidden rounded-sm bg-gray-100">
               <Image
-                src="/betterhr/ui1.png"
+                src={betterhrUi1Asset.src}
                 alt="betterhrUI"
                 width={504}
                 height={512}
@@ -182,7 +193,7 @@ export function BetterHRPage() {
 
             <div className="overflow-hidden rounded-sm bg-gray-100">
               <Image
-                src="/betterhr/ui2.png"
+                src={betterhrUi2Asset.src}
                 alt="betterhrUI"
                 width={504}
                 height={516}
@@ -213,7 +224,7 @@ export function BetterHRPage() {
           <div className="grid grid-cols-1 gap-2 md:grid-cols-1">
             <div className="overflow-hidden rounded-sm bg-gray-100">
               <Image
-                src="/betterhr/ui3.png"
+                src={betterhrUi3Asset.src}
                 alt="betterhrUI"
                 width={1440}
                 height={878}
@@ -240,7 +251,7 @@ export function BetterHRPage() {
           <div className="grid grid-cols-1 gap-2 md:grid-cols-1">
             <div className="overflow-hidden rounded-sm bg-gray-100">
               <Image
-                src="/betterhr/ui4.png"
+                src={betterhrUi4Asset.src}
                 alt="betterhrUI"
                 width={720}
                 height={520}

@@ -1,3 +1,5 @@
+import profilePhotoAsset from "../../public/profile-photo.png";
+
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.nguwahaung.com";
 
@@ -5,7 +7,7 @@ export const SITE = {
   name: "Ngu Wah Aung",
   displayName: "Charm",
   tagline: "Senior Product Designer • Fintech & SaaS",
-  profileImage: "/profile-photo.png",
+  profileImage: profilePhotoAsset.src,
   email: "nguwah106@gmail.com",
   location: "Bangkok, Thailand",
   careerStartYear: 2013,

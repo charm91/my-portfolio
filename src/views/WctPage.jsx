@@ -1,6 +1,19 @@
 "use client";
 
 import Image from "next/image";
+import wctAsset from "../../public/wct.png";
+import wctThumbnailAsset from "../../public/wct/thumbnail.png";
+import wctPreviewAsset from "../../public/wct/preview.png";
+import wctPaperAsset from "../../public/wct/paper.png";
+import wctSolvingAsset from "../../public/wct/solving.png";
+import wctDiagramAsset from "../../public/wct/diagram.png";
+import wctUi1Asset from "../../public/wct/ui1.png";
+import wctUi2Asset from "../../public/wct/ui2.png";
+import wctUi3Asset from "../../public/wct/ui3.png";
+import wctUi4Asset from "../../public/wct/ui4.png";
+import wctUi5Asset from "../../public/wct/ui5.png";
+import wctUi6Asset from "../../public/wct/ui6.png";
+import wctUi7Asset from "../../public/wct/ui7.png";
 import { CASE_STUDY_IMAGE_SIZES, CASE_STUDY_GRID_IMAGE_SIZES } from "@/config/caseStudy";
 import { Clock, Globe, TabletSmartphone } from "lucide-react";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
@@ -9,7 +22,7 @@ import { CaseStudySection as Section } from "@/components/CaseStudySection";
 export function WctPage() {
   return (
     <CaseStudyShell
-      coverImage="/wct.png"
+      coverImage={wctAsset.src}
       title="WCT Pay Crypto–Fiat Payment Dashboard"
       tags={[
         { icon: TabletSmartphone, label: "WebApp (Responsive)" },
@@ -17,7 +30,7 @@ export function WctPage() {
         { icon: Clock, label: "Growth phase" },
       ]}
       liveUrl="https://www.wctpay.com/"
-      thumbnail={{ src: "/wct/thumbnail.png", width: 1488, height: 1050 }}
+      thumbnail={{ src: wctThumbnailAsset.src, width: 1488, height: 1050 }}
     >
       <Section title="Project Overview">
         <p className="mb-4">
@@ -43,7 +56,7 @@ export function WctPage() {
         <div className="bg-white my-8">
           <div className="overflow-hidden">
             <Image
-              src="/wct/preview.png"
+              src={wctPreviewAsset.src}
               alt="Problem"
               width={1440}
               height={960}
@@ -79,7 +92,7 @@ export function WctPage() {
         <div className="bg-white my-8">
           <div className="overflow-hidden">
             <Image
-              src="/wct/paper.png"
+              src={wctPaperAsset.src}
               alt="Work Flow Diagram"
               width={1440}
               height={1100}
@@ -131,7 +144,7 @@ export function WctPage() {
           <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
             <div className="overflow-hidden rounded-sm">
               <Image
-                src="/wct/solving.png"
+                src={wctSolvingAsset.src}
                 alt="personas"
                 width={646}
                 height={1020}
@@ -142,7 +155,7 @@ export function WctPage() {
 
             <div className="overflow-hidden rounded-sm">
               <Image
-                src="/wct/diagram.png"
+                src={wctDiagramAsset.src}
                 alt="workflow"
                 width={710}
                 height={1020}
@@ -178,7 +191,7 @@ export function WctPage() {
         <div className="my-8">
           <div className="overflow-hidden ">
             <Image
-              src="/wct/ui1.png"
+              src={wctUi1Asset.src}
               alt="personas"
               width={1440}
               height={975}
@@ -202,7 +215,7 @@ export function WctPage() {
           <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
             <div className="overflow-hidden rounded-sm">
               <Image
-                src="/wct/ui2.png"
+                src={wctUi2Asset.src}
                 alt="personas"
                 width={504}
                 height={359}
@@ -213,7 +226,7 @@ export function WctPage() {
 
             <div className="overflow-hidden rounded-sm">
               <Image
-                src="/wct/ui3.png"
+                src={wctUi3Asset.src}
                 alt="workflow"
                 width={504}
                 height={358}
@@ -223,7 +236,7 @@ export function WctPage() {
             </div>
             <div className="overflow-hidden rounded-sm">
               <Image
-                src="/wct/ui4.png"
+                src={wctUi4Asset.src}
                 alt="personas"
                 width={504}
                 height={359}
@@ -234,7 +247,7 @@ export function WctPage() {
 
             <div className="overflow-hidden rounded-sm">
               <Image
-                src="/wct/ui5.png"
+                src={wctUi5Asset.src}
                 alt="workflow"
                 width={504}
                 height={359}
@@ -244,7 +257,7 @@ export function WctPage() {
             </div>
             <div className="overflow-hidden rounded-sm">
               <Image
-                src="/wct/ui6.png"
+                src={wctUi6Asset.src}
                 alt="personas"
                 width={504}
                 height={357}
@@ -255,7 +268,7 @@ export function WctPage() {
 
             <div className="overflow-hidden rounded-sm">
               <Image
-                src="/wct/ui7.png"
+                src={wctUi7Asset.src}
                 alt="workflow"
                 width={504}
                 height={359}

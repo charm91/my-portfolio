@@ -1,6 +1,9 @@
 "use client";
 
 import Image from "next/image";
+import cornerWhiteAsset from "../../public/corner-white.png";
+import yeMyatMinAsset from "../../public/ye-myat-min.jpeg";
+import linkedinAsset from "../../public/linkedin.svg";
 import { motion } from "framer-motion";
 import { sectionReveal } from "@/config/motion";
 import { Star, ExternalLink, ArrowDown } from "lucide-react";
@@ -41,7 +44,7 @@ export function OverviewGrid() {
                   {SITE.tagline}
                 </div>
                 <Image
-                  src="/corner-white.png"
+                  src={cornerWhiteAsset.src}
                   alt=""
                   width={200}
                   height={80}
@@ -179,7 +182,7 @@ export function OverviewGrid() {
                 <div className="flex items-center gap-3">
                   <div className="size-10 rounded-full bg-muted overflow-hidden shrink-0">
                     <Image
-                      src="/ye-myat-min.jpeg"
+                      src={yeMyatMinAsset.src}
                       alt="Ye Myat Min"
                       width={40}
                       height={40}
@@ -199,7 +202,7 @@ export function OverviewGrid() {
                   </div>
                 </div>
 
-                <Image src="/linkedin.svg" alt="LinkedIn" width={32} height={32} />
+                <Image src={linkedinAsset.src} alt="LinkedIn" width={32} height={32} />
               </div>
             </motion.article>
           </div>

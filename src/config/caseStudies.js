@@ -1,4 +1,8 @@
 import { BetterHRPage } from "@/views/BetterHRPage";
+import betterhrThumbnailAsset from "../../public/betterhr/thumbnail.png";
+import kbzThumbnailAsset from "../../public/kbz/thumbnail.png";
+import unilinksThumbnailAsset from "../../public/unilinks/thumbnail.png";
+import wctThumbnailAsset from "../../public/wct/thumbnail.png";
 import { KBZBankPage } from "@/views/KBZBankPage";
 import { UniLinksPage } from "@/views/UniLinksPage";
 import { WctPage } from "@/views/WctPage";
@@ -9,7 +13,7 @@ export const CASE_STUDIES = {
     title: "Better HR Case Study",
     description: "Better HR Cloud-based HR Management Platform",
     thumbnail: {
-      url: "/betterhr/thumbnail.png",
+      url: betterhrThumbnailAsset.src,
       width: 1488,
       height: 1050,
       alt: "Better HR Case Study",
@@ -20,7 +24,7 @@ export const CASE_STUDIES = {
     title: "KBZ Bank Case Study",
     description: "KBZ Bank Digital Banking Authentication System",
     thumbnail: {
-      url: "/kbz/thumbnail.png",
+      url: kbzThumbnailAsset.src,
       width: 1492,
       height: 1028,
       alt: "KBZ Bank Case Study",
@@ -31,7 +35,7 @@ export const CASE_STUDIES = {
     title: "UniLinks Case Study",
     description: "UniLinks All-in-One Study Abroad Platform",
     thumbnail: {
-      url: "/unilinks/thumbnail.png",
+      url: unilinksThumbnailAsset.src,
       width: 1488,
       height: 1050,
       alt: "UniLinks Case Study",
@@ -42,7 +46,7 @@ export const CASE_STUDIES = {
     title: "WCT Pay Case Study",
     description: "WCT Pay Crypto–Fiat Payment Dashboard",
     thumbnail: {
-      url: "/wct/thumbnail.png",
+      url: wctThumbnailAsset.src,
       width: 1488,
       height: 1050,
       alt: "WCT Pay Case Study",

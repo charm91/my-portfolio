@@ -1,10 +1,14 @@
 import Image from "next/image";
+import zayarAsset from "../../public/zayar.jpeg";
+import koChawAsset from "../../public/ko-chaw.jpeg";
+import zinThantAsset from "../../public/zin-thant.jpeg";
+import thiriAsset from "../../public/thiri.jpeg";
 import { Star } from "lucide-react";
 
-const ZayarImage = "/zayar.jpeg";
-const ThetImage = "/ko-chaw.jpeg";
-const ZinImage = "/zin-thant.jpeg";
-const ThiriImage = "/thiri.jpeg";
+const ZayarImage = zayarAsset.src;
+const ThetImage = koChawAsset.src;
+const ZinImage = zinThantAsset.src;
+const ThiriImage = thiriAsset.src;
 
 const testimonials = [
   {

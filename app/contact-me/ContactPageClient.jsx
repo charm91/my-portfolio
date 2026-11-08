@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
+import logoAsset from "../../public/logo.svg";
 import Link from "next/link";
 import Image from "next/image";
 import emailjs from "@emailjs/browser";
@@ -141,7 +142,7 @@ export default function ContactPageClient() {
               href="/"
               className="shrink-0 transition-opacity hover:opacity-80"
             >
-              <Image src="/logo.svg" alt={SITE.displayName} width={80} height={32} />
+              <Image src={logoAsset.src} alt={SITE.displayName} width={80} height={32} />
             </Link>
 
             <Button
