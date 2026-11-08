@@ -4,6 +4,18 @@ import userEvent from "@testing-library/user-event";
 import emailjs from "@emailjs/browser";
 import ContactPageClient from "../../app/contact-me/ContactPageClient";
 
+const captcha = vi.hoisted(() => ({ execute: vi.fn(), cancel: vi.fn(), reset: vi.fn() }));
+
+vi.mock("@/components/InvisibleRecaptcha", async () => {
+  const { forwardRef, useImperativeHandle } = await import("react");
+  return {
+    InvisibleRecaptcha: forwardRef(function MockCaptcha(_, ref) {
+      useImperativeHandle(ref, () => captcha);
+      return null;
+    }),
+  };
+});
+
 vi.mock("next/link", async () => (await import("./test-utils/mocks")).nextLinkMock);
 
 vi.mock("next/navigation", () => ({
@@ -63,6 +75,9 @@ describe("Contact form validation", () => {
     vi.setSystemTime(0);
     user = userEvent.setup();
     emailjs.send.mockReset().mockResolvedValue({});
+    captcha.execute.mockReset().mockResolvedValue("test-captcha-token");
+    captcha.cancel.mockReset();
+    captcha.reset.mockReset();
   });
 
   afterEach(() => {
@@ -156,8 +171,8 @@ describe("Contact form validation", () => {
     await submitForm(user);
     expect(emailjs.send).toHaveBeenCalledWith(
       "service_tgrxl4a",
-      "template_hbeyl4c",
-      { from_name: "Charm Test", from_email: "charm@example.com", message: "This is a long enough test message" },
+      "template_h13x2qw",
+      { from_name: "Charm Test", from_email: "charm@example.com", message: "This is a long enough test message", "g-recaptcha-response": "test-captcha-token" },
       "cXgAIzNSkZVXYkXyE"
     );
   });
@@ -286,5 +301,62 @@ describe("Contact form validation", () => {
       expect(screen.getByLabelText(label)).toBeEnabled();
       expect(screen.getByLabelText(label)).toHaveValue("");
     }
+  });
+
+  it("waits for verification and prevents duplicate submissions", async () => {
+    let resolveVerification;
+    captcha.execute.mockReturnValueOnce(new Promise((resolve) => { resolveVerification = resolve; }));
+    const { container } = render(<ContactPageClient />);
+    vi.setSystemTime(4000);
+    await fillValidForm(user);
+    await submitForm(user);
+    expect(screen.getByRole("button", { name: "Verifying..." })).toBeDisabled();
+    expect(screen.getByLabelText("Message")).toBeDisabled();
+    fireEvent.submit(container.querySelector("form"));
+    expect(captcha.execute).toHaveBeenCalledTimes(1);
+    expect(emailjs.send).not.toHaveBeenCalled();
+
+    await act(async () => resolveVerification("fresh-token"));
+    expect(emailjs.send.mock.calls[0][2]["g-recaptcha-response"]).toBe("fresh-token");
+    expect(captcha.reset).toHaveBeenCalledTimes(1);
+  });
+
+  it.each(["Security verification expired. Please try again.", "Security verification could not load."])("preserves input and allows immediate retry after %s", async (message) => {
+    captcha.execute.mockRejectedValueOnce(new Error(message));
+    renderAndAdvanceTime();
+    await fillValidForm(user);
+    await submitForm(user);
+    expect(screen.getByRole("alert")).toHaveTextContent(message);
+    expect(screen.getByLabelText("Your Name")).toHaveValue("Charm Test");
+    expect(screen.getByRole("button", { name: "Send Message" })).toBeEnabled();
+    expect(emailjs.send).not.toHaveBeenCalled();
+    await submitForm(user);
+    expect(captcha.execute).toHaveBeenCalledTimes(2);
+    expect(emailjs.send).toHaveBeenCalledTimes(1);
+  });
+
+  it("allows cancelling verification without starting the send cooldown", async () => {
+    let rejectVerification;
+    captcha.execute.mockReturnValueOnce(new Promise((_, reject) => { rejectVerification = reject; }));
+    captcha.cancel.mockImplementationOnce(() => rejectVerification(Object.assign(new Error("Cancelled"), { name: "AbortError" })));
+    renderAndAdvanceTime();
+    await fillValidForm(user);
+    await submitForm(user);
+    await user.click(screen.getByRole("button", { name: "Cancel verification" }));
+    expect(screen.getByRole("button", { name: "Send Message" })).toBeEnabled();
+    expect(screen.getByRole("alert")).toBeEmptyDOMElement();
+    expect(emailjs.send).not.toHaveBeenCalled();
+  });
+
+  it("does not send when the page unmounts during verification", async () => {
+    let resolveVerification;
+    captcha.execute.mockReturnValueOnce(new Promise((resolve) => { resolveVerification = resolve; }));
+    const { unmount } = render(<ContactPageClient />);
+    vi.setSystemTime(4000);
+    await fillValidForm(user);
+    await submitForm(user);
+    unmount();
+    await act(async () => resolveVerification("late-token"));
+    expect(emailjs.send).not.toHaveBeenCalled();
   });
 });

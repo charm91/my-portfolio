@@ -6,6 +6,7 @@ import emailjs from "@emailjs/browser";
 import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Header } from "@/components/Header";
+import { InvisibleRecaptcha } from "@/components/InvisibleRecaptcha";
 import { cn } from "@/lib/utils";
 import { COLORS } from "@/config/theme";
 
@@ -19,7 +20,7 @@ const MIN_SUBMIT_MS = 3000;
 const RESUBMIT_COOLDOWN_MS = 30000;
 
 export default function ContactPageClient() {
-  const [status, setStatus] = useState("idle"); // idle | sending | success | error
+  const [status, setStatus] = useState("idle"); // idle | verifying | sending | success | error
   const [errorMsg, setErrorMsg] = useState("");
   const [invalidField, setInvalidField] = useState(null);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -28,10 +29,15 @@ export default function ContactPageClient() {
   const canSubmit = retrySeconds === 0;
   const formLoadTime = useRef(null);
   const cooldownTimer = useRef(null);
+  const recaptcha = useRef(null);
+  const submitting = useRef(false);
+  const mounted = useRef(false);
 
   useEffect(() => {
+    mounted.current = true;
     formLoadTime.current = Date.now();
     return () => {
+      mounted.current = false;
       if (cooldownTimer.current) clearTimeout(cooldownTimer.current);
     };
   }, []);
@@ -46,7 +52,7 @@ export default function ContactPageClient() {
     if (formLoadTime.current === null || Date.now() - formLoadTime.current < MIN_SUBMIT_MS) return;
 
     // Anti-spam: cooldown between submissions
-    if (!canSubmit || status === "sending") return;
+    if (!canSubmit || submitting.current) return;
 
     // Validation
     const name = formData.name.trim();
@@ -73,13 +79,28 @@ export default function ContactPageClient() {
       return;
     }
 
-    setStatus("sending");
+    submitting.current = true;
+    setStatus("verifying");
     setErrorMsg("");
     setInvalidField(null);
 
+    let captchaToken;
+    try {
+      captchaToken = await recaptcha.current.execute();
+    } catch (error) {
+      submitting.current = false;
+      if (mounted.current) {
+        setStatus(error.name === "AbortError" ? "idle" : "error");
+        setErrorMsg(error.name === "AbortError" ? "" : error.message);
+      }
+      return;
+    }
+    if (!mounted.current) return;
+    setStatus("sending");
+
     const publicKey = "cXgAIzNSkZVXYkXyE";
     const serviceId = "service_tgrxl4a";
-    const templateId = "template_hbeyl4c";
+    const templateId = "template_h13x2qw";
 
     // Start cooldown only after we actually attempt the send
     const retryAt = Date.now() + RESUBMIT_COOLDOWN_MS;
@@ -96,16 +117,23 @@ export default function ContactPageClient() {
       await emailjs.send(
         serviceId,
         templateId,
-        { from_name: name, from_email: email, message },
+        { from_name: name, from_email: email, message, "g-recaptcha-response": captchaToken },
         publicKey,
       );
 
-      setStatus("success");
-      setFormData({ name: "", email: "", message: "" });
+      if (mounted.current) {
+        setStatus("success");
+        setFormData({ name: "", email: "", message: "" });
+      }
     } catch (err) {
       console.error("EmailJS error:", err);
-      setErrorMsg("Something went wrong. Please try again in a moment.");
-      setStatus("error");
+      if (mounted.current) {
+        setErrorMsg("Something went wrong. Please try again in a moment.");
+        setStatus("error");
+      }
+    } finally {
+      submitting.current = false;
+      recaptcha.current?.reset();
     }
   };
 
@@ -120,7 +148,7 @@ export default function ContactPageClient() {
     }
   };
 
-  const isBusy = status === "sending";
+  const isBusy = status === "verifying" || status === "sending";
   const isDisabled = isBusy || !canSubmit;
 
   return (
@@ -310,7 +338,7 @@ export default function ContactPageClient() {
             {isBusy ? (
               <span className="flex items-center justify-center gap-2">
                 <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
-                Sending...
+                {status === "verifying" ? "Verifying..." : "Sending..."}
               </span>
             ) : retrySeconds > 0 ? (
               `Try again in ${retrySeconds}s`
@@ -318,6 +346,16 @@ export default function ContactPageClient() {
               "Send Message"
             )}
           </Button>
+          {status === "verifying" && (
+            <button
+              type="button"
+              className="mt-3 w-full rounded-full py-2 text-sm underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              onClick={() => recaptcha.current.cancel()}
+            >
+              Cancel verification
+            </button>
+          )}
+          <InvisibleRecaptcha ref={recaptcha} />
         </motion.form>
       </main>
     </div>
