@@ -10,8 +10,8 @@ vi.mock("next/navigation", () => ({
   usePathname: () => "/portfolio",
   notFound: vi.fn(() => { throw new Error("NEXT_NOT_FOUND"); }),
 }));
-vi.mock("next/link", () => ({ default: ({ href, children, ...props }) => <a href={href} {...props}>{children}</a> }));
-vi.mock("next/image", () => ({ default: ({ src, alt }) => <img src={src} alt={alt} /> }));
+vi.mock("next/link", async () => (await import("./test-utils/mocks")).nextLinkMock);
+vi.mock("next/image", async () => (await import("./test-utils/mocks")).nextImageMock);
 vi.mock("@/components/Header", () => ({ Header: () => null }));
 vi.mock("@/components/Footer", () => ({ Footer: () => null }));
 vi.mock("@/components/CaseStudyAuthor", () => ({ CaseStudyAuthor: () => null }));

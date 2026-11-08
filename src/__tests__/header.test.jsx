@@ -3,14 +3,11 @@ import { act, cleanup, fireEvent, render, screen } from "@testing-library/react"
 import userEvent from "@testing-library/user-event";
 import React from "react";
 import { Header } from "../components/Header";
+import { MockIntersectionObserver } from "./test-utils/mocks";
 
-vi.mock("next/image", () => ({
-  default: ({ src, alt }) => <img src={src} alt={alt} />,
-}));
+vi.mock("next/image", async () => (await import("./test-utils/mocks")).nextImageMock);
 
-vi.mock("next/link", () => ({
-  default: ({ children, href, ...props }) => <a href={href} {...props}>{children}</a>,
-}));
+vi.mock("next/link", async () => (await import("./test-utils/mocks")).nextLinkMock);
 
 const mockPathname = vi.fn();
 vi.mock("next/navigation", () => ({
@@ -21,18 +18,6 @@ vi.mock("@/components/ui/button", () => ({
   Button: ({ children, asChild, ...props }) =>
     asChild ? children : <button {...props}>{children}</button>,
 }));
-
-// jsdom does not implement IntersectionObserver — arrow fns can't be constructors
-class MockIntersectionObserver {
-  static instances = [];
-  constructor(callback) {
-    this.notify = callback;
-    MockIntersectionObserver.instances.push(this);
-  }
-  observe = vi.fn();
-  disconnect = vi.fn();
-  unobserve = vi.fn();
-}
 
 const destinations = [
   ["Home", "home"],

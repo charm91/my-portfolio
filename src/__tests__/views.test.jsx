@@ -5,9 +5,7 @@ import { KBZBankPage } from "../views/KBZBankPage";
 import { UniLinksPage } from "../views/UniLinksPage";
 import { WctPage } from "../views/WctPage";
 
-vi.mock("next/image", () => ({
-  default: ({ src, alt }) => <img src={src} alt={alt} />,
-}));
+vi.mock("next/image", async () => (await import("./test-utils/mocks")).nextImageMock);
 
 vi.mock("@/components/Header", () => ({ Header: () => null }));
 vi.mock("@/components/Footer", () => ({ Footer: () => null }));

@@ -2,13 +2,9 @@ import { describe, it, expect, vi, beforeEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Portfolio } from "../components/Portfolio";
 
-vi.mock("next/image", () => ({
-  default: ({ src, alt }) => <img src={src} alt={alt} />,
-}));
+vi.mock("next/image", async () => (await import("./test-utils/mocks")).nextImageMock);
 
-vi.mock("next/link", () => ({
-  default: ({ children, href, ...props }) => <a href={href} {...props}>{children}</a>,
-}));
+vi.mock("next/link", async () => (await import("./test-utils/mocks")).nextLinkMock);
 
 const mockPathname = vi.fn();
 vi.mock("next/navigation", () => ({

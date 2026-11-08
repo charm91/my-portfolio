@@ -10,26 +10,17 @@ import { Journey } from "../components/Journey";
 import { Testimonials } from "../components/Testimonials";
 import { FAQ } from "../components/FAQ";
 import { Footer } from "../components/Footer";
+import { MockIntersectionObserver } from "./test-utils/mocks";
 
-vi.mock("next/image", () => ({
-  default: ({ src, alt }) => <img src={src} alt={alt} />,
-}));
+vi.mock("next/image", async () => (await import("./test-utils/mocks")).nextImageMock);
 
-vi.mock("next/link", () => ({
-  default: ({ children, href, ...props }) => <a href={href} {...props}>{children}</a>,
-}));
+vi.mock("next/link", async () => (await import("./test-utils/mocks")).nextLinkMock);
 
 vi.mock("next/navigation", () => ({
   usePathname: () => "/",
 }));
 
-// jsdom does not implement these browser APIs, and the mocks must be constructible classes.
-class MockIntersectionObserver {
-  observe = vi.fn();
-  disconnect = vi.fn();
-  unobserve = vi.fn();
-}
-
+// jsdom does not implement ResizeObserver, and the mock must be a constructible class.
 class MockResizeObserver {
   observe = vi.fn();
   disconnect = vi.fn();

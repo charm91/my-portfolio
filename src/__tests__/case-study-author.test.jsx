@@ -3,9 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { CaseStudyAuthor } from "../components/CaseStudyAuthor";
 import { SOCIAL_LINKS } from "../config/site";
 
-vi.mock("next/image", () => ({
-  default: ({ src, alt }) => <img src={src} alt={alt} />,
-}));
+vi.mock("next/image", async () => (await import("./test-utils/mocks")).nextImageMock);
 
 describe("CaseStudyAuthor", () => {
   it("renders the display name", () => {

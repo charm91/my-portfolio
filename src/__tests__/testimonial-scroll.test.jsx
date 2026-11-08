@@ -2,9 +2,7 @@ import { describe, it, expect, vi, afterEach } from "vitest";
 import { act, render, screen } from "@testing-library/react";
 import { Testimonials } from "../components/Testimonials";
 
-vi.mock("next/image", () => ({
-  default: ({ src, alt }) => <img src={src} alt={alt} />,
-}));
+vi.mock("next/image", async () => (await import("./test-utils/mocks")).nextImageMock);
 
 afterEach(() => vi.unstubAllGlobals());
 

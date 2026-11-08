@@ -17,13 +17,9 @@ vi.mock("framer-motion", async () => {
   };
 });
 
-vi.mock("next/image", () => ({
-  default: ({ src, alt }) => <img src={src} alt={alt} />,
-}));
+vi.mock("next/image", async () => (await import("./test-utils/mocks")).nextImageMock);
 
-vi.mock("next/link", () => ({
-  default: ({ children, href, ...props }) => <a href={href} {...props}>{children}</a>,
-}));
+vi.mock("next/link", async () => (await import("./test-utils/mocks")).nextLinkMock);
 
 vi.mock("@emailjs/browser", () => ({ default: { send: vi.fn() } }));
 vi.mock("@/components/Header", () => ({ Header: () => null }));

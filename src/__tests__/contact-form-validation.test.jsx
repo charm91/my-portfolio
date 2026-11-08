@@ -4,11 +4,7 @@ import userEvent from "@testing-library/user-event";
 import emailjs from "@emailjs/browser";
 import ContactPageClient from "../../app/contact-me/ContactPageClient";
 
-vi.mock("next/link", () => ({
-  default: ({ children, href, ...props }) => (
-    <a href={href} {...props}>{children}</a>
-  ),
-}));
+vi.mock("next/link", async () => (await import("./test-utils/mocks")).nextLinkMock);
 
 vi.mock("next/navigation", () => ({
   usePathname: () => "/contact-me",

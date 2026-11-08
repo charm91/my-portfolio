@@ -3,9 +3,7 @@ import { render, screen } from "@testing-library/react";
 import { Footer } from "../components/Footer";
 import { SITE, SOCIAL_LINKS, RESUME_URL } from "../config/site";
 
-vi.mock("next/link", () => ({
-  default: ({ children, href, ...props }) => <a href={href} {...props}>{children}</a>,
-}));
+vi.mock("next/link", async () => (await import("./test-utils/mocks")).nextLinkMock);
 
 vi.mock("@/components/ui/button", () => ({
   Button: ({ children, asChild, ...props }) =>
