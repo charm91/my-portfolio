@@ -1,6 +1,6 @@
 "use client";
 
-import { Reveal, RevealGrid } from "@/components/Reveal";
+import { motion } from "framer-motion";
 import { Settings, Globe, Layers, Code2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { COLORS } from "@/config/theme";
@@ -39,33 +39,55 @@ const services = [
 const textPrimary = COLORS.textPrimaryHome;
 const textSecondary = COLORS.textSecondary;
 
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1 },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 24 },
+  show: { opacity: 1, y: 0 },
+};
+
 export function Services() {
   return (
     <section id="services" className="py-16 md:py-28">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Pill label */}
-        <Reveal
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           className="flex justify-center mb-5"
         >
           <span className="section-category text-xs">What I Do</span>
-        </Reveal>
+        </motion.div>
 
         {/* Main heading - centered */}
-        <Reveal
-          as="h2"
+        <motion.h2
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           className="section-title"
         >
           Where Product Design <br />
           <span className="font-serif italic font-normal">Meets Strategy.</span>
-        </Reveal>
+        </motion.h2>
 
         {/* 2x2 grid */}
-        <RevealGrid
-          preset="service"
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-60px" }}
           className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6"
         >
           {services.map((s) => (
-            <article
+            <motion.article
+              variants={item}
               key={s.title}
               className="rounded-2xl bg-white p-4 md:p-6"
             >
@@ -99,12 +121,15 @@ export function Services() {
                   ))}
                 </div>
               </div>
-            </article>
+            </motion.article>
           ))}
-        </RevealGrid>
+        </motion.div>
 
         {/* Explore Projects button - centered */}
-        <Reveal
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           className="mt-12 md:mt-14 flex justify-center"
         >
           <Button
@@ -114,7 +139,7 @@ export function Services() {
           >
             <a href="#portfolio">Explore Projects</a>
           </Button>
-        </Reveal>
+        </motion.div>
       </div>
     </section>
   );

@@ -1,7 +1,5 @@
 "use client";
 
-import { Reveal } from "@/components/Reveal";
-
 import Image from "next/image";
 import kCoverAsset from "../../public/k-cover.png";
 import kbzThumbnailAsset from "../../public/kbz/thumbnail.png";
@@ -129,7 +127,7 @@ export function KBZBankPage() {
           Users shift from form filling to validating pre-verified data and
           progressing seamlessly.
         </div>
-        <Reveal preset="visual" className="bg-white my-8">
+        <div className="bg-white my-8">
           <div className="overflow-hidden">
             <Image
               src={kbzUi1Asset.src}
@@ -140,7 +138,7 @@ export function KBZBankPage() {
               className="w-full h-auto"
             />
           </div>
-        </Reveal>
+        </div>
       </Section>
 
       <Section title="Creating a Multi-System Validation Flow">

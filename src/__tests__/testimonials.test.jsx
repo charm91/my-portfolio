@@ -1,4 +1,4 @@
-import { describe, it, expect, vi } from "vitest";
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { render, screen, within } from "@testing-library/react";
 import React from "react";
 import { Testimonials } from "../components/Testimonials";
@@ -8,6 +8,16 @@ vi.mock("next/image", () => ({
 }));
 
 vi.mock("lucide-react", () => ({ Star: () => <svg /> }));
+
+beforeEach(() => {
+  vi.stubGlobal("matchMedia", () => ({
+    matches: false,
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+  }));
+});
+
+afterEach(() => vi.unstubAllGlobals());
 
 describe("Testimonials", () => {
   it("renders all 4 testimonial author names", () => {

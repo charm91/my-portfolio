@@ -1,13 +1,16 @@
 import { describe, it, expect, vi, afterEach } from "vitest";
-import { render, screen } from "@testing-library/react";
-import { TestimonialScroll } from "../components/TestimonialScroll";
+import { act, render, screen } from "@testing-library/react";
+import { Testimonials } from "../components/Testimonials";
+
+vi.mock("next/image", () => ({
+  default: ({ src, alt }) => <img src={src} alt={alt} />,
+}));
 
 afterEach(() => vi.unstubAllGlobals());
 
-function setupScrollSupport(matches = true) {
+function setupScroll(matches = true) {
   let resize;
   const observer = { observe: vi.fn(), disconnect: vi.fn() };
-  vi.stubGlobal("CSS", { supports: () => true });
   vi.stubGlobal("ResizeObserver", class {
     constructor(callback) { resize = callback; return observer; }
   });
@@ -20,43 +23,44 @@ function setupScrollSupport(matches = true) {
   return { media, observer, resize: () => resize() };
 }
 
-describe("TestimonialScroll", () => {
-  it("keeps all content in normal flow when scroll timelines are unsupported", () => {
-    vi.stubGlobal("CSS", { supports: () => false });
-    const { container } = render(<TestimonialScroll><article>Complete quote</article></TestimonialScroll>);
-    expect(screen.getByRole("article")).toHaveTextContent("Complete quote");
-    expect(container.firstChild).not.toHaveAttribute("data-scroll");
-  });
+const viewportFor = () => screen.getAllByRole("article")[0].parentElement.parentElement;
 
-  it("measures the full travel and releases tracking when motion is disabled or the viewport shrinks", () => {
-    const { media, observer, resize } = setupScrollSupport();
-    const { container, unmount } = render(<TestimonialScroll><article>Final quote</article></TestimonialScroll>);
-    const rail = container.firstChild;
-    const viewport = rail.firstChild;
+describe("testimonial scrolling", () => {
+  it("restores the desktop viewport and measures the full content travel", () => {
+    const { observer, resize } = setupScroll();
+    const { container, unmount } = render(<Testimonials />);
+    const viewport = viewportFor();
     const track = viewport.firstChild;
-    Object.defineProperty(track, "scrollHeight", { value: 1000 });
-    Object.defineProperty(viewport, "clientHeight", { value: 400 });
-    resize();
-    expect(rail).toHaveAttribute("data-scroll", "true");
-    expect(rail.style.getPropertyValue("--testimonial-travel")).toBe("600px");
+    Object.defineProperty(track, "scrollHeight", { value: 1400 });
+    act(() => resize());
+    expect(viewport.style.height).toBe("800px");
+    expect(viewport.style.overflow).toBe("hidden");
+    expect(container.firstChild.style.minHeight).toBe("900px");
     expect(observer.observe).toHaveBeenCalledWith(track);
-
-    const change = media.addEventListener.mock.calls[0][1];
-    media.matches = false;
-    change();
-    expect(rail).not.toHaveAttribute("data-scroll");
-    expect(rail.style.getPropertyValue("--testimonial-travel")).toBe("");
-    expect(screen.getByRole("article")).toHaveTextContent("Final quote");
     unmount();
-    expect(media.removeEventListener).toHaveBeenCalledWith("change", change);
     expect(observer.disconnect).toHaveBeenCalled();
   });
 
-  it("does not activate clipping for a narrow viewport or reduced-motion preference", () => {
-    const { observer } = setupScrollSupport(false);
-    const { container } = render(<TestimonialScroll><article>Readable quote</article></TestimonialScroll>);
-    expect(container.firstChild).not.toHaveAttribute("data-scroll");
-    expect(observer.observe).not.toHaveBeenCalled();
-    expect(screen.getByRole("article")).toBeVisible();
+  it("releases clipping when the viewport shrinks or reduced motion is enabled", () => {
+    const { media } = setupScroll();
+    const { container, unmount } = render(<Testimonials />);
+    const change = media.addEventListener.mock.calls[0][1];
+    media.matches = false;
+    act(() => change());
+    expect(viewportFor().style.height).toBe("auto");
+    expect(viewportFor().style.overflow).toBe("visible");
+    expect(container.firstChild.style.minHeight).toBe("");
+    expect(screen.getAllByRole("article")).toHaveLength(4);
+    expect(screen.getByText(/make a positive impact on any team she joins/)).toBeVisible();
+    unmount();
+    expect(media.removeEventListener).toHaveBeenCalledWith("change", change);
+  });
+
+  it("keeps every quote readable on initial narrow or reduced-motion rendering", () => {
+    setupScroll(false);
+    render(<Testimonials />);
+    expect(viewportFor().style.overflow).toBe("visible");
+    expect(screen.getAllByRole("article")).toHaveLength(4);
+    expect(screen.getByText("Thiri Aung")).toBeVisible();
   });
 });

@@ -4,7 +4,6 @@ import { useState, useEffect, useRef, useId } from "react";
 import logoAsset from "../../public/logo.svg";
 import { usePathname } from "next/navigation";
 import { motion, AnimatePresence, useIsPresent } from "framer-motion";
-import { menuMotion } from "@/config/motion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -24,7 +23,14 @@ const sectionIds = navItems.map(({ href }) => href.slice(1));
 function MenuPanel({ children, ...props }) {
   const isPresent = useIsPresent();
   return (
-    <motion.div {...props} {...menuMotion} inert={!isPresent ? true : undefined}>
+    <motion.div
+      {...props}
+      initial={{ opacity: 0, y: -8 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -8 }}
+      transition={{ duration: 0.2 }}
+      inert={!isPresent ? true : undefined}
+    >
       {children}
     </motion.div>
   );
@@ -107,8 +113,11 @@ export function Header() {
   }, [menuOpen]);
 
   return (
-    <header
-      className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-3 md:pt-4 max-w-xl mx-auto entrance-drop"
+    <motion.header
+      initial={{ y: -80 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 0.5, ease: "easeOut" }}
+      className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-3 md:pt-4 max-w-xl mx-auto"
     >
       {/* Pill-shaped nav bar: white, rounded, shadow */}
       <div
@@ -148,7 +157,7 @@ export function Header() {
               aria-controls={menuId}
               onClick={() => setMenuOpen((o) => !o)}
               className={cn(
-                "rounded-full px-5 py-2 text-sm font-medium transition-colors duration-(--motion-duration-feedback) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
+                "rounded-full px-5 py-2 text-sm font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
                 "bg-gray-100 hover:bg-gray-200 text-[#1f2937] cursor-pointer",
               )}
             >
@@ -188,7 +197,7 @@ export function Header() {
                         aria-current={isActive ? "location" : undefined}
                         onClick={handleNavClick}
                         className={cn(
-                          "w-full rounded-full py-2.5 px-4 text-left text-sm font-medium transition-colors duration-(--motion-duration-feedback) focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
+                          "w-full rounded-full py-2.5 px-4 text-left text-sm font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
                           isActive
                             ? "bg-[#1f2937] text-white"
                             : "text-[#1f2937] hover:bg-[#f3f4f6]",
@@ -218,6 +227,6 @@ export function Header() {
           </AnimatePresence>
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 }

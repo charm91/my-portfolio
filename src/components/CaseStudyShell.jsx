@@ -1,5 +1,6 @@
 "use client";
 
+import { motion } from "framer-motion";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import { Header } from "@/components/Header";
@@ -9,12 +10,17 @@ import {
   textPrimary,
   textSecondary,
   bgPage,
+  pageTransition,
+  scrollReveal,
   CASE_STUDY_HERO_IMAGE_SIZES,
 } from "@/config/caseStudy";
 
 export function CaseStudyShell({ coverImage, title, tags, liveUrl, thumbnail, children }) {
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={pageTransition}
       className="min-h-screen relative"
       style={{ backgroundColor: bgPage }}
     >
@@ -42,16 +48,17 @@ export function CaseStudyShell({ coverImage, title, tags, liveUrl, thumbnail, ch
 
       {/* Hero content and page content scroll over the fixed image */}
       <section className="relative flex flex-col z-10 mt-28 min-h-[50vh]">
-        <div
+        <motion.div
+          {...scrollReveal}
           className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 md:pb-14 w-full bg-white rounded-t-2xl pt-10"
         >
           <h1
-            className="text-4xl md:text-5xl px-4 font-medium text-center leading-tight mb-6 pt-5 tracking-tight entrance-rise"
+            className="text-4xl md:text-5xl px-4 font-medium text-center leading-tight mb-6 pt-5 tracking-tight"
             style={{ color: textPrimary }}
           >
             {title}
           </h1>
-          <div className="flex flex-wrap justify-center gap-2 entrance-rise entrance-delay-1">
+          <div className="flex flex-wrap justify-center gap-2">
             {tags.map(({ icon: Icon, label }) => (
               <span
                 key={label}
@@ -63,19 +70,22 @@ export function CaseStudyShell({ coverImage, title, tags, liveUrl, thumbnail, ch
               </span>
             ))}
           </div>
-          <div className="flex justify-center mt-8 mb-4 entrance-rise entrance-delay-2">
+          <div className="flex justify-center mt-8 mb-4">
             <a
               href={liveUrl}
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 rounded-3xl bg-[#1f2937] px-5 py-2.5 font-medium text-white transition-[transform,background-color] duration-(--motion-duration-feedback) motion-safe:hover:-translate-y-0.5 motion-safe:focus-visible:-translate-y-0.5 hover:bg-[#111827] focus-visible:bg-[#111827] focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+              className="group inline-flex items-center gap-2 rounded-3xl bg-[#1f2937] px-5 py-2.5 font-medium text-white transition-[transform,background-color,box-shadow] duration-200 motion-safe:hover:-translate-y-0.5 motion-safe:hover:scale-[1.02] motion-safe:focus-visible:-translate-y-0.5 motion-safe:focus-visible:scale-[1.02] hover:bg-[#111827] focus-visible:bg-[#111827] hover:shadow-lg focus-visible:shadow-lg motion-safe:active:translate-y-0 motion-safe:active:scale-100 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
             >
-              <ExternalLink className="size-5 transition-transform duration-(--motion-duration-feedback) motion-safe:group-hover:scale-110 motion-safe:group-focus-visible:scale-110" aria-hidden="true" />
-              <span>
+              <ExternalLink className="size-5 transition-transform duration-200 motion-safe:group-hover:scale-110 motion-safe:group-focus-visible:scale-110 motion-safe:group-hover:translate-x-0.5 motion-safe:group-focus-visible:translate-x-0.5" aria-hidden="true" />
+              <span className="transition-transform duration-200 motion-safe:group-hover:translate-x-0.5 motion-safe:group-focus-visible:translate-x-0.5">
                 Live Project
               </span>
             </a>
           </div>
-          <div className="mt-10 entrance-rise entrance-delay-3">
+          <motion.div
+            {...scrollReveal}
+            className="mt-10"
+          >
             <div className="rounded-2xl overflow-hidden">
               <Image
                 src={thumbnail.src}
@@ -86,8 +96,8 @@ export function CaseStudyShell({ coverImage, title, tags, liveUrl, thumbnail, ch
                 className="w-full h-auto"
               />
             </div>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
         <main
           id="main-content"
           className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 py-12 tracking-tight rounded-b-2xl bg-white"
@@ -98,7 +108,11 @@ export function CaseStudyShell({ coverImage, title, tags, liveUrl, thumbnail, ch
         </main>
       </section>
 
-      <Footer />
-    </div>
+      <motion.div
+        {...scrollReveal}
+      >
+        <Footer />
+      </motion.div>
+    </motion.div>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Reveal, RevealGrid } from "@/components/Reveal";
+import { motion } from "framer-motion";
 import { Linkedin, Mail, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SITE, SOCIAL_LINKS, RESUME_URL } from "@/config/site";
@@ -15,7 +15,10 @@ export function Footer() {
     <footer id="contact" className="py-16 md:py-28 z-10 relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main CTA card - white, rounded, centered */}
-        <Reveal
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           className="rounded-3xl bg-white p-8 md:p-10 text-center mb-8 md:mb-10"
         >
           <span
@@ -47,16 +50,19 @@ export function Footer() {
           >
             <Link href="/contact-me">Contact Me</Link>
           </Button>
-        </Reveal>
+        </motion.div>
 
         {/* Contact link cards - two cards, horizontal on desktop, stack on mobile */}
-        <RevealGrid
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-12 md:mb-16"
         >
           <a
             href={SOCIAL_LINKS.linkedin}
             rel="noopener noreferrer"
-            className="flex items-center gap-4 rounded-full bg-white p-5 md:p-6 hover:shadow-md focus-visible:shadow-md transition-shadow duration-(--motion-duration-feedback) focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+            className="flex items-center gap-4 rounded-full bg-white p-5 md:p-6 hover:shadow-md focus-visible:shadow-md transition-shadow duration-150 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
           >
             <div
               className="flex size-12 shrink-0 items-center justify-center rounded-full text-white"
@@ -82,7 +88,7 @@ export function Footer() {
           <a
             href={`https://mail.google.com/mail/?view=cm&fs=1&to=${SITE.email}&su=Hello%20${encodeURIComponent(SITE.displayName)}`}
             rel="noopener noreferrer"
-            className="flex items-center gap-4 rounded-full bg-white p-5 md:p-6 transition-shadow duration-(--motion-duration-feedback) hover:shadow-md focus-visible:shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+            className="flex items-center gap-4 rounded-full bg-white p-5 md:p-6 transition-shadow duration-150 hover:shadow-md focus-visible:shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
           >
             <div
               className="flex size-12 shrink-0 items-center justify-center rounded-full text-white"
@@ -108,10 +114,13 @@ export function Footer() {
               strokeWidth={2}
             />
           </a>
-        </RevealGrid>
+        </motion.div>
 
         {/* Footer bar - copyright left, links right; stack on mobile */}
-        <Reveal
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
           className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-4 pt-6 border-t border-[#d1d5db]"
         >
           <p
@@ -124,19 +133,19 @@ export function Footer() {
             <a
               href={RESUME_URL}
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm transition-colors duration-(--motion-duration-feedback) hover:bg-black text-secondary hover:text-white focus-visible:bg-black focus-visible:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary px-4 py-1.5 rounded-full"
+              className="inline-flex items-center gap-1.5 text-sm transition-colors duration-150 hover:bg-black text-secondary hover:text-white focus-visible:bg-black focus-visible:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary px-4 py-1.5 rounded-full"
             >
               Resume
               <ExternalLink className="size-3.5" aria-hidden="true" />
             </a>
             <Link
               href="/#portfolio"
-              className="text-sm transition-colors duration-(--motion-duration-feedback) hover:bg-black text-secondary hover:text-white focus-visible:bg-black focus-visible:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary px-4 py-1.5 rounded-full"
+              className="text-sm transition-colors duration-150 hover:bg-black text-secondary hover:text-white focus-visible:bg-black focus-visible:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary px-4 py-1.5 rounded-full"
             >
               Case Studies
             </Link>
           </div>
-        </Reveal>
+        </motion.div>
       </div>
     </footer>
   );

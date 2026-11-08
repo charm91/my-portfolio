@@ -8,7 +8,7 @@ import wctAsset from "../../public/wct.png";
 import cornerWhiteAsset from "../../public/corner-white.png";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { Reveal } from "@/components/Reveal";
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 
@@ -52,7 +52,10 @@ export function Portfolio() {
   return (
     <section id="portfolio" className="py-20 md:py-28">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <Reveal
+        <motion.div
+          initial={{ opacity: 0, y: 12 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           className="flex flex-col justify-center items-center gap-5 mb-10"
         >
           <p className="section-category text-xs">Portfolio Highlights</p>
@@ -61,16 +64,23 @@ export function Portfolio() {
             <span className="font-serif italic font-normal">Product Systems.</span>
           </Heading>
 
-        </Reveal>
+        </motion.div>
 
         <div className="grid grid-cols-1 max-w-xl mx-auto gap-4 md:gap-6">
           {projects.map((project, index) => (
-            <Reveal
-              as="article"
-              preset="project"
-              delay={0.05 * index}
+            <motion.article
+              initial={{ opacity: 0, y: 48, scale: 0.88 }}
+              whileInView={{ opacity: 1, y: 0, scale: 1 }}
+              viewport={{ once: true, amount: 0.4 }}
+              transition={{
+                type: "spring",
+                stiffness: 80,
+                damping: 18,
+                mass: 0.8,
+                delay: 0.05 * index,
+              }}
               key={project.href}
-              className="rounded-3xl overflow-hidden bg-card hover:shadow-xs focus-within:shadow-xs transition-shadow duration-(--motion-duration-panel) p-2"
+              className="rounded-3xl overflow-hidden bg-card hover:shadow-xs focus-within:shadow-xs transition-shadow duration-300 p-2"
             >
               <Link href={project.href} className="group block rounded-3xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
                 <div className="aspect-4/3 overflow-hidden rounded-3xl relative">
@@ -78,7 +88,7 @@ export function Portfolio() {
                     src={project.image}
                     alt={project.title}
                     fill
-                    className="object-cover transition-transform duration-(--motion-duration-reveal) ease-out motion-safe:group-hover:scale-105 motion-safe:group-focus-visible:scale-105"
+                    className="object-cover transition-transform duration-500 motion-safe:group-hover:scale-105 motion-safe:group-focus-visible:scale-105"
                     sizes="(max-width: 640px) 100vw, 480px"
                   />
                   <Image
@@ -92,7 +102,7 @@ export function Portfolio() {
                   <span
                     className={buttonVariants({
                       size: "lg", variant: "outline",
-                      className: "mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary bg-[#f6f7f9] rounded-full absolute bottom-2 right-5 border-0 motion-safe:group-active:translate-y-px",
+                      className: "mt-4 inline-flex items-center gap-2 text-sm font-medium text-primary bg-[#f6f7f9] rounded-full absolute bottom-2 right-5 border-0",
                     })}
                   >
                     See Details
@@ -108,18 +118,21 @@ export function Portfolio() {
                   </p>
                 </div>
               </Link>
-            </Reveal>
+            </motion.article>
           ))}
         </div>
 
         {!isPortfolioPage && (
-          <Reveal
+          <motion.div
+            initial={{ opacity: 0, y: 16 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
             className="mt-12 text-center"
           >
             <Button size="lg" className="rounded-full px-8 h-10" asChild>
               <Link href="/portfolio">See All</Link>
             </Button>
-          </Reveal>
+          </motion.div>
         )}
       </div>
     </section>

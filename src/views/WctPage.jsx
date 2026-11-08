@@ -1,7 +1,5 @@
 "use client";
 
-import { Reveal } from "@/components/Reveal";
-
 import Image from "next/image";
 import wctAsset from "../../public/wct.png";
 import wctThumbnailAsset from "../../public/wct/thumbnail.png";
@@ -142,7 +140,7 @@ export function WctPage() {
           <br /> It’s a small shift, but it removes constant mental
           calculation. <br /> And that’s where clarity starts.
         </p>
-        <Reveal preset="visual" className="rounded-lg border border-gray-200 bg-white p-2 shadow-xs my-8">
+        <div className="rounded-lg border border-gray-200 bg-white p-2 shadow-xs my-8">
           <div className="grid grid-cols-1 gap-2 md:grid-cols-2">
             <div className="overflow-hidden rounded-sm">
               <Image
@@ -166,7 +164,7 @@ export function WctPage() {
               />
             </div>
           </div>
-        </Reveal>
+        </div>
       </Section>
 
       <Section title="Designing for Trust Moments">

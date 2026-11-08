@@ -4,6 +4,7 @@ import { useState, useRef, useEffect } from "react";
 import logoAsset from "../../public/logo.svg";
 import Link from "next/link";
 import Image from "next/image";
+import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -127,8 +128,11 @@ export default function ContactPageClient() {
         }}
       />
 
-      <header
-        className="fixed left-0 right-0 top-0 z-50 px-4 pt-3 md:pt-4 entrance-drop"
+      <motion.header
+        initial={{ y: -80 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
+        className="fixed left-0 right-0 top-0 z-50 px-4 pt-3 md:pt-4"
       >
         <div className="mx-auto w-full max-w-xl">
           <div
@@ -154,11 +158,14 @@ export default function ContactPageClient() {
             </Button>
           </div>
         </div>
-      </header>
+      </motion.header>
 
       <main id="main-content" className="relative mx-auto max-w-2xl px-4 py-28 sm:px-6 lg:px-8">
-        <div
-          className="mb-10 text-center entrance-rise"
+        <motion.div
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4 }}
+          className="mb-10 text-center"
         >
           <span
             className="mb-5 inline-block rounded-full bg-white px-4 py-1.5 text-sm font-medium"
@@ -178,13 +185,16 @@ export default function ContactPageClient() {
             Open to conversations about product design roles, <br />
             collaboration, and opportunities.
           </p>
-        </div>
+        </motion.div>
 
-        <form
+        <motion.form
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.4, delay: 0.1 }}
           onSubmit={handleSubmit}
           noValidate
           aria-busy={isBusy}
-          className="rounded-3xl bg-white p-6 md:p-8 entrance-rise entrance-delay-1"
+          className="rounded-3xl bg-white p-6 md:p-8"
           style={{ boxShadow: "0 2px 5px rgba(0, 0, 0, 0.06)" }}
         >
           {/* Honeypot — hidden from real users, attracts bots */}
@@ -218,7 +228,7 @@ export default function ContactPageClient() {
                 onChange={handleChange}
                 disabled={isBusy}
                 className={cn(
-                  "w-full rounded-xl border-0 px-4 py-3 text-base outline-none transition-colors duration-(--motion-duration-feedback)",
+                  "w-full rounded-xl border-0 px-4 py-3 text-base outline-none transition-colors duration-150",
                   "placeholder:text-[#6b7280] focus:ring-2 focus:ring-[#1f2937]/60",
                   "disabled:opacity-60 disabled:cursor-not-allowed",
                 )}
@@ -244,7 +254,7 @@ export default function ContactPageClient() {
                 onChange={handleChange}
                 disabled={isBusy}
                 className={cn(
-                  "w-full rounded-xl border-0 px-4 py-3 text-base outline-none transition-colors duration-(--motion-duration-feedback)",
+                  "w-full rounded-xl border-0 px-4 py-3 text-base outline-none transition-colors duration-150",
                   "placeholder:text-[#6b7280] focus:ring-2 focus:ring-[#1f2937]/60",
                   "disabled:opacity-60 disabled:cursor-not-allowed",
                 )}
@@ -271,7 +281,7 @@ export default function ContactPageClient() {
               onChange={handleChange}
               disabled={isBusy}
               className={cn(
-                "min-h-[120px] w-full resize-y rounded-xl border-0 px-4 py-3 text-base outline-none transition-colors duration-(--motion-duration-feedback)",
+                "min-h-[120px] w-full resize-y rounded-xl border-0 px-4 py-3 text-base outline-none transition-colors duration-150",
                 "placeholder:text-[#6b7280] focus:ring-2 focus:ring-[#1f2937]/60",
                 "disabled:opacity-60 disabled:cursor-not-allowed",
               )}
@@ -281,7 +291,7 @@ export default function ContactPageClient() {
 
           <div role="status" aria-live="polite" aria-atomic="true">
             {status === "success" && (
-              <div className="status-enter mb-4 rounded-xl bg-green-50 px-4 py-3 text-center">
+              <div className="mb-4 rounded-xl bg-green-50 px-4 py-3 text-center">
                 <p className="text-sm font-medium text-green-700">
                   Thanks! Your message has been sent. I&apos;ll be in touch soon.
                 </p>
@@ -291,7 +301,7 @@ export default function ContactPageClient() {
 
           <div role="alert" aria-atomic="true">
             {status === "error" && (
-              <div className="status-enter mb-4 rounded-xl bg-red-50 px-4 py-3 text-center">
+              <div className="mb-4 rounded-xl bg-red-50 px-4 py-3 text-center">
                 <p className="text-sm font-medium text-red-700">
                   {errorMsg || "Something went wrong. Please try again later."}
                 </p>
@@ -314,7 +324,7 @@ export default function ContactPageClient() {
               "Send Message"
             )}
           </Button>
-        </form>
+        </motion.form>
       </main>
     </div>
   );
