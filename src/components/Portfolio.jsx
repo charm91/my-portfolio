@@ -98,7 +98,7 @@ export function Portfolio() {
                     <ArrowRight className="size-5 transition-transform duration-200 motion-safe:group-hover:-rotate-30" />
                   </Button>
                 </div>
-                <div className="p-6 flex flex-col items-start gap-2 sm:flex-row sm:justify-between sm:items-center sm:gap-6">
+                <div className="p-6 flex flex-col items-start gap-2 sm:flex-row sm:justify-between sm:items-baseline sm:gap-6">
                   <h3 className="min-w-0 font-medium text-foreground group-hover:text-primary transition-colors sm:line-clamp-2 text-left text-base">
                     {project.title}
                   </h3>
