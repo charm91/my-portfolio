@@ -1,15 +1,12 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import logoAsset from "../../public/logo.svg";
-import Link from "next/link";
-import Image from "next/image";
 import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Header } from "@/components/Header";
 import { cn } from "@/lib/utils";
-import { SITE } from "@/config/site";
 import { COLORS } from "@/config/theme";
 
 const textPrimary = COLORS.textPrimary;
@@ -144,37 +141,7 @@ export default function ContactPageClient() {
         }}
       />
 
-      <motion.header
-        initial={{ y: -80 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-        className="fixed left-0 right-0 top-0 z-50 px-4 pt-3 md:pt-4"
-      >
-        <div className="mx-auto w-full max-w-xl">
-          <div
-            className="flex h-14 items-center justify-between rounded-full border border-gray-100/80 bg-white px-4"
-            style={{
-              boxShadow:
-                "0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.05)",
-            }}
-          >
-            <Link
-              href="/"
-              className="shrink-0 transition-opacity hover:opacity-80"
-            >
-              <Image src={logoAsset.src} alt={SITE.displayName} width={80} height={32} />
-            </Link>
-
-            <Button
-              asChild
-              variant="chip"
-              className="rounded-full bg-gray-100 px-5 py-2 h-9 text-sm font-medium hover:bg-gray-200"
-            >
-              <Link href="/">Back to Home</Link>
-            </Button>
-          </div>
-        </div>
-      </motion.header>
+      <Header />
 
       <main id="main-content" className="relative mx-auto max-w-2xl px-4 py-28 sm:px-6 lg:px-8">
         <motion.div
