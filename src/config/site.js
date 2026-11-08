@@ -6,6 +6,7 @@ export const SITE_URL =
 export const SITE = {
   name: "Ngu Wah Aung",
   displayName: "Charm",
+  jobTitle: "Senior Product Designer",
   tagline: "Senior Product Designer • Fintech & SaaS",
   profileImage: profilePhotoAsset.src,
   email: "nguwah106@gmail.com",

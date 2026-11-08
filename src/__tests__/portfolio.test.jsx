@@ -50,4 +50,11 @@ describe("Portfolio", () => {
     render(<Portfolio />);
     expect(screen.queryByText("See All")).not.toBeInTheDocument();
   });
+
+  it.each([["/", 2], ["/portfolio", 1]])("uses the correct heading level on %s", (path, level) => {
+    mockPathname.mockReturnValue(path);
+    render(<Portfolio />);
+    expect(screen.getByRole("heading", { level, name: /Selected Work Across Product Systems/ })).toBeInTheDocument();
+    expect(screen.queryAllByRole("heading", { level: 1 })).toHaveLength(path === "/portfolio" ? 1 : 0);
+  });
 });

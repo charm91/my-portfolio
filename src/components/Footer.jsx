@@ -124,7 +124,7 @@ export function Footer() {
             className="text-sm text-center sm:text-left"
             style={{ color: textSecondary }}
           >
-            © {new Date().getFullYear()} {SITE.displayName}. All rights reserved.
+            © {new Date().getFullYear()} {SITE.name} ({SITE.displayName}). All rights reserved.
           </p>
           <div className="flex justify-center sm:justify-end gap-2">
             <a

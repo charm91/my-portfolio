@@ -3,6 +3,7 @@ import faviconAsset from "../public/favicon.png";
 import "./globals.css";
 import { SITE, SITE_URL } from "@/config/site";
 import { MotionProvider } from "@/components/MotionProvider";
+import { getPageMetadata } from "@/lib/seo";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -10,28 +11,12 @@ const inter = Inter({
   display: "swap",
 });
 
-const title = `${SITE.displayName}, Product Designer`;
-
 export const metadata = {
   metadataBase: new URL(SITE_URL),
-  title,
-  description:
-    `Product design portfolio of ${SITE.displayName}. Strategy, UX, and delivery, turning complex problems into clear, usable products.`,
-  openGraph: {
-    title,
-    description:
-      `Product design portfolio of ${SITE.displayName}. Strategy, UX, and delivery.`,
-    type: "website",
-    url: "/",
-    images: [
-      {
-        url: SITE.profileImage,
-        width: 1152,
-        height: 832,
-        alt: `${SITE.displayName}, Product Designer`,
-      },
-    ],
-  },
+  ...getPageMetadata({
+    title: `${SITE.name} (${SITE.displayName}) | ${SITE.jobTitle}`,
+    description: `Explore product design work by ${SITE.name} (${SITE.displayName}), a ${SITE.jobTitle.toLowerCase()} working across fintech, banking, HR SaaS, and education platforms.`,
+  }),
 };
 
 export default function RootLayout({ children }) {

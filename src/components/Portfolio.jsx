@@ -48,6 +48,7 @@ const projects = [
 export function Portfolio() {
   const pathname = usePathname();
   const isPortfolioPage = pathname === "/portfolio";
+  const Heading = isPortfolioPage ? "h1" : "h2";
 
   return (
     <section id="portfolio" className="py-20 md:py-28">
@@ -57,10 +58,10 @@ export function Portfolio() {
           className="flex flex-col justify-center items-center gap-5 mb-10"
         >
           <p className="section-category text-xs">Portfolio Highlights</p>
-          <h2 className="section-title">
+          <Heading className="section-title">
             Selected Work Across <br />
             <span className="font-serif italic font-normal">Product Systems.</span>
-          </h2>
+          </Heading>
 
         </motion.div>
 

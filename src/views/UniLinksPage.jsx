@@ -75,7 +75,7 @@ export function UniLinksPage() {
           <div className="overflow-hidden rounded-sm bg-gray-100">
             <Image
               src={unilinksGroupPhotoAsset.src}
-              alt="Final Presentation"
+              alt="UniLinks team and participants posing together at a group event"
               width={1344}
               height={680}
               sizes={CASE_STUDY_IMAGE_SIZES}
@@ -109,7 +109,7 @@ export function UniLinksPage() {
             <div className="overflow-hidden rounded-sm bg-gray-100">
               <Image
                 src={unilinksFlow1Asset.src}
-                alt="personas"
+                alt="UniLinks student and mentor personas with goals, needs, and pain points"
                 width={710}
                 height={474}
                 sizes={CASE_STUDY_GRID_IMAGE_SIZES}
@@ -120,7 +120,7 @@ export function UniLinksPage() {
             <div className="overflow-hidden rounded-sm bg-gray-100">
               <Image
                 src={unilinksFlow2Asset.src}
-                alt="workflow"
+                alt="Student, mentor, and administrator portal responsibilities in UniLinks"
                 width={710}
                 height={474}
                 sizes={CASE_STUDY_GRID_IMAGE_SIZES}
@@ -152,7 +152,7 @@ export function UniLinksPage() {
             <div className="hidden md:block overflow-hidden rounded-sm">
               <Image
                 src={unilinksFlow3Asset.src}
-                alt="personas"
+                alt="UniLinks account authentication workflow with sign-in and verification decisions"
                 width={2076}
                 height={2240}
                 sizes={CASE_STUDY_GRID_IMAGE_SIZES}
@@ -163,7 +163,7 @@ export function UniLinksPage() {
             <div className="overflow-hidden rounded-sm">
               <Image
                 src={unilinksFlow4Asset.src}
-                alt="workflow"
+                alt="Connected user flows for students, mentors, and the admin back office"
                 width={2028}
                 height={1312}
                 sizes={CASE_STUDY_GRID_IMAGE_SIZES}
@@ -194,7 +194,7 @@ export function UniLinksPage() {
           <div className="overflow-hidden rounded-sm bg-gray-100">
             <Image
               src={unilinksUi1Asset.src}
-              alt="User Interface Design"
+              alt="UniLinks student portal for comparing programs, booking consultations, and managing applications"
               width={1440}
               height={687}
               sizes={CASE_STUDY_IMAGE_SIZES}
@@ -232,7 +232,7 @@ export function UniLinksPage() {
           <div className="overflow-hidden rounded-sm bg-gray-100">
             <Image
               src={unilinksUi2Asset.src}
-              alt="User Interface Design"
+              alt="UniLinks mentor portal with consultation requests, schedules, and student details"
               width={1440}
               height={687}
               sizes={CASE_STUDY_IMAGE_SIZES}
@@ -261,7 +261,7 @@ export function UniLinksPage() {
           <div className="overflow-hidden rounded-sm bg-gray-100">
             <Image
               src={unilinksUi3Asset.src}
-              alt="User Interface Design"
+              alt="UniLinks administrator dashboard for monitoring activity, students, mentors, and applications"
               width={1440}
               height={687}
               sizes={CASE_STUDY_IMAGE_SIZES}
@@ -312,7 +312,7 @@ export function UniLinksPage() {
             <div className="overflow-hidden rounded-sm bg-gray-100">
               <Image
                 src={unilinksDisplay1Asset.src}
-                alt="personas"
+                alt="UniLinks program exploration feature showing university courses and entry requirements"
                 width={1080}
                 height={1080}
                 sizes={CASE_STUDY_GRID_IMAGE_SIZES}
@@ -323,7 +323,7 @@ export function UniLinksPage() {
             <div className="overflow-hidden rounded-sm bg-gray-100">
               <Image
                 src={unilinksDisplay2Asset.src}
-                alt="workflow"
+                alt="UniLinks comparison feature showing two degree programs side by side"
                 width={1080}
                 height={1080}
                 sizes={CASE_STUDY_GRID_IMAGE_SIZES}
@@ -334,7 +334,7 @@ export function UniLinksPage() {
             <div className="overflow-hidden rounded-sm bg-gray-100">
               <Image
                 src={unilinksDisplay3Asset.src}
-                alt="workflow"
+                alt="UniLinks online booking feature with consultation slots and payment confirmation"
                 width={1080}
                 height={1080}
                 sizes={CASE_STUDY_GRID_IMAGE_SIZES}
@@ -345,7 +345,7 @@ export function UniLinksPage() {
             <div className="overflow-hidden rounded-sm bg-gray-100">
               <Image
                 src={unilinksDisplay1Asset.src}
-                alt="workflow"
+                alt="UniLinks program exploration feature showing university courses and entry requirements"
                 width={1080}
                 height={1080}
                 sizes={CASE_STUDY_GRID_IMAGE_SIZES}

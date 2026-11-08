@@ -80,7 +80,7 @@ export function CaseStudyShell({ coverImage, title, tags, liveUrl, thumbnail, ch
             <div className="rounded-2xl overflow-hidden">
               <Image
                 src={thumbnail.src}
-                alt=""
+                alt={`${title}, desktop and mobile interface preview`}
                 width={thumbnail.width}
                 height={thumbnail.height}
                 sizes={CASE_STUDY_HERO_IMAGE_SIZES}

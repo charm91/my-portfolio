@@ -57,7 +57,7 @@ export function WctPage() {
           <div className="overflow-hidden">
             <Image
               src={wctPreviewAsset.src}
-              alt="Problem"
+              alt="WCT Pay merchant dashboard and payment journey from requesting crypto to withdrawing fiat"
               width={1440}
               height={960}
               sizes={CASE_STUDY_IMAGE_SIZES}
@@ -93,7 +93,7 @@ export function WctPage() {
           <div className="overflow-hidden">
             <Image
               src={wctPaperAsset.src}
-              alt="Work Flow Diagram"
+              alt="Annotated WCT Pay paper prototypes for payouts, invoicing, overview, and payment links"
               width={1440}
               height={1100}
               sizes={CASE_STUDY_IMAGE_SIZES}
@@ -145,7 +145,7 @@ export function WctPage() {
             <div className="overflow-hidden rounded-sm">
               <Image
                 src={wctSolvingAsset.src}
-                alt="personas"
+                alt="WCT Pay discovery notes and sketches of crypto-to-fiat payment workflows"
                 width={646}
                 height={1020}
                 sizes={CASE_STUDY_GRID_IMAGE_SIZES}
@@ -156,7 +156,7 @@ export function WctPage() {
             <div className="overflow-hidden rounded-sm">
               <Image
                 src={wctDiagramAsset.src}
-                alt="workflow"
+                alt="WCT Pay flowchart connecting crypto receipts, fiat conversion, withdrawals, and transaction tracking"
                 width={710}
                 height={1020}
                 sizes={CASE_STUDY_GRID_IMAGE_SIZES}
@@ -192,7 +192,7 @@ export function WctPage() {
           <div className="overflow-hidden ">
             <Image
               src={wctUi1Asset.src}
-              alt="personas"
+              alt="WCT Pay invoice layouts, payment QR code, and invoice list"
               width={1440}
               height={975}
               sizes={CASE_STUDY_IMAGE_SIZES}
@@ -216,7 +216,7 @@ export function WctPage() {
             <div className="overflow-hidden rounded-sm">
               <Image
                 src={wctUi2Asset.src}
-                alt="personas"
+                alt="WCT Pay affiliate dashboard with activity metrics, performance chart, and commission earnings"
                 width={504}
                 height={359}
                 sizes={CASE_STUDY_GRID_IMAGE_SIZES}
@@ -227,7 +227,7 @@ export function WctPage() {
             <div className="overflow-hidden rounded-sm">
               <Image
                 src={wctUi3Asset.src}
-                alt="workflow"
+                alt="WCT Pay admin dashboard showing balances, trading activity, and merchant analytics"
                 width={504}
                 height={358}
                 sizes={CASE_STUDY_GRID_IMAGE_SIZES}
@@ -237,7 +237,7 @@ export function WctPage() {
             <div className="overflow-hidden rounded-sm">
               <Image
                 src={wctUi4Asset.src}
-                alt="personas"
+                alt="WCT Pay OTC merchant list with currencies, balances, and account status"
                 width={504}
                 height={359}
                 sizes={CASE_STUDY_GRID_IMAGE_SIZES}
@@ -248,7 +248,7 @@ export function WctPage() {
             <div className="overflow-hidden rounded-sm">
               <Image
                 src={wctUi5Asset.src}
-                alt="workflow"
+                alt="WCT Pay OTC trade list with payment methods, dates, and transaction status"
                 width={504}
                 height={359}
                 sizes={CASE_STUDY_GRID_IMAGE_SIZES}
@@ -258,7 +258,7 @@ export function WctPage() {
             <div className="overflow-hidden rounded-sm">
               <Image
                 src={wctUi6Asset.src}
-                alt="personas"
+                alt="WCT Pay merchant creation form with business details, contact fields, and merchant preview"
                 width={504}
                 height={357}
                 sizes={CASE_STUDY_GRID_IMAGE_SIZES}
@@ -269,7 +269,7 @@ export function WctPage() {
             <div className="overflow-hidden rounded-sm">
               <Image
                 src={wctUi7Asset.src}
-                alt="workflow"
+                alt="WCT Pay default commission settings with volume tiers and percentage rates"
                 width={504}
                 height={359}
                 sizes={CASE_STUDY_GRID_IMAGE_SIZES}

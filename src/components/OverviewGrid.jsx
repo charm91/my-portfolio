@@ -59,6 +59,9 @@ export function OverviewGrid() {
                 >
                   Hi, I'm {SITE.displayName}
                 </h2>
+                <p className="text-sm font-medium mb-3" style={{ color: textPrimary }}>
+                  {SITE.name} · {SITE.jobTitle}
+                </p>
                 <p
                   className="text-sm leading-relaxed"
                   style={{ color: textSecondary }}

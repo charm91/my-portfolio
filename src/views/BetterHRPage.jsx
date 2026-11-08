@@ -58,7 +58,7 @@ export function BetterHRPage() {
         <div className="rounded-2xl overflow-hidden">
           <Image
             src={betterhrProblemAsset.src}
-            alt="problem-statement"
+            alt="HR challenges: scattered data, manual processes, limited approval visibility, and inflexible tools"
             width={1080}
             height={594}
             sizes={CASE_STUDY_IMAGE_SIZES}
@@ -100,7 +100,7 @@ export function BetterHRPage() {
             <div className="hidden md:block overflow-hidden rounded-sm bg-gray-100">
               <Image
                 src={betterhrGroup1Asset.src}
-                alt="Meeting room discussion"
+                alt="Better HR stakeholders discussing requirements in a meeting room"
                 width={678}
                 height={542}
                 sizes={CASE_STUDY_GRID_IMAGE_SIZES}
@@ -111,7 +111,7 @@ export function BetterHRPage() {
             <div className="overflow-hidden rounded-sm bg-gray-100">
               <Image
                 src={betterhrGroup2Asset.src}
-                alt="Presentation session"
+                alt="Presenting Better HR to a room of stakeholders"
                 width={678}
                 height={542}
                 sizes={CASE_STUDY_GRID_IMAGE_SIZES}
@@ -144,7 +144,7 @@ export function BetterHRPage() {
         <div className="overflow-hidden md:px-3 sm:px-2 mt-8">
           <Image
             src={betterhrUx1Asset.src}
-            alt="Presentation session"
+            alt="Sticky-note workshop mapping HR processes and product requirements"
             width={479}
             height={335}
             sizes={CASE_STUDY_IMAGE_SIZES}
@@ -154,7 +154,7 @@ export function BetterHRPage() {
         <div className="overflow-hidden">
           <Image
             src={betterhrUx2Asset.src}
-            alt="Presentation session"
+            alt="Workflow for employee leave requests, HR review, leave management, and claim processing"
             width={778}
             height={444}
             sizes={CASE_STUDY_IMAGE_SIZES}
@@ -183,7 +183,7 @@ export function BetterHRPage() {
             <div className="overflow-hidden rounded-sm bg-gray-100">
               <Image
                 src={betterhrUi1Asset.src}
-                alt="betterhrUI"
+                alt="Better HR mobile onboarding, sign-in, and verification screens"
                 width={504}
                 height={512}
                 sizes={CASE_STUDY_GRID_IMAGE_SIZES}
@@ -194,7 +194,7 @@ export function BetterHRPage() {
             <div className="overflow-hidden rounded-sm bg-gray-100">
               <Image
                 src={betterhrUi2Asset.src}
-                alt="betterhrUI"
+                alt="Better HR mobile attendance, leave requests, calendar, and employee profile screens"
                 width={504}
                 height={516}
                 sizes={CASE_STUDY_GRID_IMAGE_SIZES}
@@ -225,7 +225,7 @@ export function BetterHRPage() {
             <div className="overflow-hidden rounded-sm bg-gray-100">
               <Image
                 src={betterhrUi3Asset.src}
-                alt="betterhrUI"
+                alt="Better HR website and desktop HR management interfaces"
                 width={1440}
                 height={878}
                 sizes={CASE_STUDY_IMAGE_SIZES}
@@ -252,7 +252,7 @@ export function BetterHRPage() {
             <div className="overflow-hidden rounded-sm bg-gray-100">
               <Image
                 src={betterhrUi4Asset.src}
-                alt="betterhrUI"
+                alt="Better HR desktop dashboards with attendance records, charts, and location maps"
                 width={720}
                 height={520}
                 sizes={CASE_STUDY_IMAGE_SIZES}

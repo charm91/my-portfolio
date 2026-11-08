@@ -65,7 +65,7 @@ export function KBZBankPage() {
           <div className="overflow-hidden">
             <Image
               src={kbzDiagramAsset.src}
-              alt="Work Flow Diagram"
+              alt="KBZ account-opening workflow across customer access, verification, and registration systems"
               width={1440}
               height={835}
               sizes={CASE_STUDY_IMAGE_SIZES}
@@ -106,7 +106,7 @@ export function KBZBankPage() {
           <div className="overflow-hidden">
             <Image
               src={kbzFlowchartAsset.src}
-              alt="User Interface"
+              alt="Detailed KBZ onboarding flowchart with decisions, validation steps, and system outcomes"
               width={1440}
               height={1637}
               sizes={CASE_STUDY_IMAGE_SIZES}
@@ -131,7 +131,7 @@ export function KBZBankPage() {
           <div className="overflow-hidden">
             <Image
               src={kbzUi1Asset.src}
-              alt="User Interface"
+              alt="KBZ onboarding screens for personal details, identity capture, and identity verification"
               width={1440}
               height={1180}
               sizes={CASE_STUDY_IMAGE_SIZES}
@@ -163,7 +163,7 @@ export function KBZBankPage() {
           <div className="overflow-hidden">
             <Image
               src={kbzUi2Asset.src}
-              alt="Flow Chart"
+              alt="KBZ sign-in, password, OTP verification, and account-opening confirmation screens"
               width={1440}
               height={487}
               sizes={CASE_STUDY_IMAGE_SIZES}
@@ -194,7 +194,7 @@ export function KBZBankPage() {
           <div className="overflow-hidden">
             <Image
               src={kbzUi3Asset.src}
-              alt="User Interface"
+              alt="KBZ verification outcomes including successful, failed, expired, and incomplete states"
               width={1440}
               height={1357}
               sizes={CASE_STUDY_IMAGE_SIZES}
@@ -227,7 +227,7 @@ export function KBZBankPage() {
           <div className="overflow-hidden">
             <Image
               src={kbzUi4Asset.src}
-              alt="User Interface"
+              alt="KBZ branch selection, additional services, account review, and terms screens"
               width={1440}
               height={741}
               sizes={CASE_STUDY_IMAGE_SIZES}
@@ -256,7 +256,7 @@ export function KBZBankPage() {
           <div className="overflow-hidden">
             <Image
               src={kbzUi5Asset.src}
-              alt="User Interface"
+              alt="KBZ account dashboard, account details, and account-activation confirmation screens"
               width={1440}
               height={487}
               sizes={CASE_STUDY_IMAGE_SIZES}
