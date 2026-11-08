@@ -5,7 +5,7 @@ import cornerWhiteAsset from "../../public/corner-white.png";
 import yeMyatMinAsset from "../../public/ye-myat-min.jpeg";
 import linkedinAsset from "../../public/linkedin.svg";
 import { Reveal } from "@/components/Reveal";
-import { Star, ArrowDown } from "lucide-react";
+import { Star, ArrowDown, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { SITE } from "@/config/site";
 import { COLORS } from "@/config/theme";
@@ -99,7 +99,7 @@ export function OverviewGrid() {
                       {SITE.availability}
                     </div>
 
-                    <ArrowDown
+                    <ArrowRight
                       className="size-5 shrink-0 text-[#242424] group-hover:opacity-70 group-focus-visible:opacity-70 transition-opacity duration-(--motion-duration-feedback)"
                       strokeWidth={2}
                     />

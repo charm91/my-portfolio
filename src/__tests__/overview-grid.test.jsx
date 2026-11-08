@@ -11,6 +11,7 @@ vi.mock("next/image", () => ({
 vi.mock("lucide-react", () => ({
   Star: () => <svg />,
   ArrowDown: () => <svg />,
+  ArrowRight: () => <svg />,
 }));
 
 describe("OverviewGrid", () => {
