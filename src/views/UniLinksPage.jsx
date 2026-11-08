@@ -321,7 +321,7 @@ export function UniLinksPage() {
 
             <div className="overflow-hidden rounded-sm bg-gray-100">
               <Image
-                src="/unilinks/display-4.jpg"
+                src="/unilinks/display-1.jpg"
                 alt="workflow"
                 width={1080}
                 height={1080}
