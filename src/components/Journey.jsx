@@ -31,7 +31,7 @@ const steps = [
     icon: Rocket,
     title: "Align & Deliver",
     description:
-      "I prepare clear design handoff, support implementation, and help teams maintain quality as the product evolves.",
+      "I prepare clear design handoff, support implementation, and help teams maintain design quality and consistency as the product evolves.",
   },
 ];
 
