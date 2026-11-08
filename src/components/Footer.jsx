@@ -10,6 +10,36 @@ import { COLORS } from "@/config/theme";
 const textPrimary = COLORS.textPrimary;
 const textSecondary = COLORS.textSecondary;
 
+function ContactCard({ icon: Icon, heading, description, ...linkProps }) {
+  return (
+    <a
+      className="flex items-center gap-4 rounded-full bg-white p-5 md:p-6 transition-shadow duration-150 hover:shadow-md focus-visible:shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+      {...linkProps}
+    >
+      <div
+        className="flex size-12 shrink-0 items-center justify-center rounded-full text-white"
+        style={{ backgroundColor: textPrimary }}
+      >
+        <Icon className="size-6" />
+      </div>
+      <div className="min-w-0 flex-1">
+        <p className="font-bold text-base" style={{ color: textPrimary }}>
+          {heading}
+        </p>
+        <p className="mt-0.5 text-sm" style={{ color: textSecondary }}>
+          {description}
+        </p>
+      </div>
+      <span className="hidden h-10 w-px bg-border/50 md:inline-block"></span>
+      <ExternalLink
+        className="size-5 shrink-0"
+        style={{ color: textPrimary }}
+        strokeWidth={2}
+      />
+    </a>
+  );
+}
+
 export function Footer() {
   return (
     <footer id="contact" className="py-16 md:py-28 z-10 relative">
@@ -59,63 +89,22 @@ export function Footer() {
           viewport={{ once: true }}
           className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-12 md:mb-16"
         >
-          <a
+          <ContactCard
             href={SOCIAL_LINKS.linkedin}
             target="_blank"
             title="Opens in a new tab"
             aria-label="LinkedIn (opens in a new tab)"
             rel="noopener noreferrer"
-            className="flex items-center gap-4 rounded-full bg-white p-5 md:p-6 hover:shadow-md focus-visible:shadow-md transition-shadow duration-150 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
-          >
-            <div
-              className="flex size-12 shrink-0 items-center justify-center rounded-full text-white"
-              style={{ backgroundColor: textPrimary }}
-            >
-              <Linkedin className="size-6" />
-            </div>
-            <div className="min-w-0 flex-1">
-              <p className="font-bold text-base" style={{ color: textPrimary }}>
-                LinkedIn
-              </p>
-              <p className="text-sm mt-0.5" style={{ color: textSecondary }}>
-                Connect on LinkedIn
-              </p>
-            </div>
-            <span className="w-px h-10 bg-border/50 hidden md:inline-block"></span>
-            <ExternalLink
-              className="size-5 shrink-0"
-              style={{ color: textPrimary }}
-              strokeWidth={2}
-            />
-          </a>
-          <a
+            icon={Linkedin}
+            heading="LinkedIn"
+            description="Connect on LinkedIn"
+          />
+          <ContactCard
             href={`mailto:${SITE.email}?subject=${encodeURIComponent(`Hello ${SITE.displayName}`)}`}
-            className="flex items-center gap-4 rounded-full bg-white p-5 md:p-6 transition-shadow duration-150 hover:shadow-md focus-visible:shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
-          >
-            <div
-              className="flex size-12 shrink-0 items-center justify-center rounded-full text-white"
-              style={{ backgroundColor: textPrimary }}
-            >
-              <Mail className="size-6" />
-            </div>
-
-            <div className="min-w-0 flex-1">
-              <p className="font-bold text-base" style={{ color: textPrimary }}>
-                Email
-              </p>
-              <p className="mt-0.5 text-sm" style={{ color: textSecondary }}>
-                Reach me directly
-              </p>
-            </div>
-
-            <span className="hidden h-10 w-px bg-border/50 md:inline-block"></span>
-
-            <ExternalLink
-              className="size-5 shrink-0"
-              style={{ color: textPrimary }}
-              strokeWidth={2}
-            />
-          </a>
+            icon={Mail}
+            heading="Email"
+            description="Reach me directly"
+          />
         </motion.div>
 
         {/* Footer bar - copyright left, links right; stack on mobile */}
