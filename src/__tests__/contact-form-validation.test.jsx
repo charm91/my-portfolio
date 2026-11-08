@@ -88,11 +88,6 @@ describe("Contact form validation", () => {
     vi.clearAllMocks();
   });
 
-  function renderAndAdvanceTime() {
-    render(<ContactPageClient />);
-    vi.setSystemTime(4000);
-  }
-
   it("links the logo and Back to Home to the homepage", () => {
     render(<ContactPageClient />);
     expect(screen.getByRole("link", { name: "Charm" })).toHaveAttribute("href", "/");
@@ -142,7 +137,7 @@ describe("Contact form validation", () => {
   });
 
   it("clears error when user corrects input after a validation failure", async () => {
-    renderAndAdvanceTime();
+    render(<ContactPageClient />);
     await setField(user, "Your Name", "A");
     await setField(user, "Email Address", "valid@example.com");
     await setField(user, "Message", "Long enough message here");
@@ -157,20 +152,24 @@ describe("Contact form validation", () => {
     expect(screen.getByLabelText("Your Name")).not.toHaveAttribute("aria-describedby");
   });
 
-  it("explains an early valid submission while preserving the minimum fill time", async () => {
-    render(<ContactPageClient />);
-    await setField(user, "Your Name", "Charm");
-    await setField(user, "Email Address", "valid@example.com");
-    await setField(user, "Message", "Long enough message here");
-    await submitForm(user);
-    expect(emailjs.send).not.toHaveBeenCalled();
-    expect(captcha.execute).not.toHaveBeenCalled();
-    expect(screen.getByRole("alert")).toHaveTextContent("Please wait a moment before sending your message.");
-    expect(screen.getByRole("button", { name: "Send Message" })).toBeEnabled();
+  it("submits autofilled valid fields immediately after opening the page", async () => {
+    const { container } = render(<ContactPageClient />);
+    for (const [label, value] of [
+      ["Your Name", "Charm Test"],
+      ["Email Address", "charm@example.com"],
+      ["Message", "This is a long enough test message"],
+    ]) {
+      fireEvent.change(screen.getByLabelText(label), { target: { value } });
+    }
+    await act(async () => fireEvent.submit(container.querySelector("form")));
+    expect(Date.now()).toBe(0);
+    expect(captcha.execute).toHaveBeenCalledTimes(1);
+    expect(emailjs.send).toHaveBeenCalledTimes(1);
+    expect(screen.getByText(/your message has been sent/i)).toBeInTheDocument();
   });
 
   it("calls EmailJS with correct parameters on successful submission", async () => {
-    renderAndAdvanceTime();
+    render(<ContactPageClient />);
     await setField(user, "Your Name", "Charm Test");
     await setField(user, "Email Address", "charm@example.com");
     await setField(user, "Message", "This is a long enough test message");
@@ -184,7 +183,7 @@ describe("Contact form validation", () => {
   });
 
   it("shows success message after email sends", async () => {
-    renderAndAdvanceTime();
+    render(<ContactPageClient />);
     await setField(user, "Your Name", "Charm Test");
     await setField(user, "Email Address", "charm@example.com");
     await setField(user, "Message", "This is a long enough test message");
@@ -196,25 +195,9 @@ describe("Contact form validation", () => {
     expect(screen.getByLabelText("Message")).toHaveValue("");
   });
 
-  it("blocks at 2999ms and permits a send at the 3000ms fill-time boundary", async () => {
-    render(<ContactPageClient />);
-    await fillValidForm(user);
-    vi.setSystemTime(2999);
-    await submitForm(user);
-    expect(emailjs.send).not.toHaveBeenCalled();
-    expect(captcha.execute).not.toHaveBeenCalled();
-    expect(screen.getByRole("alert")).toHaveTextContent("Please wait a moment before sending your message.");
-
-    vi.setSystemTime(3000);
-    await submitForm(user);
-    expect(emailjs.send).toHaveBeenCalledTimes(1);
-    expect(screen.getByText(/your message has been sent/i)).toBeInTheDocument();
-  });
-
-  it("silently rejects a filled honeypot even with valid fields and enough fill time", async () => {
+  it("silently rejects a filled honeypot even with valid fields", async () => {
     const { container } = render(<ContactPageClient />);
     await fillValidForm(user);
-    vi.setSystemTime(4000);
     fireEvent.change(container.querySelector('input[name="website"]'), {
       target: { value: "https://bot.example" },
     });
@@ -223,7 +206,7 @@ describe("Contact form validation", () => {
   });
 
   it("does not start a cooldown for validation errors", async () => {
-    renderAndAdvanceTime();
+    render(<ContactPageClient />);
     await setField(user, "Your Name", "A");
     await submitForm(user);
     expect(screen.getByText("Please enter your full name.")).toBeInTheDocument();
@@ -241,7 +224,6 @@ describe("Contact form validation", () => {
       emailjs.send.mockRejectedValueOnce(new Error("Synthetic delivery failure"));
     }
     const { container } = render(<ContactPageClient />);
-    vi.setSystemTime(4000);
     await fillValidForm(user);
     // Only the cooldown uses scheduled fake timers. Keep userEvent's async
     // cleanup on real timers while typing, then submit inside act directly.
@@ -288,7 +270,7 @@ describe("Contact form validation", () => {
   it("locks inputs and prevents another button submission while delivery is pending, even after cooldown", async () => {
     let resolveDelivery;
     emailjs.send.mockReturnValueOnce(new Promise((resolve) => { resolveDelivery = resolve; }));
-    renderAndAdvanceTime();
+    render(<ContactPageClient />);
     await fillValidForm(user);
     vi.useFakeTimers({ toFake: ["Date", "setTimeout", "clearTimeout"] });
     await act(async () => fireEvent.click(screen.getByRole("button", { name: /send message/i })));
@@ -315,7 +297,6 @@ describe("Contact form validation", () => {
     let resolveVerification;
     captcha.execute.mockReturnValueOnce(new Promise((resolve) => { resolveVerification = resolve; }));
     const { container } = render(<ContactPageClient />);
-    vi.setSystemTime(4000);
     await fillValidForm(user);
     await submitForm(user);
     expect(screen.getByRole("button", { name: "Verifying..." })).toBeDisabled();
@@ -331,7 +312,7 @@ describe("Contact form validation", () => {
 
   it.each(["Security verification expired. Please try again.", "Security verification could not load."])("preserves input and allows immediate retry after %s", async (message) => {
     captcha.execute.mockRejectedValueOnce(new Error(message));
-    renderAndAdvanceTime();
+    render(<ContactPageClient />);
     await fillValidForm(user);
     await submitForm(user);
     expect(screen.getByRole("alert")).toHaveTextContent(message);
@@ -347,7 +328,7 @@ describe("Contact form validation", () => {
     let rejectVerification;
     captcha.execute.mockReturnValueOnce(new Promise((_, reject) => { rejectVerification = reject; }));
     captcha.cancel.mockImplementationOnce(() => rejectVerification(Object.assign(new Error("Cancelled"), { name: "AbortError" })));
-    renderAndAdvanceTime();
+    render(<ContactPageClient />);
     await fillValidForm(user);
     await submitForm(user);
     await user.click(screen.getByRole("button", { name: "Cancel verification" }));
@@ -360,7 +341,6 @@ describe("Contact form validation", () => {
     let resolveVerification;
     captcha.execute.mockReturnValueOnce(new Promise((resolve) => { resolveVerification = resolve; }));
     const { unmount } = render(<ContactPageClient />);
-    vi.setSystemTime(4000);
     await fillValidForm(user);
     await submitForm(user);
     unmount();

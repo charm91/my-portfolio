@@ -16,7 +16,6 @@ const bgPage = COLORS.bgPageContact;
 const inputBg = COLORS.inputBg;
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const MIN_SUBMIT_MS = 3000;
 const RESUBMIT_COOLDOWN_MS = 30000;
 
 export default function ContactPageClient() {
@@ -27,7 +26,6 @@ export default function ContactPageClient() {
   const [honeypot, setHoneypot] = useState("");
   const [retrySeconds, setRetrySeconds] = useState(0);
   const canSubmit = retrySeconds === 0;
-  const formLoadTime = useRef(null);
   const cooldownTimer = useRef(null);
   const recaptcha = useRef(null);
   const submitting = useRef(false);
@@ -35,7 +33,6 @@ export default function ContactPageClient() {
 
   useEffect(() => {
     mounted.current = true;
-    formLoadTime.current = Date.now();
     return () => {
       mounted.current = false;
       if (cooldownTimer.current) clearTimeout(cooldownTimer.current);
@@ -73,14 +70,6 @@ export default function ContactPageClient() {
     }
     if (message.length < 10) {
       showFieldError("message", "Your message is too short. Please add more detail.");
-      return;
-    }
-
-    // Validate immediately, while keeping the minimum fill time for sends.
-    if (formLoadTime.current === null || Date.now() - formLoadTime.current < MIN_SUBMIT_MS) {
-      setInvalidField(null);
-      setErrorMsg("Please wait a moment before sending your message.");
-      setStatus("error");
       return;
     }
 

@@ -46,7 +46,7 @@ npx vitest run src/__tests__/contact-form-validation.test.jsx
 | `src/config/theme.js` / `src/config/caseStudy.js` | Shared color tokens; case-study token exports and transition/reveal configurations. |
 | `app/globals.css` | Tailwind 4 theme, shared section styles and fixed homepage background; no `tailwind.config.js`. |
 | `src/lib/utils.js` | `cn()` merges Tailwind classes; `getScrollBehavior()` respects reduced motion for query-driven section navigation. Section CTAs use native fragment links. |
-| `app/contact-me/ContactPageClient.jsx` | Client-side form validation, three anti-spam guards and EmailJS delivery. |
+| `app/contact-me/ContactPageClient.jsx` | Client-side form validation, invisible reCAPTCHA v2, honeypot, cooldown and EmailJS delivery. |
 | `app/sitemap.js` / `app/robots.js` | Hand-maintained sitemap and crawler configuration, both using `SITE_URL`. |
 | `src/__tests__/` / `vitest.setup.js` | Vitest, jsdom and React Testing Library; shared motion mock in `src/__tests__/test-utils/mockMotion.js`. |
 | `public/` | Local branding, portraits, cover images and case-study screenshots, imported as modules so Next emits content-hashed URLs. |
@@ -56,7 +56,7 @@ npx vitest run src/__tests__/contact-form-validation.test.jsx
 - Adding a case study requires its view, a registry entry in `src/config/caseStudies.js`, a card in `src/components/Portfolio.jsx`, a manual entry in `app/sitemap.js` and an updated entry count in `src/__tests__/sitemap.test.js`.
 - `SITE_URL` uses `NEXT_PUBLIC_SITE_URL` or defaults to `https://www.nguwahaung.com`; unset development environments therefore use production metadata URLs.
 - Contact validation trims fields and requires a name of at least 2 characters, a valid email shape and a message of at least 10 characters.
-- Contact anti-spam uses a hidden honeypot, a 3-second minimum fill time and a 30-second cooldown started when a send is attempted, including failed sends.
+- Contact anti-spam uses EmailJS-verified invisible reCAPTCHA v2, a hidden honeypot and a 30-second cooldown started when a send is attempted, including failed sends.
 - EmailJS service/template/public-key values are intentionally hardcoded in the client component, not environment variables.
 
 ## Behavior Rules
