@@ -102,11 +102,11 @@ export function Portfolio() {
                     <ArrowRight className="size-5 transition-transform duration-200 group-hover:rotate-330" />
                   </Button>
                 </div>
-                <div className="p-6 flex justify-between items-center gap-6">
-                  <h3 className="font-medium text-foreground group-hover:text-primary transition-colors line-clamp-2 text-left text-base">
+                <div className="p-6 flex flex-col items-start gap-2 sm:flex-row sm:justify-between sm:items-center sm:gap-6">
+                  <h3 className="min-w-0 font-medium text-foreground group-hover:text-primary transition-colors sm:line-clamp-2 text-left text-base">
                     {project.title}
                   </h3>
-                  <p className="text-sm text-foreground text-right shrink-0">
+                  <p className="text-sm text-foreground text-left sm:text-right shrink-0">
                     {project.category}
                   </p>
                 </div>

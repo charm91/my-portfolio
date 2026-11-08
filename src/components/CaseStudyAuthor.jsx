@@ -4,21 +4,21 @@ import { SITE, SOCIAL_LINKS } from "@/config/site";
 export function CaseStudyAuthor() {
   return (
     <div className="border-t border-gray-200 py-4 mx-4">
-      <div className="flex items-center justify-between gap-6 mt-2">
-        <div className="flex items-center gap-5">
+      <div className="flex flex-col items-start gap-4 mt-2 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
+        <div className="flex min-w-0 items-center gap-4 sm:gap-5">
           <Image
             src={SITE.profileImage}
             alt={SITE.displayName}
             width={56}
             height={56}
-            className="h-14 w-14 rounded-full object-cover"
+            className="h-14 w-14 shrink-0 rounded-full object-cover"
           />
-          <div>
+          <div className="min-w-0">
             <h3 className="text-base text-gray-900">{SITE.displayName}</h3>
             <p className="text-sm text-gray-500">{SITE.tagline}</p>
           </div>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex shrink-0 items-center gap-3">
           <a
             href={SOCIAL_LINKS.facebook}
             target="_blank"

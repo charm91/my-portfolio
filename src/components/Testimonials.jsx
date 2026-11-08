@@ -75,7 +75,7 @@ export function Testimonials() {
     <section
       ref={sectionRef}
       id="testimonials"
-      className="pb-10 pt-20"
+      className="pb-10 pt-20 max-md:min-h-0!"
       style={{ minHeight: VIEWPORT_HEIGHT + scrollRange - 500 }}
     >
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -100,11 +100,10 @@ export function Testimonials() {
           </h2>
         </motion.div>
 
-        {/* Fixed 800px viewport, no scrollbar; content translates with body scroll */}
+        {/* Mobile cards stay in document flow; desktop retains the scroll effect. */}
         <div
-          className="relative max-w-[600px] mx-auto rounded-2xl overflow-hidden"
+          className="relative max-w-[600px] mx-auto rounded-2xl md:h-[800px] md:overflow-hidden"
           style={{
-            height: VIEWPORT_HEIGHT,
             backgroundImage: "linear-gradient(180deg, #fff, #f6f7f9 46%, #fff)",
             backgroundSize: "100% 100%",
           }}
@@ -112,12 +111,12 @@ export function Testimonials() {
           <motion.div
             ref={contentRef}
             style={{ y }}
-            className="p-6 md:p-10 space-y-6 w-full"
+            className="p-4 md:p-10 space-y-6 w-full max-md:transform-none!"
           >
             {testimonials.map((t) => (
               <article
                 key={t.name}
-                className="rounded-2xl bg-white p-6 md:p-8 relative shadow-xs"
+                className="rounded-2xl bg-white p-5 md:p-8 relative shadow-xs"
               >
                 <div className="flex gap-0.5 mb-5" aria-label="5 out of 5 stars">
                   {[1, 2, 3, 4, 5].map((n) => (
@@ -133,7 +132,7 @@ export function Testimonials() {
                   &ldquo;{t.quote}&rdquo;
                 </p>
                 <div className="flex items-center justify-between gap-4">
-                  <div className="flex items-center gap-3 min-w-0">
+                  <div className="flex flex-1 items-center gap-3 min-w-0">
                     <Image
                       src={t.avatar}
                       alt={t.name}
@@ -142,15 +141,15 @@ export function Testimonials() {
                       className="size-12 rounded-full object-cover shrink-0 bg-[#e5e7eb]"
                     />
                     <div className="min-w-0">
-                      <p className="font-bold text-[#1f2937] text-lg truncate">
+                      <p className="font-bold text-[#1f2937] text-lg">
                         {t.name}
                       </p>
-                      <p className="text-sm text-[#6b7280] truncate">
+                      <p className="text-sm text-[#6b7280]">
                         {t.role}
                       </p>
                     </div>
                   </div>
-                  <span>
+                  <span className="shrink-0">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"

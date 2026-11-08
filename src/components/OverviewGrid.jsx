@@ -54,7 +54,7 @@ export function OverviewGrid() {
                   className="object-cover"
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 60vw, 480px"
                 />
-                <div className="z-10 absolute bottom-1 right-3 px-4 py-2 rounded-full text-primary text-sm font-normal whitespace-nowrap bg-background">
+                <div className="z-10 absolute bottom-1 right-3 max-w-[calc(100%_-_1.5rem)] px-4 py-2 rounded-full text-primary text-sm font-normal text-center bg-background">
                   {SITE.tagline}
                 </div>
                 <Image
