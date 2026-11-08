@@ -14,8 +14,12 @@ The site also includes my design approach, recommendations from former teammates
 
 Next.js · React · Tailwind CSS · Framer Motion
 
----
+## Contributing
 
-UNLICENSED. © Ngu Wah Aung. All rights reserved.
+This is a personal portfolio. Issues and PRs are not expected.
+
+## License
+
+© Ngu Wah Aung. All rights reserved.
 
 <!-- last-reviewed: 68a6b9bb40772657c59fa40144b48ca4918efa71 -->
