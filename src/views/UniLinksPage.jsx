@@ -25,7 +25,7 @@ export function UniLinksPage() {
       coverImage={uCoverAsset.src}
       title="UniLinks All-in-One Study Abroad Platform"
       tags={[
-        { icon: TabletSmartphone, label: "WebApp (Responsive)" },
+        { icon: TabletSmartphone, label: "Web App" },
         { icon: Globe, label: "EdTech / Study Abroad Consulting" },
         { icon: Clock, label: "Founding → Growth phase" },
       ]}

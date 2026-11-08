@@ -23,7 +23,7 @@ export function BetterHRPage() {
       coverImage={bCoverAsset.src}
       title="Better HR Cloud-based HR Management Platform"
       tags={[
-        { icon: TabletSmartphone, label: "WebApp + Mobile App" },
+        { icon: TabletSmartphone, label: "Web + Mobile Apps" },
         { icon: Globe, label: "HRTech / Payroll Management" },
         { icon: Clock, label: "Founding phase" },
       ]}

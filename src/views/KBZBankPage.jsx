@@ -21,7 +21,7 @@ export function KBZBankPage() {
       coverImage={kCoverAsset.src}
       title="KBZ Bank Digital Banking Authentication System"
       tags={[
-        { icon: TabletSmartphone, label: "WebApp (Responsive)" },
+        { icon: TabletSmartphone, label: "Web App" },
         { icon: Globe, label: "Fintech / Digital Banking" },
         { icon: Clock, label: "Scale phase" },
       ]}
