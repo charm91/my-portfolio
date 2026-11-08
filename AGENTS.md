@@ -35,6 +35,8 @@ npx vitest run src/__tests__/contact-form-validation.test.jsx
 | Path | Purpose |
 |---|---|
 | `src/config/site.js` | Personal information, social links, resume URL and `SITE_URL`; update personal details here. |
+| `app/resume.pdf/route.js` | Redirects `/resume.pdf` to `RESUME_URL` with a 308. |
+| `src/lib/seo.js` / `src/components/JsonLd.jsx` | `getPageMetadata()` builds title, canonical, Open Graph and Twitter metadata for every page; `getProfileStructuredData()` feeds the homepage JSON-LD. |
 | `src/config/caseStudies.js` | Registry mapping case slugs to view components and route metadata. |
 | `app/[case]/page.jsx` | Generates static case routes from the registry; `dynamicParams = false`, unknown cases call `notFound()`. |
 | `app/page.jsx` / `app/portfolio/page.jsx` | Server pages composing homepage sections and the separate portfolio listing. |
@@ -46,12 +48,12 @@ npx vitest run src/__tests__/contact-form-validation.test.jsx
 | `src/lib/utils.js` | `cn()` merges Tailwind classes; `getScrollBehavior()` respects reduced motion for query-driven section navigation. Section CTAs use native fragment links. |
 | `app/contact-me/ContactPageClient.jsx` | Client-side form validation, three anti-spam guards and EmailJS delivery. |
 | `app/sitemap.js` / `app/robots.js` | Hand-maintained sitemap and crawler configuration, both using `SITE_URL`. |
-| `src/__tests__/` / `vitest.setup.js` | Vitest, jsdom and React Testing Library; shared motion mock in `test-utils/mockMotion.js`. |
-| `public/` | Local branding, portraits, cover images and case-study screenshots, referenced through root-relative URLs. |
+| `src/__tests__/` / `vitest.setup.js` | Vitest, jsdom and React Testing Library; shared motion mock in `src/__tests__/test-utils/mockMotion.js`. |
+| `public/` | Local branding, portraits, cover images and case-study screenshots, imported as modules so Next emits content-hashed URLs. |
 
 ## Domain Rules
 
-- Adding a case study requires its view, a registry entry in `src/config/caseStudies.js`, a card in `src/components/Portfolio.jsx` and a manual entry in `app/sitemap.js`.
+- Adding a case study requires its view, a registry entry in `src/config/caseStudies.js`, a card in `src/components/Portfolio.jsx`, a manual entry in `app/sitemap.js` and an updated entry count in `src/__tests__/sitemap.test.js`.
 - `SITE_URL` uses `NEXT_PUBLIC_SITE_URL` or defaults to `https://www.nguwahaung.com`; unset development environments therefore use production metadata URLs.
 - Contact validation trims fields and requires a name of at least 2 characters, a valid email shape and a message of at least 10 characters.
 - Contact anti-spam uses a hidden honeypot, a 3-second minimum fill time and a 30-second cooldown started when a send is attempted, including failed sends.
@@ -63,6 +65,8 @@ npx vitest run src/__tests__/contact-form-validation.test.jsx
 - Update personal details, availability, social links and the resume URL in `src/config/site.js` only.
 - Commit directly to `main`. No branches or PRs.
 - Preserve intentional section-specific color differences documented in `src/config/theme.js`.
+- Import images from `public/` as modules and use `.src`; do not hard-code root-relative paths, which would lose the content-hashed immutable URLs.
+- External links open in the same tab. Only LinkedIn, Resume and each case study's Live Project open a new tab, with a `title` and an `aria-label` ending in `(opens in a new tab)`; the tests assert those names.
 
 ## Hard Safety Rules
 
@@ -79,7 +83,8 @@ npx vitest run src/__tests__/contact-form-validation.test.jsx
 - Motion mocks cache component identity per tag; uncached proxies remount form subtrees and lose focus/value during `userEvent.type()`.
 - jsdom observer stubs must be constructible classes; arrow-function `IntersectionObserver` mocks fail with `new`. Testimonials also need `ResizeObserver` and motion scroll-hook mocks.
 - Header section navigation uses `/?scrollTo=<id>` when leaving another route; keep target section IDs aligned with its navigation items.
-- Legal sources exist in `app/legal/*/page.mdx`, but package/Next configuration has no MDX integration. Verify routing before treating these files as published pages.
+- Legal sources are `app/legal/terms/page.mdx` and `legal/privacy-policy.md`, but package/Next configuration has no MDX integration and neither has a route. Verify routing before treating them as published pages.
+- Vitest resolves `public/` image imports through the plugin in `vitest.config.js`, which returns only `{ src }`; width and height are not available in tests.
 
 ## Rules
 
@@ -95,4 +100,4 @@ At the start of every session, check whether the paths above exist on this machi
 If either is missing, inform the user: "helm rules are referenced in CLAUDE.md but the
 plugin is not installed on this machine. Install it with: /plugin install agent-helm"
 
-<!-- last-reviewed: 8946cff4e84367a68e2b330548536a8e5a6d3d1c -->
+<!-- last-reviewed: 1dc301e75bb253150d71f3a02266152d4a7deef6 -->
