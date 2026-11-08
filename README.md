@@ -1,24 +1,18 @@
 # Ngu Wah Aung — Portfolio
 
-Personal portfolio of Ngu Wah Aung (Charm), Senior Product Designer,
-showcasing work across fintech, HR SaaS, and education.
+Personal portfolio of Ngu Wah Aung (Charm), Senior Product Designer.
 
 [Visit the portfolio](https://www.nguwahaung.com/)
+
+## About this portfolio
+
+A selection of product design work across fintech, HR SaaS, and education. The case studies cover the problems, design decisions, and collaboration behind Better HR, UniLinks, KBZ Bank, and WCT Pay.
+
+The site also includes my design approach, recommendations from former teammates, and a way to get in touch.
 
 ## Built with
 
 Next.js · React · Tailwind CSS · Framer Motion
-
-## Run locally
-
-Use Node.js 22.13+ on the 22.x line, or Node.js 24+.
-
-```bash
-npm install
-npm run dev
-```
-
-Open the localhost URL printed in the terminal.
 
 ---
 
