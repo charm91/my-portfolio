@@ -10,9 +10,7 @@ A selection of product design work across fintech, HR SaaS, and education. The c
 
 The site also includes my design approach, recommendations from former teammates, and a way to get in touch.
 
-## Built with
-
-Next.js · React · Tailwind CSS · Framer Motion
+Built with Next.js, React, Tailwind CSS, and Framer Motion.
 
 ## Contributing
 
