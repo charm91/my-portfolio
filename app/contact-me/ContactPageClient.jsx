@@ -48,9 +48,6 @@ export default function ContactPageClient() {
     // Anti-spam: honeypot — bots fill hidden fields
     if (honeypot) return;
 
-    // Anti-spam: reject submissions faster than a human can fill the form
-    if (formLoadTime.current === null || Date.now() - formLoadTime.current < MIN_SUBMIT_MS) return;
-
     // Anti-spam: cooldown between submissions
     if (!canSubmit || submitting.current) return;
 
@@ -76,6 +73,14 @@ export default function ContactPageClient() {
     }
     if (message.length < 10) {
       showFieldError("message", "Your message is too short. Please add more detail.");
+      return;
+    }
+
+    // Validate immediately, while keeping the minimum fill time for sends.
+    if (formLoadTime.current === null || Date.now() - formLoadTime.current < MIN_SUBMIT_MS) {
+      setInvalidField(null);
+      setErrorMsg("Please wait a moment before sending your message.");
+      setStatus("error");
       return;
     }
 
@@ -355,9 +360,10 @@ export default function ContactPageClient() {
               Cancel verification
             </button>
           )}
-          <InvisibleRecaptcha ref={recaptcha} />
         </motion.form>
       </main>
+      {/* Keep Google's fixed badge outside transformed animation containers. */}
+      <InvisibleRecaptcha ref={recaptcha} />
     </div>
   );
 }

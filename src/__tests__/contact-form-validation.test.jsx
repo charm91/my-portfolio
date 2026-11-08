@@ -11,7 +11,7 @@ vi.mock("@/components/InvisibleRecaptcha", async () => {
   return {
     InvisibleRecaptcha: forwardRef(function MockCaptcha(_, ref) {
       useImperativeHandle(ref, () => captcha);
-      return null;
+      return <div data-testid="captcha-container" />;
     }),
   };
 });
@@ -99,8 +99,13 @@ describe("Contact form validation", () => {
     expect(screen.getByRole("link", { name: "Back to Home" })).toHaveAttribute("href", "/");
   });
 
-  it("shows error when name is too short", async () => {
-    renderAndAdvanceTime();
+  it("keeps the fixed CAPTCHA badge outside the animated form", () => {
+    render(<ContactPageClient />);
+    expect(screen.getByTestId("captcha-container").closest("form, main")).toBeNull();
+  });
+
+  it("immediately shows error when name is too short", async () => {
+    render(<ContactPageClient />);
     await setField(user, "Your Name", "A");
     await setField(user, "Email Address", "valid@example.com");
     await setField(user, "Message", "Long enough message here");
@@ -112,8 +117,8 @@ describe("Contact form validation", () => {
     expect(screen.getByLabelText("Your Name")).toHaveAccessibleDescription("Please enter your full name.");
   });
 
-  it("shows error when email is invalid", async () => {
-    renderAndAdvanceTime();
+  it("immediately shows error when email is invalid", async () => {
+    render(<ContactPageClient />);
     await setField(user, "Your Name", "Charm");
     await setField(user, "Email Address", "not-an-email");
     await setField(user, "Message", "Long enough message here");
@@ -124,8 +129,8 @@ describe("Contact form validation", () => {
     expect(screen.getByLabelText("Email Address")).toHaveAccessibleDescription("Please enter a valid email address.");
   });
 
-  it("shows error when message is too short", async () => {
-    renderAndAdvanceTime();
+  it("immediately shows error when message is too short", async () => {
+    render(<ContactPageClient />);
     await setField(user, "Your Name", "Charm");
     await setField(user, "Email Address", "valid@example.com");
     await setField(user, "Message", "Short");
@@ -152,15 +157,16 @@ describe("Contact form validation", () => {
     expect(screen.getByLabelText("Your Name")).not.toHaveAttribute("aria-describedby");
   });
 
-  it("silently blocks submission when form is filled too fast (bot guard)", async () => {
+  it("explains an early valid submission while preserving the minimum fill time", async () => {
     render(<ContactPageClient />);
     await setField(user, "Your Name", "Charm");
     await setField(user, "Email Address", "valid@example.com");
     await setField(user, "Message", "Long enough message here");
     await submitForm(user);
     expect(emailjs.send).not.toHaveBeenCalled();
-    expect(screen.queryByText(/please enter/i)).not.toBeInTheDocument();
-    expect(screen.queryByText(/something went wrong/i)).not.toBeInTheDocument();
+    expect(captcha.execute).not.toHaveBeenCalled();
+    expect(screen.getByRole("alert")).toHaveTextContent("Please wait a moment before sending your message.");
+    expect(screen.getByRole("button", { name: "Send Message" })).toBeEnabled();
   });
 
   it("calls EmailJS with correct parameters on successful submission", async () => {
@@ -195,7 +201,9 @@ describe("Contact form validation", () => {
     await fillValidForm(user);
     vi.setSystemTime(2999);
     await submitForm(user);
-    expectNoSendFeedback();
+    expect(emailjs.send).not.toHaveBeenCalled();
+    expect(captcha.execute).not.toHaveBeenCalled();
+    expect(screen.getByRole("alert")).toHaveTextContent("Please wait a moment before sending your message.");
 
     vi.setSystemTime(3000);
     await submitForm(user);
