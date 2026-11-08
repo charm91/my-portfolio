@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
-  "assessed_commit": "548aa52fb72a43c505870b08402ff05d123157aa",
-  "full_scan_commit": "548aa52fb72a43c505870b08402ff05d123157aa",
+  "assessed_commit": "1a594d1d5f2467a3972bf840ded5ff54b54b9188",
+  "full_scan_commit": "1a594d1d5f2467a3972bf840ded5ff54b54b9188",
   "findings": [
     {
       "id": "r-567d3c62-8055-4d49-b1f1-205ce11153be",
@@ -113,6 +113,236 @@
           }
         ]
       }
+    },
+    {
+      "id": "r-27f00a4c-3a35-4347-9ab7-aa8c22511486",
+      "category": "Consistency",
+      "summary": "The contact page re-implements the Header's non-home chrome (fixed pill bar, logo link, Back to Home chip) inline, so the two copies must be changed together and already differ in markup.",
+      "paths": [
+        "app/contact-me/ContactPageClient.jsx",
+        "src/components/Header.jsx",
+        "src/__tests__/contact-form-validation.test.jsx",
+        "src/__tests__/header.test.jsx"
+      ],
+      "found": {
+        "origin": "native",
+        "commit": "1a594d1d5f2467a3972bf840ded5ff54b54b9188",
+        "date": "2026-11-08"
+      },
+      "assessment": {
+        "origin": "native",
+        "commit": "1a594d1d5f2467a3972bf840ded5ff54b54b9188",
+        "date": "2026-11-08",
+        "priority": "medium",
+        "risk": "needs-review",
+        "reason": "Logo, link or chip changes must be made twice, and only the Header copy has keyboard and navigation tests. The copies differ in wrapper classes and logo link styling, which is already drift.",
+        "evidence": [
+          "app/contact-me/ContactPageClient.jsx lines 147-177 render a motion.header with the same pill container, boxShadow, logo Image and Back to Home chip variant as src/components/Header.jsx lines 116-230 renders for non-home paths.",
+          "Header selects the Back to Home chip when usePathname() is not '/', which includes /contact-me.",
+          "contact-form-validation.test.jsx mocks next/link, next/image, ui/button and lib/utils but not next/navigation, so it would need a mechanical companion mock."
+        ],
+        "invariant": "Contact route markup other than the header stays identical. The header keeps the logo link to '/', the Back to Home link to '/', the same visual layout and the 0.5s slide-in. Form behaviour, anti-spam guards and EmailJS arguments are untouched."
+      },
+      "state": "open",
+      "depends_on": []
+    },
+    {
+      "id": "r-46833e73-c1d3-44e1-b292-9722c0c81c0b",
+      "category": "Consistency",
+      "summary": "Testimonials declares a local textPrimary hex literal that repeats COLORS.textPrimaryHome, which theme.js exists to name once.",
+      "paths": [
+        "src/components/Testimonials.jsx",
+        "src/config/theme.js"
+      ],
+      "found": {
+        "origin": "native",
+        "commit": "1a594d1d5f2467a3972bf840ded5ff54b54b9188",
+        "date": "2026-11-08"
+      },
+      "assessment": {
+        "origin": "native",
+        "commit": "1a594d1d5f2467a3972bf840ded5ff54b54b9188",
+        "date": "2026-11-08",
+        "priority": "low",
+        "risk": "needs-review",
+        "reason": "A palette change to the homepage primary text colour would miss this component, which is the drift theme.js was created to prevent.",
+        "evidence": [
+          "src/components/Testimonials.jsx declares const textPrimary = \"#242424\".",
+          "src/config/theme.js defines COLORS.textPrimaryHome as \"#242424\" for the homepage grid sections; OverviewGrid and Services already read it.",
+          "The value is used only for the section label colour in Testimonials."
+        ],
+        "invariant": "The rendered colour stays #242424 and every other colour in Testimonials, including Tailwind class literals, is unchanged."
+      },
+      "state": "open",
+      "depends_on": []
+    },
+    {
+      "id": "r-46027ab5-aade-4c58-91ef-fb860e204c6c",
+      "category": "Code Quality",
+      "summary": "Footer repeats a roughly 30-line contact card (LinkedIn and Email) with the same classes in a different order and the same icon, title, subtitle and arrow structure.",
+      "paths": [
+        "src/components/Footer.jsx",
+        "src/__tests__/footer.test.jsx"
+      ],
+      "found": {
+        "origin": "native",
+        "commit": "1a594d1d5f2467a3972bf840ded5ff54b54b9188",
+        "date": "2026-11-08"
+      },
+      "assessment": {
+        "origin": "native",
+        "commit": "1a594d1d5f2467a3972bf840ded5ff54b54b9188",
+        "date": "2026-11-08",
+        "priority": "low",
+        "risk": "safe",
+        "reason": "A change to the card layout or hover style has to be applied to both blocks, and the class lists have already drifted in ordering.",
+        "evidence": [
+          "src/components/Footer.jsx lines 62-118: two anchors with identical container, icon-circle, text and ExternalLink structure.",
+          "The LinkedIn anchor alone sets target=_blank, title, aria-label and rel; the Email anchor builds a mailto href.",
+          "footer.test.jsx asserts both links' names, destinations, target and rel."
+        ],
+        "invariant": "Both links keep their hrefs, accessible names, target and rel (LinkedIn new tab with warning; Email same tab), focus styles, class output and DOM order."
+      },
+      "state": "open",
+      "depends_on": []
+    },
+    {
+      "id": "r-c444e582-c204-4d1e-8a4e-2ec24bbc3c82",
+      "category": "Code Quality",
+      "summary": "CaseStudyAuthor repeats the same long social-link anchor class string and SVG wrapper for Facebook and LinkedIn.",
+      "paths": [
+        "src/components/CaseStudyAuthor.jsx",
+        "src/__tests__/case-study-author.test.jsx"
+      ],
+      "found": {
+        "origin": "native",
+        "commit": "1a594d1d5f2467a3972bf840ded5ff54b54b9188",
+        "date": "2026-11-08"
+      },
+      "assessment": {
+        "origin": "native",
+        "commit": "1a594d1d5f2467a3972bf840ded5ff54b54b9188",
+        "date": "2026-11-08",
+        "priority": "low",
+        "risk": "safe",
+        "reason": "The 280-character class string and SVG attributes must be kept in sync by hand in two places.",
+        "evidence": [
+          "src/components/CaseStudyAuthor.jsx lines 22-55: two anchors with identical className, rel and SVG attributes differing only in href, aria-label and path.",
+          "case-study-author.test.jsx asserts both links' hrefs, absence of target, focus class and SVG hidden attributes."
+        ],
+        "invariant": "Both links keep their order, hrefs, aria-labels, same-tab behaviour, class output and hidden decorative SVGs."
+      },
+      "state": "open",
+      "depends_on": []
+    },
+    {
+      "id": "r-41f565d9-3105-4a5a-9305-531c253a35c7",
+      "category": "Code Quality",
+      "summary": "Header's menu links use a non-home /?scrollTo= href that the UI can never reach: the menu trigger renders only on the home page, so the branch and its app/ScrollToSection consumer have no in-app producer.",
+      "paths": [
+        "src/components/Header.jsx",
+        "app/ScrollToSection.jsx",
+        "app/page.jsx",
+        "src/__tests__/scroll-to-section.test.jsx"
+      ],
+      "found": {
+        "origin": "native",
+        "commit": "1a594d1d5f2467a3972bf840ded5ff54b54b9188",
+        "date": "2026-11-08"
+      },
+      "assessment": {
+        "origin": "native",
+        "commit": "1a594d1d5f2467a3972bf840ded5ff54b54b9188",
+        "date": "2026-11-08",
+        "priority": "unknown",
+        "risk": "needs-review",
+        "reason": "A misleading dead branch and a Suspense-wrapped query handler suggest behaviour the app does not have, and AGENTS.md documents the branch as a Known Trap. Whether to remove it or restore the menu on other routes depends on intent.",
+        "evidence": [
+          "Header.jsx renders the Menu button only when pathname === '/'; otherwise it renders the Back to Home chip, so menuOpen can never become true on other routes.",
+          "grep finds /?scrollTo= produced only in Header.jsx; Footer links to /#portfolio natively.",
+          "ScrollToSection and its tests cover the query contract, which external or bookmarked links could still use."
+        ],
+        "invariant": "Any change keeps home-page menu navigation, the /?scrollTo= query behaviour for existing URLs (unless the owner retires it), and the Suspense wrapper required by useSearchParams."
+      },
+      "state": "open",
+      "depends_on": [],
+      "blocker": {
+        "kind": "clarification",
+        "reason": "Confirm whether the /?scrollTo= entry point must keep working for external links and whether the menu should ever appear on non-home routes. Remove the dead header branch only after that decision; otherwise leave it."
+      }
+    },
+    {
+      "id": "r-a544d34b-4700-4131-874f-bfb35c7941ec",
+      "category": "Tests",
+      "summary": "Eleven test files copy the same next/image mock factory, seven copy the next/link mock, and two copy an IntersectionObserver class, so a change to the stub shape needs many edits.",
+      "paths": [
+        "src/__tests__/header.test.jsx",
+        "src/__tests__/section-targets.test.jsx",
+        "src/__tests__/portfolio.test.jsx",
+        "src/__tests__/footer.test.jsx",
+        "src/__tests__/views.test.jsx",
+        "src/__tests__/testimonials.test.jsx",
+        "src/__tests__/case-study-routes.test.jsx",
+        "src/__tests__/test-utils/mockMotion.js"
+      ],
+      "found": {
+        "origin": "native",
+        "commit": "1a594d1d5f2467a3972bf840ded5ff54b54b9188",
+        "date": "2026-11-08"
+      },
+      "assessment": {
+        "origin": "native",
+        "commit": "1a594d1d5f2467a3972bf840ded5ff54b54b9188",
+        "date": "2026-11-08",
+        "priority": "low",
+        "risk": "needs-review",
+        "reason": "The stub shape is repeated by copy and paste across the suite, while the motion mock is already shared; keeping a single definition would make future stub fixes one edit.",
+        "evidence": [
+          "grep finds vi.mock(\"next/image\") in 11 test files and vi.mock(\"next/link\") in 7.",
+          "header.test.jsx and section-targets.test.jsx each define the same MockIntersectionObserver class.",
+          "vi.mock factories are hoisted, so a shared helper must be loaded with an async factory import, as skip-link.test.jsx does for mockMotion."
+        ],
+        "invariant": "Every test keeps its scenarios, assertions, the per-file overrides that differ (for example Image props and Link extras) and its isolation. No test is skipped, merged or loosened."
+      },
+      "state": "open",
+      "depends_on": []
+    },
+    {
+      "id": "r-d24a8865-9acf-4cb0-b049-0b30a58abfc0",
+      "category": "Code Quality",
+      "summary": "Ten test files import the default React binding but never reference it, because the Vitest React plugin supplies the automatic JSX runtime.",
+      "paths": [
+        "src/__tests__/faq.test.jsx",
+        "src/__tests__/views.test.jsx",
+        "src/__tests__/footer.test.jsx",
+        "src/__tests__/services.test.jsx",
+        "src/__tests__/portfolio.test.jsx",
+        "src/__tests__/testimonials.test.jsx",
+        "src/__tests__/hero.test.jsx",
+        "src/__tests__/contact-form-validation.test.jsx",
+        "src/__tests__/overview-grid.test.jsx",
+        "src/__tests__/journey.test.jsx"
+      ],
+      "found": {
+        "origin": "native",
+        "commit": "1a594d1d5f2467a3972bf840ded5ff54b54b9188",
+        "date": "2026-11-08"
+      },
+      "assessment": {
+        "origin": "native",
+        "commit": "1a594d1d5f2467a3972bf840ded5ff54b54b9188",
+        "date": "2026-11-08",
+        "priority": "low",
+        "risk": "safe",
+        "reason": "Unused imports make each file's dependency list inaccurate, and the same cleanup was already accepted for button.jsx.",
+        "evidence": [
+          "A static import scan finds import React from \"react\" with no other React reference in these ten files.",
+          "vitest.config.js uses @vitejs/plugin-react, and passing tests with JSX in files that lack a React import (for example section-targets.test.jsx) confirm the automatic runtime."
+        ],
+        "invariant": "Remove only the unused default React import in those files. Keep React where it is referenced (for example vitest.setup.js and ui/accordion.jsx) and change no test body."
+      },
+      "state": "open",
+      "depends_on": []
     }
   ]
 }
