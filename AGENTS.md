@@ -11,7 +11,7 @@ Public-facing, single-owner site. Deployed copy and layout changes affect visito
 - ship-method: direct
 - git-auto-commit: true
 - git-merge-strategy: squash
-- readme-style: standard
+- readme-style: custom
 
 ## Dev Commands
 
