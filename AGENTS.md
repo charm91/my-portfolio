@@ -23,7 +23,7 @@ npm install
 npm run dev             # starts at PORT or 3002; probes upward for a free port
 npm run build           # production build
 npm start               # serves the production build
-npm run lint            # next lint; configured in eslint.config.js
+npm run lint            # ESLint, including JSX; configured in eslint.config.js
 npm test                # Vitest run
 npm run test:watch
 npm run test:coverage   # V8 text and HTML coverage

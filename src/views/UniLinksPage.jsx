@@ -53,7 +53,7 @@ export function UniLinksPage() {
       </Section>
       <Section title="Why UniLinks Exists (The Motivation)">
         <p className="mb-4">
-          I co-founded UniLinks while pursuing my Master's degree at
+          I co-founded UniLinks while pursuing my Master&apos;s degree at
           Harbour.Space, originally as a capstone project. The idea emerged
           from close friends who were informally helping students navigate
           real challenges: unclear admission information, difficulty
@@ -62,7 +62,7 @@ export function UniLinksPage() {
         </p>
         <p className="mb-4">
           Having experienced student life overseas myself, I understood how
-          information gaps and financial stress can shape a student's entire
+          information gaps and financial stress can shape a student&apos;s entire
           academic journey. At the same time, I saw a powerful opportunity:
           existing students already held the knowledge junior students
           needed.
@@ -132,8 +132,8 @@ export function UniLinksPage() {
       </Section>
       <Section title="Our Approach: A Student-First Admission Model">
         <p className="mb-4">
-          That's why we built UniLinks to redesign the admission journey
-          from a student's perspective. Instead of relying on marketing
+          That&apos;s why we built UniLinks to redesign the admission journey
+          from a student&apos;s perspective. Instead of relying on marketing
           content or third-party agencies, UniLinks connects prospective
           students directly with those already studying the same program and
           university, enabling honest, experience-based guidance.

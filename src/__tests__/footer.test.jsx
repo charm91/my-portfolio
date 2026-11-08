@@ -36,11 +36,10 @@ describe("Footer", () => {
     render(<Footer />);
     expect(screen.getByText("Email")).toBeInTheDocument();
     const destination = new URL(screen.getByRole("link", { name: /Email/i }).href);
-    expect(destination.origin).toBe("https://mail.google.com");
-    expect(destination.pathname).toBe("/mail/");
-    expect(destination.searchParams.get("view")).toBe("cm");
-    expect(destination.searchParams.get("to")).toBe(SITE.email);
-    expect(destination.searchParams.get("su")).toBe(`Hello ${SITE.displayName}`);
+    expect(destination.protocol).toBe("mailto:");
+    expect(destination.pathname).toBe(SITE.email);
+    expect(destination.searchParams.get("subject")).toBe(`Hello ${SITE.displayName}`);
+    expect(screen.getByRole("link", { name: "Email Reach me directly" })).not.toHaveAttribute("target");
   });
 
   it("links Resume to the configured document", () => {
@@ -50,7 +49,7 @@ describe("Footer", () => {
 
   it("opens the selected external destinations in a new tab with a warning", () => {
     render(<Footer />);
-    for (const name of ["LinkedIn", "Email", "Resume"]) {
+    for (const name of ["LinkedIn", "Resume"]) {
       const link = screen.getByRole("link", { name: `${name} (opens in a new tab)` });
       expect(link).toHaveAttribute("target", "_blank");
       expect(link).toHaveAttribute("title", "Opens in a new tab");

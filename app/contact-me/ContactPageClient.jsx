@@ -24,13 +24,16 @@ const RESUBMIT_COOLDOWN_MS = 30000;
 export default function ContactPageClient() {
   const [status, setStatus] = useState("idle"); // idle | sending | success | error
   const [errorMsg, setErrorMsg] = useState("");
+  const [invalidField, setInvalidField] = useState(null);
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
   const [honeypot, setHoneypot] = useState("");
-  const [canSubmit, setCanSubmit] = useState(true);
-  const formLoadTime = useRef(Date.now());
+  const [retrySeconds, setRetrySeconds] = useState(0);
+  const canSubmit = retrySeconds === 0;
+  const formLoadTime = useRef(null);
   const cooldownTimer = useRef(null);
 
   useEffect(() => {
+    formLoadTime.current = Date.now();
     return () => {
       if (cooldownTimer.current) clearTimeout(cooldownTimer.current);
     };
@@ -43,42 +46,54 @@ export default function ContactPageClient() {
     if (honeypot) return;
 
     // Anti-spam: reject submissions faster than a human can fill the form
-    if (Date.now() - formLoadTime.current < MIN_SUBMIT_MS) return;
+    if (formLoadTime.current === null || Date.now() - formLoadTime.current < MIN_SUBMIT_MS) return;
 
     // Anti-spam: cooldown between submissions
-    if (!canSubmit) return;
+    if (!canSubmit || status === "sending") return;
 
     // Validation
     const name = formData.name.trim();
     const email = formData.email.trim();
     const message = formData.message.trim();
 
-    if (name.length < 2) {
-      setErrorMsg("Please enter your full name.");
+    const showFieldError = (field, message) => {
+      setInvalidField(field);
+      setErrorMsg(message);
       setStatus("error");
+      e.currentTarget.elements.namedItem(field)?.focus();
+    };
+
+    if (name.length < 2) {
+      showFieldError("name", "Please enter your full name.");
       return;
     }
     if (!EMAIL_RE.test(email)) {
-      setErrorMsg("Please enter a valid email address.");
-      setStatus("error");
+      showFieldError("email", "Please enter a valid email address.");
       return;
     }
     if (message.length < 10) {
-      setErrorMsg("Your message is too short. Please add more detail.");
-      setStatus("error");
+      showFieldError("message", "Your message is too short. Please add more detail.");
       return;
     }
 
     setStatus("sending");
     setErrorMsg("");
+    setInvalidField(null);
 
     const publicKey = "cXgAIzNSkZVXYkXyE";
     const serviceId = "service_tgrxl4a";
     const templateId = "template_hbeyl4c";
 
     // Start cooldown only after we actually attempt the send
-    setCanSubmit(false);
-    cooldownTimer.current = setTimeout(() => setCanSubmit(true), RESUBMIT_COOLDOWN_MS);
+    const retryAt = Date.now() + RESUBMIT_COOLDOWN_MS;
+    const updateCountdown = () => {
+      const remaining = Math.max(0, retryAt - Date.now());
+      setRetrySeconds(Math.ceil(remaining / 1000));
+      if (remaining > 0) {
+        cooldownTimer.current = setTimeout(updateCountdown, Math.min(1000, remaining));
+      }
+    };
+    updateCountdown();
 
     try {
       await emailjs.send(
@@ -101,9 +116,10 @@ export default function ContactPageClient() {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
     // Clear error feedback as the user corrects their input
-    if (status === "error") {
+    if (status === "error" && (!invalidField || invalidField === name)) {
       setStatus("idle");
       setErrorMsg("");
+      setInvalidField(null);
     }
   };
 
@@ -220,6 +236,8 @@ export default function ContactPageClient() {
               </label>
               <input
                 id="contact-name"
+                aria-invalid={invalidField === "name" || undefined}
+                aria-describedby={invalidField === "name" ? "contact-form-error" : undefined}
                 name="name"
                 type="text"
                 required
@@ -230,6 +248,7 @@ export default function ContactPageClient() {
                 className={cn(
                   "w-full rounded-xl border-0 px-4 py-3 text-base outline-none transition-colors duration-150",
                   "placeholder:text-[#6b7280] focus:ring-2 focus:ring-[#1f2937]/60",
+                  "aria-invalid:ring-2 aria-invalid:ring-red-600",
                   "disabled:opacity-60 disabled:cursor-not-allowed",
                 )}
                 style={{ backgroundColor: inputBg, color: textPrimary }}
@@ -246,6 +265,8 @@ export default function ContactPageClient() {
               </label>
               <input
                 id="contact-email"
+                aria-invalid={invalidField === "email" || undefined}
+                aria-describedby={invalidField === "email" ? "contact-form-error" : undefined}
                 name="email"
                 type="email"
                 required
@@ -256,6 +277,7 @@ export default function ContactPageClient() {
                 className={cn(
                   "w-full rounded-xl border-0 px-4 py-3 text-base outline-none transition-colors duration-150",
                   "placeholder:text-[#6b7280] focus:ring-2 focus:ring-[#1f2937]/60",
+                  "aria-invalid:ring-2 aria-invalid:ring-red-600",
                   "disabled:opacity-60 disabled:cursor-not-allowed",
                 )}
                 style={{ backgroundColor: inputBg, color: textPrimary }}
@@ -273,6 +295,8 @@ export default function ContactPageClient() {
             </label>
             <textarea
               id="contact-message"
+              aria-invalid={invalidField === "message" || undefined}
+              aria-describedby={invalidField === "message" ? "contact-form-error" : undefined}
               name="message"
               required
               rows={5}
@@ -283,6 +307,7 @@ export default function ContactPageClient() {
               className={cn(
                 "min-h-[120px] w-full resize-y rounded-xl border-0 px-4 py-3 text-base outline-none transition-colors duration-150",
                 "placeholder:text-[#6b7280] focus:ring-2 focus:ring-[#1f2937]/60",
+                "aria-invalid:ring-2 aria-invalid:ring-red-600",
                 "disabled:opacity-60 disabled:cursor-not-allowed",
               )}
               style={{ backgroundColor: inputBg, color: textPrimary }}
@@ -302,7 +327,7 @@ export default function ContactPageClient() {
           <div role="alert" aria-atomic="true">
             {status === "error" && (
               <div className="mb-4 rounded-xl bg-red-50 px-4 py-3 text-center">
-                <p className="text-sm font-medium text-red-700">
+                <p id="contact-form-error" className="text-sm font-medium text-red-700">
                   {errorMsg || "Something went wrong. Please try again later."}
                 </p>
               </div>
@@ -320,6 +345,8 @@ export default function ContactPageClient() {
                 <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
                 Sending...
               </span>
+            ) : retrySeconds > 0 ? (
+              `Try again in ${retrySeconds}s`
             ) : (
               "Send Message"
             )}

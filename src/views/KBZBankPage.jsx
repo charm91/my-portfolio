@@ -77,7 +77,7 @@ export function KBZBankPage() {
           The biggest issue was not just the number of steps, but the lack of
           clarity in how the system works.
         </p>
-        <p className="mb-4">Users didn't understand:</p>
+        <p className="mb-4">Users didn&apos;t understand:</p>
         <ul className="list-disc pl-5 space-y-1">
           <li>Why they needed to input so much data</li>
           <li>What would happen after identity verification</li>
@@ -143,7 +143,7 @@ export function KBZBankPage() {
 
       <Section title="Creating a Multi-System Validation Flow">
         <p className="mb-4">
-          Authentication doesn't happen in a single step; it spans across
+          Authentication doesn&apos;t happen in a single step; it spans across
           multiple systems. <br />
           After onboarding, validation continues through different channels:
         </p>
@@ -175,7 +175,7 @@ export function KBZBankPage() {
 
       <Section title="Designing for Real System States, Not Just Errors">
         <p className="mb-4">
-          The onboarding journey doesn't end at submission; it continues
+          The onboarding journey doesn&apos;t end at submission; it continues
           through multiple system responses delivered via inbox
           notifications. <br /> Users may encounter different outcomes such
           as:
@@ -206,7 +206,7 @@ export function KBZBankPage() {
 
       <Section title="Final Activation & Offline Touchpoint">
         <p className="mb-4">
-          Even after completing digital onboarding, the journey doesn't
+          Even after completing digital onboarding, the journey doesn&apos;t
           fully end online.
         </p>
         <p className="mb-4">

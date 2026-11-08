@@ -25,7 +25,7 @@ export function Footer() {
             className="inline-block px-4 py-1.5 rounded-full text-xs font-medium mb-5"
             style={{ backgroundColor: COLORS.inputBg, color: textPrimary }}
           >
-            Let's Connect
+            Let&apos;s Connect
           </span>
           <h2
             className="section-title text-center mb-4"
@@ -89,11 +89,7 @@ export function Footer() {
             />
           </a>
           <a
-            href={`https://mail.google.com/mail/?view=cm&fs=1&to=${SITE.email}&su=Hello%20${encodeURIComponent(SITE.displayName)}`}
-            target="_blank"
-            title="Opens in a new tab"
-            aria-label="Email (opens in a new tab)"
-            rel="noopener noreferrer"
+            href={`mailto:${SITE.email}?subject=${encodeURIComponent(`Hello ${SITE.displayName}`)}`}
             className="flex items-center gap-4 rounded-full bg-white p-5 md:p-6 transition-shadow duration-150 hover:shadow-md focus-visible:shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
           >
             <div

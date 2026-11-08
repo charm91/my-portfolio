@@ -87,6 +87,9 @@ describe("Contact form validation", () => {
     await submitForm(user);
     expect(screen.getByText("Please enter your full name.")).toBeInTheDocument();
     expect(screen.getByRole("alert")).toHaveTextContent("Please enter your full name.");
+    expect(screen.getByLabelText("Your Name")).toHaveFocus();
+    expect(screen.getByLabelText("Your Name")).toHaveAttribute("aria-invalid", "true");
+    expect(screen.getByLabelText("Your Name")).toHaveAccessibleDescription("Please enter your full name.");
   });
 
   it("shows error when email is invalid", async () => {
@@ -96,6 +99,9 @@ describe("Contact form validation", () => {
     await setField(user, "Message", "Long enough message here");
     await submitForm(user);
     expect(screen.getByText("Please enter a valid email address.")).toBeInTheDocument();
+    expect(screen.getByLabelText("Email Address")).toHaveFocus();
+    expect(screen.getByLabelText("Email Address")).toHaveAttribute("aria-invalid", "true");
+    expect(screen.getByLabelText("Email Address")).toHaveAccessibleDescription("Please enter a valid email address.");
   });
 
   it("shows error when message is too short", async () => {
@@ -105,6 +111,9 @@ describe("Contact form validation", () => {
     await setField(user, "Message", "Short");
     await submitForm(user);
     expect(screen.getByText("Your message is too short. Please add more detail.")).toBeInTheDocument();
+    expect(screen.getByLabelText("Message")).toHaveFocus();
+    expect(screen.getByLabelText("Message")).toHaveAttribute("aria-invalid", "true");
+    expect(screen.getByLabelText("Message")).toHaveAccessibleDescription("Your message is too short. Please add more detail.");
   });
 
   it("clears error when user corrects input after a validation failure", async () => {
@@ -114,8 +123,13 @@ describe("Contact form validation", () => {
     await setField(user, "Message", "Long enough message here");
     await submitForm(user);
     expect(screen.getByText("Please enter your full name.")).toBeInTheDocument();
+    await setField(user, "Email Address", "updated@example.com");
+    expect(screen.getByLabelText("Your Name")).toHaveAttribute("aria-invalid", "true");
+    expect(screen.getByText("Please enter your full name.")).toBeInTheDocument();
     await setField(user, "Your Name", "Charm");
     expect(screen.queryByText("Please enter your full name.")).not.toBeInTheDocument();
+    expect(screen.getByLabelText("Your Name")).not.toHaveAttribute("aria-invalid");
+    expect(screen.getByLabelText("Your Name")).not.toHaveAttribute("aria-describedby");
   });
 
   it("silently blocks submission when form is filled too fast (bot guard)", async () => {
@@ -223,7 +237,7 @@ describe("Contact form validation", () => {
       }
     }
 
-    const submit = screen.getByRole("button", { name: /send message/i });
+    const submit = screen.getByRole("button", { name: "Try again in 30s" });
     expect(submit).toBeDisabled();
     fireEvent.click(submit);
     fireEvent.submit(container.querySelector("form"));
@@ -231,11 +245,13 @@ describe("Contact form validation", () => {
 
     act(() => vi.advanceTimersByTime(29999));
     expect(submit).toBeDisabled();
+    expect(submit).toHaveTextContent("Try again in 1s");
     fireEvent.submit(container.querySelector("form"));
     expect(emailjs.send).toHaveBeenCalledTimes(1);
 
     act(() => vi.advanceTimersByTime(1));
     expect(submit).toBeEnabled();
+    expect(submit).toHaveTextContent("Send Message");
     await act(async () => fireEvent.click(submit));
     expect(emailjs.send).toHaveBeenCalledTimes(2);
     expect(screen.getByText(/your message has been sent/i)).toBeInTheDocument();

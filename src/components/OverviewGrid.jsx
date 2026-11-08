@@ -68,13 +68,13 @@ export function OverviewGrid() {
                   className="text-xl font-medium mb-3"
                   style={{ color: textPrimary }}
                 >
-                  Hi, I'm {SITE.displayName}
+                  Hi, I&apos;m {SITE.displayName}
                 </h2>
                 <p
                   className="text-sm leading-relaxed"
                   style={{ color: textSecondary }}
                 >
-                  I'm a Senior Product Designer with 13+ years of experience
+                  I&apos;m a Senior Product Designer with 13+ years of experience
                   across fintech, banking, HR SaaS, education platforms, and
                   multi-role digital products.
                   <br />
@@ -103,7 +103,7 @@ export function OverviewGrid() {
                 <span className="w-px h-10 bg-border/50 hidden md:inline-block"></span>
                 <div className="min-w-0">
                   <h2 className="font-semibold" style={{ color: textPrimary }}>
-                    Let's Connect
+                    Let&apos;s Connect
                   </h2>
                   <div className="flex items-center justify-between md:gap-4">
                     <div
