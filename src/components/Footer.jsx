@@ -13,7 +13,7 @@ const textSecondary = COLORS.textSecondary;
 function ContactCard({ icon: Icon, heading, description, ...linkProps }) {
   return (
     <a
-      className="flex items-center gap-4 rounded-full bg-white p-5 md:p-6 transition-shadow duration-150 hover:shadow-md focus-visible:shadow-md focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+      className="flex items-center gap-4 rounded-full bg-white p-5 md:p-6 transition-shadow duration-150 hover:shadow-md focus-visible:shadow-md"
       {...linkProps}
     >
       <div
@@ -127,14 +127,14 @@ export function Footer() {
               title="Opens in a new tab"
               aria-label="Resume (opens in a new tab)"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm transition-colors duration-150 hover:bg-black text-secondary hover:text-white focus-visible:bg-black focus-visible:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary px-4 py-1.5 rounded-full"
+              className="inline-flex items-center gap-1.5 text-sm transition-colors duration-150 hover:bg-black text-secondary hover:text-white focus-visible:bg-black focus-visible:text-white focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-white px-4 py-1.5 rounded-full"
             >
               Resume
               <ExternalLink className="size-3.5" aria-hidden="true" />
             </a>
             <Link
               href="/#portfolio"
-              className="text-sm transition-colors duration-150 hover:bg-black text-secondary hover:text-white focus-visible:bg-black focus-visible:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary px-4 py-1.5 rounded-full"
+              className="text-sm transition-colors duration-150 hover:bg-black text-secondary hover:text-white focus-visible:bg-black focus-visible:text-white focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-white px-4 py-1.5 rounded-full"
             >
               Case Studies
             </Link>

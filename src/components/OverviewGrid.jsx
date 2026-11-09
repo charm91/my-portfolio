@@ -86,13 +86,10 @@ export function OverviewGrid() {
                 </p>
               </div>
             </motion.article>
-            <motion.article
-              variants={item}
-              className="rounded-2xl bg-white p-5 md:p-6"
-            >
+            <motion.article variants={item} className="rounded-2xl bg-white">
               <a
                 href="#contact"
-                className="group flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 rounded-lg focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+                className="group flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 rounded-2xl p-5 md:p-6"
               >
                 <span className="size-6 bg-emerald-200 rounded-full shrink-0 relative motion-safe:animate-pulse">
                   <span

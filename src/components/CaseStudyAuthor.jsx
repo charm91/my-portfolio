@@ -37,7 +37,7 @@ export function CaseStudyAuthor() {
               key={label}
               href={href}
               rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-slate-400 shadow-xs transition hover:text-slate-600 focus-visible:text-slate-600 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary"
+              className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-slate-400 shadow-xs transition hover:text-slate-600 focus-visible:text-slate-600 focus-visible:outline-2"
               aria-label={label}
             >
               <svg

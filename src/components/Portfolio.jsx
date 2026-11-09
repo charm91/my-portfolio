@@ -80,9 +80,9 @@ export function Portfolio() {
                 delay: 0.05 * index,
               }}
               key={project.href}
-              className="rounded-3xl overflow-hidden bg-card hover:shadow-xs focus-within:shadow-xs transition-shadow duration-300 p-2"
+              className="rounded-3xl bg-card hover:shadow-xs focus-within:shadow-xs transition-shadow duration-300"
             >
-              <Link href={project.href} className="group block rounded-3xl focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary">
+              <Link href={project.href} className="group block rounded-3xl p-2">
                 <div className="aspect-4/3 overflow-hidden rounded-3xl relative">
                   <Image
                     src={project.image}

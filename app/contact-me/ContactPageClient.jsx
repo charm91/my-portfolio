@@ -343,7 +343,7 @@ export default function ContactPageClient() {
           {status === "verifying" && (
             <button
               type="button"
-              className="mt-3 w-full rounded-full py-2 text-sm underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+              className="mt-3 w-full rounded-full py-2 text-sm underline"
               onClick={() => recaptcha.current.cancel()}
             >
               Cancel verification

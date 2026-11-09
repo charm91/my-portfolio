@@ -23,7 +23,7 @@
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.922 0 0);
   --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
+  --ring: #242424;
   --radius: 0.625rem;
 }
 
@@ -59,7 +59,12 @@
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
+  }
+  /* Keyboard focus follows the control edge without changing its layout. */
+  :where(a, button, [role="button"]):focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 0;
   }
   html {
     @apply font-sans scroll-smooth;

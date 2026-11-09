@@ -132,7 +132,7 @@ export function Header() {
       >
         <Link
           href="/"
-          className="text-lg font-semibold text-[#1f2937] hover:opacity-80 transition-opacity shrink-0"
+          className="inline-flex items-center rounded-lg px-2 py-1 -mx-2 text-lg font-semibold text-[#1f2937] hover:opacity-80 transition-opacity shrink-0"
           onClick={() => setMenuOpen(false)}
         >
           <Image src={logoAsset.src} alt={SITE.displayName} width={80} height={32} />
@@ -157,7 +157,7 @@ export function Header() {
               aria-controls={menuId}
               onClick={() => setMenuOpen((o) => !o)}
               className={cn(
-                "rounded-full px-5 py-2 text-sm font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
+                "rounded-full px-5 py-2 text-sm font-medium transition-colors duration-150",
                 "bg-gray-100 hover:bg-gray-200 text-[#1f2937] cursor-pointer",
               )}
             >
@@ -197,9 +197,9 @@ export function Header() {
                         aria-current={isActive ? "location" : undefined}
                         onClick={handleNavClick}
                         className={cn(
-                          "w-full rounded-full py-2.5 px-4 text-left text-sm font-medium transition-colors duration-150 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary",
+                          "w-full rounded-full py-2.5 px-4 text-left text-sm font-medium transition-colors duration-150",
                           isActive
-                            ? "bg-[#1f2937] text-white"
+                            ? "bg-[#1f2937] text-white focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-white"
                             : "text-[#1f2937] hover:bg-[#f3f4f6]",
                         )}
                       >
