@@ -35,7 +35,7 @@ export function OverviewGrid() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, margin: "-60px" }}
-          className="grid lg:grid-cols-5 gap-6 md:gap-5"
+          className="focus-reveal grid lg:grid-cols-5 gap-6 md:gap-5"
         >
           <div className="flex flex-col gap-4 md:gap-5 lg:col-span-3 w-full">
             <motion.article
@@ -86,7 +86,7 @@ export function OverviewGrid() {
                 </p>
               </div>
             </motion.article>
-            <motion.article variants={item} className="rounded-2xl bg-white">
+            <motion.article variants={item} className="focus-reveal rounded-2xl bg-white">
               <a
                 href="#contact"
                 className="group flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 rounded-2xl p-5 md:p-6"

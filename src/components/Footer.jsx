@@ -49,7 +49,7 @@ export function Footer() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="rounded-3xl bg-white p-8 md:p-10 text-center mb-8 md:mb-10"
+          className="focus-reveal rounded-3xl bg-white p-8 md:p-10 text-center mb-8 md:mb-10"
         >
           <span
             className="inline-block px-4 py-1.5 rounded-full text-xs font-medium mb-5"
@@ -87,7 +87,7 @@ export function Footer() {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-12 md:mb-16"
+          className="focus-reveal grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-12 md:mb-16"
         >
           <ContactCard
             href={SOCIAL_LINKS.linkedin}
@@ -112,7 +112,7 @@ export function Footer() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-4 pt-6 border-t border-[#d1d5db]"
+          className="focus-reveal flex flex-col-reverse sm:flex-row sm:items-center sm:justify-between gap-4 pt-6 border-t border-[#d1d5db]"
         >
           <p
             className="text-sm text-center sm:text-left"
@@ -127,14 +127,14 @@ export function Footer() {
               title="Opens in a new tab"
               aria-label="Resume (opens in a new tab)"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm transition-colors duration-150 hover:bg-black text-secondary hover:text-white focus-visible:bg-black focus-visible:text-white focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-white px-4 py-1.5 rounded-full"
+              className="inline-flex items-center gap-1.5 text-sm transition-colors duration-150 hover:bg-black text-secondary hover:text-white focus-visible:bg-secondary focus-visible:text-white px-4 py-1.5 rounded-full"
             >
               Resume
               <ExternalLink className="size-3.5" aria-hidden="true" />
             </a>
             <Link
               href="/#portfolio"
-              className="text-sm transition-colors duration-150 hover:bg-black text-secondary hover:text-white focus-visible:bg-black focus-visible:text-white focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-white px-4 py-1.5 rounded-full"
+              className="text-sm transition-colors duration-150 hover:bg-black text-secondary hover:text-white focus-visible:bg-secondary focus-visible:text-white px-4 py-1.5 rounded-full"
             >
               Case Studies
             </Link>

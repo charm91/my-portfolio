@@ -80,7 +80,7 @@ export function Portfolio() {
                 delay: 0.05 * index,
               }}
               key={project.href}
-              className="rounded-3xl bg-card hover:shadow-xs focus-within:shadow-xs transition-shadow duration-300"
+              className="focus-reveal rounded-3xl bg-card hover:shadow-xs focus-within:shadow-xs transition-shadow duration-300"
             >
               <Link href={project.href} className="group block rounded-3xl p-2">
                 <div className="aspect-4/3 overflow-hidden rounded-3xl relative">
@@ -127,7 +127,7 @@ export function Portfolio() {
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="mt-12 text-center"
+            className="focus-reveal mt-12 text-center"
           >
             <Button size="lg" className="rounded-full px-8 h-10" asChild>
               <Link href="/portfolio">See All</Link>

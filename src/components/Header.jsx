@@ -117,7 +117,7 @@ export function Header() {
       initial={{ y: -80 }}
       animate={{ y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
-      className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-3 md:pt-4 max-w-xl mx-auto"
+      className="focus-reveal fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-3 md:pt-4 max-w-xl mx-auto"
     >
       {/* Pill-shaped nav bar: white, rounded, shadow */}
       <div
@@ -199,7 +199,7 @@ export function Header() {
                         className={cn(
                           "w-full rounded-full py-2.5 px-4 text-left text-sm font-medium transition-colors duration-150",
                           isActive
-                            ? "bg-[#1f2937] text-white focus-visible:ring-1 focus-visible:ring-inset focus-visible:ring-white"
+                            ? "bg-[#1f2937] text-white focus-visible:bg-secondary"
                             : "text-[#1f2937] hover:bg-[#f3f4f6]",
                         )}
                       >

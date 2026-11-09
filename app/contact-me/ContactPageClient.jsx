@@ -199,7 +199,7 @@ export default function ContactPageClient() {
           onSubmit={handleSubmit}
           noValidate
           aria-busy={isBusy}
-          className="rounded-3xl bg-white p-6 md:p-8"
+          className="focus-reveal rounded-3xl bg-white p-6 md:p-8"
           style={{ boxShadow: "0 2px 5px rgba(0, 0, 0, 0.06)" }}
         >
           {/* Honeypot — hidden from real users, attracts bots */}
@@ -235,9 +235,9 @@ export default function ContactPageClient() {
                 onChange={handleChange}
                 disabled={isBusy}
                 className={cn(
-                  "w-full rounded-xl border-0 px-4 py-3 text-base outline-none transition-colors duration-150",
-                  "placeholder:text-[#6b7280] focus:ring-2 focus:ring-[#1f2937]/60",
-                  "aria-invalid:ring-2 aria-invalid:ring-red-600",
+                  "w-full rounded-xl border-0 px-4 py-3 text-base transition-colors duration-150",
+                  "placeholder:text-[#6b7280]",
+                  "aria-invalid:outline-2 aria-invalid:outline-red-600",
                   "disabled:opacity-60 disabled:cursor-not-allowed",
                 )}
                 style={{ backgroundColor: inputBg, color: textPrimary }}
@@ -264,9 +264,9 @@ export default function ContactPageClient() {
                 onChange={handleChange}
                 disabled={isBusy}
                 className={cn(
-                  "w-full rounded-xl border-0 px-4 py-3 text-base outline-none transition-colors duration-150",
-                  "placeholder:text-[#6b7280] focus:ring-2 focus:ring-[#1f2937]/60",
-                  "aria-invalid:ring-2 aria-invalid:ring-red-600",
+                  "w-full rounded-xl border-0 px-4 py-3 text-base transition-colors duration-150",
+                  "placeholder:text-[#6b7280]",
+                  "aria-invalid:outline-2 aria-invalid:outline-red-600",
                   "disabled:opacity-60 disabled:cursor-not-allowed",
                 )}
                 style={{ backgroundColor: inputBg, color: textPrimary }}
@@ -294,9 +294,9 @@ export default function ContactPageClient() {
               onChange={handleChange}
               disabled={isBusy}
               className={cn(
-                "min-h-[120px] w-full resize-y rounded-xl border-0 px-4 py-3 text-base outline-none transition-colors duration-150",
-                "placeholder:text-[#6b7280] focus:ring-2 focus:ring-[#1f2937]/60",
-                "aria-invalid:ring-2 aria-invalid:ring-red-600",
+                "min-h-[120px] w-full resize-y rounded-xl border-0 px-4 py-3 text-base transition-colors duration-150",
+                "placeholder:text-[#6b7280]",
+                "aria-invalid:outline-2 aria-invalid:outline-red-600",
                 "disabled:opacity-60 disabled:cursor-not-allowed",
               )}
               style={{ backgroundColor: inputBg, color: textPrimary }}

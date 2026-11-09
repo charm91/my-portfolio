@@ -5,6 +5,7 @@ import RootLayout from "../../app/layout";
 import ContactPageClient from "../../app/contact-me/ContactPageClient";
 import { CaseStudyShell } from "../components/CaseStudyShell";
 import { HomeShell } from "../components/HomeShell";
+import NotFound from "../../app/not-found";
 
 vi.mock("next/font/google", () => ({ Inter: () => ({ variable: "test-inter" }) }));
 
@@ -40,6 +41,7 @@ const shells = [
     </CaseStudyShell>
   )],
   ["the contact page", () => <ContactPageClient />],
+  ["the not-found page", () => <NotFound />],
 ];
 
 describe("Skip link", () => {

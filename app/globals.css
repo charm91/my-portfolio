@@ -62,12 +62,25 @@
     @apply border-border;
   }
   /* Keyboard focus follows the control edge without changing its layout. */
-  :where(a, button, [role="button"]):focus-visible {
+  :where(a, button, [role="button"]):focus-visible,
+  :where(input, textarea, select):focus {
     outline: 2px solid var(--ring);
     outline-offset: 0;
   }
+  :where(a, button, input, textarea, select, [tabindex]) {
+    scroll-margin-block: 1rem;
+  }
   html {
     @apply font-sans scroll-smooth;
+    scroll-padding-top: 6rem;
+  }
+  html:has(:focus-visible) {
+    scroll-behavior: auto;
+  }
+  /* A focused control must be visible immediately, even before its reveal runs. */
+  .focus-reveal:has(:focus-visible) {
+    opacity: 1 !important;
+    transform: none !important;
   }
   body {
     @apply text-foreground antialiased;

@@ -130,7 +130,7 @@ export function Services() {
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-12 md:mt-14 flex justify-center"
+          className="focus-reveal mt-12 md:mt-14 flex justify-center"
         >
           <Button
             size="lg"

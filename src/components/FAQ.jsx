@@ -57,16 +57,16 @@ export function FAQ() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.4 }}
-          className="max-w-[600px] mx-auto"
+          className="focus-reveal max-w-[600px] mx-auto"
         >
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq) => (
               <AccordionItem key={faq.q} value={faq.q}>
-                <div className="bg-white px-6 py-3 rounded-3xl">
-                  <AccordionTrigger className="text-base font-medium text-left">
+                <div className="bg-white rounded-3xl">
+                  <AccordionTrigger className="rounded-3xl px-6 py-7 text-base font-medium text-left">
                     {faq.q}
                   </AccordionTrigger>
-                  <AccordionContent className="text-secondary">
+                  <AccordionContent className="px-6 pb-3 text-secondary">
                     {faq.a}
                   </AccordionContent>
                 </div>
