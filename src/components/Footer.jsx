@@ -4,13 +4,16 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { Linkedin, Mail, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
-import { SITE, SOCIAL_LINKS, RESUME_URL } from "@/config/site";
+import { SITE, SITE_URL, SOCIAL_LINKS, RESUME_URL } from "@/config/site";
 import { COLORS } from "@/config/theme";
 
 const textPrimary = COLORS.textPrimary;
 const textSecondary = COLORS.textSecondary;
 
 function ContactCard({ icon: Icon, heading, description, ...linkProps }) {
+  const destination = new URL(linkProps.href, SITE_URL);
+  const external = ["https:", "http:"].includes(destination.protocol)
+    && destination.origin !== new URL(SITE_URL).origin;
   return (
     <a
       className="flex items-center gap-4 rounded-full bg-white p-5 md:p-6 transition-shadow duration-150 hover:shadow-md focus-visible:shadow-md"
@@ -28,14 +31,16 @@ function ContactCard({ icon: Icon, heading, description, ...linkProps }) {
         </p>
         <p className="mt-0.5 text-sm" style={{ color: textSecondary }}>
           {description}
+          {linkProps.target === "_blank" && <span className="block text-xs">Opens in new tab</span>}
         </p>
       </div>
       <span className="hidden h-10 w-px bg-border/50 md:inline-block"></span>
-      <ExternalLink
+      {external && <ExternalLink
+        aria-hidden="true"
         className="size-5 shrink-0"
         style={{ color: textPrimary }}
         strokeWidth={2}
-      />
+      />}
     </a>
   );
 }
@@ -129,7 +134,7 @@ export function Footer() {
               rel="noopener noreferrer"
               className="focus-inverse inline-flex items-center gap-1.5 text-sm transition-colors duration-150 hover:bg-black text-secondary hover:text-white focus-visible:bg-secondary focus-visible:text-white px-4 py-1.5 rounded-full"
             >
-              Resume
+              Resume <span className="text-xs">(opens in new tab)</span>
               <ExternalLink className="size-3.5" aria-hidden="true" />
             </a>
             <Link
