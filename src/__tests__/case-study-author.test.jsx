@@ -16,18 +16,20 @@ describe("CaseStudyAuthor", () => {
     expect(screen.getByText("Senior Product Designer • Fintech & SaaS")).toBeInTheDocument();
   });
 
-  it("renders LinkedIn and Facebook social links", () => {
+  it.each([
+    ["Facebook", SOCIAL_LINKS.facebook],
+    ["LinkedIn", SOCIAL_LINKS.linkedin],
+  ])("opens %s in a new tab with an accessible warning", (label, href) => {
     render(<CaseStudyAuthor />);
-    expect(screen.getByLabelText("LinkedIn")).toBeInTheDocument();
-    expect(screen.getByLabelText("Facebook")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "LinkedIn" })).toHaveAttribute("href", SOCIAL_LINKS.linkedin);
-    expect(screen.getByRole("link", { name: "Facebook" })).toHaveAttribute("href", SOCIAL_LINKS.facebook);
-    for (const name of ["Facebook", "LinkedIn"]) {
-      const link = screen.getByRole("link", { name });
-      expect(link).not.toHaveAttribute("target");
-      expect(link).toHaveClass("focus-visible:outline-2");
-      expect(link.querySelector("svg")).toHaveAttribute("aria-hidden", "true");
-      expect(link.querySelector("svg")).toHaveAttribute("focusable", "false");
+    const link = screen.getByRole("link", { name: `${label} (opens in a new tab)` });
+    expect(link).toHaveAttribute("href", href);
+    expect(link).toHaveAttribute("target", "_blank");
+    expect(link).toHaveAttribute("title", "Opens in a new tab");
+    expect(link).toHaveAttribute("rel", "noopener noreferrer");
+    expect(link).toHaveClass("focus-visible:outline-2");
+    for (const icon of link.querySelectorAll("svg")) {
+      expect(icon).toHaveAttribute("aria-hidden", "true");
+      expect(icon).toHaveAttribute("focusable", "false");
     }
   });
 });

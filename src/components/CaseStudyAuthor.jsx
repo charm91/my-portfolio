@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { ExternalLink } from "lucide-react";
 import { SITE, SOCIAL_LINKS } from "@/config/site";
 
 const socialLinks = [
@@ -36,9 +37,11 @@ export function CaseStudyAuthor() {
             <a
               key={label}
               href={href}
+              target="_blank"
+              title="Opens in a new tab"
               rel="noopener noreferrer"
-              className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-slate-400 shadow-xs transition hover:text-slate-600 focus-visible:text-slate-600 focus-visible:outline-2"
-              aria-label={label}
+              className="flex h-10 w-14 items-center justify-center gap-1 rounded-lg border border-gray-300 bg-white text-slate-400 shadow-xs transition hover:text-slate-600 focus-visible:text-slate-600 focus-visible:outline-2"
+              aria-label={`${label} (opens in a new tab)`}
             >
               <svg
                 aria-hidden="true"
@@ -46,10 +49,11 @@ export function CaseStudyAuthor() {
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 24 24"
                 fill="currentColor"
-                className="h-6 w-6"
+                className="h-5 w-5 shrink-0"
               >
                 <path d={path} />
               </svg>
+              <ExternalLink className="size-3 shrink-0" aria-hidden="true" focusable="false" />
             </a>
           ))}
         </div>
