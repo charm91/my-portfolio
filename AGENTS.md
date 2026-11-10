@@ -66,7 +66,7 @@ npx vitest run src/__tests__/contact-form-validation.test.jsx
 - Commit directly to `main`. No branches or PRs.
 - Preserve intentional section-specific color differences documented in `src/config/theme.js`.
 - Import images from `public/` as modules and use `.src`; do not hard-code root-relative paths, which would lose the content-hashed immutable URLs.
-- External links open in the same tab except LinkedIn, Resume, each case study's Live Project and the case-study author’s Facebook link. These open a new tab with a visible indicator, a `title` and an `aria-label` ending in `(opens in a new tab)`; the tests assert those names.
+- External links open in the same tab except LinkedIn, Resume, each case study's Live Project and the case-study author’s Facebook link. These open a new tab with a `title` and an `aria-label` ending in `(opens in a new tab)`; the tests assert those names. Show a visible new-tab indicator except on the compact case-study author social buttons.
 
 ## Hard Safety Rules
 
