@@ -67,6 +67,11 @@
     outline: 2px solid var(--ring);
     outline-offset: 0;
   }
+  /* Dark controls need a light stroke inside the fill, without an outside gap. */
+  .focus-inverse:focus-visible {
+    outline-color: var(--primary-foreground);
+    outline-offset: -4px;
+  }
   :where(a, button, input, textarea, select, [tabindex]) {
     scroll-margin-block: 1rem;
   }

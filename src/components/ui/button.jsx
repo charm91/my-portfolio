@@ -10,11 +10,11 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary text-primary-foreground [a]:hover:bg-primary/80 focus-visible:bg-secondary",
+        default: "focus-inverse bg-primary text-primary-foreground [a]:hover:bg-primary/80 focus-visible:bg-secondary",
         outline:
           "border-border bg-background hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:border-input dark:bg-input/30 dark:hover:bg-input/50",
         secondary:
-          "bg-secondary text-secondary-foreground hover:bg-secondary/80 focus-visible:bg-[#4b5563] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
+          "focus-inverse bg-secondary text-secondary-foreground hover:bg-secondary/80 focus-visible:bg-[#4b5563] aria-expanded:bg-secondary aria-expanded:text-secondary-foreground",
         ghost:
           "hover:bg-muted hover:text-foreground aria-expanded:bg-muted aria-expanded:text-foreground dark:hover:bg-muted/50",
         destructive:

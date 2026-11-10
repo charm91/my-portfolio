@@ -199,7 +199,7 @@ export function Header() {
                         className={cn(
                           "w-full rounded-full py-2.5 px-4 text-left text-sm font-medium transition-colors duration-150",
                           isActive
-                            ? "bg-[#1f2937] text-white focus-visible:bg-secondary"
+                            ? "focus-inverse bg-[#1f2937] text-white focus-visible:bg-secondary"
                             : "text-[#1f2937] hover:bg-[#f3f4f6]",
                         )}
                       >

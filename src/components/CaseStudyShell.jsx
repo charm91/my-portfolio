@@ -77,7 +77,7 @@ export function CaseStudyShell({ coverImage, title, tags, liveUrl, thumbnail, ch
               title="Opens in a new tab"
               aria-label="Live Project (opens in a new tab)"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-2 rounded-3xl bg-[#1f2937] px-5 py-2.5 font-medium text-white transition-[transform,background-color,box-shadow] duration-200 motion-safe:hover:-translate-y-0.5 motion-safe:hover:scale-[1.02] hover:bg-[#111827] focus-visible:bg-secondary hover:shadow-lg focus-visible:shadow-lg motion-safe:active:translate-y-0 motion-safe:active:scale-100"
+              className="focus-inverse group inline-flex items-center gap-2 rounded-3xl bg-[#1f2937] px-5 py-2.5 font-medium text-white transition-[transform,background-color,box-shadow] duration-200 motion-safe:hover:-translate-y-0.5 motion-safe:hover:scale-[1.02] hover:bg-[#111827] focus-visible:bg-secondary hover:shadow-lg focus-visible:shadow-lg motion-safe:active:translate-y-0 motion-safe:active:scale-100"
             >
               <span className="transition-transform duration-200 motion-safe:group-hover:translate-x-0.5 motion-safe:group-focus-visible:translate-x-0.5">
                 Live Project

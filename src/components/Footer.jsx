@@ -127,14 +127,14 @@ export function Footer() {
               title="Opens in a new tab"
               aria-label="Resume (opens in a new tab)"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm transition-colors duration-150 hover:bg-black text-secondary hover:text-white focus-visible:bg-secondary focus-visible:text-white px-4 py-1.5 rounded-full"
+              className="focus-inverse inline-flex items-center gap-1.5 text-sm transition-colors duration-150 hover:bg-black text-secondary hover:text-white focus-visible:bg-secondary focus-visible:text-white px-4 py-1.5 rounded-full"
             >
               Resume
               <ExternalLink className="size-3.5" aria-hidden="true" />
             </a>
             <Link
               href="/#portfolio"
-              className="text-sm transition-colors duration-150 hover:bg-black text-secondary hover:text-white focus-visible:bg-secondary focus-visible:text-white px-4 py-1.5 rounded-full"
+              className="focus-inverse text-sm transition-colors duration-150 hover:bg-black text-secondary hover:text-white focus-visible:bg-secondary focus-visible:text-white px-4 py-1.5 rounded-full"
             >
               Case Studies
             </Link>
