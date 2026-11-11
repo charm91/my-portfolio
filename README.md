@@ -14,10 +14,10 @@ Built with Next.js, React, Tailwind CSS, and Framer Motion.
 
 ## Contributing
 
-This is my personal portfolio. Issues and pull requests are not expected.
+This is my personal portfolio of product design work. Issues and pull requests are not expected.
 
 ## License
 
-© Ngu Wah Aung. All rights reserved. No project-wide reuse license is provided.
+All rights reserved. No project-wide reuse license is provided. © Ngu Wah Aung.
 
 <!-- last-reviewed: c40a4bd5464489b15370549911de4dd1b8600242 -->
