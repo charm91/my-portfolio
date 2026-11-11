@@ -2,7 +2,7 @@
 
 Personal portfolio of Ngu Wah Aung (Charm), Senior Product Designer.
 
-[Visit the portfolio](https://www.nguwahaung.com/)
+[Visit the portfolio](https://nguwahaung.com)
 
 ## About this portfolio
 
@@ -20,4 +20,4 @@ This is a personal portfolio. Issues and PRs are not expected.
 
 © Ngu Wah Aung. All rights reserved.
 
-<!-- last-reviewed: 68a6b9bb40772657c59fa40144b48ca4918efa71 -->
+<!-- last-reviewed: c40a4bd5464489b15370549911de4dd1b8600242 -->

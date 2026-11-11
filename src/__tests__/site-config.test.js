@@ -16,7 +16,7 @@ describe("SITE.careerStartYear", () => {
 
 describe("SITE_URL and SEO consumers", () => {
   it.each([
-    ["unset", undefined, "https://www.nguwahaung.com"],
+    ["unset", undefined, "https://nguwahaung.com"],
     ["configured", "https://portfolio.example", "https://portfolio.example"],
   ])("uses the %s site origin consistently", async (_, value, expectedOrigin) => {
     vi.stubEnv("NEXT_PUBLIC_SITE_URL", value);

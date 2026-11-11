@@ -2,7 +2,7 @@
 
 ## Project Identity
 
-Personal portfolio for Ngu Wah Aung (Charm), a Senior Product Designer, at https://www.nguwahaung.com/.
+Personal portfolio for Ngu Wah Aung (Charm), a Senior Product Designer, at https://nguwahaung.com.
 Next.js 15 App Router, React 19, Tailwind CSS 4 and Framer Motion. One application, with no application backend, database or authentication.
 Public-facing, single-owner site. Deployed copy and layout changes affect visitors; contact submissions go directly from the browser to EmailJS.
 
@@ -47,8 +47,9 @@ npx vitest run src/__tests__/contact-form-validation.test.jsx
 | `app/globals.css` | Tailwind 4 theme, shared section styles and fixed homepage background; no `tailwind.config.js`. |
 | `src/lib/utils.js` | `cn()` merges Tailwind classes; `getScrollBehavior()` respects reduced motion for query-driven section navigation. Section CTAs use native fragment links. |
 | `app/contact-me/ContactPageClient.jsx` | Client-side form validation, invisible reCAPTCHA v2, honeypot, cooldown and EmailJS delivery. |
+| `src/components/InvisibleRecaptcha.jsx` | Loads Google's invisible reCAPTCHA v2 through `next/script` and exposes `execute()`, `cancel()` and `reset()` through a ref. |
 | `app/sitemap.js` / `app/robots.js` | Hand-maintained sitemap and crawler configuration, both using `SITE_URL`. |
-| `src/__tests__/` / `vitest.setup.js` | Vitest, jsdom and React Testing Library; shared motion mock in `src/__tests__/test-utils/mockMotion.js`. |
+| `src/__tests__/` / `vitest.setup.js` | Vitest, jsdom and React Testing Library; shared motion mock in `src/__tests__/test-utils/mockMotion.js` and shared `next/image`, `next/link` and `IntersectionObserver` mocks in `src/__tests__/test-utils/mocks.jsx`. |
 | `public/` | Local branding, portraits, cover images and case-study screenshots, imported as modules so Next emits content-hashed URLs. |
 
 ## Domain Rules
@@ -56,10 +57,10 @@ npx vitest run src/__tests__/contact-form-validation.test.jsx
 - Follow Writing’s Reference links workflow. The configured `SITE_URL` and its relative routes are internal; resume hosting, live projects and social sites are external. Keep the explicit opening exceptions below; their external arrows do not replace visible new-tab wording.
 
 - Adding a case study requires its view, a registry entry in `src/config/caseStudies.js`, a card in `src/components/Portfolio.jsx`, a manual entry in `app/sitemap.js` and an updated entry count in `src/__tests__/sitemap.test.js`.
-- `SITE_URL` uses `NEXT_PUBLIC_SITE_URL` or defaults to `https://www.nguwahaung.com`; unset development environments therefore use production metadata URLs.
+- `SITE_URL` uses `NEXT_PUBLIC_SITE_URL` or defaults to `https://nguwahaung.com`; unset development environments therefore use production metadata URLs.
 - Contact validation trims fields and requires a name of at least 2 characters, a valid email shape and a message of at least 10 characters.
 - Contact anti-spam uses EmailJS-verified invisible reCAPTCHA v2, a hidden honeypot and a 30-second cooldown started when a send is attempted, including failed sends.
-- EmailJS service/template/public-key values are intentionally hardcoded in the client component, not environment variables.
+- EmailJS service/template/public-key values and the reCAPTCHA site key in `src/components/InvisibleRecaptcha.jsx` are intentionally hardcoded in client code, not environment variables. The reCAPTCHA secret is stored only in EmailJS.
 
 ## Behavior Rules
 
@@ -69,6 +70,9 @@ npx vitest run src/__tests__/contact-form-validation.test.jsx
 - Preserve intentional section-specific color differences documented in `src/config/theme.js`.
 - Import images from `public/` as modules and use `.src`; do not hard-code root-relative paths, which would lose the content-hashed immutable URLs.
 - External links open in the same tab except LinkedIn, Resume, each case study's Live Project and the case-study author’s Facebook link. These open a new tab with a `title` and an `aria-label` ending in `(opens in a new tab)`; the tests assert those names. Show a visible new-tab indicator except on the compact case-study author social buttons.
+- Keyboard focus uses the global 2px `--ring` outline in `app/globals.css`; do not add per-component focus outlines. Add `focus-inverse` to dark-filled controls so the outline is drawn inside the fill.
+- Every page renders exactly one `<main id="main-content">` as the skip-link target; `src/__tests__/skip-link.test.jsx` asserts it for the home, case-study, contact and not-found pages.
+- Hover cues match the element: standalone white cards (footer contact cards, FAQ items) lift with `hover:shadow-md` and the matching focus shadow, rows inside a card (Let's Connect) nudge their arrow, and non-interactive images get no hover effect.
 
 ## Hard Safety Rules
 
@@ -87,6 +91,9 @@ npx vitest run src/__tests__/contact-form-validation.test.jsx
 - Header section navigation uses `/?scrollTo=<id>` when leaving another route; keep target section IDs aligned with its navigation items.
 - Legal sources are `app/legal/terms/page.mdx` and `legal/privacy-policy.md`, but package/Next configuration has no MDX integration and neither has a route. Verify routing before treating them as published pages.
 - Vitest resolves `public/` image imports through the plugin in `vitest.config.js`, which returns only `{ src }`; width and height are not available in tests.
+- Reveal wrappers (`initial` opacity 0 until `whileInView`) hide controls that receive keyboard focus first. Give the wrapper `focus-reveal` so `app/globals.css` forces it visible while a descendant has `:focus-visible`.
+- Render `InvisibleRecaptcha` outside transformed `motion` containers; a transformed ancestor makes Google's `position: fixed` badge position relative to that ancestor.
+- Tailwind 4 resets `<button>` to the default cursor. Custom clickable triggers need `cursor-pointer`, as the shared `Button` and the accordion trigger have.
 
 ## Rules
 
@@ -102,4 +109,4 @@ At the start of every session, check whether the paths above exist on this machi
 If either is missing, inform the user: "helm rules are referenced in CLAUDE.md but the
 plugin is not installed on this machine. Install it with: /plugin install agent-helm"
 
-<!-- last-reviewed: 1dc301e75bb253150d71f3a02266152d4a7deef6 -->
+<!-- last-reviewed: 24b2f9c91e3c0ba38319ce2f54b15f934aa535d9 -->

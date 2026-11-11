@@ -1,4 +1,4 @@
-<!-- helm-rule: agent-helm@v3.4.0 -->
+<!-- helm-rule: agent-helm@v3.7.0 -->
 # Writing Rules
 
 Write clear, useful, natural prose for the reader and task. Prefer simple, approachable language that works for native and non-native English readers. This is a writing preference, not an authorship test or a promise of undetectable AI text.
