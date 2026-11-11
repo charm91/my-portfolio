@@ -62,7 +62,7 @@ export function FAQ() {
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq) => (
               <AccordionItem key={faq.q} value={faq.q}>
-                <div className="bg-white rounded-3xl">
+                <div className="bg-white rounded-3xl transition-shadow duration-150 hover:shadow-md has-[:focus-visible]:shadow-md">
                   <AccordionTrigger className="rounded-3xl px-6 py-7 text-base font-medium text-left">
                     {faq.q}
                   </AccordionTrigger>
