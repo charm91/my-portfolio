@@ -4,7 +4,7 @@
 
 ## Who We Are
 
-This policy covers the personal portfolio at [nguwahaung.com](https://www.nguwahaung.com/), operated by Ngu Wah Aung ("Charm"). In this policy, "we" and "us" refer to Ngu Wah Aung.
+This policy covers the personal portfolio at [nguwahaung.com](https://nguwahaung.com), operated by Ngu Wah Aung ("Charm"). In this policy, "we" and "us" refer to Ngu Wah Aung.
 
 For privacy questions or requests, email [nguwah106@gmail.com](mailto:nguwah106@gmail.com).
 
@@ -67,4 +67,4 @@ We will update this policy when relevant practices change and revise the last-up
 
 ## Contact
 
-For privacy questions or requests, email [nguwah106@gmail.com](mailto:nguwah106@gmail.com). You can also use the [contact form](https://www.nguwahaung.com/contact-me).
+For privacy questions or requests, email [nguwah106@gmail.com](mailto:nguwah106@gmail.com). You can also use the [contact form](https://nguwahaung.com/contact-me).
