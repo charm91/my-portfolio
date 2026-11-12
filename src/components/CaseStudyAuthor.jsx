@@ -37,10 +37,9 @@ export function CaseStudyAuthor() {
               key={label}
               href={href}
               target="_blank"
-              title="Opens in a new tab"
               rel="noopener noreferrer"
               className="flex h-10 w-10 items-center justify-center rounded-lg border border-gray-300 bg-white text-slate-400 shadow-xs transition hover:text-slate-600 focus-visible:text-slate-600 focus-visible:outline-2"
-              aria-label={`${label} (opens in a new tab)`}
+              aria-label={label}
             >
               <svg
                 aria-hidden="true"

@@ -34,12 +34,13 @@ describe("Live-project navigation", () => {
     [KBZBankPage, "https://selfservice.kbzbank.com/"],
     [UniLinksPage, "https://unilinks.co/"],
     [WctPage, "https://www.wctpay.com/"],
-  ])("opens %s in a new tab with an accessible warning", (Page, href) => {
+  ])("opens %s in a new tab without an opening notice", (Page, href) => {
     render(<Page />);
-    const link = screen.getByRole("link", { name: "Live Project (opens in a new tab)" });
+    const link = screen.getByRole("link", { name: "Live Project" });
     expect(link).toHaveAttribute("href", href);
     expect(link).toHaveAttribute("target", "_blank");
-    expect(link).toHaveAttribute("title", "Opens in a new tab");
+    expect(link).not.toHaveAttribute("title");
+    expect(link).not.toHaveAccessibleDescription();
     expect(link).toHaveAttribute("rel", "noopener noreferrer");
   });
 });

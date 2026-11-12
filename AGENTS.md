@@ -54,7 +54,7 @@ npx vitest run src/__tests__/contact-form-validation.test.jsx
 
 ## Domain Rules
 
-- Follow Writing’s Reference links workflow. The configured `SITE_URL` and its relative routes are internal; resume hosting, live projects and social sites are external. Keep the explicit opening exceptions below; their external arrows do not replace visible new-tab wording.
+- Follow Writing’s Reference links workflow. The configured `SITE_URL` and its relative routes are internal; resume hosting, live projects and social sites are external. Keep the explicit opening exceptions below; external arrows indicate the destination, with no opening notices.
 
 - Adding a case study requires its view, a registry entry in `src/config/caseStudies.js`, a card in `src/components/Portfolio.jsx`, a manual entry in `app/sitemap.js` and an updated entry count in `src/__tests__/sitemap.test.js`.
 - `SITE_URL` uses `NEXT_PUBLIC_SITE_URL` or defaults to `https://nguwahaung.com`; unset development environments therefore use production metadata URLs.
@@ -69,7 +69,7 @@ npx vitest run src/__tests__/contact-form-validation.test.jsx
 - Commit directly to `main`. No branches or PRs.
 - Preserve intentional section-specific color differences documented in `src/config/theme.js`.
 - Import images from `public/` as modules and use `.src`; do not hard-code root-relative paths, which would lose the content-hashed immutable URLs.
-- External links open in the same tab except LinkedIn, Resume, each case study's Live Project and the case-study author’s Facebook link. These open a new tab with a `title` and an `aria-label` ending in `(opens in a new tab)`; the tests assert those names. Show a visible new-tab indicator except on the compact case-study author social buttons.
+- External links open in the same tab except LinkedIn, Resume, each case study's Live Project and the case-study author’s Facebook link. Keep their existing new-tab behaviour and meaningful accessible names, without opening notices in visible text, tooltips or accessible descriptions.
 - Keyboard focus uses the global 2px `--ring` outline in `app/globals.css`; do not add per-component focus outlines. Add `focus-inverse` to dark-filled controls so the outline is drawn inside the fill.
 - Every page renders exactly one `<main id="main-content">` as the skip-link target; `src/__tests__/skip-link.test.jsx` asserts it for the home, case-study, contact and not-found pages.
 - Hover cues match the element: standalone white cards (footer contact cards, FAQ items) lift with `hover:shadow-md` and the matching focus shadow, rows inside a card (Let's Connect) nudge their arrow, and non-interactive images get no hover effect.

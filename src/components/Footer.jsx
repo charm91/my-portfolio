@@ -31,7 +31,6 @@ function ContactCard({ icon: Icon, heading, description, ...linkProps }) {
         </p>
         <p className="mt-0.5 text-sm" style={{ color: textSecondary }}>
           {description}
-          {linkProps.target === "_blank" && <span className="block text-xs">Opens in new tab</span>}
         </p>
       </div>
       <span className="hidden h-10 w-px bg-border/50 md:inline-block"></span>
@@ -97,8 +96,7 @@ export function Footer() {
           <ContactCard
             href={SOCIAL_LINKS.linkedin}
             target="_blank"
-            title="Opens in a new tab"
-            aria-label="LinkedIn (opens in a new tab)"
+            aria-label="LinkedIn"
             rel="noopener noreferrer"
             icon={Linkedin}
             heading="LinkedIn"
@@ -129,12 +127,11 @@ export function Footer() {
             <a
               href={RESUME_URL}
               target="_blank"
-              title="Opens in a new tab"
-              aria-label="Resume (opens in a new tab)"
+              aria-label="Resume"
               rel="noopener noreferrer"
               className="focus-inverse inline-flex items-center gap-1.5 text-sm transition-colors duration-150 hover:bg-black text-secondary hover:text-white focus-visible:bg-secondary focus-visible:text-white px-4 py-1.5 rounded-full"
             >
-              Resume <span className="text-xs">(opens in new tab)</span>
+              Resume
               <ExternalLink className="size-3.5" aria-hidden="true" />
             </a>
             <Link
