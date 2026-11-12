@@ -14,7 +14,7 @@ Built with Next.js, React, Tailwind CSS, and Framer Motion.
 
 ## Contributing
 
-This is my personal portfolio of product design work. Issues and pull requests are not expected.
+This is my personal portfolio of product design work. If something doesn’t work or you have feedback on the case studies, [open an issue](https://github.com/charm91/my-portfolio/issues/new/choose). Pull requests aren’t expected.
 
 ## License
 
