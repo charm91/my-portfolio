@@ -48,6 +48,7 @@ npx vitest run src/__tests__/contact-form-validation.test.jsx
 | `src/lib/utils.js` | `cn()` merges Tailwind classes; `getScrollBehavior()` respects reduced motion for query-driven section navigation. Section CTAs use native fragment links. |
 | `app/contact-me/ContactPageClient.jsx` | Client-side form validation, invisible reCAPTCHA v2, honeypot, cooldown and EmailJS delivery. |
 | `src/components/InvisibleRecaptcha.jsx` | Loads Google's invisible reCAPTCHA v2 through `next/script` and exposes `execute()`, `cancel()` and `reset()` through a ref. |
+| `src/components/Reveal.jsx` / `src/components/MotionProvider.jsx` | `Reveal` wraps `motion` elements for entrances and supports only `div`, `article`, `p`, `h1`, `h2`, `header` and `form` through its `as` prop; add a tag to its `elements` map before using it. `MotionProvider` applies live reduced-motion changes to transitions. |
 | `app/sitemap.js` / `app/robots.js` | Hand-maintained sitemap and crawler configuration, both using `SITE_URL`. |
 | `src/__tests__/` / `vitest.setup.js` | Vitest, jsdom and React Testing Library; shared motion mock in `src/__tests__/test-utils/mockMotion.js` and shared `next/image`, `next/link` and `IntersectionObserver` mocks in `src/__tests__/test-utils/mocks.jsx`. |
 | `public/` | Local branding, portraits, cover images and case-study screenshots, imported as modules so Next emits content-hashed URLs. |
@@ -87,6 +88,7 @@ npx vitest run src/__tests__/contact-form-validation.test.jsx
 - Case-study root scrolling belongs to the document. Do not add `overflow-auto` to `CaseStudyShell`'s root motion element; div-level scrolling caused compositor performance problems.
 - Keep `whileInView` observers sparse on long case studies. `CaseStudySection` intentionally stays a plain `<section>`.
 - Motion mocks cache component identity per tag; uncached proxies remount form subtrees and lose focus/value during `userEvent.type()`.
+- `Header` and `Reveal` read `MotionConfigContext`, so a test-local `framer-motion` mock must export it, as the shared mock in `vitest.setup.js` and `skip-link.test.jsx` do.
 - jsdom observer stubs must be constructible classes; arrow-function `IntersectionObserver` mocks fail with `new`. Testimonials also need `ResizeObserver` and motion scroll-hook mocks.
 - Header section navigation uses `/?scrollTo=<id>` when leaving another route; keep target section IDs aligned with its navigation items.
 - Legal sources are `app/legal/terms/page.mdx` and `legal/privacy-policy.md`, but package/Next configuration has no MDX integration and neither has a route. Verify routing before treating them as published pages.
@@ -109,4 +111,4 @@ At the start of every session, check whether the paths above exist on this machi
 If either is missing, inform the user: "helm rules are referenced in CLAUDE.md but the
 plugin is not installed on this machine. Install it with: /plugin install agent-helm"
 
-<!-- last-reviewed: 24b2f9c91e3c0ba38319ce2f54b15f934aa535d9 -->
+<!-- last-reviewed: a8b8efcadff6b36a96825dc9150df4e2da7ac6bc -->
