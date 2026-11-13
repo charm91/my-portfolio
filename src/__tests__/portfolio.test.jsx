@@ -1,6 +1,7 @@
-import { describe, it, expect, vi, beforeEach } from "vitest";
+import { describe, it, expect, vi, beforeEach, afterEach } from "vitest";
 import { render, screen } from "@testing-library/react";
 import { Portfolio } from "../components/Portfolio";
+import { MockIntersectionObserver } from "./test-utils/mocks";
 
 vi.mock("next/image", async () => (await import("./test-utils/mocks")).nextImageMock);
 
@@ -13,6 +14,11 @@ vi.mock("next/navigation", () => ({
 
 describe("Portfolio", () => {
   beforeEach(() => mockPathname.mockReturnValue("/"));
+
+  afterEach(() => {
+    vi.restoreAllMocks();
+    vi.unstubAllGlobals();
+  });
 
   it("renders all 4 project titles", () => {
     render(<Portfolio />);
@@ -53,6 +59,14 @@ describe("Portfolio", () => {
     mockPathname.mockReturnValue("/portfolio");
     render(<Portfolio />);
     expect(screen.queryByText("See All")).not.toBeInTheDocument();
+  });
+
+  it.each([["/", false], ["/portfolio", true]])("enables the entrance for on-screen cards on %s: %s", (path, entrance) => {
+    vi.stubGlobal("IntersectionObserver", MockIntersectionObserver);
+    vi.spyOn(HTMLElement.prototype, "getBoundingClientRect").mockReturnValue({ top: 100, bottom: 200 });
+    mockPathname.mockReturnValue(path);
+    render(<Portfolio />);
+    expect(screen.getAllByRole("article").every((card) => card.hasAttribute("data-reveal-ready"))).toBe(entrance);
   });
 
   it.each([["/", 2], ["/portfolio", 1]])("uses the correct heading level on %s", (path, level) => {
