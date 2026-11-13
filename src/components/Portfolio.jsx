@@ -53,7 +53,8 @@ export function Portfolio() {
     <section id="portfolio" className="py-20 md:py-28">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal
-          initial={isPortfolioPage ? false : { opacity: 0, y: 12 }}
+          entrance={isPortfolioPage}
+          initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="flex flex-col justify-center items-center gap-5 mb-10"
@@ -69,7 +70,8 @@ export function Portfolio() {
         <div className="grid grid-cols-1 max-w-xl mx-auto gap-4 md:gap-6">
           {projects.map((project, index) => (
             <Reveal as="article"
-              initial={isPortfolioPage && index === 0 ? false : { opacity: 0, y: 48, scale: 0.88 }}
+              entrance={isPortfolioPage}
+              initial={{ opacity: 0, y: 48, scale: 0.88 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.4 }}
               transition={{
