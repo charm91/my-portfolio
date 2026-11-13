@@ -384,23 +384,40 @@
       },
       "assessment": {
         "origin": "native",
-        "commit": "1a594d1d5f2467a3972bf840ded5ff54b54b9188",
-        "date": "2026-11-08",
-        "priority": "unknown",
+        "commit": "88b56f7eb13dc6bd683d1f60aa43b612361d6768",
+        "date": "2026-11-13",
+        "priority": "low",
         "risk": "needs-review",
-        "reason": "A misleading dead branch and a Suspense-wrapped query handler suggest behaviour the app does not have, and AGENTS.md documents the branch as a Known Trap. Whether to remove it or restore the menu on other routes depends on intent.",
+        "reason": "The unreachable Header branch and the ScrollToSection consumer cost a few lines and a documented Suspense constraint; removing them offers little benefit against the risk to any old shared ?scrollTo= link, so the owner chose to keep both.",
         "evidence": [
           "Header.jsx renders the Menu button only when pathname === '/'; otherwise it renders the Back to Home chip, so menuOpen can never become true on other routes.",
           "grep finds /?scrollTo= produced only in Header.jsx; Footer links to /#portfolio natively.",
-          "ScrollToSection and its tests cover the query contract, which external or bookmarked links could still use."
+          "ScrollToSection and its tests cover the query contract, which external or bookmarked links could still use.",
+          "Reinvestigated at 88b56f7: /?scrollTo= is produced only by the Header branch and appears in no README, sitemap, legal page or other source; the consumer is app/ScrollToSection.jsx (about 25 lines) plus its test and the Suspense wrapper in app/page.jsx.",
+          "The query contract dates from the Vite SPA to Next.js conversion (7c2d59e) and is documented in AGENTS.md Known Traps."
         ],
         "invariant": "Any change keeps home-page menu navigation, the /?scrollTo= query behaviour for existing URLs (unless the owner retires it), and the Suspense wrapper required by useSearchParams."
       },
       "state": "open",
       "depends_on": [],
-      "blocker": {
-        "kind": "clarification",
-        "reason": "Confirm whether the /?scrollTo= entry point must keep working for external links and whether the menu should ever appear on non-home routes. Remove the dead header branch only after that decision; otherwise leave it."
+      "decision": {
+        "origin": "native",
+        "action": "accepted-risk",
+        "commit": "88b56f7eb13dc6bd683d1f60aa43b612361d6768",
+        "date": "2026-11-13",
+        "reason": "Owner accepted the recommendation to keep the Header /?scrollTo= branch and ScrollToSection unchanged: the cost is small and removal could break old shared links.",
+        "context": {
+          "paths": [
+            "src/components/Header.jsx",
+            "app/ScrollToSection.jsx",
+            "app/page.jsx",
+            "src/__tests__/scroll-to-section.test.jsx"
+          ],
+          "evidence": [
+            "Header.jsx renders the menu only on / so the non-home href branch has no in-app producer.",
+            "AGENTS.md Known Traps documents /?scrollTo= and the required Suspense wrapper."
+          ]
+        }
       }
     },
     {
@@ -674,7 +691,25 @@
         "invariant": "Social links keep a visible 2px keyboard focus outline in the same colour, the new-tab behaviour and accessible names; any test change keeps asserting visible focus handling, not only a class name."
       },
       "state": "open",
-      "depends_on": []
+      "depends_on": [],
+      "decision": {
+        "origin": "native",
+        "action": "skip",
+        "commit": "88b56f7eb13dc6bd683d1f60aa43b612361d6768",
+        "date": "2026-11-13",
+        "reason": "Owner accepted the recommendation to leave CaseStudyAuthor's focus-visible:outline-2 in place: the outline is visually identical to the global one, and the test pinning the class is the only jsdom check of focus handling on these links.",
+        "context": {
+          "paths": [
+            "src/components/CaseStudyAuthor.jsx",
+            "src/__tests__/case-study-author.test.jsx",
+            "app/globals.css"
+          ],
+          "evidence": [
+            "app/globals.css already sets outline: 2px solid var(--ring) on focus-visible links.",
+            "case-study-author.test.jsx asserts toHaveClass('focus-visible:outline-2')."
+          ]
+        }
+      }
     }
   ]
 }
