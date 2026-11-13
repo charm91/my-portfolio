@@ -13,6 +13,7 @@ vi.mock("next/font/google", () => ({ Inter: () => ({ variable: "test-inter" }) }
 vi.mock("framer-motion", async () => {
   const { createMotionProxy } = await import("./test-utils/mockMotion");
   return {
+    MotionConfigContext: (await import("react")).createContext({}),
     motion: createMotionProxy(),
     MotionConfig: ({ children }) => children,
   };

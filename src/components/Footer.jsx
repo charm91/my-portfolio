@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { Reveal } from "@/components/Reveal";
 import { Linkedin, Mail, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SITE, SITE_URL, SOCIAL_LINKS, RESUME_URL } from "@/config/site";
@@ -53,7 +53,7 @@ export function Footer() {
     <footer id="contact" className="py-16 md:py-28 z-10 relative">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main CTA card - white, rounded, centered */}
-        <motion.div
+        <Reveal
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -88,10 +88,10 @@ export function Footer() {
           >
             <Link href="/contact-me">Contact Me</Link>
           </Button>
-        </motion.div>
+        </Reveal>
 
         {/* Contact link cards - two cards, horizontal on desktop, stack on mobile */}
-        <motion.div
+        <Reveal
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -112,10 +112,10 @@ export function Footer() {
             heading="Email"
             description="Reach me directly"
           />
-        </motion.div>
+        </Reveal>
 
         {/* Footer bar - copyright left, links right; stack on mobile */}
-        <motion.div
+        <Reveal
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -145,7 +145,7 @@ export function Footer() {
               Case Studies
             </Link>
           </div>
-        </motion.div>
+        </Reveal>
       </div>
     </footer>
   );

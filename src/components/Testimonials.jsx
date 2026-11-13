@@ -8,6 +8,7 @@ import thiriAsset from "../../public/thiri.jpeg";
 import { Star } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import { Reveal } from "@/components/Reveal";
 import { COLORS } from "@/config/theme";
 
 const ZayarImage = zayarAsset.src;
@@ -92,7 +93,7 @@ export function Testimonials() {
       style={{ minHeight: scrollEnabled ? VIEWPORT_HEIGHT + scrollRange - 500 : undefined }}
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
+        <Reveal
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -110,7 +111,7 @@ export function Testimonials() {
           <h2 className="text-3xl md:text-4xl font-bold text-[#1f2937] mt-4">
             What Colleagues Say
           </h2>
-        </motion.div>
+        </Reveal>
         <div
           className="relative max-w-[600px] mx-auto rounded-2xl"
           style={{

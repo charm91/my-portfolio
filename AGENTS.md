@@ -91,7 +91,7 @@ npx vitest run src/__tests__/contact-form-validation.test.jsx
 - Header section navigation uses `/?scrollTo=<id>` when leaving another route; keep target section IDs aligned with its navigation items.
 - Legal sources are `app/legal/terms/page.mdx` and `legal/privacy-policy.md`, but package/Next configuration has no MDX integration and neither has a route. Verify routing before treating them as published pages.
 - Vitest resolves `public/` image imports through the plugin in `vitest.config.js`, which returns only `{ src }`; width and height are not available in tests.
-- Reveal wrappers (`initial` opacity 0 until `whileInView`) hide controls that receive keyboard focus first. Give the wrapper `focus-reveal` so `app/globals.css` forces it visible while a descendant has `:focus-visible`.
+- Use `Reveal` for scroll entrances so content stays readable until its observer initialises and transitions follow live motion preferences. Keep `focus-reveal` on wrappers containing controls so keyboard focus also reveals them immediately.
 - Render `InvisibleRecaptcha` outside transformed `motion` containers; a transformed ancestor makes Google's `position: fixed` badge position relative to that ancestor.
 - Tailwind 4 resets `<button>` to the default cursor. Custom clickable triggers need `cursor-pointer`, as the shared `Button` and the accordion trigger have.
 

@@ -124,7 +124,20 @@
   z-index: 1;
 }
 
+/* Scroll effects enhance readable content only after their observer is ready. */
+.scroll-reveal:not([data-reveal-ready]) {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .scroll-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+  .menu-panel {
+    transform: none !important;
+  }
   *,
   *::before,
   *::after {

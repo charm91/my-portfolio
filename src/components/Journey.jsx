@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { Reveal } from "@/components/Reveal";
 import { Search, Rocket, PaintRoller, Layers } from "lucide-react";
 
 const steps = [
@@ -38,7 +38,7 @@ const container = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.15 },
+    transition: { inherit: true, staggerChildren: 0.15 },
   },
 };
 
@@ -51,7 +51,7 @@ export function Journey() {
   return (
     <section className="py-20 md:py-28 bg-muted/20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
+        <Reveal
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -66,9 +66,9 @@ export function Journey() {
             How I move from problem framing to structured design, validation,
             and implementation support.
           </p>
-        </motion.div>
+        </Reveal>
 
-        <motion.div
+        <Reveal
           variants={container}
           initial="hidden"
           whileInView="show"
@@ -76,7 +76,7 @@ export function Journey() {
           className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
           {steps.map((step) => (
-            <motion.div
+            <Reveal
               variants={item}
               key={step.number}
               className="relative bg-white rounded-2xl"
@@ -93,9 +93,9 @@ export function Journey() {
                   {step.description}
                 </p>
               </div>
-            </motion.div>
+            </Reveal>
           ))}
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   );

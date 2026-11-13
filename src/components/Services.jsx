@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { Reveal } from "@/components/Reveal";
 import { Settings, Globe, Layers, Code2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { COLORS } from "@/config/theme";
@@ -43,7 +43,7 @@ const container = {
   hidden: { opacity: 0 },
   show: {
     opacity: 1,
-    transition: { staggerChildren: 0.1 },
+    transition: { inherit: true, staggerChildren: 0.1 },
   },
 };
 
@@ -57,17 +57,17 @@ export function Services() {
     <section id="services" className="py-16 md:py-28">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Pill label */}
-        <motion.div
+        <Reveal
           initial={{ opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           className="flex justify-center mb-5"
         >
           <span className="section-category text-xs">What I Do</span>
-        </motion.div>
+        </Reveal>
 
         {/* Main heading - centered */}
-        <motion.h2
+        <Reveal as="h2"
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -75,10 +75,10 @@ export function Services() {
         >
           Where Product Design <br />
           <span className="font-serif italic font-normal">Meets Strategy.</span>
-        </motion.h2>
+        </Reveal>
 
         {/* 2x2 grid */}
-        <motion.div
+        <Reveal
           variants={container}
           initial="hidden"
           whileInView="show"
@@ -86,7 +86,7 @@ export function Services() {
           className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6"
         >
           {services.map((s) => (
-            <motion.article
+            <Reveal as="article"
               variants={item}
               key={s.title}
               className="rounded-2xl bg-white p-4 md:p-6"
@@ -121,12 +121,12 @@ export function Services() {
                   ))}
                 </div>
               </div>
-            </motion.article>
+            </Reveal>
           ))}
-        </motion.div>
+        </Reveal>
 
         {/* Explore Projects button - centered */}
-        <motion.div
+        <Reveal
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -139,7 +139,7 @@ export function Services() {
           >
             <a href="#portfolio">Explore Projects</a>
           </Button>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   );

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { Reveal } from "@/components/Reveal";
 import Image from "next/image";
 import { ExternalLink } from "lucide-react";
 import { Header } from "@/components/Header";
@@ -102,12 +102,12 @@ export function CaseStudyShell({ coverImage, title, tags, liveUrl, thumbnail, ch
         </main>
       </section>
 
-      <motion.div
+      <Reveal
         {...scrollReveal}
         className="focus-reveal"
       >
         <Footer />
-      </motion.div>
+      </Reveal>
     </div>
   );
 }

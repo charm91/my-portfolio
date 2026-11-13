@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { Reveal } from "@/components/Reveal";
 import {
   Accordion,
   AccordionContent,
@@ -39,7 +39,7 @@ export function FAQ() {
   return (
     <section id="faq" className="py-20 md:py-28">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
+        <Reveal
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -50,9 +50,9 @@ export function FAQ() {
           <p className="text-element-content max-w-2xl text-base font-light tracking-wide text-center">
             Common questions about my role, approach, and collaboration style.
           </p>
-        </motion.div>
+        </Reveal>
 
-        <motion.div
+        <Reveal
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -73,7 +73,7 @@ export function FAQ() {
               </AccordionItem>
             ))}
           </Accordion>
-        </motion.div>
+        </Reveal>
       </div>
     </section>
   );

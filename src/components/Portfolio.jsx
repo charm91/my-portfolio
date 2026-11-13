@@ -8,7 +8,7 @@ import wctAsset from "../../public/wct.png";
 import cornerWhiteAsset from "../../public/corner-white.png";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { Reveal } from "@/components/Reveal";
 import { ArrowRight } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 
@@ -52,7 +52,7 @@ export function Portfolio() {
   return (
     <section id="portfolio" className="py-20 md:py-28">
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
+        <Reveal
           initial={isPortfolioPage ? false : { opacity: 0, y: 12 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -64,11 +64,11 @@ export function Portfolio() {
             <span className="font-serif italic font-normal">Product Systems.</span>
           </Heading>
 
-        </motion.div>
+        </Reveal>
 
         <div className="grid grid-cols-1 max-w-xl mx-auto gap-4 md:gap-6">
           {projects.map((project, index) => (
-            <motion.article
+            <Reveal as="article"
               initial={isPortfolioPage && index === 0 ? false : { opacity: 0, y: 48, scale: 0.88 }}
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true, amount: 0.4 }}
@@ -118,12 +118,12 @@ export function Portfolio() {
                   </p>
                 </div>
               </Link>
-            </motion.article>
+            </Reveal>
           ))}
         </div>
 
         {!isPortfolioPage && (
-          <motion.div
+          <Reveal
             initial={{ opacity: 0, y: 16 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -132,7 +132,7 @@ export function Portfolio() {
             <Button size="lg" className="rounded-full px-8 h-10" asChild>
               <Link href="/portfolio">See All</Link>
             </Button>
-          </motion.div>
+          </Reveal>
         )}
       </div>
     </section>

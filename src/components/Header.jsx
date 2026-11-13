@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useEffect, useRef, useId } from "react";
+import { useState, useEffect, useRef, useId, useContext } from "react";
 import logoAsset from "../../public/logo.svg";
 import { usePathname } from "next/navigation";
-import { motion, AnimatePresence, useIsPresent } from "framer-motion";
+import { motion, AnimatePresence, useIsPresent, MotionConfigContext } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
@@ -22,13 +22,14 @@ const sectionIds = navItems.map(({ href }) => href.slice(1));
 
 function MenuPanel({ children, ...props }) {
   const isPresent = useIsPresent();
+  const { transition } = useContext(MotionConfigContext);
   return (
     <motion.div
       {...props}
       initial={{ opacity: 0, y: -8 }}
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -8 }}
-      transition={{ duration: 0.2 }}
+      transition={{ ...transition, duration: 0.2 }}
       inert={!isPresent ? true : undefined}
     >
       {children}
