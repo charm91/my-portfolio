@@ -33,13 +33,17 @@ function ContactCard({ icon: Icon, heading, description, ...linkProps }) {
           {description}
         </p>
       </div>
-      <span className="hidden h-10 w-px bg-border/50 md:inline-block"></span>
-      {external && <ExternalLink
-        aria-hidden="true"
-        className="size-5 shrink-0"
-        style={{ color: textPrimary }}
-        strokeWidth={2}
-      />}
+      {external && (
+        <>
+          <span className="hidden h-10 w-px bg-border/50 md:inline-block"></span>
+          <ExternalLink
+            aria-hidden="true"
+            className="size-5 shrink-0"
+            style={{ color: textPrimary }}
+            strokeWidth={2}
+          />
+        </>
+      )}
     </a>
   );
 }
