@@ -14,6 +14,13 @@ const elements = {
   form: motion.form,
 };
 
+// The standard section reveal: fade up by `y` pixels once, when scrolled into view.
+export const fadeUp = (y) => ({
+  initial: { opacity: 0, y },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true },
+});
+
 export function Reveal({ as = "div", entrance = false, className, transition, ...props }) {
   const ref = useRef(null);
   const { transition: defaults } = useContext(MotionConfigContext);

@@ -1,6 +1,6 @@
 "use client";
 
-import { Reveal } from "@/components/Reveal";
+import { Reveal, fadeUp } from "@/components/Reveal";
 import { Search, Rocket, PaintRoller, Layers } from "lucide-react";
 
 const steps = [
@@ -52,9 +52,7 @@ export function Journey() {
     <section className="py-20 md:py-28 bg-muted/20">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...fadeUp(20)}
           className="flex flex-col justify-center gap-5 items-center mb-10 text-center"
         >
           <p className="section-category text-xs">Product Design Process</p>

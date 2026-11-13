@@ -1,6 +1,6 @@
 "use client";
 
-import { Reveal } from "@/components/Reveal";
+import { Reveal, fadeUp } from "@/components/Reveal";
 import {
   Accordion,
   AccordionContent,
@@ -40,9 +40,7 @@ export function FAQ() {
     <section id="faq" className="py-20 md:py-28">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...fadeUp(20)}
           className="flex flex-col justify-center items-center gap-4 mb-10"
         >
           <p className="section-category text-xs">FAQ</p>
@@ -53,9 +51,7 @@ export function FAQ() {
         </Reveal>
 
         <Reveal
-          initial={{ opacity: 0, y: 24 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...fadeUp(24)}
           transition={{ duration: 0.4 }}
           className="focus-reveal max-w-[600px] mx-auto"
         >

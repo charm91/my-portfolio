@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Reveal } from "@/components/Reveal";
+import { Reveal, fadeUp } from "@/components/Reveal";
 import { Linkedin, Mail, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SITE, SITE_URL, SOCIAL_LINKS, RESUME_URL } from "@/config/site";
@@ -54,9 +54,7 @@ export function Footer() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main CTA card - white, rounded, centered */}
         <Reveal
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...fadeUp(20)}
           className="focus-reveal rounded-3xl bg-white p-8 md:p-10 text-center mb-8 md:mb-10"
         >
           <span
@@ -92,9 +90,7 @@ export function Footer() {
 
         {/* Contact link cards - two cards, horizontal on desktop, stack on mobile */}
         <Reveal
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...fadeUp(16)}
           className="focus-reveal grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-12 md:mb-16"
         >
           <ContactCard

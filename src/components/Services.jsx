@@ -1,6 +1,6 @@
 "use client";
 
-import { Reveal } from "@/components/Reveal";
+import { Reveal, fadeUp } from "@/components/Reveal";
 import { Settings, Globe, Layers, Code2 } from "lucide-react";
 import { Button } from "./ui/button";
 import { COLORS } from "@/config/theme";
@@ -58,9 +58,7 @@ export function Services() {
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Pill label */}
         <Reveal
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...fadeUp(12)}
           className="flex justify-center mb-5"
         >
           <span className="section-category text-xs">What I Do</span>
@@ -68,9 +66,7 @@ export function Services() {
 
         {/* Main heading - centered */}
         <Reveal as="h2"
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...fadeUp(16)}
           className="section-title"
         >
           Where Product Design <br />
@@ -127,9 +123,7 @@ export function Services() {
 
         {/* Explore Projects button - centered */}
         <Reveal
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...fadeUp(16)}
           className="focus-reveal mt-12 md:mt-14 flex justify-center"
         >
           <Button
