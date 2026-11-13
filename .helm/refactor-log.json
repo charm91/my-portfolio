@@ -1,6 +1,6 @@
 {
   "schema_version": 2,
-  "assessed_commit": "1a594d1d5f2467a3972bf840ded5ff54b54b9188",
+  "assessed_commit": "444a547ef205cd2a426187311acf4d8a268d4669",
   "full_scan_commit": "1a594d1d5f2467a3972bf840ded5ff54b54b9188",
   "findings": [
     {
@@ -532,6 +532,101 @@
           }
         ]
       }
+    },
+    {
+      "id": "r-2e113a72-55bc-4be4-a841-b0f7af30d217",
+      "category": "Code Quality",
+      "summary": "Eleven Reveal sites in FAQ, Footer, Journey, Portfolio, Services and Testimonials each repeat the same whileInView={{ opacity: 1, y: 0 }} and viewport={{ once: true }} props and differ only in the initial y offset (12 to 24), so changing the standard section reveal means editing every site.",
+      "paths": [
+        "src/components/Reveal.jsx",
+        "src/components/FAQ.jsx",
+        "src/components/Footer.jsx",
+        "src/components/Journey.jsx",
+        "src/components/Portfolio.jsx",
+        "src/components/Services.jsx",
+        "src/components/Testimonials.jsx"
+      ],
+      "found": {
+        "origin": "native",
+        "commit": "444a547ef205cd2a426187311acf4d8a268d4669",
+        "date": "2026-11-13"
+      },
+      "assessment": {
+        "origin": "native",
+        "commit": "444a547ef205cd2a426187311acf4d8a268d4669",
+        "date": "2026-11-13",
+        "priority": "low",
+        "risk": "safe",
+        "reason": "The duplicated reveal knowledge was touched at every site by the Reveal migration; one shared preset removes eleven copies, but the benefit is modest because the values rarely change.",
+        "evidence": [
+          "grep of initial={{ opacity: 0, y: N }} finds eleven sites (FAQ 2, Footer 2, Journey 1, Portfolio 2, Services 3, Testimonials 1), each followed by the identical whileInView and viewport props.",
+          "Hero and the contact page use animate instead and Portfolio cards add scale, so they are not part of this group.",
+          "Reveal.jsx spreads props to motion elements, so a spread preset needs no Reveal API change."
+        ],
+        "invariant": "Each site keeps its own initial y offset, the same whileInView and viewport values, and every other prop (variants, transition, className, entrance); rendered markup and Reveal behaviour stay identical."
+      },
+      "state": "open",
+      "depends_on": []
+    },
+    {
+      "id": "r-d4fa8033-5c97-4805-b6f1-ac0dab48bb15",
+      "category": "Code Quality",
+      "summary": "The contact form's name, email and message controls repeat the same four-line className block and backgroundColor/color style three times, so a change such as the aria-invalid or disabled styling needs three coordinated edits.",
+      "paths": [
+        "app/contact-me/ContactPageClient.jsx"
+      ],
+      "found": {
+        "origin": "native",
+        "commit": "444a547ef205cd2a426187311acf4d8a268d4669",
+        "date": "2026-11-13"
+      },
+      "assessment": {
+        "origin": "native",
+        "commit": "444a547ef205cd2a426187311acf4d8a268d4669",
+        "date": "2026-11-13",
+        "priority": "low",
+        "risk": "safe",
+        "reason": "Accessibility styling was added to all three controls separately; one shared class value would keep them from drifting, but the file is small and the controls rarely change.",
+        "evidence": [
+          "ContactPageClient.jsx repeats the cn() block with 'w-full rounded-xl border-0 px-4 py-3 text-base transition-colors duration-150', 'placeholder:text-[#6b7280]', 'aria-invalid:outline-2 aria-invalid:outline-red-600' and 'disabled:opacity-60 disabled:cursor-not-allowed' for name, email and the textarea.",
+          "The textarea adds only min-h-[120px] and resize-y.",
+          "contact-form-validation.test.jsx finds fields by label and does not assert these classes."
+        ],
+        "invariant": "Name and email keep identical classes and style; the textarea keeps the same classes plus min-h-[120px] and resize-y; labels, ids, aria attributes, disabled behaviour and the submit flow are unchanged."
+      },
+      "state": "open",
+      "depends_on": []
+    },
+    {
+      "id": "r-4834da07-6c08-4058-a17b-468b248f7c42",
+      "category": "Consistency",
+      "summary": "CaseStudyAuthor's social links add focus-visible:outline-2 even though AGENTS.md says keyboard focus uses the global 2px --ring outline and forbids per-component focus outlines, and case-study-author.test.jsx pins that class.",
+      "paths": [
+        "src/components/CaseStudyAuthor.jsx",
+        "src/__tests__/case-study-author.test.jsx",
+        "app/globals.css"
+      ],
+      "found": {
+        "origin": "native",
+        "commit": "444a547ef205cd2a426187311acf4d8a268d4669",
+        "date": "2026-11-13"
+      },
+      "assessment": {
+        "origin": "native",
+        "commit": "444a547ef205cd2a426187311acf4d8a268d4669",
+        "date": "2026-11-13",
+        "priority": "low",
+        "risk": "needs-review",
+        "reason": "A second focus declaration contradicts the documented single source of focus styling and could diverge if the global ring changes, but the visible result is currently the same.",
+        "evidence": [
+          "AGENTS.md Behavior Rules: use the global --ring outline and do not add per-component focus outlines.",
+          "app/globals.css sets outline: 2px solid var(--ring) for :where(a, button, [role='button']):focus-visible.",
+          "CaseStudyAuthor.jsx line 41 adds focus-visible:outline-2, and the author test asserts toHaveClass('focus-visible:outline-2'), the only such use in src and app."
+        ],
+        "invariant": "Social links keep a visible 2px keyboard focus outline in the same colour, the new-tab behaviour and accessible names; any test change keeps asserting visible focus handling, not only a class name."
+      },
+      "state": "open",
+      "depends_on": []
     }
   ]
 }
