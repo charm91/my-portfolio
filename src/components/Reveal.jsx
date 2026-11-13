@@ -4,9 +4,17 @@ import { useContext, useEffect, useRef } from "react";
 import { motion, MotionConfigContext } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-const elements = { div: motion.div, article: motion.article, h2: motion.h2 };
+const elements = {
+  div: motion.div,
+  article: motion.article,
+  p: motion.p,
+  h1: motion.h1,
+  h2: motion.h2,
+  header: motion.header,
+  form: motion.form,
+};
 
-export function Reveal({ as = "div", className, transition, ...props }) {
+export function Reveal({ as = "div", entrance = false, className, transition, ...props }) {
   const ref = useRef(null);
   const { transition: defaults } = useContext(MotionConfigContext);
   const Component = elements[as];
@@ -14,11 +22,11 @@ export function Reveal({ as = "div", className, transition, ...props }) {
   useEffect(() => {
     if (!window.IntersectionObserver) return;
     const bounds = ref.current.getBoundingClientRect();
-    // Content already on screen stays visible when hydration finishes late.
-    if (bounds.top >= window.innerHeight || bounds.bottom <= 0) {
+    // Keep already-visible content readable unless its introduction is intentional.
+    if (entrance || bounds.top >= window.innerHeight || bounds.bottom <= 0) {
       ref.current.dataset.revealReady = "true";
     }
-  }, []);
+  }, [entrance]);
 
   return (
     <Component

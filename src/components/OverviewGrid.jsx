@@ -4,6 +4,7 @@ import Image from "next/image";
 import cornerWhiteAsset from "../../public/corner-white.png";
 import yeMyatMinAsset from "../../public/ye-myat-min.jpeg";
 import linkedinAsset from "../../public/linkedin.svg";
+import { Reveal } from "@/components/Reveal";
 import { Star, ArrowDown, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { SITE } from "@/config/site";
@@ -12,13 +13,36 @@ import { COLORS } from "@/config/theme";
 const textPrimary = COLORS.textPrimaryHome;
 const textSecondary = COLORS.textSecondary;
 
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: { inherit: true, staggerChildren: 0.08 },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 16, scale: 0.96 },
+  show: { opacity: 1, y: 0, scale: 1 },
+};
+
 export function OverviewGrid() {
   return (
     <section className="py-12">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid lg:grid-cols-5 gap-6 md:gap-5">
+        <Reveal
+          entrance
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, margin: "-60px" }}
+          className="focus-reveal grid lg:grid-cols-5 gap-6 md:gap-5"
+        >
           <div className="flex flex-col gap-4 md:gap-5 lg:col-span-3 w-full">
-            <article
+            <Reveal
+              as="article"
+              entrance
+              variants={item}
               className="rounded-2xl bg-white overflow-hidden flex-1 flex flex-col"
             >
               <div className="relative aspect-6/3 min-h-[150px]">
@@ -64,8 +88,13 @@ export function OverviewGrid() {
                   practical experiences from early discovery to implementation.
                 </p>
               </div>
-            </article>
-            <article className="rounded-2xl bg-white">
+            </Reveal>
+            <Reveal
+              as="article"
+              entrance
+              variants={item}
+              className="focus-reveal rounded-2xl bg-white"
+            >
               <a
                 href="#contact"
                 className="group flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-6 rounded-2xl p-5 md:p-6"
@@ -96,11 +125,14 @@ export function OverviewGrid() {
                   </div>
                 </div>
               </a>
-            </article>
+            </Reveal>
           </div>
 
           <div className="flex flex-col gap-4 md:gap-5 lg:col-span-2 w-full">
-            <article
+            <Reveal
+              as="article"
+              entrance
+              variants={item}
               className="rounded-2xl bg-white p-5 md:p-6"
             >
               <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6">
@@ -118,9 +150,12 @@ export function OverviewGrid() {
                   {SITE.roles.map((role) => <li key={role}>{role}</li>)}
                 </ul>
               </div>
-            </article>
+            </Reveal>
 
-            <article
+            <Reveal
+              as="article"
+              entrance
+              variants={item}
               className="rounded-2xl bg-white p-5 md:p-6"
             >
               <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-6">
@@ -138,9 +173,12 @@ export function OverviewGrid() {
                   {SITE.domains.map((domain) => <li key={domain}>{domain}</li>)}
                 </ul>
               </div>
-            </article>
+            </Reveal>
 
-            <article
+            <Reveal
+              as="article"
+              entrance
+              variants={item}
               className="rounded-2xl bg-white p-5 md:p-6"
             >
               <div className="flex gap-2 mb-2 bg-background rounded-full px-3 py-2 w-fit">
@@ -187,9 +225,9 @@ export function OverviewGrid() {
 
                 <Image src={linkedinAsset.src} alt="LinkedIn" width={32} height={32} />
               </div>
-            </article>
+            </Reveal>
           </div>
-        </div>
+        </Reveal>
 
         <div className="text-center mt-10">
           <Button

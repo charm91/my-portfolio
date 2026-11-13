@@ -1,3 +1,6 @@
+"use client";
+
+import { Reveal } from "@/components/Reveal";
 import { ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
@@ -8,22 +11,45 @@ export function Hero() {
       className="relative flex flex-col justify-center pt-24 pb-10 md:pt-32"
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center">
-        <p className="section-category text-xs">
+        <Reveal
+          as="p"
+          entrance
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="section-category text-xs"
+        >
           Strategy → UX → Delivery
-        </p>
-        <h1
+        </Reveal>
+        <Reveal
+          as="h1"
+          entrance
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
           className="text-4xl sm:text-5xl md:text-6xl mt-2 font-medium text-foreground leading-tight tracking-tight text-center mx-auto"
         >
           Product Design with
           <span className="font-serif italic font-normal"> Impact</span>
-        </h1>
-        <p
+        </Reveal>
+        <Reveal
+          as="p"
+          entrance
+          initial={{ opacity: 0, y: 24 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
           className="mt-2 text-md md:text-lg text-element-content font-light tracking-wide max-w-lg mx-auto"
         >
           I shape product experiences that turn complex workflows into
           something clear, usable, and shippable.
-        </p>
-        <div className="mt-6">
+        </Reveal>
+        <Reveal
+          entrance
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.35 }}
+          className="focus-reveal mt-6"
+        >
           <Button
             size="lg"
             className="rounded-full gap-2 group p-4 py-5 my-2 "
@@ -34,7 +60,7 @@ export function Hero() {
               <ArrowRight className="size-4 transition-transform duration-150 motion-safe:group-hover:translate-x-1 motion-safe:group-focus-visible:translate-x-1" />
             </a>
           </Button>
-        </div>
+        </Reveal>
       </div>
     </section>
   );

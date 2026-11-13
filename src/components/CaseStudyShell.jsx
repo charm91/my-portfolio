@@ -10,14 +10,19 @@ import {
   textPrimary,
   textSecondary,
   bgPage,
+  pageTransition,
   scrollReveal,
   CASE_STUDY_HERO_IMAGE_SIZES,
 } from "@/config/caseStudy";
 
 export function CaseStudyShell({ coverImage, title, tags, liveUrl, thumbnail, children }) {
   return (
-    <div
-      className="min-h-screen relative"
+    <Reveal
+      entrance
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={pageTransition}
+      className="focus-reveal min-h-screen relative"
       style={{ backgroundColor: bgPage }}
     >
       <Header />
@@ -44,8 +49,10 @@ export function CaseStudyShell({ coverImage, title, tags, liveUrl, thumbnail, ch
 
       {/* Hero content and page content scroll over the fixed image */}
       <section className="relative flex flex-col z-10 mt-28 min-h-[50vh]">
-        <div
-          className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 md:pb-14 w-full bg-white rounded-t-2xl pt-10"
+        <Reveal
+          entrance
+          {...scrollReveal}
+          className="focus-reveal max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 md:pb-14 w-full bg-white rounded-t-2xl pt-10"
         >
           <h1
             className="text-4xl md:text-5xl px-4 font-medium text-center leading-tight mb-6 pt-5 tracking-tight"
@@ -79,7 +86,7 @@ export function CaseStudyShell({ coverImage, title, tags, liveUrl, thumbnail, ch
               <ExternalLink className="size-5 transition-transform duration-200 motion-safe:group-hover:scale-110 motion-safe:group-focus-visible:scale-110 motion-safe:group-hover:translate-x-0.5 motion-safe:group-focus-visible:translate-x-0.5" aria-hidden="true" />
             </a>
           </div>
-          <div className="mt-10">
+          <Reveal entrance {...scrollReveal} className="mt-10">
             <div className="rounded-2xl overflow-hidden">
               <Image
                 src={thumbnail.src}
@@ -90,8 +97,8 @@ export function CaseStudyShell({ coverImage, title, tags, liveUrl, thumbnail, ch
                 className="w-full h-auto"
               />
             </div>
-          </div>
-        </div>
+          </Reveal>
+        </Reveal>
         <main
           id="main-content"
           className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 pt-4 py-12 tracking-tight rounded-b-2xl bg-white"
@@ -108,6 +115,6 @@ export function CaseStudyShell({ coverImage, title, tags, liveUrl, thumbnail, ch
       >
         <Footer />
       </Reveal>
-    </div>
+    </Reveal>
   );
 }
