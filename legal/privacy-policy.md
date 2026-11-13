@@ -1,6 +1,6 @@
 # Privacy Policy
 
-**Last updated:** 2026-11-04
+**Last updated:** 2026-11-13
 
 ## Who We Are
 
@@ -11,13 +11,14 @@ For privacy questions or requests, email [nguwah106@gmail.com](mailto:nguwah106@
 ## What Data We Collect
 
 - **Contact enquiries.** If you submit the contact form, you provide your name, email address and message. Your browser sends those details to EmailJS, which delivers the enquiry to our Gmail mailbox at nguwah106@gmail.com.
+- **Security verification.** The contact page loads Google reCAPTCHA, which checks whether a submission comes from a person. Google receives information from your browser for this check, including your IP address and browser details. The resulting verification token is sent with your enquiry to EmailJS, which checks it.
 - **Technical information.** Vercel hosts the website and receives information needed to serve requests, such as IP addresses, browser information, requested pages and request times. Hosting and security services can process and retain technical logs even when you do not submit the contact form.
 
 You can browse without submitting an enquiry. The contact form requires a name, valid email address and message so that we can understand and respond to your request. We do not offer visitor accounts, take payments or request sensitive personal information through this website. Please avoid including sensitive or unnecessary personal details in your message.
 
 ## How We Use Your Data
 
-We use enquiry information to read and respond to your message and handle related follow-up. Technical information supports website delivery, troubleshooting and protection against abuse.
+We use enquiry information to read and respond to your message and handle related follow-up. Technical information supports website delivery, troubleshooting and protection against abuse. reCAPTCHA helps keep spam and automated submissions out of the contact form.
 
 We have not added visitor analytics, advertising trackers or mailing-list collection to the portfolio. This does not prevent our hosting and email providers from processing information needed to operate their services.
 
@@ -25,13 +26,16 @@ We have not added visitor analytics, advertising trackers or mailing-list collec
 
 - **EmailJS** receives the form submission and arranges email delivery. Its service also processes request data and metadata; handling and retention depend on its service practices and configuration. See the [EmailJS privacy policy](https://www.emailjs.com/legal/privacy-policy/).
 - **Google/Gmail** receives and stores enquiry emails in our mailbox and processes related email information as part of providing the email service. See the [Google privacy policy](https://policies.google.com/privacy).
+- **Google reCAPTCHA** runs on the contact page to verify that a submission is not automated. Google processes the information it receives under its own policies. See the [Google privacy policy](https://policies.google.com/privacy) and [Google terms](https://policies.google.com/terms).
 - **Vercel** hosts the site using its default configuration, without additional project-specific data-collection configuration. Vercel processes hosting and security information under its service practices. See the [Vercel privacy notice](https://vercel.com/legal/privacy-notice).
 
 ## Cookies and Similar Technologies
 
-We have not added application cookies, advertising pixels or browser-storage tracking to the portfolio. The contact form's minimum-fill timer and submission cooldown run in browser memory.
+We have not added application cookies, advertising pixels or browser-storage tracking to the portfolio. The contact form's submission cooldown runs in browser memory.
 
-Hosting and email-provider processing is separate from those application controls. Their privacy notices describe their own practices. Visiting an external service through a link can also involve that service's cookies and other technologies.
+When reCAPTCHA runs on the contact page, Google sets a cookie named `_GRECAPTCHA` for its risk analysis. Google describes this in its [reCAPTCHA FAQ](https://developers.google.com/recaptcha/docs/faq).
+
+Hosting, email-provider and Google processing is separate from those application controls. Their privacy notices describe their own practices. Visiting an external service through a link can also involve that service's cookies and other technologies.
 
 ## International Processing
 
