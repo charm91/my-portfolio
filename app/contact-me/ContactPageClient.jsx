@@ -15,6 +15,14 @@ const textSecondary = COLORS.textSecondaryContact;
 const bgPage = COLORS.bgPageContact;
 const inputBg = COLORS.inputBg;
 
+const fieldClass = cn(
+  "w-full rounded-xl border-0 px-4 py-3 text-base transition-colors duration-150",
+  "placeholder:text-[#6b7280]",
+  "aria-invalid:outline-2 aria-invalid:outline-red-600",
+  "disabled:opacity-60 disabled:cursor-not-allowed",
+);
+const fieldStyle = { backgroundColor: inputBg, color: textPrimary };
+
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const RESUBMIT_COOLDOWN_MS = 30000;
 
@@ -237,13 +245,8 @@ export default function ContactPageClient() {
                 value={formData.name}
                 onChange={handleChange}
                 disabled={isBusy}
-                className={cn(
-                  "w-full rounded-xl border-0 px-4 py-3 text-base transition-colors duration-150",
-                  "placeholder:text-[#6b7280]",
-                  "aria-invalid:outline-2 aria-invalid:outline-red-600",
-                  "disabled:opacity-60 disabled:cursor-not-allowed",
-                )}
-                style={{ backgroundColor: inputBg, color: textPrimary }}
+                className={fieldClass}
+                style={fieldStyle}
               />
             </div>
 
@@ -266,13 +269,8 @@ export default function ContactPageClient() {
                 value={formData.email}
                 onChange={handleChange}
                 disabled={isBusy}
-                className={cn(
-                  "w-full rounded-xl border-0 px-4 py-3 text-base transition-colors duration-150",
-                  "placeholder:text-[#6b7280]",
-                  "aria-invalid:outline-2 aria-invalid:outline-red-600",
-                  "disabled:opacity-60 disabled:cursor-not-allowed",
-                )}
-                style={{ backgroundColor: inputBg, color: textPrimary }}
+                className={fieldClass}
+                style={fieldStyle}
               />
             </div>
           </div>
@@ -296,13 +294,8 @@ export default function ContactPageClient() {
               value={formData.message}
               onChange={handleChange}
               disabled={isBusy}
-              className={cn(
-                "min-h-[120px] w-full resize-y rounded-xl border-0 px-4 py-3 text-base transition-colors duration-150",
-                "placeholder:text-[#6b7280]",
-                "aria-invalid:outline-2 aria-invalid:outline-red-600",
-                "disabled:opacity-60 disabled:cursor-not-allowed",
-              )}
-              style={{ backgroundColor: inputBg, color: textPrimary }}
+              className={cn("min-h-[120px] resize-y", fieldClass)}
+              style={fieldStyle}
             />
           </div>
 
