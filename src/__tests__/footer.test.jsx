@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from "vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, within } from "@testing-library/react";
 import { Footer } from "../components/Footer";
 import { SITE, SOCIAL_LINKS, RESUME_URL } from "../config/site";
 
@@ -13,7 +13,7 @@ vi.mock("@/components/ui/button", () => ({
 vi.mock("lucide-react", () => ({
   Linkedin: () => <svg />,
   Mail: () => <svg />,
-  ExternalLink: () => <svg />,
+  ExternalLink: () => <svg data-testid="external-link-icon" />,
 }));
 
 describe("Footer", () => {
@@ -54,6 +54,16 @@ describe("Footer", () => {
       expect(link).not.toHaveAccessibleDescription();
       expect(link).toHaveAttribute("rel", "noopener noreferrer");
     }
+  });
+
+  it.each([["LinkedIn", true], ["Email Reach me directly", false]])("shows the external-link arrow on the %s card only for web destinations: %s", (name, external) => {
+    render(<Footer />);
+    expect(within(screen.getByRole("link", { name })).queryByTestId("external-link-icon") !== null).toBe(external);
+  });
+
+  it.each([["LinkedIn", true], ["Email Reach me directly", false]])("shows the divider before the arrow on the %s card only for web destinations: %s", (name, external) => {
+    render(<Footer />);
+    expect(screen.getByRole("link", { name }).querySelector(".w-px") !== null).toBe(external);
   });
 
   it("returns to the homepage portfolio section from any route", () => {
