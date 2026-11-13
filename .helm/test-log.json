@@ -1,6 +1,6 @@
 {
   "schema_version": 3,
-  "assessed_commit": "1edceed298d8e1c54a274dd1c69b7256847f8c6f",
+  "assessed_commit": "456dc0aa3a9f99e8b8d2a38f640efdfe9c8a3562",
   "full_scan_commit": "1edceed298d8e1c54a274dd1c69b7256847f8c6f",
   "cases": [
     {
@@ -124,6 +124,23 @@
       }
     },
     {
+      "expected": "The not-found page offers a Return to home link to /.",
+      "basis": [
+        "app/not-found.jsx (static code evidence)",
+        "src/__tests__/skip-link.test.jsx (covers only the main landmark)"
+      ],
+      "paths": [
+        "app/not-found.jsx"
+      ],
+      "priority": "low",
+      "reason": "Only the main landmark of the 404 page is tested; its recovery link is unprotected, a minor dead-end risk.",
+      "action": "add",
+      "layer": "unit",
+      "id": "g-47352892-2466-473f-a64e-7c11e8971751",
+      "state": "open",
+      "assessed_commit": "456dc0aa3a9f99e8b8d2a38f640efdfe9c8a3562"
+    },
+    {
       "id": "g-76988325-e6b1-4d48-a737-cf79557e5c0a",
       "expected": "Use real Accordion wrapper; answers open/collapse, one at a time, keyboard activation. Preserve heading/questions/initial hidden/reveal/collapse duties.",
       "basis": [
@@ -208,6 +225,27 @@
       }
     },
     {
+      "expected": "Reveal tags content with scroll-reveal and sets data-reveal-ready only for off-screen content or an entrance reveal; it never sets it when IntersectionObserver is unavailable or for on-screen content without entrance, so content stays readable; Portfolio uses entrance on /portfolio only.",
+      "basis": [
+        "src/components/Reveal.jsx (static code evidence)",
+        "app/globals.css (.scroll-reveal:not([data-reveal-ready]) keeps content visible until ready)",
+        "commits 896a708 and a8b8efc (progressive reveal and entrance behavior)",
+        "AGENTS.md Known Traps (Reveal)"
+      ],
+      "paths": [
+        "src/components/Reveal.jsx",
+        "src/components/Portfolio.jsx",
+        "app/globals.css"
+      ],
+      "priority": "medium",
+      "reason": "No test references Reveal. A regression in the ready-flag rule could leave visible content hidden at opacity 0 for visitors; recoverable but affects most sections.",
+      "action": "add",
+      "layer": "unit",
+      "id": "g-7ea31a08-0912-42b6-94d0-5c58d66d2174",
+      "state": "open",
+      "assessed_commit": "456dc0aa3a9f99e8b8d2a38f640efdfe9c8a3562"
+    },
+    {
       "id": "g-7ed9078f-15d7-4ed5-9cba-674f53055bb4",
       "expected": "Minimum-fill guard: no EmailJS send before 3000ms; eligible at boundary; preserve silent handling.",
       "basis": [
@@ -219,11 +257,11 @@
         "src/__tests__/contact-form-validation.test.jsx"
       ],
       "priority": "medium",
-      "reason": "Current minimum-fill test checks absence of an error but never checks outbound sends; a removed guard could pass.",
+      "reason": "Obsolete: the 3000ms minimum-fill guard was removed from the contact form, so valid submissions now start verification immediately.",
       "action": "improve",
       "layer": "component integration",
-      "state": "resolved",
-      "assessed_commit": "cf8c30b176737a6cd00c2a3658d8c6717cffca8b",
+      "state": "obsolete",
+      "assessed_commit": "456dc0aa3a9f99e8b8d2a38f640efdfe9c8a3562",
       "tests": [
         "src/__tests__/contact-form-validation.test.jsx::blocks at 2999ms and permits a send at the 3000ms fill-time boundary",
         "src/__tests__/contact-form-validation.test.jsx::silently rejects a filled honeypot even with valid fields and enough fill time",
@@ -233,20 +271,15 @@
         "src/__tests__/contact-form-validation.test.jsx::does not start a cooldown for validation errors"
       ],
       "closure": {
-        "reason": "tested",
+        "reason": "obsolete",
         "refs": [
-          "src/__tests__/contact-form-validation.test.jsx::blocks at 2999ms and permits a send at the 3000ms fill-time boundary",
-          "src/__tests__/contact-form-validation.test.jsx::silently rejects a filled honeypot even with valid fields and enough fill time",
-          "src/__tests__/contact-form-validation.test.jsx::enforces the full 30s cooldown after %s and permits a retry at the boundary",
-          "src/__tests__/contact-form-validation.test.jsx::locks inputs and prevents another button submission while delivery is pending, even after cooldown",
-          "src/__tests__/contact-form-validation.test.jsx::shows success message after email sends",
-          "src/__tests__/contact-form-validation.test.jsx::does not start a cooldown for validation errors"
+          "commit 176e084 (fix(contact): remove the minimum submission delay)",
+          "src/__tests__/contact-form-validation.test.jsx::submits autofilled valid fields immediately after opening the page",
+          "AGENTS.md (minimum-fill guard no longer listed in Domain Rules)"
         ],
-        "method": "runtime",
-        "outcome": "13 tests passed in 1 file, including preserved 7 cases and fill-time, honeypot, cooldown success/failure, pending and retry guarantees.",
-        "commit": "2c3d029a9ead8bafaf64619def8ff5c645e6ccfd",
-        "command": "npm test -- src/__tests__/contact-form-validation.test.jsx",
-        "scope": "Contact form component in Vitest/jsdom; EmailJS mocked; Date and bounded scheduled-timer fixtures."
+        "method": "static",
+        "outcome": "The guarded behavior no longer exists in app/contact-me/ContactPageClient.jsx; the current test asserts an immediate send at Date.now() === 0. Replaces the earlier runtime closure for the removed guard.",
+        "commit": "176e084e243d314a7c5879020a02b3096f267e8a"
       }
     },
     {
@@ -594,6 +627,25 @@
         "src/__tests__/scroll-to-section.test.jsx::cancels a queued scroll when the query is removed",
         "src/__tests__/scroll-to-section.test.jsx::cancels a queued scroll on unmount"
       ]
+    },
+    {
+      "expected": "Footer ContactCard shows the external-link arrow and divider only for http(s) destinations outside SITE_URL; the mailto Email card shows neither.",
+      "basis": [
+        "src/components/Footer.jsx (static code evidence)",
+        "commits ccf3ba6 and 0b894a6",
+        "AGENTS.md Domain Rules (external arrows indicate the destination)"
+      ],
+      "paths": [
+        "src/components/Footer.jsx",
+        "src/__tests__/footer.test.jsx"
+      ],
+      "priority": "low",
+      "reason": "footer.test.jsx mocks ExternalLink as a bare svg, so no assertion detects a wrong indicator; the consequence is cosmetic.",
+      "action": "improve",
+      "layer": "unit",
+      "id": "g-c703f8a6-9f53-46a6-8ab5-51293cd69f8b",
+      "state": "open",
+      "assessed_commit": "456dc0aa3a9f99e8b8d2a38f640efdfe9c8a3562"
     },
     {
       "expected": "MotionProvider wraps children in a motion configuration that respects the visitor's reduced-motion preference (reducedMotion=\"user\").",
