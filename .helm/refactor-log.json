@@ -565,8 +565,32 @@
         ],
         "invariant": "Each site keeps its own initial y offset, the same whileInView and viewport values, and every other prop (variants, transition, className, entrance); rendered markup and Reveal behaviour stay identical."
       },
-      "state": "open",
-      "depends_on": []
+      "state": "resolved",
+      "depends_on": [],
+      "closure": {
+        "origin": "native",
+        "kind": "fixed",
+        "commit": "28ca10de90e71130e4c088248d871fe9f4c98a0c",
+        "date": "2026-11-13",
+        "method": "runtime",
+        "evidence": [
+          "Eleven repeated initial/whileInView/viewport sets in FAQ, Footer, Journey, Portfolio, Services and Testimonials now spread fadeUp(y) from Reveal.jsx.",
+          "The removed offsets (12 x2, 16 x5, 20 x3, 24 x1) match the fadeUp arguments exactly; no remaining site repeats whileInView={{ opacity: 1, y: 0 }}.",
+          "Equivalence is by diff review: the test motion mock strips these props, so the suite cannot observe them."
+        ],
+        "checks": [
+          {
+            "command": "npm test",
+            "scope": "Full Vitest suite in jsdom; framer-motion mocked; the motion mock ignores initial, whileInView and viewport",
+            "outcome": "26 files and 173 tests passed before and after the change."
+          },
+          {
+            "command": "npm run lint",
+            "scope": "ESLint over app, src and scripts",
+            "outcome": "0 errors; the 2 existing <img> warnings are in files not touched here."
+          }
+        ]
+      }
     },
     {
       "id": "r-d4fa8033-5c97-4805-b6f1-ac0dab48bb15",
@@ -594,8 +618,32 @@
         ],
         "invariant": "Name and email keep identical classes and style; the textarea keeps the same classes plus min-h-[120px] and resize-y; labels, ids, aria attributes, disabled behaviour and the submit flow are unchanged."
       },
-      "state": "open",
-      "depends_on": []
+      "state": "resolved",
+      "depends_on": [],
+      "closure": {
+        "origin": "native",
+        "kind": "fixed",
+        "commit": "51651a345b6e4f8861d23782091cecbdf3dc64fd",
+        "date": "2026-11-13",
+        "method": "runtime",
+        "evidence": [
+          "The name, email and message controls now share fieldClass and fieldStyle in ContactPageClient.jsx.",
+          "tailwind-merge output for the name and email controls is identical, and the textarea resolves to the same class set as before.",
+          "The 19 contact-form tests, which locate fields by label, pass unchanged."
+        ],
+        "checks": [
+          {
+            "command": "npm test",
+            "scope": "Full Vitest suite in jsdom; framer-motion mocked",
+            "outcome": "26 files and 173 tests passed before and after the change."
+          },
+          {
+            "command": "npm run lint",
+            "scope": "ESLint over app, src and scripts",
+            "outcome": "0 errors; the 2 existing <img> warnings are in files not touched here."
+          }
+        ]
+      }
     },
     {
       "id": "r-4834da07-6c08-4058-a17b-468b248f7c42",
