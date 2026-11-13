@@ -113,11 +113,8 @@ export function Header() {
   }, [menuOpen]);
 
   return (
-    <motion.header
-      initial={{ y: -80 }}
-      animate={{ y: 0 }}
-      transition={{ duration: 0.5, ease: "easeOut" }}
-      className="focus-reveal fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-3 md:pt-4 max-w-xl mx-auto"
+    <header
+      className="fixed top-0 left-0 right-0 z-50 flex justify-center px-4 pt-3 md:pt-4 max-w-xl mx-auto"
     >
       {/* Pill-shaped nav bar: white, rounded, shadow */}
       <div
@@ -227,6 +224,6 @@ export function Header() {
           </AnimatePresence>
         </div>
       </div>
-    </motion.header>
+    </header>
   );
 }

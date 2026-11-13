@@ -1,7 +1,6 @@
 "use client";
 
 import { useState, useRef, useEffect } from "react";
-import { motion } from "framer-motion";
 import emailjs from "@emailjs/browser";
 import { Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -166,12 +165,7 @@ export default function ContactPageClient() {
       <Header />
 
       <main id="main-content" className="relative mx-auto max-w-2xl px-4 py-28 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className="mb-10 text-center"
-        >
+        <div className="mb-10 text-center">
           <span
             className="mb-5 inline-block rounded-full bg-white px-4 py-1.5 text-sm font-medium"
             style={{ color: textPrimary }}
@@ -190,16 +184,13 @@ export default function ContactPageClient() {
             Open to conversations about product design roles, <br />
             collaboration, and opportunities.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.form
-          initial={{ opacity: 0, y: 24 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4, delay: 0.1 }}
+        <form
           onSubmit={handleSubmit}
           noValidate
           aria-busy={isBusy}
-          className="focus-reveal rounded-3xl bg-white p-6 md:p-8"
+          className="rounded-3xl bg-white p-6 md:p-8"
           style={{ boxShadow: "0 2px 5px rgba(0, 0, 0, 0.06)" }}
         >
           {/* Honeypot — hidden from real users, attracts bots */}
@@ -349,7 +340,7 @@ export default function ContactPageClient() {
               Cancel verification
             </button>
           )}
-        </motion.form>
+        </form>
       </main>
       {/* Keep Google's fixed badge outside transformed animation containers. */}
       <InvisibleRecaptcha ref={recaptcha} />
