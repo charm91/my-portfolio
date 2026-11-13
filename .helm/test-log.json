@@ -242,8 +242,30 @@
       "action": "add",
       "layer": "unit",
       "id": "g-7ea31a08-0912-42b6-94d0-5c58d66d2174",
-      "state": "open",
-      "assessed_commit": "456dc0aa3a9f99e8b8d2a38f640efdfe9c8a3562"
+      "state": "resolved",
+      "assessed_commit": "456dc0aa3a9f99e8b8d2a38f640efdfe9c8a3562",
+      "tests": [
+        "src/__tests__/reveal.test.jsx::enables the entrance effect for content %s the viewport",
+        "src/__tests__/reveal.test.jsx::keeps content that is already on screen readable instead of hiding it",
+        "src/__tests__/reveal.test.jsx::enables an intentional entrance for content that is already on screen",
+        "src/__tests__/reveal.test.jsx::never enables the effect without IntersectionObserver, even for an entrance",
+        "src/__tests__/portfolio.test.jsx::enables the entrance for on-screen cards on %s: %s"
+      ],
+      "closure": {
+        "reason": "tested",
+        "refs": [
+          "src/__tests__/reveal.test.jsx::enables the entrance effect for content %s the viewport",
+          "src/__tests__/reveal.test.jsx::keeps content that is already on screen readable instead of hiding it",
+          "src/__tests__/reveal.test.jsx::enables an intentional entrance for content that is already on screen",
+          "src/__tests__/reveal.test.jsx::never enables the effect without IntersectionObserver, even for an entrance",
+          "src/__tests__/portfolio.test.jsx::enables the entrance for on-screen cards on %s: %s"
+        ],
+        "method": "runtime",
+        "outcome": "21 tests passed in the 2 focused files and the full suite passed (26 files, 169 tests). Four isolated mutants (always ready, ignored entrance, missing IntersectionObserver guard, Portfolio ignoring page entrance) each failed at least one new test.",
+        "commit": "b7728d69705fc3be9d4f323585a2dc2d49bfbbad",
+        "command": "npx vitest run src/__tests__/reveal.test.jsx src/__tests__/portfolio.test.jsx; npm test",
+        "scope": "Reveal and Portfolio in Vitest/jsdom; framer-motion mocked; getBoundingClientRect and IntersectionObserver stubbed. CSS opacity behavior in a real browser is not covered."
+      }
     },
     {
       "id": "g-7ed9078f-15d7-4ed5-9cba-674f53055bb4",
