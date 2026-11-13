@@ -181,7 +181,7 @@ export function Header() {
               <MenuPanel
                 key="site-menu"
                 id={menuId}
-                className="menu-panel origin-top-right absolute right-0 top-full mt-2 w-48 rounded-2xl bg-white p-3 shadow-lg border border-gray-100"
+                className="menu-panel origin-top-right absolute right-0 top-full mt-2 max-h-[calc(100dvh-5.5rem)] w-48 overflow-y-auto overscroll-contain rounded-2xl bg-white p-3 shadow-lg border border-gray-100"
                 style={{
                   boxShadow:
                     "0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)",
