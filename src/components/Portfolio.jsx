@@ -8,7 +8,7 @@ import wctAsset from "../../public/wct.png";
 import cornerWhiteAsset from "../../public/corner-white.png";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { Reveal } from "@/components/Reveal";
+import { Reveal, fadeUp } from "@/components/Reveal";
 import { ArrowRight } from "lucide-react";
 import { Button, buttonVariants } from "@/components/ui/button";
 
@@ -54,9 +54,7 @@ export function Portfolio() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal
           entrance={isPortfolioPage}
-          initial={{ opacity: 0, y: 12 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...fadeUp(12)}
           className="flex flex-col justify-center items-center gap-5 mb-10"
         >
           <p className="section-category text-xs">Portfolio Highlights</p>
@@ -126,9 +124,7 @@ export function Portfolio() {
 
         {!isPortfolioPage && (
           <Reveal
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
+            {...fadeUp(16)}
             className="focus-reveal mt-12 text-center"
           >
             <Button size="lg" className="rounded-full px-8 h-10" asChild>

@@ -8,7 +8,7 @@ import thiriAsset from "../../public/thiri.jpeg";
 import { Star } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { Reveal } from "@/components/Reveal";
+import { Reveal, fadeUp } from "@/components/Reveal";
 import { COLORS } from "@/config/theme";
 
 const ZayarImage = zayarAsset.src;
@@ -94,9 +94,7 @@ export function Testimonials() {
     >
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <Reveal
-          initial={{ opacity: 0, y: 16 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          {...fadeUp(16)}
           className="text-center mb-12"
         >
           <span
