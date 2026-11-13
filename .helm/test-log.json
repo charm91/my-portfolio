@@ -138,7 +138,13 @@
       "layer": "unit",
       "id": "g-47352892-2466-473f-a64e-7c11e8971751",
       "state": "open",
-      "assessed_commit": "456dc0aa3a9f99e8b8d2a38f640efdfe9c8a3562"
+      "assessed_commit": "456dc0aa3a9f99e8b8d2a38f640efdfe9c8a3562",
+      "decision": {
+        "type": "deferred",
+        "note": "Owner accepted the recommendation to skip a test for the 404 Return to home link: the component is a single static link and its main landmark is already tested. Revisit if the page gains logic.",
+        "date": "2026-11-13",
+        "commit": "8f3ae17d59b6f7d64183786bbdb1caa5a25696a9"
+      }
     },
     {
       "id": "g-76988325-e6b1-4d48-a737-cf79557e5c0a",
@@ -666,8 +672,24 @@
       "action": "improve",
       "layer": "unit",
       "id": "g-c703f8a6-9f53-46a6-8ab5-51293cd69f8b",
-      "state": "open",
-      "assessed_commit": "456dc0aa3a9f99e8b8d2a38f640efdfe9c8a3562"
+      "state": "resolved",
+      "assessed_commit": "456dc0aa3a9f99e8b8d2a38f640efdfe9c8a3562",
+      "tests": [
+        "src/__tests__/footer.test.jsx::shows the external-link arrow on the %s card only for web destinations: %s",
+        "src/__tests__/footer.test.jsx::shows the divider before the arrow on the %s card only for web destinations: %s"
+      ],
+      "closure": {
+        "reason": "tested",
+        "refs": [
+          "src/__tests__/footer.test.jsx::shows the external-link arrow on the %s card only for web destinations: %s",
+          "src/__tests__/footer.test.jsx::shows the divider before the arrow on the %s card only for web destinations: %s"
+        ],
+        "method": "runtime",
+        "outcome": "11 footer tests passed and the full suite passed (26 files, 173 tests). Three isolated mutants (always external, never external, divider outside the gate) each failed at least one new test.",
+        "commit": "8f3ae17d59b6f7d64183786bbdb1caa5a25696a9",
+        "command": "npx vitest run src/__tests__/footer.test.jsx; npm test",
+        "scope": "Footer ContactCard in Vitest/jsdom; lucide-react mocked with a labelled icon; SITE_URL default origin. Visual appearance not covered."
+      }
     },
     {
       "expected": "MotionProvider wraps children in a motion configuration that respects the visitor's reduced-motion preference (reducedMotion=\"user\").",
@@ -799,20 +821,30 @@
         "src/components/CaseStudyShell.jsx"
       ],
       "priority": "medium",
-      "reason": "Reassessed: the Footer Case Studies link is now /#portfolio and src/__tests__/footer.test.jsx asserts it, so the ineffective fragment on case pages appears fixed. Owner confirmation that /#portfolio is the intended destination is still needed before closure.",
+      "reason": "Resolved: the Footer Case Studies link is /#portfolio, which lands on the homepage portfolio section from case-study pages. The owner confirmed keeping /#portfolio as the intended destination.",
       "action": "manual",
       "layer": "manual",
-      "state": "open",
+      "state": "resolved",
       "assessed_commit": "1edceed298d8e1c54a274dd1c69b7256847f8c6f",
-      "blocker": {
-        "kind": "clarification",
-        "note": "Confirm /#portfolio as the intended Case Studies destination from case-study pages; then close with the footer test as evidence."
-      },
       "decision": {
         "type": "accepted-risk",
         "note": "Owner said \"ignore it\" after reviewing the ineffective Case Studies fragment link on case-study pages and the proposed /portfolio destination. Leave the link unchanged.",
         "date": "2026-11-04",
         "commit": "1ef9fb20c6103d6389c251d2dd3716d0e0ceff72"
+      },
+      "tests": [
+        "src/__tests__/footer.test.jsx::returns to the homepage portfolio section from any route"
+      ],
+      "closure": {
+        "reason": "tested",
+        "refs": [
+          "src/__tests__/footer.test.jsx::returns to the homepage portfolio section from any route"
+        ],
+        "method": "runtime",
+        "outcome": "The footer test asserts the /#portfolio href; the full suite passed (26 files, 173 tests). On /portfolio the link leads to the homepage section, which the owner accepted.",
+        "commit": "8f3ae17d59b6f7d64183786bbdb1caa5a25696a9",
+        "command": "npx vitest run src/__tests__/footer.test.jsx; npm test",
+        "scope": "Footer link href in Vitest/jsdom; Next hash navigation in a real browser not exercised."
       }
     }
   ]
