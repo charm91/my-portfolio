@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
-  "assessed_commit": "444a547ef205cd2a426187311acf4d8a268d4669",
-  "full_scan_commit": "1a594d1d5f2467a3972bf840ded5ff54b54b9188",
+  "assessed_commit": "9db44c4cf50b85b9e95d5433a501e7b4f8970c4b",
+  "full_scan_commit": "9db44c4cf50b85b9e95d5433a501e7b4f8970c4b",
   "findings": [
     {
       "id": "r-567d3c62-8055-4d49-b1f1-205ce11153be",
@@ -710,6 +710,97 @@
           ]
         }
       }
+    },
+    {
+      "id": "r-6e8af65b-f141-4d9c-bd02-c66bc35dc205",
+      "category": "Code Quality",
+      "summary": "The four case-study views repeat two styled blocks verbatim: seven pull-quote divs and four Reflection panels, so a style change needs coordinated edits across four files.",
+      "paths": [
+        "src/views/BetterHRPage.jsx",
+        "src/views/KBZBankPage.jsx",
+        "src/views/UniLinksPage.jsx",
+        "src/views/WctPage.jsx"
+      ],
+      "found": {
+        "origin": "native",
+        "commit": "9db44c4cf50b85b9e95d5433a501e7b4f8970c4b",
+        "date": "2026-11-15"
+      },
+      "assessment": {
+        "origin": "native",
+        "commit": "9db44c4cf50b85b9e95d5433a501e7b4f8970c4b",
+        "date": "2026-11-15",
+        "priority": "low",
+        "risk": "safe",
+        "reason": "Changing the pull-quote or Reflection panel styling currently means eleven identical edits in four files; a missed site would leave one case study looking different.",
+        "evidence": [
+          "grep of src/views finds the identical class string 'border-l-3 border-green-500 text-lg font-medium italic px-6 py-4 my-4 block text-black' seven times (BetterHR 1, KBZ 1, UniLinks 2, WCT 3).",
+          "Each view ends with the same 'bg-gray-50 px-6 py-8 rounded-lg' wrapper and an identical h2 class string for its Reflection or Impact panel (four sites).",
+          "views.test.jsx only asserts headings and the Live Project link, so the markup is not pinned by class."
+        ],
+        "invariant": "Rendered markup, class names, heading levels and text of every case study stay identical; no change to AGENTS.md's rule that case-study prose lives inline in src/views."
+      },
+      "state": "open",
+      "depends_on": []
+    },
+    {
+      "id": "r-2d21ed7f-6117-47c5-8477-fb5c0fbd5bf9",
+      "category": "Code Quality",
+      "summary": "Header's Back, Home and Menu pill controls repeat the same class string, and their explicit cursor-pointer is now redundant: the global rule in app/globals.css covers enabled buttons and the shared Button base class already sets it.",
+      "paths": [
+        "src/components/Header.jsx",
+        "app/globals.css",
+        "src/components/ui/button.jsx"
+      ],
+      "found": {
+        "origin": "native",
+        "commit": "9db44c4cf50b85b9e95d5433a501e7b4f8970c4b",
+        "date": "2026-11-15"
+      },
+      "assessment": {
+        "origin": "native",
+        "commit": "9db44c4cf50b85b9e95d5433a501e7b4f8970c4b",
+        "date": "2026-11-15",
+        "priority": "low",
+        "risk": "safe",
+        "reason": "Three alternative controls in one slot carry near-identical long class strings, so a pill style change must be mirrored, and a stale cursor-pointer suggests it is still needed.",
+        "evidence": [
+          "Header.jsx lines 167, 177 and 187 each declare bg-gray-100 hover:bg-gray-200 cursor-pointer with the same rounded-full px-5 py-2 text-sm font-medium.",
+          "app/globals.css sets cursor: pointer on button:not(:disabled):not([aria-disabled='true']).",
+          "src/components/ui/button.jsx buttonVariants base already includes cursor-pointer, which also covers the asChild link variant."
+        ],
+        "invariant": "All three controls keep the same visual result, hover colour, pointer cursor, accessible names and behaviour; the menu trigger stays a native button."
+      },
+      "state": "open",
+      "depends_on": []
+    },
+    {
+      "id": "r-ae28ba19-8054-4d1a-a21d-0ea65624072b",
+      "category": "Code Quality",
+      "summary": "ContactPageClient's showFieldError(field, message) parameter shadows the trimmed message const declared a few lines above in the same submit handler.",
+      "paths": [
+        "app/contact-me/ContactPageClient.jsx"
+      ],
+      "found": {
+        "origin": "native",
+        "commit": "9db44c4cf50b85b9e95d5433a501e7b4f8970c4b",
+        "date": "2026-11-15"
+      },
+      "assessment": {
+        "origin": "native",
+        "commit": "9db44c4cf50b85b9e95d5433a501e7b4f8970c4b",
+        "date": "2026-11-15",
+        "priority": "low",
+        "risk": "safe",
+        "reason": "Two different values called message live in one function scope, so a later edit to the validation branch could read the wrong one.",
+        "evidence": [
+          "ContactPageClient.jsx line 62 declares const message = formData.message.trim() and line 64 declares showFieldError = (field, message) => ...",
+          "contact-form-validation.test.jsx asserts the exact error texts and focus, so a pure rename is covered."
+        ],
+        "invariant": "Validation order, error texts, focus target, aria attributes, EmailJS payload and cooldown behaviour stay identical."
+      },
+      "state": "open",
+      "depends_on": []
     }
   ]
 }
