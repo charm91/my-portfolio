@@ -10,6 +10,8 @@ vi.mock("next/image", async () => (await import("./test-utils/mocks")).nextImage
 vi.mock("next/link", async () => (await import("./test-utils/mocks")).nextLinkMock);
 
 const mockPathname = vi.fn();
+const mockReturnNavigation = vi.fn();
+vi.mock("@/components/NavigationHistory", () => ({ useReturnNavigation: () => mockReturnNavigation() }));
 vi.mock("next/navigation", () => ({
   usePathname: () => mockPathname(),
 }));
@@ -45,6 +47,7 @@ describe("Header", () => {
     MockIntersectionObserver.instances = [];
     vi.stubGlobal("IntersectionObserver", MockIntersectionObserver);
     mockPathname.mockReturnValue("/");
+    mockReturnNavigation.mockReturnValue(null);
   });
 
   afterEach(() => {
@@ -72,12 +75,23 @@ describe("Header", () => {
     expect(screen.getByRole("link", { name: "Contact Me" })).toHaveAttribute("href", "/contact-me");
   });
 
-  it("shows Back to Home link on non-home pages", () => {
+  it("shows Home on non-home pages without a known return point", () => {
     mockPathname.mockReturnValue("/betterhr");
     render(<Header />);
-    expect(screen.getByText("Back to Home")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "Back to Home" })).toHaveAttribute("href", "/");
+    expect(screen.getByText("Home")).toBeInTheDocument();
+    expect(screen.getByRole("link", { name: "Home" })).toHaveAttribute("href", "/");
     expect(screen.queryByRole("button", { name: /open menu/i })).not.toBeInTheDocument();
+  });
+
+  it("offers Back for a known origin while keeping the logo linked to Home", async () => {
+    mockPathname.mockReturnValue("/contact-me");
+    const goBack = vi.fn();
+    mockReturnNavigation.mockReturnValue({ previous: { url: "/portfolio" }, goBack });
+    render(<Header />);
+    await userEvent.click(screen.getByRole("button", { name: "Back", exact: true }));
+    expect(goBack).toHaveBeenCalledOnce();
+    expect(screen.getByRole("link", { name: "Charm" })).toHaveAttribute("href", "/");
+    expect(screen.queryByRole("link", { name: "Home", exact: true })).not.toBeInTheDocument();
   });
 
   it("exposes its open state and restores trigger focus on Escape", async () => {

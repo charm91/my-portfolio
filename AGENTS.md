@@ -43,6 +43,7 @@ Development output uses `.next-dev`; production build and start use `.next`, so 
 | `app/[case]/page.jsx` | Generates static case routes from the registry; `dynamicParams = false`, unknown cases call `notFound()`. |
 | `app/page.jsx` / `app/portfolio/page.jsx` | Server pages composing homepage sections and the separate portfolio listing. |
 | `src/components/HomeShell.jsx` | Shared header, fixed background layer and main-content landmark for home and portfolio pages. |
+| `src/components/NavigationHistory.jsx` | Tracks known same-tab return points in browser history. Back restores the originating page, position and link focus; direct visits show Home. |
 | `src/components/CaseStudyShell.jsx` | Shared case-study hero, fixed cover image, content container, author and footer. |
 | `src/components/CaseStudySection.jsx` / `src/views/*.jsx` | Plain content sections and inline case-study prose for Better HR, KBZ Bank, UniLinks and WCT Pay. |
 | `src/config/theme.js` / `src/config/caseStudy.js` | Shared color tokens; case-study token exports and transition/reveal configurations. |

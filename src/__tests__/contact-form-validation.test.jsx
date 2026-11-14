@@ -88,10 +88,10 @@ describe("Contact form validation", () => {
     vi.clearAllMocks();
   });
 
-  it("links the logo and Back to Home to the homepage", () => {
+  it("links the logo and Home fallback to the homepage", () => {
     render(<ContactPageClient />);
     expect(screen.getByRole("link", { name: "Charm" })).toHaveAttribute("href", "/");
-    expect(screen.getByRole("link", { name: "Back to Home" })).toHaveAttribute("href", "/");
+    expect(screen.getByRole("link", { name: "Home" })).toHaveAttribute("href", "/");
   });
 
   it("keeps the fixed CAPTCHA badge outside the animated form", () => {

@@ -10,6 +10,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { SITE } from "@/config/site";
 import { Reveal } from "@/components/Reveal";
+import { useReturnNavigation } from "@/components/NavigationHistory";
 
 const navItems = [
   { label: "Home", href: "#home" },
@@ -40,6 +41,7 @@ function MenuPanel({ children, ...props }) {
 
 export function Header() {
   const pathname = usePathname();
+  const navigation = useReturnNavigation();
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeHref, setActiveHref] = useState("#home");
   const visibleSections = useRef(new Set());
@@ -167,6 +169,15 @@ export function Header() {
             >
               Menu
             </button>
+          ) : navigation?.previous ? (
+            <Button
+              type="button"
+              variant="chip"
+              onClick={navigation.goBack}
+              className="rounded-full px-5 py-2 h-9 text-sm font-medium bg-gray-100 hover:bg-gray-200 cursor-pointer"
+            >
+              Back
+            </Button>
           ) : (
             <Button
               asChild
@@ -176,7 +187,7 @@ export function Header() {
                 "bg-gray-100 hover:bg-gray-200 cursor-pointer",
               )}
             >
-              <Link href="/">Back to Home</Link>
+              <Link href="/">Home</Link>
             </Button>
           )}
 

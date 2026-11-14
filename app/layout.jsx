@@ -4,6 +4,7 @@ import faviconVectorAsset from "../public/favicon.svg";
 import "./globals.css";
 import { SITE, SITE_URL } from "@/config/site";
 import { MotionProvider } from "@/components/MotionProvider";
+import { NavigationHistoryProvider } from "@/components/NavigationHistory";
 import { getPageMetadata } from "@/lib/seo";
 
 const inter = Inter({
@@ -34,7 +35,7 @@ export default function RootLayout({ children }) {
         >
           Skip to content
         </a>
-        <MotionProvider>{children}</MotionProvider>
+        <NavigationHistoryProvider><MotionProvider>{children}</MotionProvider></NavigationHistoryProvider>
       </body>
     </html>
   );
