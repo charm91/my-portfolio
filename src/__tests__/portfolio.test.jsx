@@ -49,14 +49,8 @@ describe("Portfolio", () => {
     }
   });
 
-  it("shows See All button when not on /portfolio", () => {
-    render(<Portfolio />);
-    expect(screen.getByText("See All")).toBeInTheDocument();
-    expect(screen.getByRole("link", { name: "See All" })).toHaveAttribute("href", "/portfolio");
-  });
-
-  it("hides See All button when on /portfolio", () => {
-    mockPathname.mockReturnValue("/portfolio");
+  it.each(["/", "/portfolio"])("does not show the redundant See All link on %s", (path) => {
+    mockPathname.mockReturnValue(path);
     render(<Portfolio />);
     expect(screen.queryByText("See All")).not.toBeInTheDocument();
   });

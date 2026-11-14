@@ -10,7 +10,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { Reveal, fadeUp } from "@/components/Reveal";
 import { ArrowRight } from "lucide-react";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { buttonVariants } from "@/components/ui/button";
 
 const kbzBankImage = kbzAsset.src;
 const uniLinksImage = unilinksAsset.src;
@@ -121,17 +121,6 @@ export function Portfolio() {
             </Reveal>
           ))}
         </div>
-
-        {!isPortfolioPage && (
-          <Reveal
-            {...fadeUp(16)}
-            className="focus-reveal mt-12 text-center"
-          >
-            <Button size="lg" className="rounded-full px-8 h-10" asChild>
-              <Link href="/portfolio">See All</Link>
-            </Button>
-          </Reveal>
-        )}
       </div>
     </section>
   );
