@@ -4,6 +4,24 @@
   "full_scan_commit": "1edceed298d8e1c54a274dd1c69b7256847f8c6f",
   "cases": [
     {
+      "id": "g-013ef1a4-cbe4-4473-9292-8ea9b76e2a69",
+      "expected": "Cross-origin links, download links, links to the current URL and forged history state create no return point.",
+      "basis": [
+        "src/components/NavigationHistory.jsx (static code evidence: remember handler and validEntry)",
+        "src/__tests__/navigation-history.test.jsx (existing assertions inspected; only modifier clicks and new-tab links are tested)"
+      ],
+      "paths": [
+        "src/components/NavigationHistory.jsx",
+        "src/__tests__/navigation-history.test.jsx"
+      ],
+      "priority": "low",
+      "reason": "Guards against invalid return state have no direct test; the failure is a wrong or missing Back button.",
+      "action": "add",
+      "layer": "unit",
+      "state": "open",
+      "assessed_commit": "1f8014fed1fda07b730867b060691a20312e4bf7"
+    },
+    {
       "id": "g-2fa872bd-a832-416f-ad34-8531a525ccfe",
       "expected": "ResizeObserver recomputes clipped testimonial overflow, clamps short content to zero, disconnects on cleanup; measurement wiring only, no visual claim.",
       "basis": [
@@ -80,6 +98,24 @@
         "command": "npm test -- src/__tests__/contact-form-validation.test.jsx",
         "scope": "Contact form component in Vitest/jsdom; EmailJS mocked; Date and bounded scheduled-timer fixtures."
       }
+    },
+    {
+      "id": "g-3b09eb7f-617f-42e3-b92d-728e258d73d6",
+      "expected": "After a menu link on Home leads to another page, Back returns to Home and focuses the Menu button.",
+      "basis": [
+        "src/components/NavigationHistory.jsx (static code evidence: focus.menu branch)",
+        "src/__tests__/navigation-history.test.jsx (existing assertions inspected; only link focus is tested)"
+      ],
+      "paths": [
+        "src/components/NavigationHistory.jsx",
+        "src/__tests__/navigation-history.test.jsx"
+      ],
+      "priority": "medium",
+      "reason": "The menu focus-return branch of the new return navigation is unprotected; a regression would drop keyboard focus after Back.",
+      "action": "add",
+      "layer": "unit",
+      "state": "open",
+      "assessed_commit": "1f8014fed1fda07b730867b060691a20312e4bf7"
     },
     {
       "id": "g-3ba0075c-4893-4ccc-8bd7-c6d3ba3f0a4c",
@@ -352,6 +388,27 @@
       }
     },
     {
+      "id": "g-a15e02ab-73bd-4ea2-9677-02291c06bd7e",
+      "expected": "After a real in-site navigation the Header shows Back and clicking it goes back one history entry.",
+      "basis": [
+        "src/components/Header.jsx (static code evidence)",
+        "src/components/NavigationHistory.jsx (static code evidence)",
+        "src/__tests__/header.test.jsx (mocks useReturnNavigation)"
+      ],
+      "paths": [
+        "src/components/Header.jsx",
+        "src/components/NavigationHistory.jsx",
+        "src/__tests__/header.test.jsx",
+        "src/__tests__/navigation-history.test.jsx"
+      ],
+      "priority": "low",
+      "reason": "Header and provider are only tested separately against a mocked contract; a shape mismatch would go unnoticed.",
+      "action": "add",
+      "layer": "integration",
+      "state": "open",
+      "assessed_commit": "1f8014fed1fda07b730867b060691a20312e4bf7"
+    },
+    {
       "id": "g-a5b76e0c-0512-40a5-bd4a-1950e03691bf",
       "expected": "Social link href matches configured profile.",
       "basis": [
@@ -384,6 +441,24 @@
         "command": "npm test -- src/__tests__/portfolio.test.jsx src/__tests__/faq.test.jsx src/__tests__/testimonials.test.jsx src/__tests__/case-study-author.test.jsx",
         "scope": "Portfolio with real Button, FAQ with real Radix accordion, Testimonials synthetic ResizeObserver measurements, author links in Vitest/jsdom; no visual/browser certification."
       }
+    },
+    {
+      "id": "g-a6c08928-3ee7-42c4-acdb-8e2dab4eb2cd",
+      "expected": "With no validation error, the message field is described by the visible hint 'At least 10 characters.'",
+      "basis": [
+        "app/contact-me/ContactPageClient.jsx (static code evidence: contact-message-hint)",
+        "src/__tests__/contact-form-validation.test.jsx (existing assertions inspected; only the combined hint and error description is asserted)"
+      ],
+      "paths": [
+        "app/contact-me/ContactPageClient.jsx",
+        "src/__tests__/contact-form-validation.test.jsx"
+      ],
+      "priority": "low",
+      "reason": "The hint's link to the field in the no-error state is unasserted; minor accessibility regression risk.",
+      "action": "improve",
+      "layer": "unit",
+      "state": "open",
+      "assessed_commit": "1f8014fed1fda07b730867b060691a20312e4bf7"
     },
     {
       "id": "g-a6d43b22-e1e6-410b-948a-ef742fdb01f5",
