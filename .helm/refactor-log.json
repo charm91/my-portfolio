@@ -740,8 +740,31 @@
         ],
         "invariant": "Rendered markup, class names, heading levels and text of every case study stay identical; no change to AGENTS.md's rule that case-study prose lives inline in src/views."
       },
-      "state": "open",
-      "depends_on": []
+      "state": "resolved",
+      "depends_on": [],
+      "closure": {
+        "origin": "native",
+        "kind": "fixed",
+        "commit": "2260a3551c72411b26671c38ad26fd99a19b446b",
+        "date": "2026-11-15",
+        "method": "runtime",
+        "evidence": [
+          "CaseStudyQuote and CaseStudyReflection in CaseStudySection.jsx replace seven pull-quote divs and four Reflection panels across the four views.",
+          "A before-and-after render of all four case-study pages produced byte-identical markup."
+        ],
+        "checks": [
+          {
+            "command": "npx vitest run src/__tests__/views.test.jsx src/__tests__/case-study-section.test.jsx src/__tests__/case-study-routes.test.jsx",
+            "scope": "Case-study view, section and route tests in Vitest/jsdom plus a temporary markup comparison that was not committed",
+            "outcome": "22 tests passed; markup identical for betterhr, kbz-bank, unilinks and wct"
+          },
+          {
+            "command": "npx vitest run; npm run lint",
+            "scope": "Whole project in Vitest/jsdom and ESLint on the final tree 2260a35; no browser or production build",
+            "outcome": "27 files and 189 tests passed; lint reported 0 errors and 2 existing img warnings in test files"
+          }
+        ]
+      }
     },
     {
       "id": "r-2d21ed7f-6117-47c5-8477-fb5c0fbd5bf9",
@@ -771,8 +794,31 @@
         ],
         "invariant": "All three controls keep the same visual result, hover colour, pointer cursor, accessible names and behaviour; the menu trigger stays a native button."
       },
-      "state": "open",
-      "depends_on": []
+      "state": "resolved",
+      "depends_on": [],
+      "closure": {
+        "origin": "native",
+        "kind": "fixed",
+        "commit": "59b0082bb183962a98c4cabd84d292243d2c99b8",
+        "date": "2026-11-15",
+        "method": "runtime",
+        "evidence": [
+          "Header.jsx now builds the Menu, Back and Home pills from one pillControl constant plus each control's own extras.",
+          "The redundant cursor-pointer was removed; the global button rule and the shared Button base class still provide it."
+        ],
+        "checks": [
+          {
+            "command": "npx vitest run src/__tests__/header.test.jsx src/__tests__/section-targets.test.jsx src/__tests__/contact-form-validation.test.jsx src/__tests__/skip-link.test.jsx",
+            "scope": "Header, home section targets, contact page chrome and skip-link tests in Vitest/jsdom; cursor appearance not checked in a browser",
+            "outcome": "49 tests passed"
+          },
+          {
+            "command": "npx vitest run; npm run lint",
+            "scope": "Whole project in Vitest/jsdom and ESLint on the final tree 2260a35; no browser or production build",
+            "outcome": "27 files and 189 tests passed; lint reported 0 errors and 2 existing img warnings in test files"
+          }
+        ]
+      }
     },
     {
       "id": "r-ae28ba19-8054-4d1a-a21d-0ea65624072b",
@@ -799,8 +845,31 @@
         ],
         "invariant": "Validation order, error texts, focus target, aria attributes, EmailJS payload and cooldown behaviour stay identical."
       },
-      "state": "open",
-      "depends_on": []
+      "state": "resolved",
+      "depends_on": [],
+      "closure": {
+        "origin": "native",
+        "kind": "fixed",
+        "commit": "b911630d4da489a532cf75ab6017e56c79f9ddd9",
+        "date": "2026-11-15",
+        "method": "runtime",
+        "evidence": [
+          "ContactPageClient.jsx showFieldError now takes feedback, so message refers only to the trimmed form value.",
+          "Error texts, focus, aria attributes and payload code are unchanged."
+        ],
+        "checks": [
+          {
+            "command": "npx vitest run src/__tests__/contact-form-validation.test.jsx",
+            "scope": "Contact form validation, cooldown and delivery tests in Vitest/jsdom",
+            "outcome": "19 tests passed"
+          },
+          {
+            "command": "npx vitest run; npm run lint",
+            "scope": "Whole project in Vitest/jsdom and ESLint on the final tree 2260a35; no browser or production build",
+            "outcome": "27 files and 189 tests passed; lint reported 0 errors and 2 existing img warnings in test files"
+          }
+        ]
+      }
     }
   ]
 }
