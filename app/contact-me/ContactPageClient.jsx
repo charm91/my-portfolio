@@ -69,7 +69,7 @@ export default function ContactPageClient() {
     };
 
     if (name.length < 2) {
-      showFieldError("name", "Please enter your full name.");
+      showFieldError("name", "Use at least 2 characters for your name.");
       return;
     }
     if (!EMAIL_RE.test(email)) {
@@ -77,7 +77,7 @@ export default function ContactPageClient() {
       return;
     }
     if (message.length < 10) {
-      showFieldError("message", "Your message is too short. Please add more detail.");
+      showFieldError("message", "Write at least 10 characters in your message.");
       return;
     }
 
@@ -286,7 +286,7 @@ export default function ContactPageClient() {
             <textarea
               id="contact-message"
               aria-invalid={invalidField === "message" || undefined}
-              aria-describedby={invalidField === "message" ? "contact-form-error" : undefined}
+              aria-describedby={`contact-message-hint${invalidField === "message" ? " contact-form-error" : ""}`}
               name="message"
               required
               rows={5}
@@ -297,6 +297,9 @@ export default function ContactPageClient() {
               className={cn("min-h-[120px] resize-y", fieldClass)}
               style={fieldStyle}
             />
+            <p id="contact-message-hint" className="mt-2 text-sm" style={{ color: textSecondary }}>
+              At least 10 characters.
+            </p>
           </div>
 
           <div role="status" aria-live="polite" aria-atomic="true">

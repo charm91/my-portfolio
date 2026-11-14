@@ -105,11 +105,11 @@ describe("Contact form validation", () => {
     await setField(user, "Email Address", "valid@example.com");
     await setField(user, "Message", "Long enough message here");
     await submitForm(user);
-    expect(screen.getByText("Please enter your full name.")).toBeInTheDocument();
-    expect(screen.getByRole("alert")).toHaveTextContent("Please enter your full name.");
+    expect(screen.getByText("Use at least 2 characters for your name.")).toBeInTheDocument();
+    expect(screen.getByRole("alert")).toHaveTextContent("Use at least 2 characters for your name.");
     expect(screen.getByLabelText("Your Name")).toHaveFocus();
     expect(screen.getByLabelText("Your Name")).toHaveAttribute("aria-invalid", "true");
-    expect(screen.getByLabelText("Your Name")).toHaveAccessibleDescription("Please enter your full name.");
+    expect(screen.getByLabelText("Your Name")).toHaveAccessibleDescription("Use at least 2 characters for your name.");
   });
 
   it("immediately shows error when email is invalid", async () => {
@@ -130,10 +130,10 @@ describe("Contact form validation", () => {
     await setField(user, "Email Address", "valid@example.com");
     await setField(user, "Message", "Short");
     await submitForm(user);
-    expect(screen.getByText("Your message is too short. Please add more detail.")).toBeInTheDocument();
+    expect(screen.getByText("Write at least 10 characters in your message.")).toBeInTheDocument();
     expect(screen.getByLabelText("Message")).toHaveFocus();
     expect(screen.getByLabelText("Message")).toHaveAttribute("aria-invalid", "true");
-    expect(screen.getByLabelText("Message")).toHaveAccessibleDescription("Your message is too short. Please add more detail.");
+    expect(screen.getByLabelText("Message")).toHaveAccessibleDescription("At least 10 characters. Write at least 10 characters in your message.");
   });
 
   it("clears error when user corrects input after a validation failure", async () => {
@@ -142,12 +142,12 @@ describe("Contact form validation", () => {
     await setField(user, "Email Address", "valid@example.com");
     await setField(user, "Message", "Long enough message here");
     await submitForm(user);
-    expect(screen.getByText("Please enter your full name.")).toBeInTheDocument();
+    expect(screen.getByText("Use at least 2 characters for your name.")).toBeInTheDocument();
     await setField(user, "Email Address", "updated@example.com");
     expect(screen.getByLabelText("Your Name")).toHaveAttribute("aria-invalid", "true");
-    expect(screen.getByText("Please enter your full name.")).toBeInTheDocument();
+    expect(screen.getByText("Use at least 2 characters for your name.")).toBeInTheDocument();
     await setField(user, "Your Name", "Charm");
-    expect(screen.queryByText("Please enter your full name.")).not.toBeInTheDocument();
+    expect(screen.queryByText("Use at least 2 characters for your name.")).not.toBeInTheDocument();
     expect(screen.getByLabelText("Your Name")).not.toHaveAttribute("aria-invalid");
     expect(screen.getByLabelText("Your Name")).not.toHaveAttribute("aria-describedby");
   });
@@ -209,7 +209,7 @@ describe("Contact form validation", () => {
     render(<ContactPageClient />);
     await setField(user, "Your Name", "A");
     await submitForm(user);
-    expect(screen.getByText("Please enter your full name.")).toBeInTheDocument();
+    expect(screen.getByText("Use at least 2 characters for your name.")).toBeInTheDocument();
     expect(emailjs.send).not.toHaveBeenCalled();
     expect(screen.getByRole("button", { name: /send message/i })).toBeEnabled();
 
