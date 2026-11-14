@@ -114,8 +114,22 @@
       "reason": "The menu focus-return branch of the new return navigation is unprotected; a regression would drop keyboard focus after Back.",
       "action": "add",
       "layer": "unit",
-      "state": "open",
-      "assessed_commit": "1f8014fed1fda07b730867b060691a20312e4bf7"
+      "state": "resolved",
+      "assessed_commit": "1f8014fed1fda07b730867b060691a20312e4bf7",
+      "tests": [
+        "src/__tests__/navigation-history.test.jsx::returns focus to the menu trigger after leaving through a menu link"
+      ],
+      "closure": {
+        "reason": "tested",
+        "refs": [
+          "src/__tests__/navigation-history.test.jsx::returns focus to the menu trigger after leaving through a menu link"
+        ],
+        "method": "runtime",
+        "outcome": "Test fails when the menu-focus branch is disabled and passes with the real source. Full suite 189 tests passed in 27 files; npm run lint reported 0 errors.",
+        "commit": "e0b2c83795b83f90b2878ef3869de2d82ed144dd",
+        "command": "npx vitest run src/__tests__/navigation-history.test.jsx; npx vitest run",
+        "scope": "NavigationHistory provider with a synthetic header menu trigger in Vitest/jsdom; no real browser, router or Header integration."
+      }
     },
     {
       "id": "g-3ba0075c-4893-4ccc-8bd7-c6d3ba3f0a4c",
