@@ -17,7 +17,7 @@ import wctUi7Asset from "../../public/wct/ui7.png";
 import { CASE_STUDY_IMAGE_SIZES, CASE_STUDY_GRID_IMAGE_SIZES } from "@/config/caseStudy";
 import { Clock, Globe, TabletSmartphone } from "lucide-react";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
-import { CaseStudySection as Section } from "@/components/CaseStudySection";
+import { CaseStudySection as Section, CaseStudyQuote, CaseStudyReflection } from "@/components/CaseStudySection";
 
 export function WctPage() {
   return (
@@ -41,10 +41,10 @@ export function WctPage() {
           fragmented. Merchants had to mentally connect multiple steps,
           often across different tools. The goal was simple on paper:
         </p>
-        <div className="border-l-3 border-green-500 text-lg font-medium italic px-6 py-4 my-4 block text-black">
+        <CaseStudyQuote>
           A unified dashboard to manage the full payment lifecycle from
           crypto to fiat with clarity.
-        </div>
+        </CaseStudyQuote>
         <p className="mb-4">
           But in reality, this meant solving one of the hardest UX problems
           in fintech:{" "}
@@ -112,9 +112,9 @@ export function WctPage() {
           withdrawing) is just part of one continuous journey:
         </p>
 
-        <div className="border-l-3 border-green-500 text-lg font-medium italic px-6 py-4 my-4 block text-black">
+        <CaseStudyQuote>
           Request → Receive → Understand → Withdraw
-        </div>
+        </CaseStudyQuote>
         <p className="mb-4">
           That shift changed everything.
           <br /> Instead of designing separate features, I focused on making
@@ -129,9 +129,9 @@ export function WctPage() {
           was how balances were presented, users could see multiple
           currencies and tokens, but that didn’t answer their real question:
         </p>
-        <div className="border-l-3 border-green-500 text-lg font-medium italic px-6 py-4 my-4 block text-black">
+        <CaseStudyQuote>
           How much money do I actually have?
-        </div>
+        </CaseStudyQuote>
         <p className="mb-4">
           So I changed the perspective. <br /> Instead of showing crypto and
           fiat as separate concepts, the system translates everything into
@@ -294,10 +294,7 @@ export function WctPage() {
       </Section>
 
       <Section>
-        <div className="bg-gray-50 px-6 py-8 rounded-lg">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-black">
-            Reflection
-          </h2>
+        <CaseStudyReflection title="Reflection">
           <p className="mb-4">
             If I look back, the most important shift wasn’t visual.
           </p>
@@ -311,7 +308,7 @@ export function WctPage() {
             about adding more.It’s about making everything feel connected,
             clear, and reliable.
           </p>
-        </div>
+        </CaseStudyReflection>
       </Section>
     </CaseStudyShell>
   );

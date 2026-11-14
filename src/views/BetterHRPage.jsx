@@ -15,7 +15,7 @@ import betterhrUi4Asset from "../../public/betterhr/ui4.png";
 import { CASE_STUDY_IMAGE_SIZES, CASE_STUDY_GRID_IMAGE_SIZES } from "@/config/caseStudy";
 import { Clock, Globe, TabletSmartphone } from "lucide-react";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
-import { CaseStudySection as Section } from "@/components/CaseStudySection";
+import { CaseStudySection as Section, CaseStudyQuote, CaseStudyReflection } from "@/components/CaseStudySection";
 
 export function BetterHRPage() {
   return (
@@ -45,10 +45,10 @@ export function BetterHRPage() {
           my responsibilities extended beyond UI execution into product
           discovery, validation, and delivery.
         </p>
-        <div className="border-l-3 border-green-500 text-lg font-medium italic px-6 py-4 my-4 block text-black">
+        <CaseStudyQuote>
           This project became the foundation of my product mindset and
           hands-on experience.
-        </div>
+        </CaseStudyQuote>
       </Section>
       <Section title="Problem Statements">
         <p className="mb-4">
@@ -263,10 +263,7 @@ export function BetterHRPage() {
         </div>
       </Section>
       <Section>
-        <div className="bg-gray-50 px-6 py-8 rounded-lg">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-black">
-            Reflection
-          </h2>
+        <CaseStudyReflection title="Reflection">
           <p className="mb-4">
             Being part of Better HR from an early stage taught me the
             importance of deep user understanding, early validation, and
@@ -284,7 +281,7 @@ export function BetterHRPage() {
             building systems that solve real operational problems, not just
             surface-level usability issues.
           </p>
-        </div>
+        </CaseStudyReflection>
       </Section>
     </CaseStudyShell>
   );

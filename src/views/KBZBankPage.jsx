@@ -13,7 +13,7 @@ import kbzUi5Asset from "../../public/kbz/ui5.png";
 import { CASE_STUDY_IMAGE_SIZES } from "@/config/caseStudy";
 import { Clock, Globe, TabletSmartphone } from "lucide-react";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
-import { CaseStudySection as Section } from "@/components/CaseStudySection";
+import { CaseStudySection as Section, CaseStudyQuote, CaseStudyReflection } from "@/components/CaseStudySection";
 
 export function KBZBankPage() {
   return (
@@ -123,10 +123,10 @@ export function KBZBankPage() {
           pre-fills existing customer data, allowing users to simply review
           and adjust before continuing.
         </p>
-        <div className="border-l-3 border-green-500 text-lg font-medium italic px-6 py-4 my-4 block text-black">
+        <CaseStudyQuote>
           Users shift from form filling to validating pre-verified data and
           progressing seamlessly.
-        </div>
+        </CaseStudyQuote>
         <div className="bg-white my-8">
           <div className="overflow-hidden">
             <Image
@@ -267,10 +267,7 @@ export function KBZBankPage() {
       </Section>
 
       <Section>
-        <div className="bg-gray-50 px-6 py-8 rounded-lg">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-black">
-            Reflection
-          </h2>
+        <CaseStudyReflection title="Reflection">
           <p className="mb-4">
             This project shifted my perspective from designing screens to
             designing systems. I learned that in financial products,
@@ -282,7 +279,7 @@ export function KBZBankPage() {
             systems interact, which is critical when designing real-world
             banking products.
           </p>
-        </div>
+        </CaseStudyReflection>
       </Section>
     </CaseStudyShell>
   );

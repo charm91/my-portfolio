@@ -17,7 +17,7 @@ import unilinksDisplay3Asset from "../../public/unilinks/display-3.jpg";
 import { CASE_STUDY_IMAGE_SIZES, CASE_STUDY_GRID_IMAGE_SIZES } from "@/config/caseStudy";
 import { Clock, Globe, TabletSmartphone } from "lucide-react";
 import { CaseStudyShell } from "@/components/CaseStudyShell";
-import { CaseStudySection as Section } from "@/components/CaseStudySection";
+import { CaseStudySection as Section, CaseStudyQuote, CaseStudyReflection } from "@/components/CaseStudySection";
 
 export function UniLinksPage() {
   return (
@@ -40,10 +40,10 @@ export function UniLinksPage() {
           mentors who are already studying the same program at the same
           university. The platform is built around a simple belief:
         </p>
-        <div className="border-l-3 border-green-500 text-lg font-medium italic px-6 py-4 my-4 block text-black">
+        <CaseStudyQuote>
           Students can help students better than traditional education
           agencies.
-        </div>
+        </CaseStudyQuote>
         <p className="mb-4">
           UniLinks removes unnecessary intermediaries and replaces them with
           real experiences, transparent information, and mutual support,
@@ -282,10 +282,10 @@ export function UniLinksPage() {
           <li>Student successfully passes admission</li>
           <li>Mentor receives contribution bonus </li>
         </ul>
-        <div className="border-l-3 border-green-500 text-lg font-medium italic px-6 py-4 my-4 block text-black">
+        <CaseStudyQuote>
           No education agency involved! No hidden fees! A true
           student-to-student journey.
-        </div>
+        </CaseStudyQuote>
       </Section>
       <Section title="My Role & Contribution">
         <p className="mb-4">
@@ -357,10 +357,7 @@ export function UniLinksPage() {
       </Section>
 
       <Section>
-        <div className="bg-gray-50 px-6 py-8 rounded-lg">
-          <h2 className="text-2xl md:text-3xl font-bold mb-6 text-black">
-            Impact & Value
-          </h2>
+        <CaseStudyReflection title="Impact & Value">
           <p className="mb-4">
             <b>For students,</b> <br /> UniLinks provided clear and honest
             program information, reduced reliance on costly education
@@ -383,7 +380,7 @@ export function UniLinksPage() {
             community-driven model that places students at the center of
             academic decision-making.
           </p>
-        </div>
+        </CaseStudyReflection>
       </Section>
     </CaseStudyShell>
   );
