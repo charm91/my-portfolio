@@ -51,7 +51,7 @@ Development output uses `.next-dev`; production build and start use `.next`, so 
 | `src/lib/utils.js` | `cn()` merges Tailwind classes; `getScrollBehavior()` respects reduced motion for query-driven section navigation. Section CTAs use native fragment links. |
 | `app/contact-me/ContactPageClient.jsx` | Client-side form validation, invisible reCAPTCHA v2, honeypot, cooldown and EmailJS delivery. |
 | `src/components/InvisibleRecaptcha.jsx` | Loads Google's invisible reCAPTCHA v2 through `next/script` and exposes `execute()`, `cancel()` and `reset()` through a ref. |
-| `src/components/Reveal.jsx` / `src/components/MotionProvider.jsx` | `Reveal` wraps `motion` elements for entrances and supports only `div`, `article`, `p`, `h1`, `h2`, `header` and `form` through its `as` prop; add a tag to its `elements` map before using it. `MotionProvider` applies live reduced-motion changes to transitions. |
+| `src/components/Reveal.jsx` / `src/components/MotionProvider.jsx` | `Reveal` wraps `motion` elements for entrances and supports only `div`, `article`, `p`, `h1`, `h2`, `header` and `form` through its `as` prop; add a tag to its `elements` map before using it. Spread `fadeUp(y)` onto `Reveal` for the standard once-only section fade-up. `MotionProvider` applies live reduced-motion changes to transitions. |
 | `app/sitemap.js` / `app/robots.js` | Hand-maintained sitemap and crawler configuration, both using `SITE_URL`. |
 | `src/__tests__/` / `vitest.setup.js` | Vitest, jsdom and React Testing Library; shared motion mock in `src/__tests__/test-utils/mockMotion.js` and shared `next/image`, `next/link` and `IntersectionObserver` mocks in `src/__tests__/test-utils/mocks.jsx`. |
 | `public/` | Local branding, portraits, cover images and case-study screenshots, imported as modules so Next emits content-hashed URLs. |
@@ -98,7 +98,7 @@ Development output uses `.next-dev`; production build and start use `.next`, so 
 - Vitest resolves `public/` image imports through the plugin in `vitest.config.js`, which returns only `{ src }`; width and height are not available in tests.
 - Use `Reveal` for motion entrances so content stays readable without JavaScript and transitions follow live preferences. Set `entrance` for intentional page introductions; other reveals skip content already on screen at hydration. Keep `focus-reveal` on controls' wrappers for immediate keyboard visibility.
 - Render `InvisibleRecaptcha` outside transformed `motion` containers; a transformed ancestor makes Google's `position: fixed` badge position relative to that ancestor.
-- Tailwind 4 resets `<button>` to the default cursor. Custom clickable triggers need `cursor-pointer`, as the shared `Button` and the accordion trigger have.
+- Tailwind 4 resets `<button>` to the default cursor. `app/globals.css` restores `cursor: pointer` on every enabled `button`; clickable elements that are not buttons still need `cursor-pointer`.
 
 ## Rules
 
@@ -114,4 +114,4 @@ At the start of every session, check whether the paths above exist on this machi
 If either is missing, inform the user: "helm rules are referenced in CLAUDE.md but the
 plugin is not installed on this machine. Install it with: /plugin install agent-helm"
 
-<!-- last-reviewed: a8b8efcadff6b36a96825dc9150df4e2da7ac6bc -->
+<!-- last-reviewed: f37c10a0b4c2597ca94bb134ec0886b0d18c9415 -->
