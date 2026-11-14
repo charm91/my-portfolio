@@ -22,6 +22,9 @@ const navItems = [
 
 const sectionIds = navItems.map(({ href }) => href.slice(1));
 
+// The pill beside the logo: Menu on home, Back or Home elsewhere.
+const pillControl = "rounded-full px-5 py-2 text-sm font-medium bg-gray-100 hover:bg-gray-200";
+
 function MenuPanel({ children, ...props }) {
   const isPresent = useIsPresent();
   const { transition } = useContext(MotionConfigContext);
@@ -162,10 +165,7 @@ export function Header() {
               aria-expanded={menuOpen}
               aria-controls={menuId}
               onClick={() => setMenuOpen((o) => !o)}
-              className={cn(
-                "rounded-full px-5 py-2 text-sm font-medium transition-colors duration-150",
-                "bg-gray-100 hover:bg-gray-200 text-[#1f2937] cursor-pointer",
-              )}
+              className={cn(pillControl, "transition-colors duration-150 text-[#1f2937]")}
             >
               Menu
             </button>
@@ -174,7 +174,7 @@ export function Header() {
               type="button"
               variant="chip"
               onClick={navigation.goBack}
-              className="rounded-full px-5 py-2 h-9 text-sm font-medium bg-gray-100 hover:bg-gray-200 cursor-pointer"
+              className={cn(pillControl, "h-9")}
             >
               Back
             </Button>
@@ -182,10 +182,7 @@ export function Header() {
             <Button
               asChild
               variant="chip"
-              className={cn(
-                "rounded-full px-5 py-2 h-9 text-sm font-medium transition-colors",
-                "bg-gray-100 hover:bg-gray-200 cursor-pointer",
-              )}
+              className={cn(pillControl, "h-9 transition-colors")}
             >
               <Link href="/">Home</Link>
             </Button>
