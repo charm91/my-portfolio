@@ -10,6 +10,10 @@ vi.mock("next/link", async () => (await import("./test-utils/mocks")).nextLinkMo
 function Controls() {
   const navigation = useReturnNavigation();
   return <>
+    <header>
+      <button aria-controls="menu-panel">Menu</button>
+      <Link href="/contact-me" onClick={event => event.preventDefault()}>Menu link</Link>
+    </header>
     <Link href="/contact-me" onClick={event => event.preventDefault()}>Contact</Link>
     <Link href="/betterhr" onClick={event => event.preventDefault()}>Project</Link>
     <Link href="#main-content" onClick={event => event.preventDefault()}>Skip</Link>
@@ -95,6 +99,19 @@ describe("return navigation", () => {
     expect(history.state.portfolioNavigation.key).toBe(sourceState.portfolioNavigation.key);
     expect(history.state.nextField).toBe("updated");
     await waitFor(() => expect(screen.getByText("Project")).toHaveFocus());
+  });
+
+  it("returns focus to the menu trigger after leaving through a menu link", async () => {
+    history.replaceState({ initialField: true }, "", "/");
+    pathname.mockReturnValue("/");
+    const app = mount();
+    fireEvent.click(screen.getByText("Menu link"));
+    const sourceState = history.state;
+    app.navigate("/contact-me");
+    vi.spyOn(history, "go").mockImplementation(() => {});
+    fireEvent.click(screen.getByRole("button", { name: "Back" }));
+    app.pop("/", sourceState);
+    await waitFor(() => expect(screen.getByRole("button", { name: "Menu" })).toHaveFocus());
   });
 
   it("skips in-page history entries when returning to the source page", () => {
