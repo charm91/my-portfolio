@@ -61,9 +61,9 @@ export default function ContactPageClient() {
     const email = formData.email.trim();
     const message = formData.message.trim();
 
-    const showFieldError = (field, message) => {
+    const showFieldError = (field, feedback) => {
       setInvalidField(field);
-      setErrorMsg(message);
+      setErrorMsg(feedback);
       setStatus("error");
       e.currentTarget.elements.namedItem(field)?.focus();
     };
