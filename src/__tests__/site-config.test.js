@@ -36,3 +36,17 @@ describe("SITE_URL and SEO consumers", () => {
     expect(metadata.metadataBase.href).toBe(`${expectedOrigin}/`);
   });
 });
+
+describe("Next.js build isolation", () => {
+  it("keeps development assets separate while build and start share production output", async () => {
+    const { default: nextConfig } = await import("../../next.config.js");
+    const { PHASE_DEVELOPMENT_SERVER, PHASE_PRODUCTION_BUILD, PHASE_PRODUCTION_SERVER } = await import("next/constants.js");
+    const configFor = (phase) => typeof nextConfig === "function" ? nextConfig(phase) : nextConfig;
+    const development = configFor(PHASE_DEVELOPMENT_SERVER).distDir ?? ".next";
+    const build = configFor(PHASE_PRODUCTION_BUILD).distDir ?? ".next";
+    const production = configFor(PHASE_PRODUCTION_SERVER).distDir ?? ".next";
+
+    expect(development).not.toBe(build);
+    expect(production).toBe(build);
+  });
+});

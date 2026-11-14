@@ -30,6 +30,8 @@ npm run test:coverage   # V8 text and HTML coverage
 npx vitest run src/__tests__/contact-form-validation.test.jsx
 ```
 
+Development output uses `.next-dev`; production build and start use `.next`, so build checks do not overwrite a running preview.
+
 ## Architecture Pointers
 
 | Path | Purpose |

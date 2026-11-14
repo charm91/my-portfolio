@@ -12,6 +12,7 @@ node_modules
 
 # Build output
 .next
+.next-dev
 out
 dist
 dist-ssr
