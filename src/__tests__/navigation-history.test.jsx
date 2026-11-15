@@ -14,10 +14,13 @@ function Controls() {
       <button aria-controls="menu-panel">Menu</button>
       <Link href="/contact-me" onClick={event => event.preventDefault()}>Menu link</Link>
     </header>
-    <Link href="/contact-me" onClick={event => event.preventDefault()}>Contact</Link>
-    <Link href="/betterhr" onClick={event => event.preventDefault()}>Project</Link>
-    <Link href="#main-content" onClick={event => event.preventDefault()}>Skip</Link>
-    <Link href="/contact-me" target="_blank" onClick={event => event.preventDefault()}>New tab</Link>
+    <main data-error-page={pathname() === "/missing" || undefined}>
+      <Link href="/contact-me" onClick={event => event.preventDefault()}>Contact</Link>
+      <Link href="/betterhr" onClick={event => event.preventDefault()}>Project</Link>
+      <Link href="/missing" onClick={event => event.preventDefault()}>Missing page</Link>
+      <Link href="#main-content" onClick={event => event.preventDefault()}>Skip</Link>
+      <Link href="/contact-me" target="_blank" onClick={event => event.preventDefault()}>New tab</Link>
+    </main>
     <output>{navigation.previous?.url ?? "none"}</output>
     <button onClick={navigation.goBack}>Back</button>
   </>;
@@ -62,6 +65,39 @@ describe("return navigation", () => {
     pathname.mockReturnValue("/contact-me");
     mount();
     expect(screen.getByRole("status")).toHaveTextContent("none");
+  });
+
+  it.each(["Contact", "Menu link"])("does not offer a directly opened error page as the return point after %s", link => {
+    history.replaceState(null, "", "/missing");
+    pathname.mockReturnValue("/missing");
+    const app = mount();
+    fireEvent.click(screen.getByText(link));
+    app.navigate("/contact-me");
+    expect(screen.getByRole("status")).toHaveTextContent("none");
+    app.unmount();
+    mount();
+    expect(screen.getByRole("status")).toHaveTextContent("none");
+  });
+
+  it.each([false, true])("returns past an error page to the valid origin, with an error-page fragment: %s", async withFragment => {
+    const app = mount();
+    fireEvent.click(screen.getByText("Missing page"));
+    const sourceState = history.state;
+    app.navigate("/missing");
+    if (withFragment) {
+      fireEvent.click(screen.getByText("Skip"));
+      history.pushState(null, "", "/missing#main-content");
+      act(() => dispatchEvent(new HashChangeEvent("hashchange")));
+    }
+    fireEvent.click(screen.getByText("Project"));
+    app.navigate("/betterhr");
+    expect(screen.getByRole("status")).toHaveTextContent("/portfolio");
+    const go = vi.spyOn(history, "go").mockImplementation(() => {});
+    fireEvent.click(screen.getByRole("button", { name: "Back" }));
+    expect(go).toHaveBeenCalledWith(withFragment ? -3 : -2);
+    app.pop("/portfolio", sourceState);
+    await waitFor(() => expect(screen.getByText("Missing page")).toHaveFocus());
+    expect(window.scrollTo).toHaveBeenCalledWith({ left: 0, top: 1350, behavior: "instant" });
   });
 
   it.each(["/", "/portfolio"])("remembers the exact %s source position and preserves other history fields", source => {

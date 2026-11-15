@@ -36,7 +36,8 @@ export function NavigationHistoryProvider({ children }) {
         saveEntry(next);
       }
       if (!next) {
-        const source = pending.current?.destination === url ? pending.current.source : null;
+        const navigation = pending.current?.destination === url ? pending.current : null;
+        const source = navigation?.source ?? null;
         const samePage = active.current && new URL(active.current.url, location.origin).pathname === location.pathname
           && new URL(active.current.url, location.origin).search === location.search;
         const previous = source || (samePage ? active.current : null);
@@ -46,7 +47,8 @@ export function NavigationHistoryProvider({ children }) {
           url,
           x: scrollX,
           y: scrollY,
-          previous: source && new URL(source.url, location.origin).pathname !== location.pathname
+          previous: navigation?.skipSource ? source?.previous ?? null
+            : source && new URL(source.url, location.origin).pathname !== location.pathname
             ? { key: source.key, index: source.index, url: source.url, x: source.x, y: source.y, focus: source.focus }
             : previous?.previous ?? null,
         };
@@ -71,7 +73,12 @@ export function NavigationHistoryProvider({ children }) {
       if (!validEntry(source)) return;
       saveEntry(source);
       active.current = source;
-      pending.current = { destination: url.pathname + url.search + url.hash, source };
+      pending.current = {
+        destination: url.pathname + url.search + url.hash,
+        source,
+        // Preserve browser history offsets, but never offer an error as a return destination.
+        skipSource: !!document.querySelector("main[data-error-page]"),
+      };
     };
 
     synchronize.current = sync;
