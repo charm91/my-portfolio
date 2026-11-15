@@ -15,7 +15,7 @@ describe("SEO", () => {
       import("../../app/contact-me/page"),
     ]);
     pages.forEach(({ metadata }, index) => {
-      expect(metadata.title).toContain(SITE.name);
+      expect(metadata.title).toContain(SITE.seoName);
       expect(metadata.description).toContain(SITE.name);
       expect(metadata.alternates.canonical).toBe(["/", "/portfolio", "/contact-me"][index]);
       expect(metadata.openGraph.title).toBe(metadata.title);
@@ -30,7 +30,7 @@ describe("SEO", () => {
     const person = graph.find((entity) => entity["@type"] === "Person");
     const profile = graph.find((entity) => entity["@type"] === "ProfilePage");
     const website = graph.find((entity) => entity["@type"] === "WebSite");
-    expect(person).toMatchObject({ name: SITE.name, alternateName: SITE.displayName, jobTitle: SITE.jobTitle });
+    expect(person).toMatchObject({ name: SITE.name, alternateName: SITE.nickname, jobTitle: SITE.jobTitle });
     expect(person.sameAs).toEqual(Object.values(SOCIAL_LINKS));
     expect(new URL(person.image).origin).toBe(new URL(SITE_URL).origin);
     expect(profile.mainEntity["@id"]).toBe(person["@id"]);

@@ -8,6 +8,7 @@ import { Reveal } from "@/components/Reveal";
 import { Star, ArrowDown, ArrowRight } from "lucide-react";
 import { Button } from "./ui/button";
 import { SITE } from "@/config/site";
+import { PROFILE_IMAGE } from "@/config/assets";
 import { COLORS } from "@/config/theme";
 
 const textPrimary = COLORS.textPrimaryHome;
@@ -47,7 +48,7 @@ export function OverviewGrid() {
             >
               <div className="relative aspect-6/3 min-h-[150px]">
                 <Image
-                  src={SITE.profileImage}
+                  src={PROFILE_IMAGE}
                   alt={SITE.displayName}
                   fill
                   priority
@@ -77,7 +78,7 @@ export function OverviewGrid() {
                   className="text-sm leading-relaxed"
                   style={{ color: textSecondary }}
                 >
-                  I&apos;m a Senior Product Designer with 13+ years of experience
+                  I&apos;m a {SITE.jobTitle} with {SITE.experienceYears}+ years of experience
                   across fintech, banking, HR SaaS, education platforms, and
                   multi-role digital products.
                   <br />
@@ -140,7 +141,7 @@ export function OverviewGrid() {
                   className="font-medium shrink-0 md:w-[80px]"
                   style={{ color: textPrimary }}
                 >
-                  {new Date().getFullYear() - SITE.careerStartYear}+ Years
+                  {SITE.experienceYears}+ Years
                 </span>
                 <span className="w-px h-10 bg-border/50 hidden md:inline-block"></span>
                 <ul

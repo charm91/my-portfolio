@@ -8,8 +8,8 @@ import { Footer } from "@/components/Footer";
 import { getPageMetadata } from "@/lib/seo";
 
 export const metadata = getPageMetadata({
-  title: `Product Design Case Studies | ${SITE.name}`,
-  description: `Explore fintech, digital banking, HR SaaS, and education case studies by ${SITE.name} (${SITE.displayName}), ${SITE.jobTitle}.`,
+  title: `Product Design Case Studies | ${SITE.seoName}`,
+  description: `Explore fintech, digital banking, HR SaaS, and education case studies by ${SITE.seoName}, ${SITE.jobTitle}.`,
   path: "/portfolio",
 });
 

@@ -36,8 +36,8 @@ describe("Case-study route contracts", () => {
 
   it.each(cases)("/$slug generates matching search and share metadata", async ({ slug, title, heading, image }) => {
     const metadata = await generateMetadata({ params: Promise.resolve({ case: slug }) });
-    const expectedTitle = `${title} | ${SITE.name}`;
-    const expectedDescription = `${heading}, a product design case study by ${SITE.name} (${SITE.displayName}).`;
+    const expectedTitle = `${title} | ${SITE.seoName}`;
+    const expectedDescription = `${heading}, a product design case study by ${SITE.seoName}.`;
     expect(metadata.title).toBe(expectedTitle);
     expect(metadata.description).toBe(expectedDescription);
     expect(metadata.openGraph).toMatchObject({ title: expectedTitle, description: expectedDescription, url: `/${slug}` });

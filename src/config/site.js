@@ -1,14 +1,15 @@
-import profilePhotoAsset from "../../public/profile-photo.png";
+// Public details are shared by Next.js and the static-content generator.
+// Keep image imports in assets.js so this module also works in Node scripts.
+export const DEFAULT_SITE_URL = "https://nguwahaung.com";
 
 export const SITE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://nguwahaung.com";
+  process.env.NEXT_PUBLIC_SITE_URL ?? DEFAULT_SITE_URL;
 
-export const SITE = {
+const profile = {
   name: "Ngu Wah Aung",
-  displayName: "Charm",
+  nickname: "Charm",
   jobTitle: "Senior Product Designer",
-  tagline: "Senior Product Designer • Fintech & SaaS",
-  profileImage: profilePhotoAsset.src,
+  taglineFocus: "Fintech & SaaS",
   email: "nguwah106@gmail.com",
   location: "Bangkok, Thailand",
   careerStartYear: 2013,
@@ -17,6 +18,19 @@ export const SITE = {
   domains: ["Fintech", "HR SaaS", "Education", "Multi-role Systems"],
 };
 
+export function createSite(overrides = {}, year = new Date().getFullYear()) {
+  const values = { ...profile, ...overrides };
+  return {
+    ...values,
+    displayName: values.nickname,
+    seoName: `${values.name} (${values.nickname})`,
+    tagline: `${values.jobTitle} • ${values.taglineFocus}`,
+    experienceYears: year - values.careerStartYear,
+  };
+}
+
+export const SITE = createSite();
+
 export const SOCIAL_LINKS = {
   facebook: "https://www.facebook.com/itscharmm9/",
   linkedin: "https://www.linkedin.com/in/nguwah106/",
@@ -24,3 +38,5 @@ export const SOCIAL_LINKS = {
 
 export const RESUME_URL =
   "https://drive.google.com/file/d/10ca6MgWRG0n2AwIk7yJbKf0tGVFJqzFC/view?usp=sharing";
+
+export const REPOSITORY_URL = "https://github.com/charm91/my-portfolio";

@@ -1,7 +1,7 @@
 import { SITE_URL } from "@/config/site";
 
 // Update this date when page content or metadata changes, not at each build.
-const lastModified = new Date("2026-11-08");
+const lastModified = new Date("2026-11-15");
 
 export default function sitemap() {
   return [

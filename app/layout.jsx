@@ -16,8 +16,8 @@ const inter = Inter({
 export const metadata = {
   metadataBase: new URL(SITE_URL),
   ...getPageMetadata({
-    title: `${SITE.name} (${SITE.displayName}) | ${SITE.jobTitle}`,
-    description: `Explore product design work by ${SITE.name} (${SITE.displayName}), a ${SITE.jobTitle.toLowerCase()} working across fintech, banking, HR SaaS, and education platforms.`,
+    title: `${SITE.seoName} | ${SITE.jobTitle}`,
+    description: `Explore product design work by ${SITE.seoName}, a ${SITE.jobTitle.toLowerCase()} working across fintech, banking, HR SaaS, and education platforms.`,
   }),
 };
 

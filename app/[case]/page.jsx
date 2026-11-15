@@ -15,8 +15,8 @@ export async function generateMetadata({ params }) {
   if (!entry) return {};
 
   return getPageMetadata({
-    title: `${entry.title} | ${SITE.name}`,
-    description: `${entry.description}, a product design case study by ${SITE.name} (${SITE.displayName}).`,
+    title: `${entry.title} | ${SITE.seoName}`,
+    description: `${entry.description}, a product design case study by ${SITE.seoName}.`,
     path: `/${slug}`,
     image: entry.thumbnail,
   });

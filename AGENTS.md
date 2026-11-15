@@ -36,7 +36,9 @@ Development output uses `.next-dev`; production build and start use `.next`, so 
 
 | Path | Purpose |
 |---|---|
-| `src/config/site.js` | Personal information, social links, resume URL and `SITE_URL`; update personal details here. |
+| `src/config/site.js` | Public personal information, nickname, social links, resume, canonical domain and `SITE_URL`; update personal details here. Derives display/SEO names, tagline and experience years. No image imports, so generation scripts can consume it directly. |
+| `src/config/assets.js` | Shared profile-image import, preserving Next.js content-hashed URLs. |
+| `scripts/generate-site-content.js` / `src/content/templates/` | Generates README, the existing legal documents and bug-report URL from shared site details. Runs before dev/build; `npm run generate:content` refreshes output and `npm run check:content` checks without writing. Edit templates for static wording; legal dates/clauses stay explicit and GitHub About stays separate. |
 | `app/resume.pdf/route.js` | Redirects `/resume.pdf` to `RESUME_URL` with a 308. |
 | `src/lib/seo.js` / `src/components/JsonLd.jsx` | `getPageMetadata()` builds title, canonical, Open Graph and Twitter metadata for every page; `getProfileStructuredData()` feeds the homepage JSON-LD. |
 | `src/config/caseStudies.js` | Registry mapping case slugs to view components and route metadata. |

@@ -1,11 +1,12 @@
 import { SITE, SITE_URL, SOCIAL_LINKS } from "@/config/site";
+import { PROFILE_IMAGE } from "@/config/assets";
 
 export function getPageMetadata({ title, description, path = "/", image }) {
   const images = [image ?? {
-    url: SITE.profileImage,
+    url: PROFILE_IMAGE,
     width: 1152,
     height: 832,
-    alt: `${SITE.name} (${SITE.displayName}), ${SITE.jobTitle}`,
+    alt: `${SITE.seoName}, ${SITE.jobTitle}`,
   }];
 
   return {
@@ -16,7 +17,7 @@ export function getPageMetadata({ title, description, path = "/", image }) {
       title,
       description,
       type: "website",
-      siteName: `${SITE.name} (${SITE.displayName})`,
+      siteName: SITE.seoName,
       url: path,
       images,
     },
@@ -38,24 +39,24 @@ export function getProfileStructuredData() {
         "@type": "WebSite",
         "@id": `${url}#website`,
         url,
-        name: `${SITE.name} (${SITE.displayName})`,
+        name: SITE.seoName,
         inLanguage: "en",
       },
       {
         "@type": "Person",
         "@id": `${url}#person`,
         name: SITE.name,
-        alternateName: SITE.displayName,
+        alternateName: SITE.nickname,
         jobTitle: SITE.jobTitle,
         url,
-        image: new URL(SITE.profileImage, SITE_URL).href,
+        image: new URL(PROFILE_IMAGE, SITE_URL).href,
         sameAs: Object.values(SOCIAL_LINKS),
       },
       {
         "@type": "ProfilePage",
         "@id": `${url}#profile`,
         url,
-        name: `${SITE.name} (${SITE.displayName}) | ${SITE.jobTitle}`,
+        name: `${SITE.seoName} | ${SITE.jobTitle}`,
         isPartOf: { "@id": `${url}#website` },
         mainEntity: { "@id": `${url}#person` },
       },

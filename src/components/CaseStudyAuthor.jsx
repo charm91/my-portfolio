@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { SITE, SOCIAL_LINKS } from "@/config/site";
+import { PROFILE_IMAGE } from "@/config/assets";
 
 const socialLinks = [
   {
@@ -20,7 +21,7 @@ export function CaseStudyAuthor() {
       <div className="flex flex-col items-start gap-4 mt-2 sm:flex-row sm:items-center sm:justify-between sm:gap-6">
         <div className="flex min-w-0 items-center gap-4 sm:gap-5">
           <Image
-            src={SITE.profileImage}
+            src={PROFILE_IMAGE}
             alt={SITE.displayName}
             width={56}
             height={56}

@@ -4,6 +4,10 @@
   "version": "1.5.0",
   "type": "module",
   "scripts": {
+    "generate:content": "node scripts/generate-site-content.js",
+    "check:content": "node scripts/generate-site-content.js --check",
+    "predev": "npm run generate:content",
+    "prebuild": "npm run generate:content",
     "dev": "node scripts/dev.js",
     "build": "next build",
     "start": "next start",
